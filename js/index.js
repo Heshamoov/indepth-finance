@@ -3,7 +3,7 @@ function currentDate(){
     document.querySelector("#to").value = today;
 }
 
-document.getElementById("search").onclick = function() {search()};
+// document.getElementById("search").onclick = function() {search()};
 
 function search() {
     let date = new Date(document.querySelector("#from").value);
@@ -19,16 +19,16 @@ function search() {
     year = date.getFullYear();
     let todate = year + '-' + month + '-' + day;
 
-    document.getElementById("fromCell").innerHTML = fromdate;
-    document.getElementById("toCell").innerHTML = todate;
+    // document.getElementById("fromCell").innerHTML = fromdate;
+    // document.getElementById("toCell").innerHTML = todate;
 
     
-    var terms = new XMLHttpRequest();
-    terms.onreadystatechange = function () {
+    var general = new XMLHttpRequest();
+    general.onreadystatechange = function () {
         if (this.readyState === 4) {
             document.getElementById("result").innerHTML = this.responseText;
         }
     };
-    terms.open("GET", "mysql/terms.php?fromdate=" + fromdate + "&todate=" + todate, false);
-    terms.send();
+    general.open("GET", "mysql/general.php?fromdate=" + fromdate + "&todate=" + todate, false);
+    general.send();
 }
