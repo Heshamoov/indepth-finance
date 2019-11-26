@@ -21,4 +21,14 @@ function search() {
 
     document.getElementById("fromCell").innerHTML = fromdate;
     document.getElementById("toCell").innerHTML = todate;
+
+    
+    var terms = new XMLHttpRequest();
+    terms.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    terms.open("GET", "mysql/terms.php?fromdate=" + fromdate + "&todate=" + todate, false);
+    terms.send();
 }
