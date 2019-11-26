@@ -13,70 +13,53 @@
     <title>InDepth Finance</title>
 </head>
 
-<body onload="initDate()">
+<body onload="currentDate()">
     
-    <table id="header">
-        <tr>
-            <td>
-                <div>
-                <a href="https://indepth.ae">
-                    <img src="assets/indepth-logo.png">
-                </a>
-                </div>
-            </td>
-
-            <td id="headerTitle">
-                Finance
-            </td>
-        </tr>
-    </table>
+<div id="header" class="row">
     
-    <div class="sidenav">
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
+    <div class="column logo">
+        <a href="https://indepth.ae">
+            <img src="assets/indepth-logo.png">
+        </a>
     </div>
-
-
-
-<br>
-    <table id="userinput" class="w3-table-all w3-centered w3-card">
-        <tr>
-            <td>
-                Start
-            </td>
-            <td>
-                End
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input class="w3-input w3-large" type="date" id="from" value="2019-09-01"/>
-            </td>
-            <td>
-                <input class="w3-input w3-large" type="date" id="to" value="2018-10-20"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="w3-button w3-green" id="search" onclick="search()">hello</button>
-            </td>
-        </tr>
-    </table>
     
-    <table id="result" class="w3-table-all w3-centered w3-card">
-        <tr>
-            <td id="fromCell">
-
-            </td>
-            <td id="toCell">
-
-            </td>
-        </tr>
-    </table>
+    <div class="column title">
+        <label id="headerTitle" class="w3-centered">Finance</label>
+    </div>
     
-    <script src="js/index.js"></script>
+    <div class="column">
+    </div>
+    
+</div>
+         
+    
+<div id="mySidenav" class="sidenav">
+  <a href="#" id="about">About</a>
+  <a href="#" id="blog">Blog</a>
+  <a href="#" id="projects">Projects</a>
+  <a href="#" id="contact">Contact</a>
+</div>
+
+<table id="userinput" cellpadding="10">
+    <tr>
+        <th>Start<input class="w3-input w3-card" type="date" id="from" value="2019-09-01"/></th>
+        <th>End<input class="w3-input w3-card" type="date" id="to" value="2018-10-20"/></th>
+        <th><button class="w3-button w3-green w3-card" id="search" onclick="search()">hello</button></th>
+    </tr>
+</table>
+    
+<table id="result" class="w3-table-all w3-centered w3-card">
+    <tr>
+        <td id="fromCell">
+        </td>
+
+        <td id="toCell">
+        </td>
+    </tr>
+</table>
+
+    
+<script src="js/index.js"></script>
     
 </body>
 </html>
