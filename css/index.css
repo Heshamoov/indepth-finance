@@ -82,3 +82,8 @@ body {
   top: 215px;
   background-color: #555 /* Light Black */
 }
+
+#result {
+  width: 90%;
+  margin: auto;
+}

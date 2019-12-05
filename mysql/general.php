@@ -23,15 +23,33 @@ $todate = $_REQUEST["todate"];
 
 
 $general= "
-SELECT guardians.familyid FamilyID, guardians.first_name Parent,
-       COUNT(IF(students.familyid = guardians.familyid, 1, NULL)) 'No. of Students'
-FROM students
-	INNER JOIN guardians ON students.familyid = guardians.familyid        
+SELECT 
+finance_fees.id `F#`, finance_transactions.finance_id `T#`,
+finance_fees.student_id,
+students.last_name student,
+guardians.familyid familyid, 
+guardians.first_name parent,
+finance_fees.balance,
+finance_transactions.amount,
+finance_fee_collections.name,
+finance_transactions.payee_id, finance_transactions.finance_id,
+ROUND(SUM(balance), 0) balance,
+ROUND(SUM(amount), 0) paid
 
-GROUP BY guardians.id
-ORDER BY guardians.familyid DESC;
+FROM `finance_fees`
+
+LEFT JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+LEFT JOIN finance_transactions ON finance_fees.id = finance_transactions.finance_id
+INNER JOIN students ON finance_fees.student_id = students.id
+INNER JOIN guardians ON students.immediate_contact_id = guardians.id
+
+
+
+GROUP BY guardians.familyid
+ORDER BY REPLACE(guardians.first_name, ' ','')
+
 ";
-// echo $sql;
+// echo $general;
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
@@ -40,16 +58,18 @@ if ($result->num_rows > 0) {
         		<th>#</th>
         		<th>Family ID</th>
         		<th>Parent</th>
-        		<th>No. of Students</th>
+        		<th>Balance</th>
+        		<th>Paid<th>
         	</tr>
         ";
     while ($row = $result->fetch_assoc()) {
         echo "
         	<tr>
-        		<td>" . $rownumber 				. "</td>
-        		<td>" . $row['FamilyID']  . "</td>
-        		<td>" . $row['Parent']       . "</td>
-        		<td>" . $row['No. of Students']    . "</td>
+        		<td>" . $rownumber 		 . "</td>
+        		<td>" . $row['familyid'] . "</td>
+        		<td>" . $row['parent']   . "</td>
+        		<td>" . $row['balance']  . "</td>
+        		<td>" . $row['paid']     . "</td>
         	</tr>
         ";
         $rownumber++;
