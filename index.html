@@ -6,9 +6,28 @@
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/indepth-logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
     <title>InDepth Finance</title>
 </head>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $("td[colspan=5]").find("p").hide();
+    // $("table").click(function(event) {
+    //     event.stopPropagation();
+    //     var $target = $(event.target);
+    //     if ( $target.closest("td").attr("colspan") > 1 ) {
+    //         $target.slideUp();
+    //         $target.closest("tr").prev().find("td:first").html("+");
+    //     } else {
+    //         $target.closest("tr").next().find("p").slideToggle();
+    //         if ($target.closest("tr").find("td:first").html() == "+")
+    //             $target.closest("tr").find("td:first").html("-");
+    //         else
+    //             $target.closest("tr").find("td:first").html("+");                
+    //     }                    
+    });   
+</script>
 <body onload="currentDate()">
 
 <div id="header" class="row">    
@@ -39,11 +58,11 @@
 <tr>
     <th>Start<input class="w3-input w3-card" type="date" id="from" value="2019-09-01"/></th>
     <th>End<input class="w3-input w3-card" type="date" id="to" value="2018-10-20"/></th>
-    <th><button class="w3-button w3-green w3-card" id="search" onclick="search()">Overll Report</button></th>
+    <th><button class="w3-button w3-green w3-card" id="search" onclick="search()" accesskey="q">Overll Report</button></th>
 </tr>
 </table>
     
-<table id="result" class="w3-table-all w3-card w3-hoverable w3-centered"></table>
+<table id="result" class="w3-table-all w3-card w3-centered"></table>
 
     
 <script src="js/index.js"></script>

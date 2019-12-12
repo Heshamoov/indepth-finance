@@ -12,16 +12,11 @@ function search() {
     year = date.getFullYear();
     let fromdate = year + '-' + month + '-' + day;
 
-
     date = new Date(document.querySelector("#to").value);
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let todate = year + '-' + month + '-' + day;
-
-    // document.getElementById("fromCell").innerHTML = fromdate;
-    // document.getElementById("toCell").innerHTML = todate;
-
     
     var general = new XMLHttpRequest();
     general.onreadystatechange = function () {
@@ -32,3 +27,17 @@ function search() {
     general.open("GET", "mysql/general.php?fromdate=" + fromdate + "&todate=" + todate, false);
     general.send();
 }
+
+
+$(function() {
+    $("td[colspan=3]").find("p").hide();
+    $("table").click(function(event) {
+        event.stopPropagation();
+        var $target = $(event.target);
+        if ( $target.closest("td").attr("colspan") > 1 ) {
+            $target.slideUp();
+        } else {
+            $target.closest("tr").next().find("p").slideToggle();
+        }                    
+    });
+});

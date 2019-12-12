@@ -72,6 +72,11 @@ if ($result->num_rows > 0) {
         		<td>" . $row['balance']  . "</td>
         		<td>" . $row['paid']     . "</td>
         	</tr>
+            <tr>
+                <td colspan='5'>
+                    <p>HESHAM</p>
+                </td>
+            </tr>
         ";
         $rownumber++;
     }
