@@ -2,6 +2,7 @@ body {
 	font-family: Arial;
 	font-size: 16px;
 }
+
 #header {
 	width: 100%;
 	background-color: #FAFAFA;
@@ -19,6 +20,9 @@ body {
 .title {
 	font-family: Arial;
 	font-size: 26px;
+}
+img {
+  /*width: 100px;*/
 }
 
 /* Clear floats after the columns */
@@ -45,45 +49,56 @@ body {
 	width: 100%;
 }
 
-/* Style the links inside the sidenav */
-#mySidenav a {
-  position: absolute; /* Position them relative to the browser window */
-  left: -80px; /* Position them outside of the screen */
-  transition: 0.3s; /* Add transition on hover */
-  padding: 15px; /* 15px padding */
-  width: 100px; /* Set a specific width */
-  text-decoration: none; /* Remove underline */
-  font-size: 20px; /* Increase font size */
-  color: white; /* White text color */
-  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+
+.sidenav {
+  width: 130px;
+  height: 100%;
+  position: fixed;
+  background: #FAFAFA;
+  border-right: 1px solid gray;
+  /*z-index: 1;*/
+  /*top: 20px;*/
+  /*left: 10px;*/
+  
+  /*overflow-x: hidden;*/
+  /*padding: 8px 0;*/
 }
 
-#mySidenav a:hover {
-  left: 0; /* On mouse-over, make the elements appear as they should */
+.sidenav a {
+  padding: 0px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+  display: block;
+  /*margin-top: -5px;*/
+  /*margin-top: 0.0em;*/
+}
+.sidenav h5 {
+  opacity: 50%;
+  text-align: center;
 }
 
-/* The about link: 20px from the top with a green background */
-#about {
-  top: 35px;
-  background-color: #4CAF50;
+.sidenav hr {
+  display: block;
+  margin-top: -5px;
+}
+.sidenav a:hover {
+  color: #2196F3;
 }
 
-#blog {
-  top: 95px;
-  background-color: #2196F3; /* Blue */
-}
+/*.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  /*font-size: 28px; */
+/* Increased text to enable scrolling */
+  /*padding: 0px 10px;*/
+/*}*/*/
 
-#projects {
-  top: 155px;
-  background-color: #f44336; /* Red */
-}
-
-#contact {
-  top: 215px;
-  background-color: #555 /* Light Black */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 #result {
-  width: 90%;
+  width: 70%;
   margin: auto;
 }

@@ -4,7 +4,8 @@ include ('../config/db.php');
 
 $fromdate = $_REQUEST["fromdate"];
 $todate = $_REQUEST["todate"];
-
+// echo $fromdate;
+// echo $todate;
 // $sql= "
 // select fee_invoices.invoice_number, students.last_name, students.admission_no,
 //        courses.course_name, batches.name, finance_fee_collections.name,  finance_fees.particular_total,
@@ -64,7 +65,7 @@ if ($result->num_rows > 0) {
         ";
     while ($row = $result->fetch_assoc()) {
         echo "
-        	<tr>
+        	<tr class='w3-hover-green'>
         		<td>" . $rownumber 		 . "</td>
         		<td>" . $row['familyid'] . "</td>
         		<td>" . $row['parent']   . "</td>
