@@ -10,6 +10,7 @@ $general= "
 SELECT 
 guardians.first_name  parent,
 students.last_name student,
+COUNT(DISTINCT students.id) NumberOfStudents,
 students.familyid,
 ROUND(SUM(finance_fees.particular_total),0) balance,
 finance_fee_collections.name fee_name,
@@ -23,8 +24,9 @@ INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
-WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
-GROUP BY students.id;
+WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+GROUP BY guardians.familyid
+ORDER BY REPLACE(guardians.first_name,' ', '')
 ";
 // echo $general;
 $result = $conn->query($general);
@@ -37,9 +39,7 @@ if ($result->num_rows > 0) {
     		<th>#</th>
     		<th>Family ID</th>
     		<th>Parent</th>
-            <th>Student</th>
-            <th>Date</th>
-            <th>Fee</th>
+            <th>Number of Children</th>
     		<th>Balance</th>
     	</tr>
         </thead>
@@ -51,9 +51,7 @@ if ($result->num_rows > 0) {
     		<td>" . $rownumber 		 . "</td>
     		<td>" . $row['familyid'] . "</td>
     		<td>" . $row['parent']   . "</td>
-            <td>" . $row['student']   . "</td>
-            <td>" . $row['start_date']   . "</td>
-            <td>" . $row['fee_name']   . "</td>
+            <td>" . $row['NumberOfStudents']   . "</td>
     		<td>" . $row['balance']  . "</td>
     	</tr>
         ";

@@ -23,7 +23,8 @@ INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
-WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+WHERE guardians.familyid = $familyid AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+
 
 ";
 // echo $general;
@@ -31,28 +32,46 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
-    echo "<button class='w3-button w3-green' onclick='general(" . json_encode($params) . ")'>Main</button>";
-    echo "<table class='w3-table-all w3-card w3-centered'>";
-    echo "
-    	<thead>
-        <tr class='w3-light-grey'>
-    		<th>#</th>
-    		<th>Family ID</th>
-    		<th>Parent</th>
-            <th>Student</th>
-            <th>Date</th>
-            <th>Fee</th>
-    		<th>Balance</th>
-    	</tr>
-        </thead>
-    ";
+
+    echo "<button class='w3-button' onclick='general(" . json_encode($params) . ")'>
+            <i class='material-icons'>arrow_back</i></button>";
+
+$perent_header = true;
+$first_name_old = "";
+$second_table = false;
     while ($row = $result->fetch_assoc()) {
+        if ($perent_header) {
+            echo "<h2>" . $row['parent'] . " - " . $row['familyid'] . "</h2>";
+            $perent_header = false;
+        }
+        
+        $student = $row['student'];
+        $first_name = explode(' ',trim($student));
+        
+        if ($first_name != $first_name_old) {
+            if ($second_table)
+                echo "</table><br>";
+            else
+                $second_table = true;
+            echo "<table class='w3-table-all w3-card w3-centered'>";
+            echo "
+                <thead>
+                    <tr>
+                        <th colspan=4 align='center'>" . $first_name[0] . "</th>
+                    </tr>
+                    <tr class='w3-light-grey'>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Fee</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                ";
+            $first_name_old = $first_name;
+        }
         echo "
         	<tr class='w3-hover-green'>
         		<td>" . $rownumber 		 . "</td>
-        		<td>" . $row['familyid'] . "</td>
-        		<td>" . $row['parent']   . "</td>
-                <td>" . $row['student']   . "</td>
                 <td>" . $row['start_date']   . "</td>
                 <td>" . $row['fee_name']   . "</td>
         		<td>" . $row['balance']  . "</td>
