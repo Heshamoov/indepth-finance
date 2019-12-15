@@ -15,15 +15,19 @@ ROUND((finance_fees.particular_total),0) balance,
 finance_fee_collections.name fee_name,
 finance_fee_collections.start_date start_date,
 finance_fee_collections.end_date end_date,
-finance_fee_collections.due_date due_date
+finance_fee_collections.due_date due_date,
+batches.name section, courses.course_name
 
 FROM guardians 
 
 INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+INNER JOIN batches ON students.batch_id = batches.id
+INNER JOIN courses ON batches.course_id = courses.id
 
 WHERE guardians.familyid = $familyid AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+ORDER BY courses.course_name
 
 
 ";
@@ -34,7 +38,7 @@ if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
 
     echo "<button class='w3-button' onclick='general(" . json_encode($params) . ")'>
-            <i class='material-icons'>arrow_back</i></button>";
+            <i class='material-icons'>arrow_back</i></button>";        
 
 $perent_header = true;
 $first_name_old = "";
@@ -53,11 +57,14 @@ $second_table = false;
                 echo "</table><br>";
             else
                 $second_table = true;
-            echo "<table class='w3-table-all w3-card w3-centered'>";
+            echo "<table class='w3-table-all w3-card w3-centered student_table'>";
             echo "
                 <thead>
                     <tr>
-                        <th colspan=4 align='center'>" . $first_name[0] . "</th>
+                        <th colspan=4 align='center'>" . 
+                            $first_name[0] . "&nbsp&nbsp" . 
+                            $row['course_name'] . "&nbsp&nbsp" .
+                            $row['section'] . "</th>
                     </tr>
                     <tr class='w3-light-grey'>
                         <th>#</th>
