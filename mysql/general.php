@@ -2,9 +2,9 @@
 
 include ('../config/db.php');
 
-$start_date = $_REQUEST["start"];
-$end_date = $_REQUEST["end"];
-echo $start_date;
+$start_date = $_REQUEST["start_date"];
+$end_date = $_REQUEST["end_date"];
+// echo $start_date;
 
 $general= "
 SELECT 
@@ -30,35 +30,36 @@ GROUP BY students.id;
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
-        echo "
-        	<thead>
-            <tr class='w3-light-grey'>
-        		<th>#</th>
-        		<th>Family ID</th>
-        		<th>Parent</th>
-                <th>Student</th>
-                <th>Date</th>
-                <th>Fee</th>
-        		<th>Balance</th>
-        	</tr>
-            </thead>
-        ";
+    echo "<table class='w3-table-all w3-card w3-centered'>";
+    echo "
+    	<thead>
+        <tr class='w3-light-grey'>
+    		<th>#</th>
+    		<th>Family ID</th>
+    		<th>Parent</th>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Fee</th>
+    		<th>Balance</th>
+    	</tr>
+        </thead>
+    ";
     while ($row = $result->fetch_assoc()) {
         $params = array($start_date, $end_date, $row['familyid']);
-
         echo "
-        	<tr class='w3-hover-green' onclick='FamilyStatement(" . json_encode($params) . ")'>
-        		<td>" . $rownumber 		 . "</td>
-        		<td>" . $row['familyid'] . "</td>
-        		<td>" . $row['parent']   . "</td>
-                <td>" . $row['student']   . "</td>
-                <td>" . $row['start_date']   . "</td>
-                <td>" . $row['fee_name']   . "</td>
-        		<td>" . $row['balance']  . "</td>
-        	</tr>
+    	<tr class='w3-hover-green' onclick='FamilyStatement(" . json_encode($params) . ")'>
+    		<td>" . $rownumber 		 . "</td>
+    		<td>" . $row['familyid'] . "</td>
+    		<td>" . $row['parent']   . "</td>
+            <td>" . $row['student']   . "</td>
+            <td>" . $row['start_date']   . "</td>
+            <td>" . $row['fee_name']   . "</td>
+    		<td>" . $row['balance']  . "</td>
+    	</tr>
         ";
         $rownumber++;
     }
+    echo "</table>";    
 } else {
     echo "No Data Found! Try another search.";
 }

@@ -2,8 +2,8 @@
 
 include ('../config/db.php');
 
-$start = $_REQUEST["start_date"];
-$end = $_REQUEST["end_date"];
+$start_date = $_REQUEST["start_date"];
+$end_date = $_REQUEST["end_date"];
 $familyid = $_REQUEST["familyid"];
 
 $general= "
@@ -23,26 +23,29 @@ INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
-WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start'
+WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
 
 ";
 // echo $general;
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
-        echo "
-        	<thead>
-            <tr class='w3-light-grey'>
-        		<th>#</th>
-        		<th>Family ID</th>
-        		<th>Parent</th>
-                <th>Student</th>
-                <th>Date</th>
-                <th>Fee</th>
-        		<th>Balance</th>
-        	</tr>
-            </thead>
-        ";
+    $params = array($start_date, $end_date, $familyid);
+    echo "<button class='w3-button w3-green' onclick='general(" . json_encode($params) . ")'>Main</button>";
+    echo "<table class='w3-table-all w3-card w3-centered'>";
+    echo "
+    	<thead>
+        <tr class='w3-light-grey'>
+    		<th>#</th>
+    		<th>Family ID</th>
+    		<th>Parent</th>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Fee</th>
+    		<th>Balance</th>
+    	</tr>
+        </thead>
+    ";
     while ($row = $result->fetch_assoc()) {
         echo "
         	<tr class='w3-hover-green'>
@@ -57,6 +60,7 @@ if ($result->num_rows > 0) {
         ";
         $rownumber++;
     }
+    echo "</table>";
 } else {
     echo "No Data Found! Try another search.";
 }
