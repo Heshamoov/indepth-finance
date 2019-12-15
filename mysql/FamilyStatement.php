@@ -2,16 +2,16 @@
 
 include ('../config/db.php');
 
-$start_date = $_REQUEST["start"];
-$end_date = $_REQUEST["end"];
-echo $start_date;
+$start = $_REQUEST["start_date"];
+$end = $_REQUEST["end_date"];
+$familyid = $_REQUEST["familyid"];
 
 $general= "
 SELECT 
 guardians.first_name  parent,
 students.last_name student,
 students.familyid,
-ROUND(SUM(finance_fees.particular_total),0) balance,
+ROUND((finance_fees.particular_total),0) balance,
 finance_fee_collections.name fee_name,
 finance_fee_collections.start_date start_date,
 finance_fee_collections.end_date end_date,
@@ -23,8 +23,8 @@ INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
-WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
-GROUP BY students.id;
+WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start'
+
 ";
 // echo $general;
 $result = $conn->query($general);
@@ -44,10 +44,8 @@ if ($result->num_rows > 0) {
             </thead>
         ";
     while ($row = $result->fetch_assoc()) {
-        $params = array($start_date, $end_date, $row['familyid']);
-
         echo "
-        	<tr class='w3-hover-green' onclick='FamilyStatement(" . json_encode($params) . ")'>
+        	<tr class='w3-hover-green'>
         		<td>" . $rownumber 		 . "</td>
         		<td>" . $row['familyid'] . "</td>
         		<td>" . $row['parent']   . "</td>
