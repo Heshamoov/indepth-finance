@@ -1,22 +1,20 @@
 function currentDate(){
     let today = new Date().toISOString().substr(0, 10);
-    document.querySelector("#to").value = today;
+    document.querySelector("#end").value = today;
 }
 
-// document.getElementById("search").onclick = function() {search()};
-
 function search() {
-    let date = new Date(document.querySelector("#from").value);
+    let date = new Date(document.querySelector("#start").value);
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
-    let fromdate = year + '-' + month + '-' + day;
+    let start = year + '-' + month + '-' + day;
 
-    date = new Date(document.querySelector("#to").value);
+    date = new Date(document.querySelector("#end").value);
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
-    let todate = year + '-' + month + '-' + day;
+    let end = year + '-' + month + '-' + day;
     
     var general = new XMLHttpRequest();
     general.onreadystatechange = function () {
@@ -24,20 +22,6 @@ function search() {
             document.getElementById("result").innerHTML = this.responseText;
         }
     };
-    general.open("GET", "mysql/general.php?fromdate=" + fromdate + "&todate=" + todate, false);
+    general.open("GET", "mysql/general.php?start=" + start + "&end=" + end, false);
     general.send();
 }
-
-
-$(function() {
-    $("td[colspan=3]").find("p").hide();
-    $("table").click(function(event) {
-        event.stopPropagation();
-        var $target = $(event.target);
-        if ( $target.closest("td").attr("colspan") > 1 ) {
-            $target.slideUp();
-        } else {
-            $target.closest("tr").next().find("p").slideToggle();
-        }                    
-    });
-});

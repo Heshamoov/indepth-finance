@@ -10,24 +10,8 @@
     <title>InDepth Finance</title>
 </head>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $("td[colspan=5]").find("p").hide();
-    // $("table").click(function(event) {
-    //     event.stopPropagation();
-    //     var $target = $(event.target);
-    //     if ( $target.closest("td").attr("colspan") > 1 ) {
-    //         $target.slideUp();
-    //         $target.closest("tr").prev().find("td:first").html("+");
-    //     } else {
-    //         $target.closest("tr").next().find("p").slideToggle();
-    //         if ($target.closest("tr").find("td:first").html() == "+")
-    //             $target.closest("tr").find("td:first").html("-");
-    //         else
-    //             $target.closest("tr").find("td:first").html("+");                
-    //     }                    
-    });   
-</script>
+
+
 <body onload="currentDate()">
 
 <div id="header" class="row">    
@@ -56,8 +40,8 @@ $(document).ready(function(){
 
 <table id="userinput" cellpadding="10">
 <tr>
-    <th>Start<input class="w3-input w3-card" type="date" id="from" value="2019-09-01"/></th>
-    <th>End<input class="w3-input w3-card" type="date" id="to" value="2018-10-20"/></th>
+    <th>Start<input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
+    <th>End<input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
     <th><button class="w3-button w3-green w3-card" id="search" onclick="search()" accesskey="q">Overll Report</button></th>
 </tr>
 </table>

@@ -2,10 +2,9 @@
 
 include ('../config/db.php');
 
-$fromdate = $_REQUEST["fromdate"];
-$todate = $_REQUEST["todate"];
-// echo $fromdate;
-// echo $todate;
+$start = $_REQUEST["start"];
+$end = $_REQUEST["end"];
+
 // $sql= "
 // select fee_invoices.invoice_number, students.last_name, students.admission_no,
 //        courses.course_name, batches.name, finance_fee_collections.name,  finance_fees.particular_total,
@@ -25,29 +24,23 @@ $todate = $_REQUEST["todate"];
 
 $general= "
 SELECT 
-finance_fees.id `F#`, finance_transactions.finance_id `T#`,
-finance_fees.student_id,
+guardians.first_name  parent,
 students.last_name student,
-guardians.familyid familyid, 
-guardians.first_name parent,
-finance_fees.balance,
-finance_transactions.amount,
-finance_fee_collections.name,
-finance_transactions.payee_id, finance_transactions.finance_id,
-ROUND(SUM(balance), 0) balance,
-ROUND(SUM(amount), 0) paid
+students.familyid,
+-- ROUND(sum(finance_fees.particular_total),0) balance,
+ROUND((finance_fees.particular_total),0) balance,
+finance_fee_collections.name fee_name,
+finance_fee_collections.start_date start_date,
+finance_fee_collections.end_date end_date,
+finance_fee_collections.due_date due_date
 
-FROM `finance_fees`
+FROM guardians 
 
-LEFT JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
-LEFT JOIN finance_transactions ON finance_fees.id = finance_transactions.finance_id
-INNER JOIN students ON finance_fees.student_id = students.id
-INNER JOIN guardians ON students.immediate_contact_id = guardians.id
+INNER JOIN students ON guardians.familyid = students.familyid
+INNER JOIN finance_fees ON students.id = finance_fees.student_id
+INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
-
-
-GROUP BY guardians.familyid
-ORDER BY REPLACE(guardians.first_name, ' ','')
+WHERE guardians.familyid = 12656 AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start'
 
 ";
 // echo $general;
@@ -55,13 +48,17 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
         echo "
-        	<tr>
+        	<thead>
+            <tr class='w3-light-grey'>
         		<th>#</th>
         		<th>Family ID</th>
         		<th>Parent</th>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Fee</th>
         		<th>Balance</th>
-        		<th>Paid<th>
         	</tr>
+            </thead>
         ";
     while ($row = $result->fetch_assoc()) {
         echo "
@@ -69,14 +66,11 @@ if ($result->num_rows > 0) {
         		<td>" . $rownumber 		 . "</td>
         		<td>" . $row['familyid'] . "</td>
         		<td>" . $row['parent']   . "</td>
+                <td>" . $row['student']   . "</td>
+                <td>" . $row['start_date']   . "</td>
+                <td>" . $row['fee_name']   . "</td>
         		<td>" . $row['balance']  . "</td>
-        		<td>" . $row['paid']     . "</td>
         	</tr>
-            <tr>
-                <td colspan='5'>
-                    <p>HESHAM</p>
-                </td>
-            </tr>
         ";
         $rownumber++;
     }
