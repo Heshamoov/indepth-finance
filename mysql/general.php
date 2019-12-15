@@ -27,20 +27,22 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 $result = $conn->query($statistics);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<table class='w3-table-all w3-card w3-centered'>";
+        echo "<table class='w3-table-all w3-card w3-centered' id='StatisticsTable'>";
         echo "
             <thead>
             <tr>
-                <th>Number of Parents "  . $row['parents']  . "</th>
-                <th>Number of Students " . $row['students'] . "</th>
+                <th>" . $row['parents']  . " Parents</th>
+                <th>" . $row['students'] . " Students</th>
                 <th>Total Balance &nbsp"      . $row['balance']  . " AED</th>
             </tr>
             </thead>
         ";
         echo "</table><br>";
-    }    
+    }     
 }else 
     echo "No Data Found! Try another search.";
+
+
 
 
 
@@ -70,10 +72,11 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<table class='w3-table-all w3-card w3-centered'>";
+    echo "<div id='parentsDiv'>";
+    echo "<table class='w3-table-all w3-card w3-centered' id='ParentsTable'>";
     echo "
     	<thead>
-        <tr class='w3-light-grey'>
+        <tr>
     		<th>#</th>
     		<th>Family ID</th>
     		<th>Parent</th>
@@ -81,6 +84,7 @@ if ($result->num_rows > 0) {
     		<th>Balance</th>
     	</tr>
         </thead>
+        <tbody>
     ";
     while ($row = $result->fetch_assoc()) {
         $params = array($start_date, $end_date, $row['familyid']);
@@ -95,7 +99,7 @@ if ($result->num_rows > 0) {
         ";
         $rownumber++;
     }
-    echo "</table>";    
+    echo "</tbody></table></div>";    
 } else {
     echo "No Data Found! Try another search.";
 }
