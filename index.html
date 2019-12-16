@@ -33,11 +33,15 @@
   <a href="#contact">Contact</a>
 </div>
 
-<div id="userInputDiv">
+<div id="userInputDiv" class="row" style="margin-bottom: 20px">
     <table id="userInputTable">
     <tr>
-        <th>Start<input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
-        <th>End<input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Search</th>
+    <tr>
+        <th><input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
+        <th><input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
         <th><button class="w3-button w3-green w3-card" id="search" onclick="search()" accesskey="q">Overall Report</button></th>
     </tr>
     </table>

@@ -1,6 +1,6 @@
 body {
 	font-family: Arial;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 #header {
@@ -14,9 +14,11 @@ body {
 	width: 33.33%;
 	text-align: center;
 }
+
 .logo {
 	text-align: left;
 }
+
 .title {
 	font-family: Arial;
 	font-size: 26px;
@@ -29,30 +31,15 @@ body {
   clear: both;
 }
 
-#userInputDiv {
-	width: 100%;
-  height: 100%;
-	font-size: 10px;
-}
-
 #userInputTable {
   margin: auto;
-}
-#userInputTable th {
-  /*border: 1px solid black;*/
+  width: 20%;
 }
 
-#userinput th, #result th {
-	text-align: center;
-	/*background-color: gray;*/
+#start, #end {
+  /*width: %;*/
+  float: right;
 }
-
-#from, #to {
-	font-size: 14px;
-	text-align: center;
-	width: 100%;
-}
-
 
 .sidenav {
   width: 130px;
@@ -83,42 +70,51 @@ body {
 }
 
 
+#StatisticsDiv {width: 48%;}
+
+#StatisticsTable {width: 70%;  float: right;}
+
+#ParentsDiv {width: 50%; height: 75vh; overflow-y: scroll; float: right;}
+
+#ParentsTable td, #StatisticsTable td{
+  text-align: left;
+/* border:1px solid black;
+ border-collapse: collapse;*/
+}
+
+.textRight{
+  text-align: right !important;
+  border:1px solid #ccc;
+}
+
+/*#StatisticsTable thead, #ParentsTable thead {
+  background-color: green;
+  color: white;
+}
+*/
+#StatisticsTable th {
+  background-color: #4CAF50;
+  color:white;
+}
+#ParentsTable th {
+  position: sticky;
+  top: 0;
+  background-color: #4CAF50;
+  color:white;
+  word-wrap:   background-color: #4CAF50;
+  color:white;
+  white-space: nowrap;
+  /*border: 1px solid gray;*/
+}
+#ParentsTable td {
+  padding: 4px;
+  /*border: 1px solid gray;*/
+}
+
 #result {
-  width: 70%;
-  margin: auto;
+  width: 100%;
 }
 
 .student_table {
   width: 50%;
-}
-
-#statistics {
-  position: fixed;
-  width: 70%;
-  margin: auto;
-}
-
-
-
-#parentsDiv {
-  /*width: 100vw;*/
-  height: 75vh;
-overflow-y: scroll;
-}
-
-#ParentsTable, #StatisticsTable {
-  width: 90%;
-  position: relative;
-  margin: auto;
-  /*border-collapse: collapse; */
-}
-
-
-#ParentsTable th {
-  /*background: white;*/
-  position: sticky;
-  top: 0;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
 }
