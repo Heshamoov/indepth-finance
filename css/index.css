@@ -87,6 +87,12 @@ body {
   border:1px solid #ccc;
 }
 
+
+/*.people-table-header{
+  background-color:#4CAF50; 
+  color:white; 
+   text-align: center !important;
+}*/
 /*#StatisticsTable thead, #ParentsTable thead {
   background-color: green;
   color: white;

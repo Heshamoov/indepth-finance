@@ -24,7 +24,7 @@ WHERE
 STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '2019/09/01'
 AND
     (
-        finance_fee_collections.name like '%Installment%' OR 
+        finance_fee_collections.name like '%Installment%'  OR 
         finance_fee_collections.name like '%BUS%'  OR 
         finance_fee_collections.name like '%BOOK%' OR
         finance_fee_collections.name like '%uniform%' OR
@@ -33,7 +33,7 @@ AND
     ) 
 
 GROUP BY 
-finance_fee_collections.name like  '%Installment%',
+finance_fee_collections.name like  '%Installment%' tution,
 finance_fee_collections.name like  '%BUS%',
 finance_fee_collections.name like '%BOOK%',
 finance_fee_collections.name like '%uniform%',
@@ -88,7 +88,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr class='w3-hover-green'>
                 <td>Total Balance</td><td class='textRight'>". $row['balance']  . "</td>
-              </tr> 
+              </tr>
+              <thead ><tr style='background-color:#4CAF50; color:white;  text-align: center !important;'><td><b>Statistics</b></td><td><b>Count</b></td></tr></thead> 
               <tr class='w3-hover-green'>
                 <td>Number of Parents</td><td class='textRight'>" . $row['parents']  . "</td>
               </tr>
@@ -135,10 +136,10 @@ if ($result->num_rows > 0) {
     echo "
     	<thead>
         <tr>
-    		<th>SI</th>
-    		<th width=20>Family ID</th>
+    		<th>#</th>
+    		<th width=20>FamilyID</th>
     		<th>Parent</th>
-            <th>Children #</th>
+            <th>Children</th>
     		<th>Balance</th>
     	</tr>
         </thead>
