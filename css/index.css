@@ -70,40 +70,23 @@ body {
 }
 
 
-#StatisticsDiv {width: 48%;}
+#ParentsDiv {width: 60%; height: 75vh; overflow-y: scroll; float: right;}
+#ParentsTable {width: 100%;}
 
-#StatisticsTable {width: 70%;  float: right;}
+#StatisticsDiv {width: 20%;}
 
-#ParentsDiv {width: 50%; height: 75vh; overflow-y: scroll; float: right;}
-
-#ParentsTable td, #StatisticsTable td{
-  text-align: left;
-/* border:1px solid black;
- border-collapse: collapse;*/
-}
+#StatisticsTable {width: 90%;  float: right;}
 
 .textRight{
   text-align: right !important;
   border:1px solid #ccc;
 }
-
-
-/*.people-table-header{
-  background-color:#4CAF50; 
-  color:white; 
-   text-align: center !important;
-}*/
-/*#StatisticsTable thead, #ParentsTable thead {
-  background-color: green;
-  color: white;
+.textLeft{
+  text-align: left !important;
+  border:1px solid #ccc;
 }
-*/
+
 .tableHeader {
-  background-color: #4CAF50;
-  color:white;
-}
-
-#ParentsTable th {
   position: sticky;
   top: 0;
   background-color: #4CAF50;
@@ -111,12 +94,9 @@ body {
   word-wrap:   background-color: #4CAF50;
   color:white;
   white-space: nowrap;
-  /*border: 1px solid gray;*/
+  border:1px solid #ccc;
 }
-#ParentsTable td {
-  padding: 4px;
-  /*border: 1px solid gray;*/
-}
+
 
 #result {
   width: 90%;
@@ -125,4 +105,8 @@ body {
 
 .student_table {
   width: 50%;
+}
+
+#search {
+  width: 130%;
 }

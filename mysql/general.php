@@ -51,8 +51,8 @@ class Fee {
     
     public function print_fee() {
         echo "<tr class='w3-hover-green'>
-                <th>" . $this->name . "</th>
-                <th>" . $this->amount . "</th>
+                <th class='textLeft'>" . $this->name . "</th>
+                <th class='textRight'>" . $this->amount . "</th>
               </tr>";
     }
 }
@@ -63,7 +63,7 @@ $fees_array = array();
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
    echo "<div id='StatisticsDiv' class='w3-col'>";
-   echo "<table class='w3-table w3-centered w3-table-all' id='StatisticsTable'>
+   echo "<table class='w3-table-all' cellspacing='0' id='StatisticsTable'>
             <thead>
                 <tr>
                     <th class='tableHeader'>FEE</th>
@@ -97,10 +97,11 @@ if ($result->num_rows > 0) {
         return strcmp($a->name, $b->name);
     }
     uasort($fees_array, "cmp");
-
+    echo "<tbody>";
     foreach ($fees_array as $fee) {
         $fee->print_fee();
     }
+    echo "</tbody>";
 
 }else 
     echo "No Data Found! Try another search.";
@@ -127,16 +128,23 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 $result = $conn->query($statistics);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo " <tr class='w3-hover-green'>
-                <td>Total Balance</td><td class='textRight'>". $row['balance']  . "</td>
-              </tr>
-              <thead ><tr style='background-color:#4CAF50; color:white;  text-align: center !important;'><td><b>Statistics</b></td><td><b>Count</b></td></tr></thead> 
-              <tr class='w3-hover-green'>
-                <td>Number of Parents</td><td class='textRight'>" . $row['parents']  . "</td>
-              </tr>
-              <tr class='w3-hover-green'>
-                <td>Number of Students</td><td class='textRight'>" . $row['students'] . "</td>
-             </tr>";
+        echo "
+        <tr class='w3-hover-green'>
+            <th class='textLeft'>Total Balance</th>
+            <th class='textRight'>". $row['balance']  . "</th>
+        </tr>
+        <tr>
+            <th class='tableHeader'>Statistics</th>
+            <th class='tableHeader'>Count</th>
+        </tr>
+        <tr class='w3-hover-green'>
+            <th class='textLeft'>Parents</th>
+            <th class='textRight'>" . $row['parents']  . "</th>
+        </tr>
+        <tr class='w3-hover-green'>
+            <th class='textLeft'>Students</th>
+            <th class='textRight'>" . $row['students'] . "</th>
+        </tr>";
     }
     echo "</table></div>";
 }else 
@@ -173,15 +181,15 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     echo "<div id='ParentsDiv' class='w3-col'>";
-    echo "<table class='w3-card w3-centered w3-table-all' id='ParentsTable'>";
+    echo "<table class='w3-card w3-table-all w3-centered' id='ParentsTable'>";
     echo "
     	<thead>
         <tr>
-    		<th>#</th>
-    		<th width=20>FamilyID</th>
-    		<th>Parent</th>
-            <th>Children</th>
-    		<th>Balance</th>
+    		<th class='tableHeader'>#</th>
+    		<th class='tableHeader'>FamilyID</th>
+    		<th class='tableHeader'>Parent</th>
+            <th class='tableHeader'>Children</th>
+    		<th class='tableHeader'>Balance</th>
     	</tr>
         </thead>
         <tbody>
@@ -190,11 +198,11 @@ if ($result->num_rows > 0) {
         $params = array($start_date, $end_date, $row['familyid']);
         echo "
     	<tr class='w3-hover-green' onclick='FamilyStatement(" . json_encode($params) . ")'>
-    		<td>" . $rownumber 		 . "</td>
-    		<td  class='textRight'>" . $row['familyid'] . "</td>
-    		<td>" . $row['parent']   . "</td>
-            <td  class='textRight'>" . $row['NumberOfStudents']   . "</td>
-    		<td class='textRight'>" . $row['balance']  . "</td>
+    		<th>" . $rownumber 		 . "</th>
+    		<th class='textRight'>" . $row['familyid'] . "</th>
+    		<th class='textLeft'>" . $row['parent']   . "</th>
+            <th>" . $row['NumberOfStudents']   . "</th>
+    		<th class='textRight'>" . $row['balance']  . "</th>
     	</tr>
         ";
         $rownumber++;
