@@ -53,8 +53,8 @@ class Fee
 
     public function print_fee()
     {
-        echo "<td>" . $this->name . "</td>";
-        echo "<td>" . $this->amount . "</td>";
+        echo "<tr><td>" . $this->name . "</td>";
+        echo "<td>" . $this->amount . "</td></tr>";
 
     }
 }
