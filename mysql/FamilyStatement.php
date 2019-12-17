@@ -37,8 +37,8 @@ $rownumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
 
-    echo "<button class='w3-button' onclick='general(" . json_encode($params) . ")'>
-            <i class='material-icons'>arrow_back</i></button>";        
+    echo "<button class='btn btn-outline-success waves-effect btn-sm ' onclick='general(" . json_encode($params) . ")'>
+            <i class='material-icons' style='font-size: 15px' >arrow_back</i></button>";
 
 $perent_header = true;
 $first_name_old = "";
@@ -57,7 +57,7 @@ $second_table = false;
                 echo "</table><br>";
             else
                 $second_table = true;
-            echo "<table class='w3-table-all w3-card w3-centered student_table'>";
+            echo "<table class='table table-sm student_table'>";
             echo "
                 <thead>
                     <tr>

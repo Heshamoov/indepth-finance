@@ -1,6 +1,6 @@
 <?php
 
-include ('../config/db.php');
+include('../config/db.php');
 
 $start_date = $_REQUEST["start_date"];
 $end_date = $_REQUEST["end_date"];
@@ -43,17 +43,19 @@ ORDER BY finance_fee_collections.name
 
 ";
 
-class Fee {
-    public function __construct($name, $amount) {
+class Fee
+{
+    public function __construct($name, $amount)
+    {
         $this->name = $name;
         $this->amount = $amount;
     }
-    
-    public function print_fee() {
-        echo "<tr class='w3-hover-green'>
-                <th class='textLeft'>" . $this->name . "</th>
-                <th class='textRight'>" . $this->amount . "</th>
-              </tr>";
+
+    public function print_fee()
+    {
+        echo "<td>" . $this->name . "</td>";
+        echo "<td>" . $this->amount . "</td>";
+
     }
 }
 
@@ -62,8 +64,9 @@ $fees_array = array();
 // echo $installments;
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
-   echo "<div id='StatisticsDiv' class='w3-col'>";
-   echo "<table class='w3-table-all' cellspacing='0' id='StatisticsTable'>
+    echo "<div id='StatisticsDiv' class='col-sm-4'>";
+    echo "<table class='table table-sm table-bordered table-hover' id='StatisticsTable'>
+
             <thead>
                 <tr>
                     <th class='tableHeader'>FEE</th>
@@ -71,6 +74,7 @@ if ($result->num_rows > 0) {
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
+
         if (strstr(strtolower($row['name']), 'book'))
             $fee = new Fee("Books", $row['balance']);
         elseif (strstr(strtolower($row['name']), 'bus'))
@@ -107,8 +111,7 @@ if ($result->num_rows > 0) {
     echo "No Data Found! Try another search.";
 
 
-
-$statistics= "
+$statistics = "
 SELECT 
 COUNT(DISTINCT guardians.first_name) parents, COUNT(DISTINCT students.last_name) students,
 ROUND(SUM(finance_fees.particular_total),0) balance,
@@ -128,33 +131,24 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 $result = $conn->query($statistics);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "
-        <tr class='w3-hover-green'>
-            <th class='textLeft'>Total Balance</th>
-            <th class='textRight'>". $row['balance']  . "</th>
-        </tr>
-        <tr>
-            <th class='tableHeader'>Statistics</th>
-            <th class='tableHeader'>Count</th>
-        </tr>
-        <tr class='w3-hover-green'>
-            <th class='textLeft'>Parents</th>
-            <th class='textRight'>" . $row['parents']  . "</th>
-        </tr>
-        <tr class='w3-hover-green'>
-            <th class='textLeft'>Students</th>
-            <th class='textRight'>" . $row['students'] . "</th>
-        </tr>";
+        echo " <tr >
+                <td>Total Balance</td><td class='textRight'>" . $row['balance'] . "</td>
+              </tr>
+              <thead ><tr style='background-color:#4CAF50; color:white;  text-align: center !important;'><td><b>Statistics</b></td><td><b>Count</b></td></tr></thead> 
+              <tr >
+                <td>Number of Parents</td><td class='textRight'>" . $row['parents'] . "</td>
+              </tr>
+              <tr>
+                <td>Number of Students</td><td class='textRight'>" . $row['students'] . "</td>
+             </tr>";
+
     }
     echo "</table></div>";
-}else 
+} else
     echo "No Data Found! Try another search.";
 
 
-
-
-
-$general= "
+$general = "
 SELECT 
 guardians.first_name  parent,
 students.last_name student,
@@ -180,34 +174,36 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<div id='ParentsDiv' class='w3-col'>";
-    echo "<table class='w3-card w3-table-all w3-centered' id='ParentsTable'>";
-    echo "
+    echo "<div id='ParentsDiv' class='col-sm'>";
+    echo "<table class='table  table-bordered  table-hover ' cellspacing='0' width='100%' id='ParentsTable'>";
+    echo '
     	<thead>
         <tr>
-    		<th class='tableHeader'>#</th>
-    		<th class='tableHeader'>FamilyID</th>
-    		<th class='tableHeader'>Parent</th>
-            <th class='tableHeader'>Children</th>
-    		<th class='tableHeader'>Balance</th>
+    		<th>#</th>
+    		<th  width="20" >FamilyID</th>
+    		<th>Parent</th>
+            <th>Children</th>
+    		<th>Balance</th>
+
     	</tr>
         </thead>
         <tbody>
-    ";
+    ';
     while ($row = $result->fetch_assoc()) {
         $params = array($start_date, $end_date, $row['familyid']);
         echo "
-    	<tr class='w3-hover-green' onclick='FamilyStatement(" . json_encode($params) . ")'>
-    		<th>" . $rownumber 		 . "</th>
-    		<th class='textRight'>" . $row['familyid'] . "</th>
-    		<th class='textLeft'>" . $row['parent']   . "</th>
-            <th>" . $row['NumberOfStudents']   . "</th>
-    		<th class='textRight'>" . $row['balance']  . "</th>
+    	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
+    		<td>" . $rownumber . "</td>
+    		<td  class='textRight'>" . $row['familyid'] . "</td>
+    		<td>" . $row['parent'] . "</td>
+            <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
+    		<td class='textRight'>" . $row['balance'] . "</td>
+
     	</tr>
         ";
         $rownumber++;
     }
-    echo "</tbody></table></div>";    
+    echo "</tbody></table></div>";
 } else {
     echo "No Data Found! Try another search.";
 }

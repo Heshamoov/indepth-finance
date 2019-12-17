@@ -3,52 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/w3.css">
+    <!--    <link rel="stylesheet" href="css/w3.css">-->
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/indepth-logo.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+    <!--    MD Boostrap styling CDN -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+
+    <!--MD Bootstrap js-->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+
+    <!--    data table-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+    <script>
+        function parentsDataTable() {
+            $('#ParentsTable').DataTable({
+            });
+            $('.dataTables_length').addClass('bs-select');
+
+        }
+    </script>
+
+
     <title>InDepth Finance</title>
+
+
 </head>
 
 <body onload="currentDate()">
+<div id="mainContainer">
+    <div class="row">
+        <div id="header" class="row">
+            <div class="col-sm-5 ">
+                <a class="logo" href="https://indepth.ae">
+                    <img src="assets/indepth-logo.jpg" width="80" alt="">
+                </a>
+            </div>
 
-<div id="header" class="row">    
-    <div class="column logo">
-        <a href="https://indepth.ae">
-            <img src="assets/indepth-logo.png">
-        </a>
+            <div class="col-sm title">
+                <label id="headerTitle"><i>FINANCE </i></label>
+            </div>
+        </div>
     </div>
-    
-    <div class="column title">
-        <label id="headerTitle" class="w3-centered">Finance</label>
-    </div>
-</div>
-         
-<div class="sidenav">
-  <h5>Report Type</h5><hr>
-  <a href="#about">Overall Balance</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Contact</a>
-</div>
+    <div class="row ">
+        <div class="sidenav col-sm">
+            <h5>Report Type</h5>
+            <hr>
+            <a href="#about">Overall Balance</a>
+            <a href="#services">Services</a>
+            <a href="#clients">Clients</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="col-sm">
 
-<div id="userInputDiv" class="row" style="margin-bottom: 20px">
-    <table id="userInputTable">
-    <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th>Search</th>
-    <tr>
-        <th><input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
-        <th><input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
-        <th><button type="button" class="w3-green" id="search" onclick="search()" accesskey="q">Overall Report</button></th>
-    </tr>
-    </table>
+            <div id="userInputDiv" class="row">
+                <table id="userInputTable" align="center">
+                    <tr>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Search</th>
+                    <tr>
+                        <th><input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
+                        <th><input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
+                        <th>
+                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">
+                                Overall
+                                Report
+                            </button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row" id="result"></div>
+        </div>
+    </div>
 </div>
-    
-<div id="result"></div>
 <script src="js/index.js"></script>
+
+
 </body>
+
+
 </html>
