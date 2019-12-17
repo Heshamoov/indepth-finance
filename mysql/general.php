@@ -62,7 +62,7 @@ class Fee
 // echo $installments;
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
-    echo "<div id='StatisticsDiv' class='col-sm'>";
+    echo "<div id='StatisticsDiv' class='col-sm-4'>";
     echo "<table class='table table-sm table-bordered table-hover' id='StatisticsTable'>
             <thead>
                 <tr>
@@ -160,12 +160,12 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     echo "<div id='ParentsDiv' class='col-sm'>";
-    echo "<table class='table table-sm table-bordered table-hover' id='ParentsTable'>";
+    echo "<table class='table  table-bordered  table-hover ' cellspacing='0' width='100%' id='ParentsTable'>";
     echo '
     	<thead>
         <tr>
     		<th>#</th>
-    		<th width=20>FamilyID</th>
+    		<th  width="20" >FamilyID</th>
     		<th>Parent</th>
             <th>Children</th>
     		<th>Balance</th>

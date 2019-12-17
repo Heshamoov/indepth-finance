@@ -75,19 +75,15 @@ body {
 
 
 #StatisticsDiv {
-    width: 48%;
+
 }
 
 #StatisticsTable {
-    width: 70%;
-    float: right;
 }
 
 #ParentsDiv {
-    width: 50%;
-    height: 75vh;
+    height: 60vh;
     overflow-y: scroll;
-    float: right;
 }
 
 #ParentsTable td, #StatisticsTable td {
