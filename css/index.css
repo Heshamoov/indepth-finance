@@ -1,91 +1,106 @@
 body {
-	font-family: Arial;
-	font-size: 14px;
+    font-family: Arial !important;
+    font-size: 14px;
+}
+
+#mainContainer {
+    padding: 20px;
 }
 
 #header {
-	width: 100%;
-	background-color: #FAFAFA;
-	border-bottom: 1px solid gray;
-}
-
-.column {
-	float: left;
-	width: 33.33%;
-	text-align: center;
+    width: 100%;
+    background-color: #FAFAFA;
+    top: 0;
+    border-bottom: 1px solid gray;
 }
 
 .logo {
-	text-align: left;
+    padding-left: 20px;
 }
 
+
 .title {
-	font-family: Arial;
-	font-size: 26px;
+    font-family: Arial;
+    font-size: 26px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 #userInputTable {
-  margin: auto;
-  width: 20%;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #start, #end {
-  /*width: %;*/
-  float: right;
+    /*width: %;*/
+    float: right;
 }
 
 .sidenav {
-  width: 130px;
-  height: 100%;
-  position: fixed;
-  background: #FAFAFA;
-  border-right: 1px solid gray;
+    min-width: 150px !important;
+    max-width: 160px !important;
+    padding-top: 20px;
+    /*height: max-content;*/
+    position: fixed;
+    background: #FAFAFA;
+    border-right: 1px solid gray;
 }
 
 .sidenav a {
-  padding: 0px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 14px;
-  color: black;
-  display: block;
+    padding: 0px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    display: block;
 }
+
 .sidenav h5 {
-  opacity: 50%;
-  text-align: center;
+    opacity: 50%;
+    text-align: center;
 }
 
 .sidenav hr {
-  display: block;
-  margin-top: -5px;
+    display: block;
+    margin-top: -5px;
 }
+
 .sidenav a:hover {
-  color: #2196F3;
+    color: #2196F3;
 }
 
 
-#StatisticsDiv {width: 48%;}
-
-#StatisticsTable {width: 70%;  float: right;}
-
-#ParentsDiv {width: 50%; height: 75vh; overflow-y: scroll; float: right;}
-
-#ParentsTable td, #StatisticsTable td{
-  text-align: left;
-/* border:1px solid black;
- border-collapse: collapse;*/
+#StatisticsDiv {
+    width: 48%;
 }
 
-.textRight{
-  text-align: right !important;
-  border:1px solid #ccc;
+#StatisticsTable {
+    width: 70%;
+    float: right;
 }
+
+#ParentsDiv {
+    width: 50%;
+    height: 75vh;
+    overflow-y: scroll;
+    float: right;
+}
+
+#ParentsTable td, #StatisticsTable td {
+    text-align: left;
+    /* border:1px solid black;
+     border-collapse: collapse;*/
+}
+
+.textRight {
+    text-align: right !important;
+    /*border: 1px solid #ccc;*/
+}
+
 
 
 /*.people-table-header{
@@ -99,28 +114,33 @@ body {
 }
 */
 #StatisticsTable th {
-  background-color: #4CAF50;
-  color:white;
+    background-color: #4CAF50;
+    color: white;
 }
+
 #ParentsTable th {
-  position: sticky;
-  top: 0;
-  background-color: #4CAF50;
-  color:white;
-  word-wrap:   background-color: #4CAF50;
-  color:white;
-  white-space: nowrap;
-  /*border: 1px solid gray;*/
+    position: sticky;
+    top: 0;
+    background-color: #4CAF50;
+    color: white;
+    background-color: #4CAF50;
+    color: white;
+    white-space: nowrap;
+    /*border: 1px solid gray;*/
 }
+
 #ParentsTable td {
-  padding: 4px;
-  /*border: 1px solid gray;*/
+    padding: 4px;
+    /*border: 1px solid gray;*/
 }
 
 #result {
-  width: 100%;
+    /*width: 90%;*/
+    /*margin: auto;*/
+    /*float: right;*/
 }
 
 .student_table {
-  width: 50%;
+    /*width: 50%;*/
+    margin: 30px;
 }
