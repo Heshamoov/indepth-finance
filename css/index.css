@@ -98,10 +98,11 @@ body {
   color: white;
 }
 */
-#StatisticsTable th {
+.tableHeader {
   background-color: #4CAF50;
   color:white;
 }
+
 #ParentsTable th {
   position: sticky;
   top: 0;
@@ -118,7 +119,8 @@ body {
 }
 
 #result {
-  width: 100%;
+  width: 90%;
+  float: right;
 }
 
 .student_table {

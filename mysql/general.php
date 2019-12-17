@@ -50,11 +50,14 @@ class Fee {
     }
     
     public function print_fee() {
-        echo "<td>" . $this->name . "</td>";
-        echo "<td>" . $this->amount . "</td>";
+        echo "<tr class='w3-hover-green'>
+                <th>" . $this->name . "</th>
+                <th>" . $this->amount . "</th>
+              </tr>";
     }
-
 }
+
+$fees_array = array();
 
 // echo $installments;
 $result = $conn->query($installments);
@@ -63,33 +66,42 @@ if ($result->num_rows > 0) {
    echo "<table class='w3-table w3-centered w3-table-all' id='StatisticsTable'>
             <thead>
                 <tr>
-                    <th>FEE</th>
-                    <th>AMOUNT</th>
+                    <th class='tableHeader'>FEE</th>
+                    <th class='tableHeader'>AMOUNT</th>
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
-        echo "
-            <tr class='w3-hover-green'>";
-                
-                if (strstr(strtolower($row['name']), 'book'))
-                    $temp = new Fee("Books", $row['balance']);
+        if (strstr(strtolower($row['name']), 'book'))
+            $fee = new Fee("Books", $row['balance']);
+        elseif (strstr(strtolower($row['name']), 'bus'))
+            $fee = new Fee("Bus", $row['balance']);
+        elseif (strstr(strtolower($row['name']), 'installment'))
+            $fee = new Fee("Tuition", $row['balance']);
+        elseif (strstr(strtolower($row['name']), 'uniform'))
+            $fee = new Fee("Uniform", $row['balance']);
+        else
+            $fee = new Fee("Other", $row['balance']);
 
-                elseif (strstr(strtolower($row['name']), 'bus'))
-                    $temp = new Fee("Bus", $row['balance']);
-
-                elseif (strstr(strtolower($row['name']), 'installment'))
-                    $temp = new Fee("Tuition", $row['balance']);
-
-                elseif (strstr(strtolower($row['name']), 'uniform'))
-                    $temp = new Fee("Uniform", $row['balance']);
-
-                else
-                    $temp = new Fee("Other", $row['balance']);
-
-                echo "<td  class='textRight'>" . $row['balance'] . "</td>
-            </tr>
-        ";
+        $pushed = false;
+        foreach ($fees_array as $fee_array) {
+            if ($fee_array->name == $fee->name) {
+                $fee_array->amount += $fee->amount;
+                $pushed = true;
+            }
+        }
+        if (!$pushed) 
+            array_push($fees_array, $fee);
     }
+    
+    function cmp($a, $b) {
+        return strcmp($a->name, $b->name);
+    }
+    uasort($fees_array, "cmp");
+
+    foreach ($fees_array as $fee) {
+        $fee->print_fee();
+    }
+
 }else 
     echo "No Data Found! Try another search.";
 
