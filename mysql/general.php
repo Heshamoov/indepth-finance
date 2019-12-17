@@ -33,15 +33,29 @@ AND
     ) 
 
 GROUP BY 
-finance_fee_collections.name like  '%Installment%' tution,
+finance_fee_collections.name like  '%Installment%',
 finance_fee_collections.name like  '%BUS%',
 finance_fee_collections.name like '%BOOK%',
 finance_fee_collections.name like '%uniform%',
 finance_fee_collections.name like '%'
-
+    
 ORDER BY finance_fee_collections.name
 
 ";
+
+class Fee {
+    public function __construct($name, $amount) {
+        $this->name = $name;
+        $this->amount = $amount;
+    }
+    
+    public function print_fee() {
+        echo "<td>" . $this->name . "</td>";
+        echo "<td>" . $this->amount . "</td>";
+    }
+
+}
+
 // echo $installments;
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
@@ -55,9 +69,24 @@ if ($result->num_rows > 0) {
             </thead>";
     while ($row = $result->fetch_assoc()) {
         echo "
-            <tr class='w3-hover-green'>
-                <td>" . $row['name']  . "</td>
-                <td  class='textRight'>" . $row['balance'] . "</td>
+            <tr class='w3-hover-green'>";
+                
+                if (strstr(strtolower($row['name']), 'book'))
+                    $temp = new Fee("Books", $row['balance']);
+
+                elseif (strstr(strtolower($row['name']), 'bus'))
+                    $temp = new Fee("Bus", $row['balance']);
+
+                elseif (strstr(strtolower($row['name']), 'installment'))
+                    $temp = new Fee("Tuition", $row['balance']);
+
+                elseif (strstr(strtolower($row['name']), 'uniform'))
+                    $temp = new Fee("Uniform", $row['balance']);
+
+                else
+                    $temp = new Fee("Other", $row['balance']);
+
+                echo "<td  class='textRight'>" . $row['balance'] . "</td>
             </tr>
         ";
     }
