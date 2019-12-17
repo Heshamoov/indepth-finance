@@ -55,45 +55,59 @@ class Fee
     {
         echo "<td>" . $this->name . "</td>";
         echo "<td>" . $this->amount . "</td>";
-    }
 
+    }
 }
+
+$fees_array = array();
 
 // echo $installments;
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
     echo "<div id='StatisticsDiv' class='col-sm-4'>";
     echo "<table class='table table-sm table-bordered table-hover' id='StatisticsTable'>
+
             <thead>
                 <tr>
-                    <th>FEE</th>
-                    <th>AMOUNT</th>
+                    <th class='tableHeader'>FEE</th>
+                    <th class='tableHeader'>AMOUNT</th>
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
-        echo "
-            <tr>";
 
         if (strstr(strtolower($row['name']), 'book'))
-            $temp = new Fee("Books", $row['balance']);
-
+            $fee = new Fee("Books", $row['balance']);
         elseif (strstr(strtolower($row['name']), 'bus'))
-            $temp = new Fee("Bus", $row['balance']);
-
+            $fee = new Fee("Bus", $row['balance']);
         elseif (strstr(strtolower($row['name']), 'installment'))
-            $temp = new Fee("Tuition", $row['balance']);
-
+            $fee = new Fee("Tuition", $row['balance']);
         elseif (strstr(strtolower($row['name']), 'uniform'))
-            $temp = new Fee("Uniform", $row['balance']);
-
+            $fee = new Fee("Uniform", $row['balance']);
         else
-            $temp = new Fee("Other", $row['balance']);
+            $fee = new Fee("Other", $row['balance']);
 
-        echo "<td  class='textRight'>" . $row['balance'] . "</td>
-            </tr>
-        ";
+        $pushed = false;
+        foreach ($fees_array as $fee_array) {
+            if ($fee_array->name == $fee->name) {
+                $fee_array->amount += $fee->amount;
+                $pushed = true;
+            }
+        }
+        if (!$pushed) 
+            array_push($fees_array, $fee);
     }
-} else
+    
+    function cmp($a, $b) {
+        return strcmp($a->name, $b->name);
+    }
+    uasort($fees_array, "cmp");
+    echo "<tbody>";
+    foreach ($fees_array as $fee) {
+        $fee->print_fee();
+    }
+    echo "</tbody>";
+
+}else 
     echo "No Data Found! Try another search.";
 
 
@@ -117,16 +131,17 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 $result = $conn->query($statistics);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo " <tr class='w3-hover-green'>
+        echo " <tr >
                 <td>Total Balance</td><td class='textRight'>" . $row['balance'] . "</td>
               </tr>
               <thead ><tr style='background-color:#4CAF50; color:white;  text-align: center !important;'><td><b>Statistics</b></td><td><b>Count</b></td></tr></thead> 
-              <tr class='w3-hover-green'>
+              <tr >
                 <td>Number of Parents</td><td class='textRight'>" . $row['parents'] . "</td>
               </tr>
-              <tr class='w3-hover-green'>
+              <tr>
                 <td>Number of Students</td><td class='textRight'>" . $row['students'] . "</td>
              </tr>";
+
     }
     echo "</table></div>";
 } else
@@ -169,6 +184,7 @@ if ($result->num_rows > 0) {
     		<th>Parent</th>
             <th>Children</th>
     		<th>Balance</th>
+
     	</tr>
         </thead>
         <tbody>
@@ -182,6 +198,7 @@ if ($result->num_rows > 0) {
     		<td>" . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
     		<td class='textRight'>" . $row['balance'] . "</td>
+
     	</tr>
         ";
         $rownumber++;

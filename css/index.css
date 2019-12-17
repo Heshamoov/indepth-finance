@@ -92,6 +92,7 @@ body {
      border-collapse: collapse;*/
 }
 
+
 .textRight {
     text-align: right !important;
     /*border: 1px solid #ccc;*/
@@ -128,15 +129,23 @@ body {
 #ParentsTable td {
     padding: 4px;
     /*border: 1px solid gray;*/
+
 }
 
+
 #result {
+
     /*width: 90%;*/
     /*margin: auto;*/
     /*float: right;*/
+
 }
 
 .student_table {
     /*width: 50%;*/
     margin: 30px;
+}
+
+#search {
+  width: 130%;
 }
