@@ -45,6 +45,7 @@ body {
     min-width: 150px !important;
     max-width: 160px !important;
     padding-top: 20px;
+    height: 100vh;
     /*height: max-content;*/
     position: fixed;
     background: #FAFAFA;

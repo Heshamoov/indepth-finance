@@ -10,7 +10,9 @@ $end_date = $_REQUEST["end_date"];
 $installments = "
 SELECT
     finance_fee_collections.name name,
-    ROUND(SUM(finance_fees.particular_total),0) balance,
+    ROUND(SUM(finance_fees.particular_total),0) expected,
+    ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
+    ROUND(SUM(finance_fees.balance),0) balance,
     finance_fee_collections.start_date start_date,
     CURDATE() today
 
@@ -29,7 +31,6 @@ AND
         finance_fee_collections.name like '%BOOK%' OR
         finance_fee_collections.name like '%uniform%' OR
         finance_fee_collections.name like '%'
-
     ) 
 
 GROUP BY 
@@ -45,17 +46,20 @@ ORDER BY finance_fee_collections.name
 
 class Fee
 {
-    public function __construct($name, $amount)
+    public function __construct($name, $expected, $paid, $balance)
     {
         $this->name = $name;
-        $this->amount = $amount;
+        $this->expected = $expected;
+        $this->paid = $paid;
+        $this->balance = $balance;
     }
 
     public function print_fee()
     {
-        echo "<td>" . $this->name . "</td>";
-        echo "<td>" . $this->amount . "</td>";
-
+        echo "<tr>
+                <td>" . $this->name . "</td><td>" . $this->expected . "</td>
+                <td>" . $this->paid . "</td><td>" . $this->balance . "</td>
+            </tr>";
     }
 }
 
@@ -66,40 +70,45 @@ $result = $conn->query($installments);
 if ($result->num_rows > 0) {
     echo "<div id='StatisticsDiv' class='col-sm-4'>";
     echo "<table class='table table-sm table-bordered table-hover' id='StatisticsTable'>
-
             <thead>
                 <tr>
                     <th class='tableHeader'>FEE</th>
-                    <th class='tableHeader'>AMOUNT</th>
+                    <th class='tableHeader'>Expected</th>
+                    <th class='tableHeader'>Paid</th>
+                    <th class='tableHeader'>Balance</th>
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
 
         if (strstr(strtolower($row['name']), 'book'))
-            $fee = new Fee("Books", $row['balance']);
+            $fee = new Fee("Books", $row['expected'], $row['paid'], $row['balance']);
         elseif (strstr(strtolower($row['name']), 'bus'))
-            $fee = new Fee("Bus", $row['balance']);
+            $fee = new Fee("Bus", $row['expected'], $row['paid'], $row['balance']);
         elseif (strstr(strtolower($row['name']), 'installment'))
-            $fee = new Fee("Tuition", $row['balance']);
+            $fee = new Fee("Tuition", $row['expected'], $row['paid'], $row['balance']);
         elseif (strstr(strtolower($row['name']), 'uniform'))
-            $fee = new Fee("Uniform", $row['balance']);
+            $fee = new Fee("Uniform", $row['expected'], $row['paid'], $row['balance']);
         else
-            $fee = new Fee("Other", $row['balance']);
+            $fee = new Fee("Other", $row['expected'], $row['paid'], $row['balance']);
 
         $pushed = false;
         foreach ($fees_array as $fee_array) {
             if ($fee_array->name == $fee->name) {
-                $fee_array->amount += $fee->amount;
+                $fee_array->expected += $fee->expected;
+                $fee_array->paid += $fee->paid;
+                $fee_array->balance += $fee->balance;
                 $pushed = true;
             }
         }
-        if (!$pushed) 
+        if (!$pushed)
             array_push($fees_array, $fee);
     }
-    
-    function cmp($a, $b) {
+
+    function cmp($a, $b)
+    {
         return strcmp($a->name, $b->name);
     }
+
     uasort($fees_array, "cmp");
     echo "<tbody>";
     foreach ($fees_array as $fee) {
@@ -107,7 +116,7 @@ if ($result->num_rows > 0) {
     }
     echo "</tbody>";
 
-}else 
+} else
     echo "No Data Found! Try another search.";
 
 
