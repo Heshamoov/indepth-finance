@@ -109,7 +109,7 @@ $total_expected = $total_balance = $total_paid = 0;
         	</tr>";
         $rownumber++;
     }
-    echo "<tr><td colspan='3' align='center'></td>
+    echo "<tr><td colspan='3' align='center'>Total</td>
           <td align='right'>".$total_expected."</td><td align='right'>".$total_paid."</td><td align='right'>".$total_balance."</td></tr></table>";
 } else {
     echo "No Data Found! Try another search.";
