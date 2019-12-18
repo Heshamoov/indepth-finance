@@ -1,12 +1,12 @@
 <?php
 
-include ('../config/db.php');
+include('../config/db.php');
 
 $start_date = $_REQUEST["start_date"];
 $end_date = $_REQUEST["end_date"];
 $familyid = $_REQUEST["familyid"];
 
-$general= "
+$general = "
 SELECT 
 guardians.first_name  parent,
 students.last_name student,
@@ -39,43 +39,49 @@ $rownumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
 
-    echo "<a title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
+    echo "<a id='goback' title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
           <b>  <i class='material-icons'  style='color:red; font-weight: bolder' >arrow_back</i></b></a>";
 
-$parent_header = true;
-$first_name_old = "";
-$second_table = false;
-$total_expected = $total_balance = $total_paid = 0;
+    $parent_header = true;
+    $first_name_old = "";
+    $second_table = false;
+    $total_expected = $total_balance = $total_paid = 0;
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
-            echo "<h4 > Parent: " .$row['familyid'] . " - " .  $row['parent'] . "</h4>";
+            echo "<h4 > Parent: " . $row['familyid'] . " - " . $row['parent'] . "</h4 >";
+            echo "<a   id='printbtn'  style='margin-left: auto; margin-right: 20px' 
+                onclick=\"printJS({printable: 'result', type: 'html', header: 'Fees Details', 
+                headerStyle: 'font-weight: 300px; margin: 40px;' ,
+                ignoreElements: ['goback','printbtn'], targetStyles: '*'})\">
+             <i class='material-icons' >print</i>
+        </a>";
+
             $parent_header = false;
         }
-        
+
         $student = $row['student'];
-        $first_name = explode(' ',trim($student));
-        
+        $first_name = explode(' ', trim($student));
+
         if ($first_name != $first_name_old) {
             if ($second_table) {
                 echo "<tr><td colspan='3' align='center'><b>Total</b></td>
-                            <td align='right'>".$total_expected."</td>
-                            <td align='right'>".$total_paid."</td>
-                            <td align='right'>".$total_balance."</td>
+                            <td align='right'>" . $total_expected . "</td>
+                            <td align='right'>" . $total_paid . "</td>
+                            <td align='right'>" . $total_balance . "</td>
                             </tr>
                             </table><br>";
-            }
-            else
+            } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid = 0;
-            echo "<table class='table table-sm table-striped table-bordered student_table' >";
+            echo "<table id='result_table' class='table table-sm table-striped table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
                         <th colspan=6 align='center'> Student: <b>" .
-                           $row['admission_no'] ." - ". $row['student']. "</b> &nbsp&nbsp Grade: <b>" .
-                            $row['course_name'] . "</b> &nbsp&nbsp Section: <b>" .
-                            $row['section'] . "</b></th>
+                $row['admission_no'] . " - " . $row['student'] . "</b> &nbsp&nbsp Grade: <b>" .
+                $row['course_name'] . "</b> &nbsp&nbsp Section: <b>" .
+                $row['section'] . "</b></th>
                     </tr>
                     <tr class='w3-light-grey'>
                         <th>#</th>
@@ -89,28 +95,28 @@ $total_expected = $total_balance = $total_paid = 0;
                 ";
             $first_name_old = $first_name;
         }
-        
+
         $balance = (float)$row['balance'];
-        $total_balance+= $balance;
+        $total_balance += $balance;
 
         $expected = (float)$row['expected'];
-        $total_expected+= $expected;
+        $total_expected += $expected;
 
         $paid = $expected - $balance;
-        $total_paid+= $paid;
+        $total_paid += $paid;
         echo "
         	<tr class='w3-hover-green' >
-        		<td>" . $rownumber 		 . "</td>
-                <td>" . $row['start_date']   . "</td>
-                <td>" . $row['fee_name']   . "</td>
-        		<td align='right'>" . (float)$row['expected']  . "</td>
+        		<td>" . $rownumber . "</td>
+                <td>" . $row['start_date'] . "</td>
+                <td>" . $row['fee_name'] . "</td>
+        		<td align='right'>" . (float)$row['expected'] . "</td>
         		<td align='right'>" . $paid . "</td>
-        		<td align='right'>" . (float)$row['balance']  . "</td>
+        		<td align='right'>" . (float)$row['balance'] . "</td>
         	</tr>";
         $rownumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>".$total_expected."</td><td align='right'>".$total_paid."</td><td align='right'>".$total_balance."</td></tr></table>";
+          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table>";
 } else {
     echo "No Data Found! Try another search.";
 }

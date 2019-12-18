@@ -31,17 +31,22 @@
 
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+    <!--    print.js-->
+    <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
+    <link rel="stylesheet" href="css/print.min.css">
+
 
     <script>
         function parentsDataTable() {
-            $('#ParentsTable').DataTable({
-            });
+            $('#ParentsTable').DataTable({});
             $('.dataTables_length').addClass('bs-select');
 
         }
 
-        $(document).ready(function(){
+        $(document).ready(function () {
             // we call the function
             search();
         });
