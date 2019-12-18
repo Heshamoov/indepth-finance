@@ -45,6 +45,7 @@ function FamilyStatement(params) {
 }
 
 function general(params) {
+
     start_date = params[0];
     end_date = params[1];
     familyid = params[2];
@@ -54,6 +55,8 @@ function general(params) {
     FamilyStatementRequest.onreadystatechange = function () {
         if (this.readyState === 4) {
             document.getElementById("result").innerHTML = this.responseText;
+            parentsDataTable();
+
         }
     };
     FamilyStatementRequest.open("GET", "mysql/general.php?start_date=" + start_date + "&end_date=" + end_date

@@ -45,9 +45,8 @@ body {
     min-width: 150px !important;
     max-width: 160px !important;
     padding-top: 20px;
-    height: 100vh;
+    height: 100vh !important;
     /*height: max-content;*/
-    position: fixed;
     background: #FAFAFA;
     border-right: 1px solid gray;
 }
@@ -83,8 +82,8 @@ body {
 }
 
 #ParentsDiv {
-    height: 60vh;
-    overflow-y: scroll;
+    /*height: 60vh;*/
+    /*overflow-y: scroll;*/
 }
 
 #ParentsTable td, #StatisticsTable td {
