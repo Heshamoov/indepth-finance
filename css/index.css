@@ -33,7 +33,6 @@ body {
 
 #userInputTable {
     margin-bottom: 10px;
-    margin-top: 10px;
 }
 
 #start, #end {
@@ -83,8 +82,8 @@ body {
 }
 
 #ParentsDiv {
-    height: 60vh;
-    overflow-y: scroll;
+    height: 80vh;
+    /*overflow-y: scroll;*/
 }
 
 #ParentsTable td, #StatisticsTable td {
@@ -96,6 +95,10 @@ body {
 
 .textRight {
     text-align: right !important;
+    /*border: 1px solid #ccc;*/
+}
+.textLeft {
+    text-align: left !important;
     /*border: 1px solid #ccc;*/
 }
 
@@ -111,10 +114,6 @@ body {
   color: white;
 }
 */
-#StatisticsTable th {
-    background-color: #4CAF50;
-    color: white;
-}
 
 #ParentsTable th {
     position: sticky;
@@ -130,23 +129,17 @@ body {
 #ParentsTable td {
     padding: 4px;
     /*border: 1px solid gray;*/
-
 }
-
-
-#result {
-
-    /*width: 90%;*/
-    /*margin: auto;*/
-    /*float: right;*/
-
+.tableHeader {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
 }
 
 .student_table {
-    /*width: 50%;*/
     margin: 30px;
 }
 
 #search {
-  width: 130%;
+  width: 70%;
 }
