@@ -29,7 +29,7 @@ INNER JOIN batches ON students.batch_id = batches.id
 INNER JOIN courses ON batches.course_id = courses.id
 
 WHERE guardians.familyid = $familyid AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
-ORDER BY courses.course_name
+ORDER BY courses.course_name, finance_fee_collections.due_date
 
 
 ";
@@ -68,7 +68,7 @@ $total_expected = $total_balance = $total_paid = 0;
             else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid = 0;
-            echo "<table class='table table-sm table-striped table-bordered student_table'>";
+            echo "<table class='table table-sm table-striped table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
