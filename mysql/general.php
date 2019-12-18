@@ -53,8 +53,8 @@ class Fee
     public function print_fee()
     {
         echo '<tr>
-                <th class="textLeft">' . $this->name . '</th><th class="textRight">' . $this->expected . '</th>
-                <th class="textRight">' . $this->paid . '</th><th class="textRight">' . $this->balance . '</th>
+                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . $this->expected . '</td>
+                <td class="textRight">' . $this->paid . '</td><td class="textRight">' . $this->balance . '</td>
             </tr>';
     }
 }
@@ -65,7 +65,8 @@ $fees_array = array();
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
     echo "<div id='StatisticsDiv' class='col-sm-4'>";
-    echo "<table class='table table-sm table-bordered table-hover' id='StatisticsTable'>
+    echo '<h4><u>Fees List</u></h4>';
+    echo "<table class='table table-sm table-bordered table-hover' id='statisticsTable'>
             <thead>
                 <tr>
                     <th class='tableHeader textLeft'>FEE</th>
@@ -145,10 +146,76 @@ if ($result->num_rows > 0) {
                 <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
               </tr>';
     }
-    echo '</table></div>';
+    echo '</table>';
 } else {
     echo 'No Data Found! Try another search.';
 }
+
+
+$grades = "
+SELECT
+    courses.course_name grade,
+    ROUND(SUM(finance_fees.particular_total),0) expected,
+    ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
+    ROUND(SUM(finance_fees.balance),0) balance,
+    finance_fee_collections.start_date start_date,
+    CURDATE() today
+
+FROM guardians
+
+         INNER JOIN students ON guardians.familyid = students.familyid
+     INNER JOIN finance_fees ON students.id = finance_fees.student_id
+           INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+           INNER JOIN batches ON students.batch_id = batches.id
+           INNER JOIN courses ON batches.course_id = courses.id
+
+WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+GROUP BY courses.course_name
+";
+
+//echo "<div class='col-sm-4'>";
+echo '<h4><u>Grades List</u></h4>';
+echo "<table class='table table-sm table-bordered table-hover' id='gradesTable'>
+            <thead>
+                <tr>
+                    <th class='tableHeader'>Grade</th>
+                    <th class='tableHeader'>Expected</th>
+                    <th class='tableHeader'>Paid</th>
+                    <th class='tableHeader'>Balance</th>
+                </tr>
+            </thead>";
+
+// echo $grades;
+$result = $conn->query($grades);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo " <tr >
+                <td class='textLeft'>" . $row['grade'] . "</td>
+                <td class='textRight'>" . $row['expected'] . "</td>
+                <td class='textRight'>" . $row['paid'] . "</td>
+                <td class='textRight'>" . $row['balance'] . '</td>
+              </tr>';
+    }
+} else
+{ echo 'No Data Found! Try another search.'; }
+
+
+// echo $statistics;
+$result = $conn->query($statistics);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo " <tr >
+                <th><strong>Total</strong></th>
+                <th class='textRight'><strong>" . $row['expected'] . "</strong></th>
+                <th class='textRight'><strong>" . $row['paid'] . "</strong></th>
+                <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
+              </tr>';
+    }
+    echo '</table></div>';
+} else {
+    echo 'No Data Found! Try another search.'; }
+
+
 
 
 $general = "
@@ -180,14 +247,15 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     echo "<div id='ParentsDiv' class='col-sm'>";
-    echo "<table class='table  table-bordered  table-hover ' cellspacing='0' width='100%' id='ParentsTable'>";
+    echo '<h4><u>Parents List</u></h4>';
+    echo "<table class='table  table-bordered table-striped  table-hover ' id='ParentsTable'>";
     echo '
     	<thead>
         <tr>
     		<th>#</th>
     		<th  width="20" >FamilyID</th>
     		<th>Parent</th>
-            <th>Children</th>
+            <th class="smallcol">Children</th>
     		<th>Expected</th>
             <th>Paid</th>
             <th>Balance</th>
@@ -200,7 +268,7 @@ if ($result->num_rows > 0) {
         echo "
     	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
     		<td>" . $rownumber . "</td>
-    		<td  class='textRight'>" . $row['familyid'] . "</td>
+    		<td  class='textLeft'>" . $row['familyid'] . "</td>
     		<td>" . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
     		<td class='textRight'>" . $row['expected'] . "</td>
@@ -214,53 +282,5 @@ if ($result->num_rows > 0) {
 } else {
     echo "No Data Found! Try another search.";
 }
-
-
-$grades = "
-SELECT
-    courses.course_name grade,
-    ROUND(SUM(finance_fees.particular_total),0) expected,
-    ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
-    ROUND(SUM(finance_fees.balance),0) balance,
-    finance_fee_collections.start_date start_date,
-    CURDATE() today
-
-FROM guardians
-
-         INNER JOIN students ON guardians.familyid = students.familyid
-     INNER JOIN finance_fees ON students.id = finance_fees.student_id
-           INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
-           INNER JOIN batches ON students.batch_id = batches.id
-           INNER JOIN courses ON batches.course_id = courses.id
-
-WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
-GROUP BY courses.course_name
-";
-
-echo "<div class='col-sm-4'>";
-echo "<table class='table table-sm table-bordered table-hover' id='gradesTable'>
-            <thead>
-                <tr>
-                    <th class='tableHeader'>Grade</th>
-                    <th class='tableHeader'>Expected</th>
-                    <th class='tableHeader'>Paid</th>
-                    <th class='tableHeader'>Balance</th>
-                </tr>
-            </thead>";
-
-// echo $gradesTable;
-$result = $conn->query($grades);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo " <tr >
-                <td class='textLeft'>" . $row['grade'] . "</td>
-                <td class='textRight'>" . $row['expected'] . "</td>
-                <td class='textRight'>" . $row['paid'] . "</td>
-                <td class='textRight'>" . $row['balance'] . "</td>
-              </tr>";
-    }
-    echo "</table></div>";
-} else
-    echo "No Data Found! Try another search.";
 
 $conn->close();

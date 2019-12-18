@@ -73,12 +73,12 @@ body {
     color: #2196F3;
 }
 
-
-#StatisticsDiv {
-
+#statisticsTable, #gradesTable {
+    /*color: red;*/
+    /*width: 50%;*/
 }
-
-#StatisticsTable {
+#statisticsTable td, #gradesTable td {
+    /*padding: 0;*/
 }
 
 #ParentsDiv {
@@ -86,7 +86,7 @@ body {
     /*overflow-y: scroll;*/
 }
 
-#ParentsTable td, #StatisticsTable td {
+#ParentsTable td {
     text-align: left;
     /* border:1px solid black;
      border-collapse: collapse;*/
@@ -101,19 +101,6 @@ body {
     text-align: left !important;
     /*border: 1px solid #ccc;*/
 }
-
-
-
-/*.people-table-header{
-  background-color:#4CAF50; 
-  color:white; 
-   text-align: center !important;
-}*/
-/*#StatisticsTable thead, #ParentsTable thead {
-  background-color: green;
-  color: white;
-}
-*/
 
 #ParentsTable th {
     position: sticky;
