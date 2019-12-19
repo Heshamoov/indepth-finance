@@ -60,9 +60,9 @@
 </head>
 
 <body onload="currentDate()">
-<div id="mainContainer">
+<div >
     <div class="row">
-        <div id="header" class="row">
+        <div id="header" class="row"  style="margin: 10px">
             <div class="col-sm-5 ">
                 <a class="logo" href="https://indepth.ae">
                     <img src="assets/indepth-logo.jpg" width="80" alt="">
@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-sm title">
-                <label id="headerTitle"><i>FINANCE rrr</i></label>
+                <label id="headerTitle"><i>FINANCE</i></label>
             </div>
         </div>
     </div>
@@ -85,21 +85,29 @@
         </div>
         <div class="col-sm">
             <div id="userInputDiv" class="row">
-                <table id="userInputTable" align="center">
+                <table id="userInputTable" align="center" >
                     <tr>
                         <th>Start</th>
                         <th>End</th>
-                        <th>Search</th>
+<!--                        <th>Search</th>-->
                     <tr>
-                        <th><input class="w3-input w3-card" type="date" id="start" value="2019-09-01"/></th>
-                        <th><input class="w3-input w3-card" type="date" id="end" value="2018-10-20"/></th>
-                        <th><button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">
-                                Overall Report
-                            </button></th>
+                        <th><input class="w3-input w3-card" type="date" id="start" onkeyup="search()"  value="2019-09-01"/></th>
+                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()"  value="2018-10-20"/></th>
+                        <th style="float: right;">
+<!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
+<!--                                Overall Report-->
+<!--                            </button>-->
+                            <a   id='printbtnMain'  style='margin-left: auto;'
+                                 onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
+                headerStyle: 'font-weight: 300px; margin: 40px;' ,
+                ignoreElements: ['printbtnMain'], targetStyles: '*'})">
+                                <i class='material-icons' >print</i>
+                            </a></th>
+
                     </tr>
                 </table>
             </div>
-            <div class="row" id="result"></div>
+            <div id="result"></div>
         </div>
     </div>
 </div>

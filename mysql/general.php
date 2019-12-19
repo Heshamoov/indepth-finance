@@ -64,15 +64,16 @@ $fees_array = array();
 // echo $installments;
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
-    echo "<div id='StatisticsDiv' class='col-sm-4'>";
+    echo "<div class='row'>";
+    echo "<div id='feesListDiv' class='col-sm' >";
     echo '<h4><u>Fees List</u></h4>';
-    echo "<table class='table table-sm table-bordered table-hover' id='statisticsTable'>
+    echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
             <thead>
                 <tr>
-                    <th class='tableHeader textLeft'>FEE</th>
-                    <th class='tableHeader textLeft'>Expected</th>
-                    <th class='tableHeader textLeft'>Paid</th>
-                    <th class='tableHeader textLeft'>Balance</th>
+                    <th class='textLeft'><b>FEE</b></th>
+                    <th class='textLeft'><b>Expected</b></th>
+                    <th class='textLeft'><b>Paid</b></th>
+                    <th class='textLeft'><b>Balance</b></th>
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
@@ -111,10 +112,9 @@ if ($result->num_rows > 0) {
     foreach ($fees_array as $fee) {
         $fee->print_fee();
     }
-    echo "</tbody>";
 
 } else
-    echo "No Data Found! Try another search.";
+    echo "No Data Found! Try another search.</div>";
 
 
 $statistics = "
@@ -146,9 +146,9 @@ if ($result->num_rows > 0) {
                 <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
               </tr>';
     }
-    echo '</table>';
+    echo '</table></div>';
 } else {
-    echo 'No Data Found! Try another search.';
+    echo 'No Data Found! Try another search. </div>';
 }
 
 
@@ -173,15 +173,15 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 GROUP BY courses.course_name
 ";
 
-//echo "<div class='col-sm-4'>";
+echo "<div class='col-sm'>";
 echo '<h4><u>Grades List</u></h4>';
-echo "<table class='table table-sm table-bordered table-hover' id='gradesTable'>
+echo "<table class='table  table-bordered table-striped  table-hover' id='gradesList'>
             <thead>
                 <tr>
-                    <th class='tableHeader'>Grade</th>
-                    <th class='tableHeader'>Expected</th>
-                    <th class='tableHeader'>Paid</th>
-                    <th class='tableHeader'>Balance</th>
+                    <th class='textLeft'><b>Grade</b></th>
+                    <th class='textLeft'><b>Expected</b></th>
+                    <th class='textLeft'><b>Paid</b></th>
+                    <th class='textLeft'><b>Balance</b></th>
                 </tr>
             </thead>";
 
@@ -211,7 +211,7 @@ if ($result->num_rows > 0) {
                 <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
               </tr>';
     }
-    echo '</table></div>';
+    echo '</table></div></div>';
 } else {
     echo 'No Data Found! Try another search.'; }
 
@@ -246,7 +246,9 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
-    echo "<div id='ParentsDiv' class='col-sm'>";
+
+    echo "<div class='row'>";
+    echo "<div id='ParentsDiv' class='col-sm' >";
     echo '<h4><u>Parents List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover ' id='ParentsTable'>";
     echo '
@@ -278,7 +280,7 @@ if ($result->num_rows > 0) {
         ";
         $rownumber++;
     }
-    echo "</tbody></table></div>";
+    echo "</tbody></table></div></div>";
 } else {
     echo "No Data Found! Try another search.";
 }
