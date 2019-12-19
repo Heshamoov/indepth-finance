@@ -65,7 +65,8 @@ $fees_array = array();
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
     echo "<div class='row'>";
-    echo "<div id='feesListDiv' class='col-sm' >";
+    echo "<div  class='col-sm' >";
+    echo "<div class='row' id='feesListDiv'>";
     echo '<h4><u>Fees List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
             <thead>
@@ -150,8 +151,20 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No Data Found! Try another search. </div>';
 }
+echo "<div class='row' id='paymentSummaryDiv'>";
+
+include_once 'paymentModeSummary.php';
+echo "</div></div>";
 
 
+
+
+
+
+
+
+
+//--------------------------grades table------------------------------------------
 $grades = "
 SELECT
     courses.course_name grade,
@@ -284,5 +297,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "No Data Found! Try another search.";
 }
+
+
+
 
 $conn->close();
