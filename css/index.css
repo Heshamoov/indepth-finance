@@ -44,9 +44,8 @@ body {
     min-width: 150px !important;
     max-width: 160px !important;
     padding-top: 20px;
-    height: 100vh;
+    height: 100vh !important;
     /*height: max-content;*/
-    position: fixed;
     background: #FAFAFA;
     border-right: 1px solid gray;
 }
@@ -79,11 +78,6 @@ body {
 }
 #statisticsTable td, #gradesTable td {
     /*padding: 0;*/
-}
-
-#ParentsDiv {
-    height: 80vh;
-    /*overflow-y: scroll;*/
 }
 
 #ParentsTable td {
