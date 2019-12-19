@@ -2,44 +2,29 @@ body {
     font-family: Arial !important;
     font-size: 14px;
 }
-
 #mainContainer {
-    padding: 20px;
+    background-color: #FAFAFA;
 }
-
 #header {
     width: 100%;
     background-color: #FAFAFA;
     top: 0;
     border-bottom: 1px solid gray;
 }
-
 .logo {
     padding-left: 20px;
 }
-
-
 .title {
     font-family: Arial;
     font-size: 26px;
 }
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 #userInputTable {
     margin-bottom: 10px;
 }
-
 #start, #end {
     /*width: %;*/
     float: right;
 }
-
 .sidenav {
     min-width: 150px !important;
     max-width: 160px !important;
@@ -49,7 +34,6 @@ body {
     background: #FAFAFA;
     border-right: 1px solid gray;
 }
-
 .sidenav a {
     padding: 0px 8px 6px 16px;
     text-decoration: none;
@@ -57,36 +41,21 @@ body {
     color: black;
     display: block;
 }
-
 .sidenav h5 {
     opacity: 50%;
     text-align: center;
 }
-
 .sidenav hr {
     display: block;
     margin-top: -5px;
 }
-
 .sidenav a:hover {
     color: #2196F3;
 }
-
-#statisticsTable, #gradesTable {
-    /*color: red;*/
-    /*width: 50%;*/
-}
-#statisticsTable td, #gradesTable td {
-    /*padding: 0;*/
-}
-
 #ParentsTable td {
     text-align: left;
-    /* border:1px solid black;
-     border-collapse: collapse;*/
+
 }
-
-
 .textRight {
     text-align: right !important;
     /*border: 1px solid #ccc;*/
@@ -95,32 +64,13 @@ body {
     text-align: left !important;
     /*border: 1px solid #ccc;*/
 }
-
-#ParentsTable th {
-    position: sticky;
-    top: 0;
-    background-color: #4CAF50;
-    color: white;
-    background-color: #4CAF50;
-    color: white;
-    white-space: nowrap;
-    /*border: 1px solid gray;*/
+#ParentsDiv {
+    width: 100% !important;
 }
-
-#ParentsTable td {
-    padding: 4px;
-    /*border: 1px solid gray;*/
-}
-.tableHeader {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
-
 .student_table {
     margin: 30px;
 }
-
-#search {
-  width: 70%;
+.btnTransaction{
+   margin-left: auto !important;
+    margin-right: 20px !important;
 }
