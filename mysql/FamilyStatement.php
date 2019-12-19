@@ -38,9 +38,9 @@ $result = $conn->query($general);
 $rownumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
-
+echo "<div class='row'>";
     echo "<a id='goback' title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
-          <b>  <i class='material-icons'  style='color:red; font-weight: bolder' >arrow_back</i></b></a>";
+          <b>  <i class='material-icons'  style='color:blue; font-weight: bolder' >arrow_back</i></b></a>";
 
     $parent_header = true;
     $first_name_old = "";
@@ -69,8 +69,8 @@ if ($result->num_rows > 0) {
                             <td align='right'>" . $total_expected . "</td>
                             <td align='right'>" . $total_paid . "</td>
                             <td align='right'>" . $total_balance . "</td>
-                            </tr>
-                            </table><br>";
+                      </tr>
+                      </table><br>";
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid = 0;
@@ -116,7 +116,7 @@ if ($result->num_rows > 0) {
         $rownumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table>";
+          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table></div>";
 } else {
     echo "No Data Found! Try another search.";
 }

@@ -4,7 +4,7 @@ body {
 }
 
 #mainContainer {
-    padding: 20px;
+    background-color: #FAFAFA;
 }
 
 #header {
@@ -24,12 +24,7 @@ body {
     font-size: 26px;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
+
 
 #userInputTable {
     margin-bottom: 10px;
@@ -96,26 +91,21 @@ body {
     /*border: 1px solid #ccc;*/
 }
 
-#ParentsTable th {
-    position: sticky;
-    top: 0;
-    background-color: #4CAF50;
-    color: white;
-    background-color: #4CAF50;
-    color: white;
-    white-space: nowrap;
-    /*border: 1px solid gray;*/
+#ParentsDiv{
+    width: 100% !important;
 }
 
-#ParentsTable td {
-    padding: 4px;
-    /*border: 1px solid gray;*/
-}
-.tableHeader {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
+/*#ParentsTable th {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    !*background-color: #4CAF50;*!*/
+/*    !*color: white;*!*/
+/*    !*background-color: #4CAF50;*!*/
+/*    !*color: white;*!*/
+/*    white-space: nowrap;*/
+/*    !*border: 1px solid gray;*!*/
+/*}*/
+
 
 .student_table {
     margin: 30px;
