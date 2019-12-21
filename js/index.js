@@ -61,7 +61,18 @@ function general(params) {
     };
     FamilyStatementRequest.open("GET", "mysql/general.php?start_date=" + start_date + "&end_date=" + end_date
                                          + "&familyid=" + familyid, false);
-    FamilyStatementRequest.send();s
+    FamilyStatementRequest.send();
+}
+
+function showTransaction() {
+    document.getElementById('fee_table').style.display ='none';
+    document.getElementById('statementTable').style.display  ='inline';
+
+}
+function showFees() {
+    document.getElementById('fee_table').style.display ='block';
+    document.getElementById('statementTable').style.display  ='none';
+
 }
 
 

@@ -49,13 +49,10 @@ echo "<div class='row'>";
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
-            echo "<h4 > Parent: " . $row['familyid'] . " - " . $row['parent'] . "</h4 >";
-            echo "<a   id='printbtn'  style='margin-left: auto; margin-right: 20px' 
-                onclick=\"printJS({printable: 'result', type: 'html', header: 'Fees Details', 
-                headerStyle: 'font-weight: 300px; margin: 40px;' ,
-                ignoreElements: ['goback','printbtn'], targetStyles: '*'})\">
-             <i class='material-icons' >print</i>
-        </a>";
+            echo '<h4 > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
+//            echo '<button   id="btnFees"  onclick="showFees()" type="button"  class="btn btn-sm btn-blue-grey btnTransaction" >View Fees</button> ';
+//            echo '<button  id="btnTransaction" type="button" onclick="showTransaction()" class="btn btn-sm btn-blue-grey " >View Transactions</button>';
+
 
             $parent_header = false;
         }
@@ -74,7 +71,7 @@ echo "<div class='row'>";
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid = 0;
-            echo "<table id='result_table' class='table table-sm table-striped table-bordered student_table' >";
+            echo "<table id='fee_table'  class='table table-sm table-striped table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
@@ -116,8 +113,11 @@ echo "<div class='row'>";
         $rownumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table></div>";
+          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table>";
 } else {
     echo "No Data Found! Try another search.";
 }
+
+include_once 'paymentModeStatement.php';
+echo '</div>';
 $conn->close();
