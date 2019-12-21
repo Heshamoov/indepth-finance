@@ -11,8 +11,8 @@ SELECT
     ROUND(SUM(finance_fees.particular_total),0) expected,
     ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
     ROUND(SUM(finance_fees.balance),0) balance,
-    finance_fee_collections.start_date start_date,
-    CURDATE() today
+    finance_fee_collections.start_date start_date
+    
 FROM guardians
     
 INNER JOIN students ON guardians.familyid = students.familyid
@@ -65,7 +65,7 @@ $fees_array = array();
 $result = $conn->query($installments);
 if ($result->num_rows > 0) {
     echo "<div class='row'>";
-    echo "<div  class='col-sm' >";
+    echo "<div  class='col-sm' id='leftDiv'>";
     echo "<div class='row' id='feesListDiv'>";
     echo '<h4><u>Fees List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
@@ -151,15 +151,12 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No Data Found! Try another search. </div>';
 }
-echo "<div class='row' id='paymentSummaryDiv'>";
+
+echo "<div class='row' id='paymentModeDiv'>";
 
 include_once 'paymentModeSummary.php';
+
 echo "</div></div>";
-
-
-
-
-
 
 
 
@@ -186,7 +183,7 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date
 GROUP BY courses.course_name
 ";
 
-echo "<div class='col-sm'>";
+echo "<div class='col-sm' id='gradesListDiv'>";
 echo '<h4><u>Grades List</u></h4>';
 echo "<table class='table  table-bordered table-striped  table-hover' id='gradesList'>
             <thead>
