@@ -8,9 +8,9 @@ $end_date = $_REQUEST["end_date"];
 $installments = "
 SELECT
     finance_fee_collections.name name,
-    ROUND(SUM(finance_fees.particular_total),0) expected,
-    ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
-    ROUND(SUM(finance_fees.balance),0) balance,
+    SUM(finance_fees.particular_total) expected,
+    SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
+    SUM(finance_fees.balance) balance,
     finance_fee_collections.start_date start_date
     
 FROM guardians
@@ -53,8 +53,8 @@ class Fee
     public function print_fee()
     {
         echo '<tr>
-                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . $this->expected . '</td>
-                <td class="textRight">' . $this->paid . '</td><td class="textRight">' . $this->balance . '</td>
+                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . (float) $this->expected . '</td>
+                <td class="textRight">' . (float) $this->paid . '</td><td class="textRight">' . (float) $this->balance . '</td>
             </tr>';
     }
 }
@@ -121,9 +121,9 @@ if ($result->num_rows > 0) {
 $statistics = "
 SELECT 
 COUNT(DISTINCT guardians.first_name) parents, COUNT(DISTINCT students.last_name) students,
-ROUND(SUM(finance_fees.particular_total),0) expected,
-ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
-ROUND(SUM(finance_fees.balance),0) balance,
+SUM(finance_fees.particular_total) expected,
+SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
+SUM(finance_fees.balance) balance,
 finance_fee_collections.start_date start_date,
 CURDATE() today
 
@@ -142,9 +142,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . $row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . $row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . (float) $row['expected'] . "</strong></th>
+                <th class='textRight'><strong>" . (float) $row['paid'] . "</strong></th>
+                <th class='textRight'><strong>" . (float) $row['balance'] . '</strong></th>
               </tr>';
     }
     echo '</table></div>';
@@ -165,19 +165,19 @@ echo "</div></div>";
 $grades = "
 SELECT
     courses.course_name grade,
-    ROUND(SUM(finance_fees.particular_total),0) expected,
-    ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
-    ROUND(SUM(finance_fees.balance),0) balance,
+    SUM(finance_fees.particular_total) expected,
+    SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
+    SUM(finance_fees.balance) balance,
     finance_fee_collections.start_date start_date,
     CURDATE() today
 
 FROM guardians
 
          INNER JOIN students ON guardians.familyid = students.familyid
-     INNER JOIN finance_fees ON students.id = finance_fees.student_id
-           INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
-           INNER JOIN batches ON students.batch_id = batches.id
-           INNER JOIN courses ON batches.course_id = courses.id
+         INNER JOIN finance_fees ON students.id = finance_fees.student_id
+         INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+         INNER JOIN batches ON students.batch_id = batches.id
+         INNER JOIN courses ON batches.course_id = courses.id
 
 WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
 GROUP BY courses.course_name
@@ -201,9 +201,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <td class='textLeft'>" . $row['grade'] . "</td>
-                <td class='textRight'>" . $row['expected'] . "</td>
-                <td class='textRight'>" . $row['paid'] . "</td>
-                <td class='textRight'>" . $row['balance'] . '</td>
+                <td class='textRight'>" . (float) $row['expected'] . "</td>
+                <td class='textRight'>" . (float) $row['paid'] . "</td>
+                <td class='textRight'>" . (float) $row['balance'] . '</td>
               </tr>';
     }
 } else
@@ -216,9 +216,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . $row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . $row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . $row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . (float) $row['expected'] . "</strong></th>
+                <th class='textRight'><strong>" . (float) $row['paid'] . "</strong></th>
+                <th class='textRight'><strong>" . (float) $row['balance'] . '</strong></th>
               </tr>';
     }
     echo '</table></div></div>';
@@ -234,9 +234,9 @@ guardians.first_name  parent,
 students.last_name student,
 COUNT(DISTINCT students.id) NumberOfStudents,
 students.familyid,
-ROUND(SUM(finance_fees.particular_total),0) expected,
-ROUND(SUM(finance_fees.particular_total) - SUM(finance_fees.balance) ,0) paid,
-ROUND(SUM(finance_fees.balance),0) balance,
+SUM(finance_fees.particular_total) expected,
+SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
+SUM(finance_fees.balance) balance,
 finance_fee_collections.name fee_name,
 finance_fee_collections.start_date start_date,
 finance_fee_collections.end_date end_date,
@@ -254,7 +254,7 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 ";
 // echo $general;
 $result = $conn->query($general);
-$rownumber = 1;
+$rowNumber = 1;
 if ($result->num_rows > 0) {
 
     echo "<div class='row'>";
@@ -279,16 +279,16 @@ if ($result->num_rows > 0) {
         $params = array($start_date, $end_date, $row['familyid']);
         echo "
     	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
-    		<td>" . $rownumber . "</td>
+    		<td>" . $rowNumber . "</td>
     		<td  class='textLeft'>" . $row['familyid'] . "</td>
     		<td>" . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . $row['expected'] . "</td>
-            <td class='textRight'>" . $row['paid'] . "</td>
-            <td class='textRight'>" . $row['balance'] . "</td>
+    		<td class='textRight'>" . (float) $row['expected'] . "</td>
+            <td class='textRight'>" . (float) $row['paid'] . "</td>
+            <td class='textRight'>" . (float) $row['balance'] . "</td>
     	</tr>
         ";
-        $rownumber++;
+        $rowNumber++;
     }
     echo "</tbody></table></div></div>";
 } else {
