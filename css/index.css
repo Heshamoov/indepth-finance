@@ -98,7 +98,7 @@ padding-left: 20px;
     padding: 1px;
 }
 #feesList td, #paymentMode td {
-    padding: 5px
+    padding: 0;
 }
 #feesList th, #paymentMode th, #gradesList th{
     padding: 1px;

@@ -7,9 +7,15 @@ $end_date = $_REQUEST["end_date"];
 
 $transactions = "
 SELECT payment_mode mode, ROUND(SUM(amount),0) amount
-FROM finance_transactions
+FROM guardians
+    
+INNER JOIN students ON guardians.familyid = students.familyid
+INNER JOIN finance_fees ON students.id = finance_fees.student_id
+INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+INNER JOIN finance_transactions ON finance_fees.id = finance_transactions.finance_id
 
-WHERE STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') >= '$start_date'
+WHERE
+STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
 
 GROUP BY payment_mode 
 ";
@@ -42,7 +48,7 @@ if ($result->num_rows > 0) {
     $transactionsArray = array();
     while ($row = $result->fetch_assoc()) {
 
-        if (strstr(strtolower($row['mode']),'Card'))
+        if (strstr(strtolower($row['mode']),'card'))
             $transaction = new Transaction('Card', $row['amount']);
         elseif (strstr(strtolower($row['mode']),'cash'))
             $transaction = new Transaction('Cash', $row['amount']);
@@ -72,6 +78,30 @@ if ($result->num_rows > 0) {
     echo '<tbody>';
     foreach ($transactionsArray as $t) {
         $t->print_transactions();
+    }
+} else {
+    echo 'No Data Found! Try another search.';
+}
+
+$totalTransactions = "
+SELECT payment_mode mode, ROUND(SUM(amount), 0) amount
+FROM guardians
+         INNER JOIN students ON guardians.familyid = students.familyid
+         INNER JOIN finance_fees ON students.id = finance_fees.student_id
+         INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+         INNER JOIN finance_transactions ON finance_fees.id = finance_transactions.finance_id
+
+WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date';
+";
+
+//echo $totalTransactions;
+$result = $conn->query($totalTransactions);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo " <tr>
+                <th class='textLeft'><strong>Total</strong></th>
+                <th class='textRight'><strong>" . $row['amount'] . '</strong></th>
+              </tr>';
     }
     echo '</body></table>';
 } else {
