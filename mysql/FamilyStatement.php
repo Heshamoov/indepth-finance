@@ -118,6 +118,6 @@ echo "<div class='row'>";
     echo "No Data Found! Try another search.";
 }
 
-include_once 'paymentModeStatement.php';
+include_once 'parentStatement.php';
 echo '</div>';
 $conn->close();
