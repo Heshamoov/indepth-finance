@@ -234,8 +234,9 @@ guardians.first_name  parent,
 students.last_name student,
 COUNT(DISTINCT students.id) NumberOfStudents,
 students.familyid,
+SUM(finance_fee_discounts.discount_amount) discount,
 SUM(finance_fees.particular_total) expected,
-SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
+(SUM(finance_fees.particular_total)  - SUM(finance_fees.balance)) paid,
 SUM(finance_fees.balance) balance,
 finance_fee_collections.name fee_name,
 finance_fee_collections.start_date start_date,
@@ -247,6 +248,7 @@ FROM guardians
 INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
 
 WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
 GROUP BY guardians.familyid
@@ -269,6 +271,7 @@ if ($result->num_rows > 0) {
     		<th>Parent</th>
             <th class="smallcol">Children</th>
     		<th>Expected</th>
+    		<th>Discount</th>
             <th>Paid</th>
             <th>Balance</th>
     	</tr>
@@ -276,6 +279,7 @@ if ($result->num_rows > 0) {
         <tbody>
     ';
     while ($row = $result->fetch_assoc()) {
+        $row['paid'] -= $row['discount'];
         $params = array($start_date, $end_date, $row['familyid']);
         echo "
     	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
@@ -284,6 +288,7 @@ if ($result->num_rows > 0) {
     		<td>" . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
     		<td class='textRight'>" . (float) $row['expected'] . "</td>
+    		<td class='textRight'>" . (float) $row['discount'] . "</td>
             <td class='textRight'>" . (float) $row['paid'] . "</td>
             <td class='textRight'>" . (float) $row['balance'] . "</td>
     	</tr>
