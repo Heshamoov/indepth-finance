@@ -51,9 +51,9 @@ if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
-            echo '<h4 > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
+            echo '<h4 id="parent_heading" > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
 //            echo '<button   id="btnFees"  onclick="showFees()" type="button"  class="btn btn-sm btn-blue-grey btnTransaction" >View Fees</button> ';
-//            echo '<button  id="btnTransaction" type="button" onclick="showTransaction()" class="btn btn-sm btn-blue-grey " >View Transactions</button>';
+            echo '<a  id="btnTransaction" style="margin-left:auto; margin-right: 20px" type="button" href="#transaction_heading" class="btn btn-sm btn-blue-grey " >View Transactions</a>';
 
 
             $parent_header = false;
@@ -130,7 +130,6 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No Data Found! Try another search.';
 }
-
 include_once 'parentStatement.php';
 echo '</div>';
 $conn->close();

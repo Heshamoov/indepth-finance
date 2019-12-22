@@ -28,6 +28,7 @@ function search() {
 }
 
 function FamilyStatement(params) {
+    window.scrollTo(0, 0);
     start_date = params[0];
     end_date = params[1];
     familyid = params[2];
@@ -45,7 +46,6 @@ function FamilyStatement(params) {
 }
 
 function general(params) {
-
     start_date = params[0];
     end_date = params[1];
     familyid = params[2];
