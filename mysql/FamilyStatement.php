@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
     echo "<div class='row'>";
     echo "<a id='goback' title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
-          <b>  <i class='material-icons'  style='color:blue; font-weight: bolder' >arrow_back</i></b></a>";
+          <b> <i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i></b></a>";
 
     $parent_header = true;
     $first_name_old = "";
