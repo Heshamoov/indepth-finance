@@ -107,6 +107,7 @@ if ($result->num_rows > 0) {
         $total_discount += $discount;
 
         $paid = $expected - $discount - $balance;
+
         $total_paid += $paid;
         echo "
         	<tr class='w3-hover-green' >
