@@ -53,8 +53,8 @@ class Fee
     public function print_fee()
     {
         echo '<tr>
-                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . (float) $this->expected . '</td>
-                <td class="textRight">' . (float) $this->paid . '</td><td class="textRight">' . (float) $this->balance . '</td>
+                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . (float)$this->expected . '</td>
+                <td class="textRight">' . (float)$this->paid . '</td><td class="textRight">' . (float)$this->balance . '</td>
             </tr>';
     }
 }
@@ -136,15 +136,16 @@ INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_f
 WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
 ";
 
+
 // echo $statistics;
 $result = $conn->query($statistics);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . (float) $row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . (float) $row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . (float) $row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . (float)$row['expected'] . "</strong></th>
+                <th class='textRight'><strong>" . (float)$row['paid'] . "</strong></th>
+                <th class='textRight'><strong>" . (float)$row['balance'] . '</strong></th>
               </tr>';
     }
     echo '</table></div>';
@@ -157,8 +158,6 @@ echo "<div class='row' id='paymentModeDiv'>";
 include_once 'paymentModeSummary.php';
 
 echo "</div></div>";
-
-
 
 
 //--------------------------grades table------------------------------------------
@@ -201,13 +200,14 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <td class='textLeft'>" . $row['grade'] . "</td>
-                <td class='textRight'>" . (float) $row['expected'] . "</td>
-                <td class='textRight'>" . (float) $row['paid'] . "</td>
-                <td class='textRight'>" . (float) $row['balance'] . '</td>
+                <td class='textRight'>" . (float)$row['expected'] . "</td>
+                <td class='textRight'>" . (float)$row['paid'] . "</td>
+                <td class='textRight'>" . (float)$row['balance'] . '</td>
               </tr>';
     }
-} else
-{ echo 'No Data Found! Try another search.'; }
+} else {
+    echo 'No Data Found! Try another search.';
+}
 
 
 // echo $statistics;
@@ -216,16 +216,15 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . (float) $row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . (float) $row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . (float) $row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . (float)$row['expected'] . "</strong></th>
+                <th class='textRight'><strong>" . (float)$row['paid'] . "</strong></th>
+                <th class='textRight'><strong>" . (float)$row['balance'] . '</strong></th>
               </tr>';
     }
     echo '</table></div></div>';
 } else {
-    echo 'No Data Found! Try another search.'; }
-
-
+    echo 'No Data Found! Try another search.';
+}
 
 
 $general = "
@@ -283,9 +282,9 @@ if ($result->num_rows > 0) {
     		<td  class='textLeft'>" . $row['familyid'] . "</td>
     		<td>" . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . (float) $row['expected'] . "</td>
-            <td class='textRight'>" . (float) $row['paid'] . "</td>
-            <td class='textRight'>" . (float) $row['balance'] . "</td>
+    		<td class='textRight'>" . (float)$row['expected'] . "</td>
+            <td class='textRight'>" . (float)$row['paid'] . "</td>
+            <td class='textRight'>" . (float)$row['balance'] . "</td>
     	</tr>
         ";
         $rowNumber++;
@@ -294,8 +293,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No Data Found! Try another search.";
 }
-
-
 
 
 $conn->close();
