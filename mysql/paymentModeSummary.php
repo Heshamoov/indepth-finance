@@ -46,9 +46,9 @@ class Payment_Mode {
 
     function print_payments(){
         echo " <tr>
-                    <th class='textLeft'><strong>" . $this->mode . "</strong></th>
-                    <th class='textRight'><strong>" . (float)$this->amount . "</strong></th>
-                    <th class='textRight'><strong>" . round(($this->amount / $this->total) * 100, 2) . "%</strong></th>
+                    <th class='textLeft'>" . $this->mode . "</th>
+                    <th class='textRight'>" . number_format((float)$this->amount) . "</th>
+                    <th class='textRight'>" . round(($this->amount / $this->total) * 100, 2) . "%</th>
               </tr>";
     }
 }
@@ -119,7 +119,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr>
                 <th class='textLeft'><strong>Total</strong></th>
-                <th class='textRight'><strong>" . (float) $row['amount'] . '</strong></th>
+                <th class='textRight'><strong>" . number_format((float) $row['amount']) . '</strong></th>
               </tr>';
     }
     echo '</body></table>';

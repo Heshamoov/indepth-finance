@@ -53,8 +53,10 @@ class Fee
     public function print_fee()
     {
         echo '<tr>
-                <td class="textLeft">' . $this->name . '</td><td class="textRight">' . (float)$this->expected . '</td>
-                <td class="textRight">' . (float)$this->paid . '</td><td class="textRight">' . (float)$this->balance . '</td>
+                <td class="textLeft">' . $this->name . '</td>
+                <td class="textRight">' . number_format((float)$this->expected) . '</td>
+                <td class="textRight">' . number_format((float)$this->paid) . '</td>
+                <td class="textRight">' . number_format((float)$this->balance) . '</td>
             </tr>';
     }
 }
@@ -143,9 +145,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . (float)$row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . (float)$row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . (float)$row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['expected']) . "</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['paid']) . "</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['balance']) . '</strong></th>
               </tr>';
     }
     echo '</table></div>';
@@ -200,9 +202,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <td class='textLeft'>" . $row['grade'] . "</td>
-                <td class='textRight'>" . (float)$row['expected'] . "</td>
-                <td class='textRight'>" . (float)$row['paid'] . "</td>
-                <td class='textRight'>" . (float)$row['balance'] . '</td>
+                <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
               </tr>';
     }
 } else {
@@ -216,9 +218,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . (float)$row['expected'] . "</strong></th>
-                <th class='textRight'><strong>" . (float)$row['paid'] . "</strong></th>
-                <th class='textRight'><strong>" . (float)$row['balance'] . '</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['expected']) . "</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['paid']) . "</strong></th>
+                <th class='textRight'><strong>" . number_format((float)$row['balance']) . '</strong></th>
               </tr>';
     }
     echo '</table></div></div>';
