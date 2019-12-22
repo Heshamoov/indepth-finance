@@ -60,8 +60,8 @@ if ($result->num_rows > 0) {
             <thead>
                 <tr>
                     <th class='textLeft'><b>Mode</b></th>
-                    <th class='textRight'><b>Amount</b></th>
-                    <th class='textRight'><b>%</b></th>
+                    <th class='textCenter'><b>Amount</b></th>
+                    <th class='textCenter'><b>%</b></th>
                 </tr>
             </thead>";
 

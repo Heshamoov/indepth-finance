@@ -5,7 +5,7 @@ include('../config/db.php');
 $start_date = $_REQUEST["start_date"];
 $end_date = $_REQUEST["end_date"];
 
-$installments = "
+$fees_list = "
 SELECT
     finance_fee_collections.name name,
     SUM(finance_fees.particular_total) expected,
@@ -20,7 +20,9 @@ INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 
 WHERE 
-STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+        STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+    AND 
+        STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') <= '$end_date'
 AND
     (
         finance_fee_collections.name like '%Installment%'  OR 
@@ -63,8 +65,8 @@ class Fee
 
 $fees_array = array();
 
-// echo $installments;
-$result = $conn->query($installments);
+//echo $fees_list;
+$result = $conn->query($fees_list);
 if ($result->num_rows > 0) {
     echo "<div class='row'>";
     echo "<div  class='col-sm' id='leftDiv'>";
@@ -74,9 +76,9 @@ if ($result->num_rows > 0) {
             <thead>
                 <tr>
                     <th class='textLeft'><b>FEE</b></th>
-                    <th class='textLeft'><b>Expected</b></th>
-                    <th class='textLeft'><b>Paid</b></th>
-                    <th class='textLeft'><b>Balance</b></th>
+                    <th class='textCenter'><b>Expected</b></th>
+                    <th class='textCenter'><b>Paid</b></th>
+                    <th class='textCenter'><b>Balance</b></th>
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
@@ -163,25 +165,23 @@ echo "</div></div>";
 
 
 //--------------------------grades table------------------------------------------
-$grades = "
-SELECT
-    courses.course_name grade,
-    SUM(finance_fees.particular_total) expected,
-    SUM(finance_fees.particular_total) - SUM(finance_fees.balance) paid,
-    SUM(finance_fees.balance) balance,
-    finance_fee_collections.start_date start_date,
-    CURDATE() today
+$grades_list = "
+SELECT courses.course_name grade,
+       finance_fee_collections.name,
+       SUM(finance_fees.particular_total) expected,
+       SUM(finance_fees.balance) balance,
+       finance_fee_collections.start_date
+from finance_fees
 
-FROM guardians
+         inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
+         inner join batches on finance_fees.batch_id = batches.id
+         inner join courses on batches.course_id = courses.id
 
-         INNER JOIN students ON guardians.familyid = students.familyid
-         INNER JOIN finance_fees ON students.id = finance_fees.student_id
-         INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
-         INNER JOIN batches ON students.batch_id = batches.id
-         INNER JOIN courses ON batches.course_id = courses.id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
-GROUP BY courses.course_name
+where finance_fee_collections.start_date >= '$start_date'
+AND finance_fee_collections.start_date <= '$end_date'
+
+group by courses.course_name
 ";
 
 echo "<div class='col-sm' id='gradesListDiv'>";
@@ -190,38 +190,54 @@ echo "<table class='table  table-bordered table-striped  table-hover' id='grades
             <thead>
                 <tr>
                     <th class='textLeft'><b>Grade</b></th>
-                    <th class='textLeft'><b>Expected</b></th>
-                    <th class='textLeft'><b>Paid</b></th>
-                    <th class='textLeft'><b>Balance</b></th>
+                    <th class='textCenter'><b>Expected</b></th>
+                    <th class='textCenter'><b>Balance</b></th>
+                    <th class='textCenter'><b>%</b></th>
                 </tr>
             </thead>";
 
-// echo $grades;
-$result = $conn->query($grades);
+// echo $grades_list;
+$result = $conn->query($grades_list);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <td class='textLeft'>" . $row['grade'] . "</td>
                 <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
-                <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
-              </tr>';
+                <td class='textRight'>" . number_format((float)$row['balance']) . "</td>
+                <td class='textRight'>" . round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
+              </tr>";
     }
 } else {
     echo 'No Data Found! Try another search.';
 }
 
 
-// echo $statistics;
-$result = $conn->query($statistics);
+$grades_list_total = "
+SELECT courses.course_name grade,
+       finance_fee_collections.name,
+       SUM(finance_fees.particular_total) expected,
+       SUM(finance_fees.balance) balance,
+       finance_fee_collections.start_date
+from finance_fees
+
+         inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
+         inner join batches on finance_fees.batch_id = batches.id
+         inner join courses on batches.course_id = courses.id
+
+
+where finance_fee_collections.start_date >= '$start_date'
+AND finance_fee_collections.start_date <= '$end_date'
+
+";
+$result = $conn->query($grades_list_total);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <th><strong>Total</strong></th>
                 <th class='textRight'><strong>" . number_format((float)$row['expected']) . "</strong></th>
-                <th class='textRight'><strong>" . number_format((float)$row['paid']) . "</strong></th>
-                <th class='textRight'><strong>" . number_format((float)$row['balance']) . '</strong></th>
-              </tr>';
+                <th class='textRight'><strong>" . number_format((float)$row['balance']) . "</strong></th>
+                <th class='textRight'>" . round(($row['balance'] / $row['expected']) * 100, 2) . "%</th>
+              </tr>";
     }
     echo '</table></div></div>';
 } else {

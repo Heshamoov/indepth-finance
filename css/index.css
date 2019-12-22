@@ -65,6 +65,10 @@ padding-left: 20px;
     text-align: left !important;
     /*border: 1px solid #ccc;*/
 }
+
+.textCenter {
+    text-align: center;
+}
 .student_table {
     margin: 30px;
 }
