@@ -74,7 +74,7 @@ if ($result->num_rows > 0) {
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid  = $total_discount= 0;
-            echo "<table id='fee_table'  class='table table-sm table-striped table-bordered student_table' >";
+            echo "<table id='fee_table'  class='table table-sm table-striped table-hover table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
