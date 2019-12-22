@@ -156,7 +156,7 @@ echo "<div class='row' id='paymentModeDiv'>";
 
 include_once 'paymentModeSummary.php';
 
-echo "</div></div>";
+echo '</div></div>';
 
 
 
@@ -284,20 +284,19 @@ if ($result->num_rows > 0) {
         echo "
     	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
     		<td>" . $rowNumber . "</td>
-    		<td  class='textLeft'>" . $row['familyid'] . "</td>
-    		<td>" . $row['parent'] . "</td>
+    		<td  class='textLeft'>" . $row['familyid'] . '</td>
+    		<td>' . $row['parent'] . "</td>
             <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
     		<td class='textRight'>" . (float) $row['expected'] . "</td>
     		<td class='textRight'>" . (float) $row['discount'] . "</td>
             <td class='textRight'>" . (float) $row['paid'] . "</td>
-            <td class='textRight'>" . (float) $row['balance'] . "</td>
-    	</tr>
-        ";
+            <td class='textRight'>" . (float) $row['balance'] . '</td>
+    	</tr>';
         $rowNumber++;
     }
-    echo "</tbody></table></div></div>";
+    echo '</tbody></table></div></div>';
 } else {
-    echo "No Data Found! Try another search.";
+    echo 'No Data Found! Try another search.';
 }
 
 

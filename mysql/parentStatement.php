@@ -26,13 +26,14 @@ FROM guardians
          inner join  transaction_receipts on finance_transaction_receipt_records.transaction_receipt_id = transaction_receipts.id
 
 where students.familyid = '$familyid'
-AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'";
+AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'
+ORDER BY transaction_receipts.receipt_number DESC";
 
 //echo $sql;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo '<h4 align="center"><u>Transaction Statement</u></h4>';
-    echo "<table id='statementTable' class='table table-sm table-striped table-bordered student_table' style='padding: 0px !important;'>";
+    echo "<table id='statementTable' class='table table-sm table-striped table-bordered parent-statement table-hover' style='padding: 0px !important;'>";
     echo '<thead>
             <th>Transaction Date</th>
             <th>Invoice #</th>
@@ -44,7 +45,6 @@ if ($result->num_rows > 0) {
             <th>Paid</th>
             <th>Balance</th>
             <th>Mode</th>
-            <th>Title</th>
             <th>Notes</th>
         </thead>';
     $prev_fee = '';
@@ -71,7 +71,6 @@ if ($result->num_rows > 0) {
                 <td class="textRight">' . (float)$row['amount'] . '</td>
                 <td class="textRight">' . (float)$balance . '</td>
                 <td>' . $row['mode'] . '</td>
-                <td>' . $row['title'] . '</td>
                 <td>' . $row['note'] . '</td>
                 </tr>';
 
