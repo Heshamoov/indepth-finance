@@ -106,7 +106,8 @@ if ($result->num_rows > 0) {
         $discount = (float)$row['discount'];
         $total_discount += $discount;
 
-        $paid = $expected - $balance;
+        $paid = $expected - $discount - $balance;
+
         $total_paid += $paid;
         echo "
         	<tr class='w3-hover-green' >
