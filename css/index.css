@@ -109,7 +109,16 @@ padding-left: 20px;
     color: white;
 }
 
+.table.table-hover thead th tr{
+  font-weight: bolder;
+}
+
 .table.table-hover thead tr:hover {
     background-color: black;
     color: white;
+}
+
+.parent-statement  tbody td{
+    font-size: 13px !important;
+
 }

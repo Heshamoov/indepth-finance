@@ -14,6 +14,7 @@ students.familyid,
 students.admission_no admission_no,
 finance_fees.particular_total expected,
 finance_fees.balance balance,       
+finance_fee_discounts.discount_amount discount,
 finance_fee_collections.name fee_name,
 finance_fee_collections.start_date start_date,
 finance_fee_collections.end_date end_date,
@@ -25,6 +26,7 @@ FROM guardians
 INNER JOIN students ON guardians.familyid = students.familyid
 INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
 INNER JOIN batches ON students.batch_id = batches.id
 INNER JOIN courses ON batches.course_id = courses.id
 
@@ -35,17 +37,17 @@ ORDER BY courses.course_name, finance_fee_collections.due_date
 ";
 // echo $general;
 $result = $conn->query($general);
-$rownumber = 1;
+$rowNumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
-echo "<div class='row'>";
+    echo "<div class='row'>";
     echo "<a id='goback' title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
           <b>  <i class='material-icons'  style='color:blue; font-weight: bolder' >arrow_back</i></b></a>";
 
     $parent_header = true;
     $first_name_old = "";
     $second_table = false;
-    $total_expected = $total_balance = $total_paid = 0;
+    $total_expected = $total_balance = $total_paid = $total_discount = 0;
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
@@ -63,30 +65,32 @@ echo "<div class='row'>";
         if ($first_name != $first_name_old) {
             if ($second_table) {
                 echo "<tr><td colspan='3' align='center'><b>Total</b></td>
-                            <td align='right'>" . $total_expected . "</td>
-                            <td align='right'>" . $total_paid . "</td>
-                            <td align='right'>" . $total_balance . "</td>
+                            <td align='right'>{$total_expected}</td>
+                            <td align='right'>{$total_discount}</td>
+                            <td align='right'>{$total_paid}</td>
+                            <td align='right'>{$total_balance}</td>
                       </tr>
                       </table><br>";
             } else
                 $second_table = true;
-            $total_expected = $total_balance = $total_paid = 0;
-            echo "<table id='fee_table'  class='table table-sm table-striped table-bordered student_table' >";
+            $total_expected = $total_balance = $total_paid  = $total_discount= 0;
+            echo "<table id='fee_table'  class='table table-sm table-striped table-hover table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
-                        <th colspan=6 align='center'> Student: <b>" .
-                $row['admission_no'] . " - " . $row['student'] . "</b> &nbsp&nbsp Grade: <b>" .
-                $row['course_name'] . "</b> &nbsp&nbsp Section: <b>" .
+                        <th colspan=7 align='center'> Student: <b>" .
+                $row['admission_no'] . ' - ' . $row['student'] . '</b> &nbsp&nbsp Grade: <b>' .
+                $row['course_name'] . '</b> &nbsp&nbsp Section: <b>' .
                 $row['section'] . "</b></th>
                     </tr>
                     <tr class='w3-light-grey'>
                         <th>#</th>
                         <th>Date</th>
-                        <th>Particulars</th>
-                        <th>Fees Expected</th>
-                        <th>Fees Paid</th>
-                        <th>Fees Due</th>
+                        <th>Fee Description</th>
+                        <th>Expected</th>
+                         <th>Discount</th>
+                        <th>Paid</th>
+                        <th>Due</th>
                     </tr>
                 </thead>
                 ";
@@ -99,25 +103,34 @@ echo "<div class='row'>";
         $expected = (float)$row['expected'];
         $total_expected += $expected;
 
-        $paid = $expected - $balance;
+        $discount = (float)$row['discount'];
+        $total_discount += $discount;
+
+        $paid = $expected - $discount - $balance;
+
         $total_paid += $paid;
         echo "
         	<tr class='w3-hover-green' >
-        		<td>" . $rownumber . "</td>
-                <td>" . $row['start_date'] . "</td>
-                <td>" . $row['fee_name'] . "</td>
+        		<td>" . $rowNumber . '</td>
+                <td>' . $row['start_date'] . '</td>
+                <td>' . $row['fee_name'] . "</td>
         		<td align='right'>" . (float)$row['expected'] . "</td>
+        		<td align='right'>" . (float)$row['discount'] . "</td>
         		<td align='right'>" . $paid . "</td>
-        		<td align='right'>" . (float)$row['balance'] . "</td>
-        	</tr>";
-        $rownumber++;
+        		<td align='right'>" . (float)$row['balance'] . '</td>
+        	</tr>';
+        $rowNumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>" . $total_expected . "</td><td align='right'>" . $total_paid . "</td><td align='right'>" . $total_balance . "</td></tr></table>";
+          <td align='right'>{$total_expected}</td>
+          <td align='right'>{$total_discount}</td>
+          <td align='right'>{$total_paid}</td>
+          <td align='right'>{$total_balance }</td>
+          </tr></table>";
 } else {
-    echo "No Data Found! Try another search.";
+    echo 'No Data Found! Try another search.';
 }
 
-include_once 'paymentModeStatement.php';
+include_once 'parentStatement.php';
 echo '</div>';
 $conn->close();
