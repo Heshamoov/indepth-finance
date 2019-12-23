@@ -9,6 +9,7 @@ $sql = " SELECT finance_fees.balance                  balance,
        finance_transactions.payment_note     note,
        finance_transactions.reference_no     reference_no,
        finance_transactions.title     title,
+       finance_fee_discounts.discount_amount discount,
        students.admission_no                 admission_no,
        students.last_name                    student_name,
        finance_fee_collections.name          fee_name,
@@ -24,6 +25,8 @@ FROM guardians
          inner join finance_transactions on finance_fees.id = finance_transactions.finance_id
          inner join finance_transaction_receipt_records on finance_transactions.id = finance_transaction_receipt_records.finance_transaction_id
          inner join  transaction_receipts on finance_transaction_receipt_records.transaction_receipt_id = transaction_receipts.id
+         LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
+
 
 where students.familyid = '$familyid'
 AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'
@@ -31,9 +34,11 @@ ORDER BY transaction_receipts.receipt_number DESC";
 
 //echo $sql;
 $result = $conn->query($sql);
+$net_total = $net_discount = $net_paid = $net_balance = 0;
 if ($result->num_rows > 0) {
-    echo '<h4 align="center"><u>Transaction Statement</u></h4>';
-    echo "<table id='statementTable' class='table table-sm table-striped table-bordered parent-statement table-hover' style='padding: 0px !important;'>";
+    echo '<h4 align="center" id="transaction_heading"><u>Transaction Statement</u></h4>';
+    echo '<a  id="btnFees" style="margin-left:auto; margin-right: 20px" type="button" onclick="window.scrollTo(0, 0);" class="btn btn-sm btn-blue-grey " >View Fees</a>';
+    echo "<table id='statementTable' class='table table-sm table-striped table-bordered parent-statement table-hover' style='padding: 0px !important; margin-top: 20px'>";
     echo '<thead>
             <th>Transaction Date</th>
             <th>Invoice #</th>
@@ -42,6 +47,7 @@ if ($result->num_rows > 0) {
             <th>Student</th>
             <th>Fee Name</th>
             <th>Total</th>
+            <th>Discount</th>
             <th>Paid</th>
             <th>Balance</th>
             <th>Mode</th>
@@ -52,13 +58,18 @@ if ($result->num_rows > 0) {
     $prev_student = 0;
     while ($row = $result->fetch_assoc()) {
 
-        $balance = $row['total'] - $row['amount'];
+        $balance = $row['total'] - $row['amount'] - $row['discount'];
         $total = $row['total'];
 
         if ($row['fee_name'] === $prev_fee && $row['admission_no'] === $prev_student) {
             $total = $prev_bal;
-            $balance = $total - $row['amount'];
+            $balance = $total - $row['amount']  - $row['discount'];
         }
+
+//        $net_total += $total;
+//        $net_paid += $row['amount'];
+//        $net_discount += $row['discount'];
+//        $net_balance += $balance;
 
         echo '<tr>
                 <td>' . $row['transaction_date'] . '</td>
@@ -68,6 +79,7 @@ if ($result->num_rows > 0) {
                 <td>' . $row['student_name'] . '</td>
                 <td>' . $row['fee_name'] . '</td>
                 <td class="textRight">' . (float)$total . '</td>
+                <td class="textRight">' . (float)$row['discount'] . '</td>
                 <td class="textRight">' . (float)$row['amount'] . '</td>
                 <td class="textRight">' . (float)$balance . '</td>
                 <td>' . $row['mode'] . '</td>
@@ -78,5 +90,13 @@ if ($result->num_rows > 0) {
         $prev_bal = $balance;
         $prev_student = $row['admission_no'];
     }
+//    echo '<tr>
+//            <td colspan="6" align="center">Total</td>
+//            <td class="textRight">'.$net_total.'</td>
+//            <td class="textRight">'.$net_discount.'</td>
+//            <td class="textRight">'.$net_paid.'</td>
+//            <td class="textRight">'.$net_balance.'</td>
+//            <td></td><td></td>
+//            </tr>';
     echo '</table>';
 }
