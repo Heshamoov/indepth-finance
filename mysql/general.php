@@ -196,7 +196,7 @@ echo "<table class='table table-bordered table-striped table-hover' id='gradesLi
                     <th class='textLeft'><b>Grade</b></th>
                     <th class='textLeft'><b>No.Students</b></th>
                     <th class='textCenter'><b>Total</b></th>
-                    <th class='textCenter'><b>Discount</b></th>
+                    <th class='textCenter'><b>Discount</b></th> 
                     <th class='textCenter'><b>Expected</b></th>
                     <th class='textCenter' colspan=2><b>Paid</b></th>
                     <th class='textCenter' colspan=2><b>Balance</b></th>
