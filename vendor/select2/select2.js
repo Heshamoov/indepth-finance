@@ -1112,7 +1112,7 @@ S2.define('select2/results',[
 
       var currentIndex = $options.index($highlighted);
 
-      // If we are already at te top, don't move further
+      // If we are already at te.html top, don't move further
       if (currentIndex === 0) {
         return;
       }
