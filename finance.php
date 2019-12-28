@@ -13,8 +13,6 @@ checkLoggedIn()
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/indepth-logo.png">
@@ -45,7 +43,6 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/print.min.css">
 
 
-
     <script>
         function parentsDataTable() {
             $('#ParentsTable').DataTable({});
@@ -59,7 +56,7 @@ checkLoggedIn()
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             search();
         });
     </script>
@@ -67,7 +64,7 @@ checkLoggedIn()
 
 
 </head>
-<body  onload="currentDate()">
+<body onload="currentDate()">
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active" style="background-color: darkred!important;">
@@ -92,7 +89,9 @@ checkLoggedIn()
 
         <div class="footer">
             <p>
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by <a href="https://indepth.ae" target="_blank" style="color: black; font-weight: bold">INDEPTH</a>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                All rights reserved by <a href="https://indepth.ae" target="_blank"
+                                          style="color: black; font-weight: bold">INDEPTH</a>
             </p>
         </div>
     </nav>
@@ -107,10 +106,12 @@ checkLoggedIn()
                     <i class="fa fa-bars" style="color: white;"></i>
                     <span class="sr-only">Toggle Menu</span>
                 </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto btn-sm " style="background-color: darkred" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto btn-sm " style="background-color: darkred"
+                        type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars" style="color: white;"></i>
                 </button>
-  <h4>INDEPTH FINANCE</h4>
+                <h4>INDEPTH FINANCE</h4>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
@@ -131,20 +132,22 @@ checkLoggedIn()
         </nav>
         <div class="col-sm" style="margin-top: -30px">
             <div id="userInputDiv" class="row">
-                <table id="userInputTable" align="center" >
+                <table id="userInputTable" align="center">
                     <tr>
                         <th>Start</th>
                         <th>End</th>
                         <!--                        <th>Search</th>-->
                     <tr>
-                        <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"  value="2019-09-01"/></th>
-                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()" value="2019-12-22"/></th>
+                        <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"
+                                   value="2019-09-01"/></th>
+                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()" value="2019-12-22"/>
+                        </th>
                         <th style="float: right;">
                             <!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
                             <!--                                Overall Report-->
                             <!--                            </button>-->
-                            <a   id='printbtnMain'  style='margin-left: 20px;'
-                                 onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
+                            <a id='printbtnMain' style='margin-left: 20px;'
+                               onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
                 headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
                 ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees'], targetStyles: '*'})">
                               <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>

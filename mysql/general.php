@@ -165,34 +165,41 @@ echo '</div></div>';
 
 
 //--------------------------grades table------------------------------------------
-$grades_list = "
+$grades_query = "
 SELECT courses.course_name grade,
+       count(distinct students.last_name) 'No.Students',
        finance_fee_collections.name,
-       SUM(finance_fees.particular_total) expected,
+       SUM(finance_fees.particular_total) total,
+       SUM(finance_fees.discount_amount)  discount,
+       SUM(finance_fees.particular_total) - SUM(finance_fees.discount_amount)  expected,
+(SUM(finance_fees.particular_total) - SUM(finance_fees.discount_amount)) - SUM(finance_fees.balance) paid,
        SUM(finance_fees.balance) balance,
        finance_fee_collections.start_date
 from finance_fees
 
-         inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
          inner join batches on finance_fees.batch_id = batches.id
          inner join courses on batches.course_id = courses.id
+         inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
+         inner join students on finance_fees.student_id = students.id
 
+WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date '
+  AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '2020-08-31' ";
 
-where finance_fee_collections.start_date >= '$start_date'
-AND finance_fee_collections.start_date <= '$end_date'
+$grades_list = $grades_query . "group by courses.course_name";
 
-group by courses.course_name
-";
 
 echo "<div class='col-sm' id='gradesListDiv'>";
 echo '<h4><u>Grades List</u></h4>';
-echo "<table class='table  table-bordered table-striped  table-hover' id='gradesList'>
+echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
             <thead>
                 <tr>
                     <th class='textLeft'><b>Grade</b></th>
+                    <th class='textLeft'><b>No.Students</b></th>
+                    <th class='textCenter'><b>Total</b></th>
+                    <th class='textCenter'><b>Discount</b></th> 
                     <th class='textCenter'><b>Expected</b></th>
-                    <th class='textCenter'><b>Balance</b></th>
-                    <th class='textCenter'><b>%</b></th>
+                    <th class='textCenter' colspan=2><b>Paid</b></th>
+                    <th class='textCenter' colspan=2><b>Balance</b></th>
                 </tr>
             </thead>";
 
@@ -202,9 +209,12 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
                 <td class='textLeft'>" . $row['grade'] . "</td>
+                <td class='textLeft'>" . $row['No.Students'] . "</td>
+                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textRight'>" . number_format((float)$row['balance']) . "</td>
-                <td class='textRight'>" . round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
+                <td>" . number_format((float)$row['paid'])."</td><td>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
+                <td>" . number_format((float)$row['balance'])."</td><td>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
               </tr>";
     }
 } else {
@@ -212,31 +222,17 @@ if ($result->num_rows > 0) {
 }
 
 
-$grades_list_total = "
-SELECT courses.course_name grade,
-       finance_fee_collections.name,
-       SUM(finance_fees.particular_total) expected,
-       SUM(finance_fees.balance) balance,
-       finance_fee_collections.start_date
-from finance_fees
-
-         inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
-         inner join batches on finance_fees.batch_id = batches.id
-         inner join courses on batches.course_id = courses.id
-
-
-where finance_fee_collections.start_date >= '$start_date'
-AND finance_fee_collections.start_date <= '$end_date'
-
-";
-$result = $conn->query($grades_list_total);
+$result = $conn->query($grades_query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
-                <th><strong>Total</strong></th>
-                <th class='textRight'><strong>" . number_format((float)$row['expected']) . "</strong></th>
-                <th class='textRight'><strong>" . number_format((float)$row['balance']) . "</strong></th>
-                <th class='textRight'>" . round(($row['balance'] / $row['expected']) * 100, 2) . "%</th>
+                <td class='textLeft'><strong>Total</strong></td>
+                <td class='textLeft'>" . $row['No.Students'] . "</td>
+                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+                <td>" . number_format((float)$row['paid'])."</td><td>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
+                <td>" . number_format((float)$row['balance'])."</td><td>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
               </tr>";
     }
     echo '</table></div></div>';
@@ -304,10 +300,10 @@ if ($result->num_rows > 0) {
     		<td  class='textLeft'>" . $row['familyid'] . '</td>
     		<td>' . $row['parent'] . "</td>
         <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . (float) $row['expected'] . "</td>
-    		<td class='textRight'>" . (float) $row['discount'] . "</td>
-        <td class='textRight'>" . (float) $row['paid'] . "</td>
-        <td class='textRight'>" . (float) $row['balance'] . '</td>
+    		<td class='textRight'>" . (float)$row['expected'] . "</td>
+    		<td class='textRight'>" . (float)$row['discount'] . "</td>
+        <td class='textRight'>" . (float)$row['paid'] . "</td>
+        <td class='textRight'>" . (float)$row['balance'] . '</td>
     	</tr>';
         $rowNumber++;
     }

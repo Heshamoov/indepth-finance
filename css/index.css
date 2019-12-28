@@ -88,19 +88,8 @@ padding-left: 20px;
     padding-right: 2%;
 }
 
-#feesListDiv {
-    /*background-color: #9c27b0;*/
-    /*width: 80%;*/
-}
-
-#gradesList {
-    /*color: red;*/
-    border-spacing: 1px;
-}
-#feesList, #paymentMode {
-}
 #gradesList td{
-    padding: 1px;
+    padding: 6px;
 }
 #feesList td, #paymentMode td {
     padding: 0;
