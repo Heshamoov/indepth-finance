@@ -65,7 +65,7 @@
           <description value="" />
           <database-type value="GENERIC" />
           <config-type value="CUSTOM" />
-          <database-version value="9999.0" />
+          <database-version value="10.3" />
           <driver-source value="EXTERNAL" />
           <driver-library value="C:\Users\info\.PhpStorm2019.1\config\jdbc-drivers\MariaDB Connector J\2.4.1\mariadb-java-client-2.4.1.jar" />
           <driver value="org.mariadb.jdbc.Driver" />
