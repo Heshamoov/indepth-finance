@@ -156,9 +156,8 @@ checkLoggedIn()
                     </tr>
                 </table>
             </div>
-            <div id="result" style="margin: 20px"></div>
+            <div id="result"></div>
         </div>
-
     </div>
 </div>
 
