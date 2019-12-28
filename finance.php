@@ -1,3 +1,10 @@
+<?php
+include('config/db.php');
+include_once 'functions.php';
+session_start();
+checkLoggedIn()
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,7 +68,7 @@
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active" style="background-color: darkred!important;">
-        <h2><a href="index.html" class="logo"><img src="assets/indepth-logo.jpg" width="60" class="logoImage"></a></h2>
+        <h2><a href="finance.php" class="logo"><img src="assets/indepth-logo.jpg" width="60" class="logoImage"></a></h2>
         <ul class="list-unstyled components mb-5">
             <li class="active">
                 <a href="#"><span class="fa fa-home"></span> Home</a>
@@ -117,7 +124,7 @@
                             <a class="nav-link" href="#">Accounts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-sm btn-danger" href="#">Logout</a>
+                            <a class="btn btn-sm btn-danger" href="logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -142,8 +149,8 @@
                             <a id='printbtnMain' style='margin-left: 20px;'
                                onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
                 headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
-                ignoreElements: ['goback','printbtnMain'], targetStyles: '*'})">
-                                <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
+                ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees'], targetStyles: '*'})">
+                              <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
                             </a></th>
 
                     </tr>
@@ -157,7 +164,7 @@
 
 <script src="js/index.js"></script>
 <script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+<script src="js/main-finance.js"></script>
 </body>
 </html>

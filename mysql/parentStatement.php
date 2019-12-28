@@ -30,7 +30,7 @@ FROM guardians
 
 where students.familyid = '$familyid'
 AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'
-ORDER BY transaction_receipts.receipt_number DESC";
+ORDER BY finance_fee_collections.name,transaction_receipts.receipt_number DESC";
 
 //echo $sql;
 $result = $conn->query($sql);
@@ -39,19 +39,19 @@ if ($result->num_rows > 0) {
     echo '<h4 align="center" id="transaction_heading"><u>Transaction Statement</u></h4>';
     echo '<a  id="btnFees" style="margin-left:auto; margin-right: 20px" type="button" onclick="window.scrollTo(0, 0);" class="btn btn-sm btn-blue-grey " >View Fees</a>';
     echo "<table id='statementTable' class='table table-sm table-striped table-bordered parent-statement table-hover' style='padding: 0px !important; margin-top: 20px'>";
-    echo '<thead>
-            <th>Transaction Date</th>
-            <th>Invoice #</th>
-            <th>Receipt #</th>
-            <th>Ref #</th>
-            <th>Student</th>
-            <th>Fee Name</th>
-            <th>Total</th>
-            <th>Discount</th>
-            <th>Paid</th>
-            <th>Balance</th>
-            <th>Mode</th>
-            <th>Notes</th>
+    echo '<thead class="black  white-text">
+            <th scope="col">Transaction Date</th>
+            <th scope="col">Invoice #</th>
+            <th scope="col">Receipt #</th>
+            <th scope="col">Ref #</th>
+            <th scope="col">Student</th>
+            <th scope="col">Fee Name</th>
+            <th scope="col">Total</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Paid</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Notes</th>
         </thead>';
     $prev_fee = '';
     $prev_bal = 0;

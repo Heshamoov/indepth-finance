@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
             echo "
                 <thead>
                     <tr>
-                        <th colspan=7 align='center'> Student: <b>" .
+                        <th colspan=7 align='center'  class=\"black  white-text\"> Student: <b>" .
                 $row['admission_no'] . ' - ' . $row['student'] . '</b> &nbsp&nbsp Grade: <b>' .
                 $row['course_name'] . '</b> &nbsp&nbsp Section: <b>' .
                 $row['section'] . "</b></th>
