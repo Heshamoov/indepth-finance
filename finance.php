@@ -15,6 +15,7 @@ checkLoggedIn()
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/metrostyle.css">
     <link rel="icon" href="assets/indepth-logo.png">
 
     <!--    MD Boostrap styling CDN -->
@@ -27,7 +28,7 @@ checkLoggedIn()
 
     <!--MD Bootstrap js-->
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript"
@@ -65,6 +66,7 @@ checkLoggedIn()
 
 </head>
 <body onload="currentDate()">
+
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active" style="background-color: darkred!important;">
@@ -111,7 +113,7 @@ checkLoggedIn()
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars" style="color: white;"></i>
                 </button>
-                <h4>INDEPTH FINANCE</h4>
+                <h4 style="color:black">INDEPTH FINANCE</h4>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
@@ -132,29 +134,51 @@ checkLoggedIn()
         </nav>
         <div class="col-sm" style="margin-top: -30px">
             <div id="userInputDiv" class="row">
-                <table id="userInputTable" align="center">
-                    <tr>
-                        <th>Start</th>
-                        <th>End</th>
-                        <!--                        <th>Search</th>-->
-                    <tr>
-                        <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"
-                                   value="2019-09-01"/></th>
-                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()" value="2019-12-22"/>
-                        </th>
-                        <th style="float: right;">
-                            <!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
-                            <!--                                Overall Report-->
-                            <!--                            </button>-->
-                            <a id='printbtnMain' style='margin-left: 20px;'
-                               onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
+
+                <div class="col-sm"></div>
+                <div class="col-sm-6">
+                    <table id="userInputTable" align="center">
+                        <tr>
+                            <th><label for="start">Start</label></th>
+                            <th><label for="end">End</label></th>
+                            <!--                        <th>Search</th>-->
+                        <tr>
+                            <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
+                            <!--                                       value="2019-09-01"/></th>-->
+                            <th ><input data-clear-button="true"
+                                                                   data-clear-button-icon="<i class='fas fa-times'></i>"
+                                                                   data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                                                                   data-calendar-wide="true" class="w3-input w3-card" type="text"
+                                                                   data-role="calendarpicker" id="start" onchange="search()"
+                                                                   data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
+
+                            </th>
+                            <th ><input data-clear-button="true"
+                                       data-clear-button-icon="<i class='fas fa-times'></i>"
+                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
+                                       data-role="calendarpicker" id="end" onchange="search()"
+                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="22-12-2019"/>
+                            </th>
+
+                            <!--                            <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()"-->
+                            <!--                                       value="2019-12-22"/>-->
+                            <!--                            </th>-->
+                            <th style="float: right;">
+                                <!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
+                                <!--                                Overall Report-->
+                                <!--                            </button>-->
+                                <a id='printbtnMain' style='margin-left: 20px;'
+                                   onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
                 headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
                 ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees'], targetStyles: '*'})">
-                              <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
-                            </a></th>
+                                    <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
+                                </a></th>
 
-                    </tr>
-                </table>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm"></div>
             </div>
             <div id="result" style="margin: 20px"></div>
         </div>
@@ -164,7 +188,8 @@ checkLoggedIn()
 
 <script src="js/index.js"></script>
 <script src="js/popper.js"></script>
- <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main-finance.js"></script>
+<script src="js/calender.js"></script>
 </body>
 </html>

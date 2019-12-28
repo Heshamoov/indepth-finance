@@ -95,7 +95,7 @@ padding-left: 20px;
     padding: 0;
 }
 #feesList th, #paymentMode th, #gradesList th{
-    padding: 1px;
+    padding: 5px;
 }
 
 .table.table-hover tbody tr:hover {
@@ -116,3 +116,9 @@ padding-left: 20px;
     font-size: 13px !important;
     padding: 4px;
 }
+
+.textBold {
+    font-weight: bolder !important;
+}
+
+

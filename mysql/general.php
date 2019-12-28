@@ -2,8 +2,8 @@
 
 include('../config/db.php');
 
-$start_date = $_REQUEST["start_date"];
-$end_date = $_REQUEST["end_date"];
+$start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
 
 $fees_list = "
 SELECT
@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
     echo "<div class='row' id='feesListDiv'>";
     echo '<h4><u>Fees List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
-            <thead>
+            <thead class=\"black text-white\">
                 <tr>
                     <th class='textLeft'><b>FEE</b></th>
                     <th class='textCenter'><b>Expected</b></th>
@@ -191,7 +191,7 @@ $grades_list = $grades_query . "group by courses.course_name";
 echo "<div class='col-sm' id='gradesListDiv'>";
 echo '<h4><u>Grades List</u></h4>';
 echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
-            <thead>
+            <thead class=\"black text-white\">
                 <tr>
                     <th class='textLeft'><b>Grade</b></th>
                     <th class='textLeft'><b>No.Students</b></th>
@@ -213,9 +213,9 @@ if ($result->num_rows > 0) {
                 <td class='textRight'>" . number_format((float)$row['total']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
-                <td>" . number_format((float)$row['paid'])."</td><td>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
-                <td>" . number_format((float)$row['balance'])."</td><td>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
-              </tr>";
+                <td class='textRight'>" . number_format((float)$row['paid'])."</td><td class='textRight'>" . round(($row['paid'] / $row['expected']) * 100, 2) ."%</td>
+                <td class='textRight'>" . number_format((float)$row['balance'])."</td><td class='textRight'>".round(($row['balance'] / $row['expected']) * 100, 2) .'%</td>
+              </tr>';
     }
 } else {
     echo 'No Data Found! Try another search.';
@@ -225,14 +225,14 @@ if ($result->num_rows > 0) {
 $result = $conn->query($grades_query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo " <tr >
-                <td class='textLeft'><strong>Total</strong></td>
-                <td class='textLeft'>" . $row['No.Students'] . "</td>
-                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
-                <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
-                <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
-                <td>" . number_format((float)$row['paid'])."</td><td>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
-                <td>" . number_format((float)$row['balance'])."</td><td>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
+        echo " <tr style='font-weight: bolder !important;'>
+                <td class='textLeft textBold'>Total</td>
+                <td class='textLeft textBold'>" . $row['No.Students'] . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textBold'>" . number_format((float)$row['paid'])."</td><td class='textBold'>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
+                <td class='textBold'>" . number_format((float)$row['balance'])."</td><td class='textBold'>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
               </tr>";
     }
     echo '</table></div></div>';
@@ -277,9 +277,9 @@ if ($result->num_rows > 0) {
     echo '<h4><u>Parents List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover ' id='ParentsTable'>";
     echo '
-    	<thead>
+    	<thead class="black text-white">
         <tr>
-    		<th>#</th>
+    		<th >#</th>
     		<th  width="20" >FamilyID</th>
     		<th>Parent</th>
             <th class="smallcol">Children</th>
@@ -300,10 +300,10 @@ if ($result->num_rows > 0) {
     		<td  class='textLeft'>" . $row['familyid'] . '</td>
     		<td>' . $row['parent'] . "</td>
         <td  class='textRight'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . (float)$row['expected'] . "</td>
-    		<td class='textRight'>" . (float)$row['discount'] . "</td>
-        <td class='textRight'>" . (float)$row['paid'] . "</td>
-        <td class='textRight'>" . (float)$row['balance'] . '</td>
+    		<td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+    		<td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
     	</tr>';
         $rowNumber++;
     }
