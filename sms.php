@@ -15,6 +15,7 @@ checkLoggedIn()
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sms.css">
     <link rel="stylesheet" href="css/metrostyle.css">
     <link rel="icon" href="assets/indepth-logo.png">
 
@@ -43,30 +44,20 @@ checkLoggedIn()
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
     <link rel="stylesheet" href="css/print.min.css">
 
-
     <script>
-        function parentsDataTable() {
-            $('#ParentsTable').DataTable({});
-            $('.dataTables_length').addClass('bs-select');
-        }
+    function parentsDataTable() {
+    $('#parentsSmsList').DataTable({});
+    $('.dataTables_length').addClass('bs-select');
+    }
 
-        $(document).ready(function () {
-            // we call the function
-            search();
-        });
+    $(document).ready(function () {
+    search();
+    });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            search();
-        });
-    </script>
     <title>InDepth Finance</title>
-
-
 </head>
 <body>
-
 
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active" style="background-color: darkred!important;">
@@ -100,7 +91,6 @@ checkLoggedIn()
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-3">
-
         <nav class="navbar navbar-expand-lg navbar-light btn-sm btn-outline-light">
             <div class="container-fluid">
 
@@ -184,7 +174,12 @@ checkLoggedIn()
     </div>
 </div>
 
-<script src="js/index.js"></script>
+<script>
+    $(document).ready(function () {
+        search();
+    });
+</script>
+<script src="js/sms.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main-finance.js"></script>
