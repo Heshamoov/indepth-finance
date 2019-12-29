@@ -73,7 +73,7 @@ checkLoggedIn()
         <h2><a href="finance.php" class="logo"><img src="assets/indepth-logo.jpg" width="60" class="logoImage"></a></h2>
         <ul class="list-unstyled components mb-5">
             <li class="active">
-                <a href="#"><span class="fa fa-home"></span> Home</a>
+                <a href="dashboard.php"><span class="fa fa-home"></span> Home</a>
             </li>
             <li>
                 <a href="#"><span class="fa fa-user"></span> Accounts</a>
@@ -117,7 +117,7 @@ checkLoggedIn()
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Student Fees</a>
+                            <a class="nav-link" href="finance.php">Student Fees</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Ledgers</a>
