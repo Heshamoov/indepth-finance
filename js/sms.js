@@ -21,3 +21,11 @@ function search() {
     parentsList.open("GET", "mysql/parentsSmsList.php?start_date=" + start_date + "&end_date=" + end_date, false);
     parentsList.send();
 }
+
+function printTable() {
+    document.getElementById('parentsSmsListPDF').style.display = 'block';
+    printJS({
+        printable: 'parentsSmsListPrintDiv', type: 'html', repeatTableHeader: true, showModal: true, css: 'css/print.css'
+    })
+    document.getElementById('parentsSmsListPDF').style.display = 'none';
+}

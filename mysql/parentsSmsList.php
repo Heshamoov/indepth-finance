@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include_once '../functions.php';
 include('../config/db.php');
 
 $start_date = $_REQUEST['start_date'];
@@ -38,7 +39,6 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 
 
 echo "<div class='row-sm' id='topDiv'>";
-echo '<h4><u>Parents List</u></h4>';
 echo "<table class='table table-bordered table-striped table-hover' id='parentsSmsList'>
             <thead class='black white-text'>
                 <tr>
@@ -69,7 +69,47 @@ if ($result->num_rows > 0) {
                 <td class='textRight'>" . number_format((float)$row['balance'])."</td>
               </tr>";
     }
-    echo "</table></div>";
 } else {
     echo 'No Data Found! Try another search.';
 }
+echo "</table><div>";
+
+
+
+echo "<div id='parentsSmsListPrintDiv'>";
+printHeader('Parent SMS Followup List', $start_date, $end_date);
+echo "<table id='parentsSmsListPDF' style='display: none'>
+            <thead class='black white-text'>
+                <tr>
+                    <th class='textLeft'>Parent</th>
+                    <th class='textLeft'>Mobile</th>
+                    <th class='textCenter'>Students</th>
+                    <th class='textCenter'>FamilyID</th> 
+                    <th class='textCenter'>Total</th> 
+                    <th class='textCenter'>Discount</th> 
+                    <th class='textCenter'>Expected</th>
+                    <th class='textCenter'>Paid</th>
+                    <th class='textCenter'>Balance</th>                    
+                </tr>
+            </thead>";
+
+$result = $conn->query($parentsSmsList);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo " <tr >
+                <td class='textLeft bold'>" . $row['parent'] . "</td>
+                <td class='textLeft bold'>" . $row['mobile_phone'] . "</td>
+                <td class='textLeft'>" . $row['students'] . "</td>
+                <td class='textLeft'>" . $row['familyid'] . "</td>
+                <td class='textLeft'>" . number_format((float)$row['total']) . "</td>
+                <td class='textLeft'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textLeft'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textLeft'>" . number_format((float)$row['paid'])."</td>
+                <td class='textRight'>" . number_format((float)$row['balance'])."</td>
+              </tr>";
+    }
+} else {
+    echo 'No Data Found! Try another search.';
+}
+echo "</table><div>";
+$conn->close();

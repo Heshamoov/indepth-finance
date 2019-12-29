@@ -6,7 +6,7 @@
                 <a href="dashboard.php"><span class="fa fa-home"></span> Home</a>
             </li>
             <li>
-                <a href="sms.php"><span class="fa fa-sms"></span>SMS</a>
+                <a href="sms.php"><span class="fa fa-sms"></span>FollowUp</a>
             </li>
             <li>
                 <a href="#"><span class="fa fa-sticky-note"></span> Ledger</a>
@@ -30,10 +30,8 @@
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-3">
-
         <nav class="navbar navbar-expand-lg navbar-light btn-sm btn-outline-light">
             <div class="container-fluid">
-
                 <button type="button" id="sidebarCollapse" class="btn btn-sm " style="background-color: darkred">
                     <i class="fa fa-bars" style="color: white;"></i>
                     <span class="sr-only">Toggle Menu</span>

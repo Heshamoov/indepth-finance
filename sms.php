@@ -45,101 +45,77 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/print.min.css">
 
     <script>
-    function parentsDataTable() {
-    $('#parentsSmsList').DataTable({});
-    $('.dataTables_length').addClass('bs-select');
-    }
+        function parentsDataTable() {
+            $('#parentsSmsList').DataTable({});
+            $('.dataTables_length').addClass('bs-select');
+        }
 
-    $(document).ready(function () {
-    search();
-    });
+        $(document).ready(function () {
+            search();
+        });
     </script>
 
     <title>SMS</title>
 </head>
-<body>
 <?php include('navbar.php'); ?>
+<h4 style="color:black">Follow-up List</h4>
+<?php include('uppernav.php'); ?>
+<body>
 
-                <h4 style="color:black">SMS</h4>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="finance.php">Student Fees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Ledgers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accounts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-sm btn-danger" href="logout.php">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="col-sm" style="margin-top: -30px">
-            <div id="userInputDiv" class="row">
-                <div class="col-sm"></div>
-                <div class="col-sm-6">
-                    <table id="userInputTable" align="center">
-                        <tr>
-                            <th><label for="star_date">Start</label></th>
-                            <th><label for="end_date">End</label></th>
-                            <!--                        <th>Search</th>-->
-                        <tr>
-                            <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
-                            <!--                                       value="2019-09-01"/></th>-->
-                            <th><input data-clear-button="true"
-                                       data-clear-button-icon="<i class='fas fa-times'></i>"
-                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                       data-role="calendarpicker" id="start_date" onchange="search()"
-                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
 
-                            </th>
-                            <th><input data-clear-button="true"
-                                       data-clear-button-icon="<i class='fas fa-times'></i>"
-                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                       data-role="calendarpicker" id="end_date" onchange="search()"
-                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="31-08-2020"/>
-                            </th>
+<div class="col-sm" style="margin-top: -30px">
+    <div id="userInputDiv" class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm-6">
+            <table id="userInputTable" align="center">
+                <tr>
+                    <th><label for="start_date">Start</label></th>
+                    <th><label for="end_date">End</label></th>
+                    <!--                        <th>Search</th>-->
+                <tr>
+                    <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
+                    <!--                                       value="2019-09-01"/></th>-->
+                    <th><input data-clear-button="true"
+                               data-clear-button-icon="<i class='fas fa-times'></i>"
+                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                               data-calendar-wide="true" class="w3-input w3-card" type="text"
+                               data-role="calendarpicker" id="start_date" onchange="search()"
+                               data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
 
-                            <!--                            <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()"-->
-                            <!--                                       value="2019-12-22"/>-->
-                            <!--                            </th>-->
-                            <th style="float: right;">
-                                <!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
-                                <!--                                Overall Report-->
-                                <!--                            </button>-->
-                                <a id='printbtnMain' style='margin-left: 20px;'
-                                   onclick="printJS({printable: 'result', type: 'html', header: 'Fees Details',
-                headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
-                ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees'], targetStyles: '*'})">
-                                    <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
-                                </a></th>
+                    </th>
+                    <th><input data-clear-button="true"
+                               data-clear-button-icon="<i class='fas fa-times'></i>"
+                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                               data-calendar-wide="true" class="w3-input w3-card" type="text"
+                               data-role="calendarpicker" id="end_date" onchange="search()"
+                               data-input-format="%d-%m-%y" data-format="%d %b %Y" value="31-08-2020"/>
+                    </th>
+                    <th style="float: right;">
+                        <a id='printbtnMain' style='margin-left: 20px;'
+                           onclick="printTable();">
+                            <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
+                        </a></th>
 
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-            <div id="result"></div>
+                </tr>
+            </table>
         </div>
+        <div class="col-sm"></div>
     </div>
+    <div id="result"></div>
 </div>
+</div> <!--navbar-->
+</div> <!--navbar-->
+
 
 <script>
     $(document).ready(function () {
         search();
     });
 </script>
+
 <script src="js/sms.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/main-finance.js"></script>
 <script src="js/calender.js"></script>
 </body>
 </html>

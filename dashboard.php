@@ -1219,7 +1219,6 @@ checkLoggedIn()
 <script src="js/index.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/main-finance.js"></script>
 <script type="text/javascript">
     // Animations initialization
     new WOW().init();
