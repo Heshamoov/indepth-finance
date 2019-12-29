@@ -307,15 +307,15 @@ if ($result->num_rows > 0) {
 
     echo "<div class='row'>";
     echo "<div id='ParentsDiv' class='col-sm' >";
-    echo '<h4><u>Parents List</u></h4>';
-    echo "<table class='table  table-bordered table-striped  table-hover ' id='ParentsTable'>";
-    echo '
+    echo "<h4><u>Parents List</u></h4>";
+    echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
+    echo "
     	<thead>
         <tr>
     		<th>#</th>
-    		<th  width="20" >FamilyID</th>
+    		<th width='20'>FamilyID</th>
     		<th>Parent</th>
-            <th class="smallcol">Children</th>
+            <th class='smallcol'>Children</th>
     		<th>Expected</th>
     		<th>Discount</th>
             <th>Paid</th>
@@ -323,7 +323,7 @@ if ($result->num_rows > 0) {
     	</tr>
         </thead>
         <tbody>
-    ';
+    ";
     while ($row = $result->fetch_assoc()) {
         $row['paid'] -= $row['discount'];
         $params = array($start_date, $end_date, $row['familyid']);
