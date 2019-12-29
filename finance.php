@@ -138,10 +138,8 @@ checkLoggedIn()
                         <th>End</th>
                         <!--                        <th>Search</th>-->
                     <tr>
-                        <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"
-                                   value="2019-09-01"/></th>
-                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()" value="2019-12-22"/>
-                        </th>
+                        <th><input class="w3-input w3-card" type="date" id="start" onchange="search()" value="2019-09-01"/></th>
+                        <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()" value="2020-08-31"/></th>
                         <th style="float: right;">
                             <!--                            <button class="btn btn-sm aqua-gradient" id="search" onclick="search()" accesskey="q">-->
                             <!--                                Overall Report-->
@@ -156,9 +154,8 @@ checkLoggedIn()
                     </tr>
                 </table>
             </div>
-            <div id="result" style="margin: 20px"></div>
+            <div id="result"></div>
         </div>
-
     </div>
 </div>
 
