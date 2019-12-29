@@ -1,16 +1,16 @@
-function currentDate(){
-    let today = new Date().toISOString().substr(0, 10);
-    document.querySelector("#end").value = today;
-}
+// function currentDate(){
+//     let today = new Date().toISOString().substr(0, 10);
+//     document.querySelector("#end_date").value = today;
+// }
 
 function search() {
-    let date = new Date(document.querySelector("#start").value);
+    let date = new Date(document.querySelector("#start_date").value);
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let start_date = year + '-' + month + '-' + day;
 
-    date = new Date(document.querySelector("#end").value);
+    date = new Date(document.querySelector("#end_date").value);
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();

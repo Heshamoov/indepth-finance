@@ -239,7 +239,7 @@ function findCommonOffsetParent(element1, element2) {
     return window.document.documentElement;
   }
 
-  // Here we make sure to give as "start" the element that comes first in the DOM
+  // Here we make sure to give as "start_date" the element that comes first in the DOM
   var order = element1.compareDocumentPosition(element2) & Node.DOCUMENT_POSITION_FOLLOWING;
   var start = order ? element1 : element2;
   var end = order ? element2 : element1;
@@ -1001,7 +1001,7 @@ function setupEventListeners(reference, options, state, updateBound) {
 }
 
 /**
- * It will add resize/scroll events and start recalculating
+ * It will add resize/scroll events and start_date recalculating
  * position of the popper element when they are triggered.
  * @method
  * @memberof Popper
@@ -1381,17 +1381,17 @@ function getOppositeVariation(variation) {
  * - `left`
  *
  * Each placement can have a variation from this list:
- * - `-start`
+ * - `-start_date`
  * - `-end`
  *
  * Variations are interpreted easily if you think of them as the left to right
- * written languages. Horizontally (`top` and `bottom`), `start` is left and `end`
+ * written languages. Horizontally (`top` and `bottom`), `start_date` is left and `end`
  * is right.<br />
- * Vertically (`left` and `right`), `start` is top and `end` is bottom.
+ * Vertically (`left` and `right`), `start_date` is top and `end` is bottom.
  *
  * Some valid examples are:
  * - `top-end` (on top of reference, right aligned)
- * - `right-start` (on right of reference, top aligned)
+ * - `right-start_date` (on right of reference, top aligned)
  * - `bottom` (on bottom, centered)
  * - `auto-right` (on the side with more space available, alignment depends by placement)
  *
@@ -1402,9 +1402,9 @@ function getOppositeVariation(variation) {
  * @method placements
  * @memberof Popper
  */
-var placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
+var placements = ['auto-start_date', 'auto', 'auto-end', 'top-start_date', 'top', 'top-end', 'right-start_date', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start_date', 'left-end', 'left', 'left-start_date'];
 
-// Get rid of `auto` `auto-start` and `auto-end`
+// Get rid of `auto` `auto-start_date` and `auto-end`
 var validPlacements = placements.slice(3);
 
 /**
@@ -1895,10 +1895,10 @@ function inner(data) {
  */
 var modifiers = {
   /**
-   * Modifier used to shift the popper on the start or end of its reference
+   * Modifier used to shift the popper on the start_date or end of its reference
    * element.<br />
    * It will read the variation of the `placement` property.<br />
-   * It can be one either `-end` or `-start`.
+   * It can be one either `-end` or `-start_date`.
    * @memberof modifiers
    * @inner
    */

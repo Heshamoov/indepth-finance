@@ -104,8 +104,8 @@ var Tooltip = function () {
    * @param {HTMLElement} reference - The DOM node used as reference of the tooltip (it can be a jQuery element).
    * @param {Object} options
    * @param {String} options.placement=bottom
-   *      Placement of the popper accepted values: `top(-start, -end), right(-start, -end), bottom(-start, -end),
-   *      left(-start, -end)`
+   *      Placement of the popper accepted values: `top(-start_date, -end), right(-start_date, -end), bottom(-start_date, -end),
+   *      left(-start_date, -end)`
    * @param {HTMLElement|String|false} options.container=false - Append the tooltip to a specific element.
    * @param {Number|Object} options.delay=0
    *      Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type.

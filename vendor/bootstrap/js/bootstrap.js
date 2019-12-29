@@ -1462,9 +1462,9 @@ var Dropdown = function ($) {
   };
 
   var AttachmentMap = {
-    TOP: 'top-start',
+    TOP: 'top-start_date',
     TOPEND: 'top-end',
-    BOTTOM: 'bottom-start',
+    BOTTOM: 'bottom-start_date',
     BOTTOMEND: 'bottom-end'
   };
 

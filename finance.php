@@ -138,26 +138,26 @@ checkLoggedIn()
                 <div class="col-sm-6">
                     <table id="userInputTable" align="center">
                         <tr>
-                            <th><label for="start">Start</label></th>
-                            <th><label for="end">End</label></th>
+                            <th><label for="star_date">Start</label></th>
+                            <th><label for="end_date">End</label></th>
                             <!--                        <th>Search</th>-->
                         <tr>
                             <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
                             <!--                                       value="2019-09-01"/></th>-->
-                            <th ><input data-clear-button="true"
-                                                                   data-clear-button-icon="<i class='fas fa-times'></i>"
-                                                                   data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                                                                   data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                                                   data-role="calendarpicker" id="start" onchange="search()"
-                                                                   data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
-
-                            </th>
-                            <th ><input data-clear-button="true"
+                            <th><input data-clear-button="true"
                                        data-clear-button-icon="<i class='fas fa-times'></i>"
                                        data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
                                        data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                       data-role="calendarpicker" id="end" onchange="search()"
-                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="22-12-2019"/>
+                                       data-role="calendarpicker" id="start_date" onchange="search()"
+                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
+
+                            </th>
+                            <th><input data-clear-button="true"
+                                       data-clear-button-icon="<i class='fas fa-times'></i>"
+                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
+                                       data-role="calendarpicker" id="end_date" onchange="search()"
+                                       data-input-format="%d-%m-%y" data-format="%d %b %Y" value="31-08-2020"/>
                             </th>
 
                             <!--                            <th><input class="w3-input w3-card" type="date" id="end" onkeyup="search()"-->

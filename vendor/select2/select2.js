@@ -33,7 +33,7 @@
   }
 } (function (jQuery) {
   // This is needed so we can catch the AMD loader configuration and use it
-  // The inner file should be wrapped (by `banner.start.js`) in a function that
+  // The inner file should be wrapped (by `banner.start_date.js`) in a function that
   // returns the AMD loader references.
   var S2 =(function () {
   // Restore the Select2 AMD loader so it can be used
@@ -103,7 +103,7 @@ var requirejs, require, define;
                 //want the directory, "one/two" for this normalization.
                 name = baseParts.slice(0, baseParts.length - 1).concat(name);
 
-                //start trimDots
+                //start_date trimDots
                 for (i = 0; i < name.length; i += 1) {
                     part = name[i];
                     if (part === ".") {
