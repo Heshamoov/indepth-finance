@@ -57,7 +57,7 @@ $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo '<h4><u>Payment Mode</u></h4>';
     echo "<table class='table table-bordered table-striped table-hover' id='paymentMode'>
-            <thead>
+            <thead class=\"black text-white\">
                 <tr>
                     <th class='textLeft'><b>Mode</b></th>
                     <th class='textCenter'><b>Amount</b></th>

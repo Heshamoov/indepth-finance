@@ -2,8 +2,8 @@
 
 include('../config/db.php');
 
-$start_date = $_REQUEST["start_date"];
-$end_date = $_REQUEST["end_date"];
+$start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
 
 
 
@@ -169,8 +169,8 @@ if ($result->num_rows > 0) {
     echo "<div class='row'>";
     echo "<div class='col-7'>";
     echo '<h4><u>Fees List</u></h4>';
-    echo "<table class='table table-bordered table-striped table-hover' id='feesList'>
-            <thead>
+    echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
+            <thead class=\"black text-white\">
                 <tr>
                     <th class='textLeft'>Fee</th>
                     <th class='textLeft'>Students</th>
@@ -239,9 +239,26 @@ from finance_fees
          inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
          inner join students on finance_fees.student_id = students.id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'
-  AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '2020-08-31'
-";
+WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date '
+  AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '$end_date' ";
+
+$grades_list = $grades_query . "group by courses.course_name";
+
+
+echo "<div class='col-sm' id='gradesListDiv'>";
+echo '<h4><u>Grades List</u></h4>';
+echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
+            <thead class=\"black text-white\">
+                <tr>
+                    <th class='textLeft'><b>Grade</b></th>
+                    <th class='textLeft'><b>No.Students</b></th>
+                    <th class='textCenter'><b>Total</b></th>
+                    <th class='textCenter'><b>Discount</b></th> 
+                    <th class='textCenter'><b>Expected</b></th>
+                    <th class='textCenter' colspan=2><b>Paid</b></th>
+                    <th class='textCenter' colspan=2><b>Balance</b></th>
+                </tr>
+            </thead>";
 
 $result = $conn->query($fees_list_sammury);
 if ($result->num_rows > 0) {
@@ -265,13 +282,29 @@ if ($result->num_rows > 0) {
 echo "</div>"; // End of LeftDIV
 
 
+$result = $conn->query($grades_query);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo " <tr style='font-weight: bolder !important;'>
+                <td class='textLeft textBold'>Total</td>
+                <td class='textLeft textBold'>" . $row['No.Students'] . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight textBold'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textBold'>" . number_format((float)$row['paid'])."</td><td class='textBold'>" . round(($row['paid'] / $row['expected']) * 100, 2) . "%</td>
+                <td class='textBold'>" . number_format((float)$row['balance'])."</td><td class='textBold'>".round(($row['balance'] / $row['expected']) * 100, 2) . "%</td>
+              </tr>";
+    }
+    echo '</table></div></div>';
+} else {
+    echo 'No Data Found! Try another search.';
+}
 //                                                         PAYMENT MODE
 
 echo "<div class='col'>";
 include_once 'paymentModeSummary.php';
 echo '</div>';  // col End
 echo '</div>';  // row End
-
 
 
 $general = "

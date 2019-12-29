@@ -65,12 +65,12 @@ if ($result->num_rows > 0) {
         if ($first_name != $first_name_old) {
             if ($second_table) {
                 echo "<tr><td colspan='3' align='center'><b>Total</b></td>
-                            <td align='right'>{$total_expected}</td>
-                            <td align='right'>{$total_discount}</td>
-                            <td align='right'>{$total_paid}</td>
-                            <td align='right'>{$total_balance}</td>
+                            <td align='right'>".number_format($total_expected)."</td>
+                            <td align='right'>".number_format($total_discount)."</td>
+                            <td align='right'>".number_format($total_paid)."</td>
+                            <td align='right'>".number_format($total_balance). '</td>
                       </tr>
-                      </table><br>";
+                      </table><br>';
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid  = $total_discount= 0;
@@ -114,18 +114,18 @@ if ($result->num_rows > 0) {
         		<td>" . $rowNumber . '</td>
                 <td>' . $row['start_date'] . '</td>
                 <td>' . $row['fee_name'] . "</td>
-        		<td align='right'>" . (float)$row['expected'] . "</td>
-        		<td align='right'>" . (float)$row['discount'] . "</td>
-        		<td align='right'>" . $paid . "</td>
-        		<td align='right'>" . (float)$row['balance'] . '</td>
+        		<td align='right'>" . number_format((float)$row['expected']) . "</td>
+        		<td align='right'>" . number_format((float)$row['discount']) . "</td>
+        		<td align='right'>" . number_format($paid) . "</td>
+        		<td align='right'>" . number_format((float)$row['balance']) . '</td>
         	</tr>';
         $rowNumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>{$total_expected}</td>
-          <td align='right'>{$total_discount}</td>
-          <td align='right'>{$total_paid}</td>
-          <td align='right'>{$total_balance }</td>
+          <td align='right'>".number_format($total_expected)."</td>
+          <td align='right'>".number_format($total_discount)."</td>
+          <td align='right'>".number_format($total_paid)."</td>
+          <td align='right'>".number_format($total_balance)."</td>
           </tr></table>";
 } else {
     echo 'No Data Found! Try another search.';

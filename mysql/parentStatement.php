@@ -78,10 +78,10 @@ if ($result->num_rows > 0) {
                 <td>' . $row['reference_no'] . '</td>
                 <td>' . $row['student_name'] . '</td>
                 <td>' . $row['fee_name'] . '</td>
-                <td class="textRight">' . (float)$total . '</td>
-                <td class="textRight">' . (float)$row['discount'] . '</td>
-                <td class="textRight">' . (float)$row['amount'] . '</td>
-                <td class="textRight">' . (float)$balance . '</td>
+                <td class="textRight">' . number_format((float)$total) . '</td>
+                <td class="textRight">' . number_format((float)$row['discount'] ). '</td>
+                <td class="textRight">' . number_format((float)$row['amount'] ). '</td>
+                <td class="textRight">' . number_format((float)$balance) . '</td>
                 <td>' . $row['mode'] . '</td>
                 <td>' . $row['note'] . '</td>
                 </tr>';
