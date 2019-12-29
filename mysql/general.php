@@ -1,13 +1,11 @@
 <?php
-
+session_start();
+date_default_timezone_set('Asia/Dubai');
+include_once  '../functions.php';
 include('../config/db.php');
-
 $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
-
-
-
-//                                                           GRADES LIST
+//       GRADES LIST
 
 $grades_query = "
 SELECT courses.course_name grade,
@@ -29,16 +27,24 @@ from finance_fees
 WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date '
   AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '2020-08-31' ";
 
-$grades_list = $grades_query . "group by courses.course_name";
+$grades_list = $grades_query . 'group by courses.course_name';
 
-
-echo "<div class='row' id='topDiv'>";
+echo "<div id='printUpperDiv'>";
+printHeader('Fee Details', $start_date, $end_date);
+echo "<div class='row' id='topDiv' style='margin: 10px;'>";
 echo '<h4><u>Grades List</u></h4>';
+echo '
+<a id=\'printbtnMain\' style=\'margin-left: 25px; margin-top: 5px\'
+                               onclick="printJS({printable: \'printUpperDiv\', type: \'html\', header: \'Fees Details\',
+                headerStyle: \'font-weight: 300px; margin: 40px;\' , repeatTableHeader : true, showModal : true,
+                ignoreElements: [\'goback\',\'printbtnMain\',\'btnTransaction\',\'btnFees\',\'ParentsDiv\'], css: \'css/print.css\', targetStyles: \'*\'})">
+                                <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
+                            </a>';
 echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
             <thead class='black white-text'>
                 <tr>
-                    <th class='textLeft'>Grade</th>
-                    <th class='textLeft'>Students</th>
+                    <th class='textCenter'>Grade</th>
+                    <th class='textCenter'>Students</th>
                     <th class='textCenter'>Total</th>
                     <th class='textCenter'>Discount</th> 
                     <th class='textCenter'>Expected</th>
@@ -54,14 +60,14 @@ if ($result->num_rows > 0) {
         echo " <tr >
                 <td class='textLeft bold'>" . $row['grade'] . "</td>
                 <td class='textLeft'>" . $row['No.Students'] . "</td>
-                <td class='textLeft'>" . number_format((float)$row['total']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['discount']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['paid'])."</td>
-                <td class='textLeft'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
-                <td class='textRight'>" . number_format((float)$row['balance'])."</td>
-                <td class='textRight'>".round(($row['balance'] / $row['expected']) * 100, ) . "%</td>
-              </tr>";
+                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+                <td class='textRight'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
+                <td class='textRight'>" . number_format((float)$row['balance']) . "</td>
+                <td class='textRight'>" . round(($row['balance'] / $row['expected']) * 100) . '%</td>
+              </tr>';
     }
 } else {
     echo 'No Data Found! Try another search.';
@@ -74,22 +80,20 @@ if ($result->num_rows > 0) {
         echo " <tr >
                 <td class='textLeft bold'>Total</td>
                 <td class='textLeft bold'>" . $row['No.Students'] . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['total']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['discount']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['paid'])."</td>
-                <td class='textLeft bold'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
-                <td class='textRight bold'>" . number_format((float)$row['balance'])."</td>
-                <td class='textRight bold'>".round(($row['balance'] / $row['expected']) * 100, 1) . "%</td>
-              </tr>";
+                <td class='textRight bold'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['paid']) . "</td>
+                <td class='textRight bold'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
+                <td class='textRight bold'>" . number_format((float)$row['balance']) . "</td>
+                <td class='textRight bold'>" . round(($row['balance'] / $row['expected']) * 100, 1) . '%</td>
+              </tr>';
     }
     echo '</table>';
 } else {
     echo 'No Data Found! Try another search.';
 }
-
-echo "</div>";  // End of TopDiv Row
-
+echo '</div>';  // End of TopDiv Row
 
 
 //                  FEES LIST
@@ -150,14 +154,14 @@ class Fee
         echo "<tr>
                 <th class='textLeft'>" . $this->fee . "</th>
                 <td class='textLeft'>" . $this->studentsNumber . "</td>
-                <td class='textLeft'>" . number_format((float) $this->total) . "</td>
-                <td class='textLeft'>" . number_format((float) $this->discount) . "</td>
-                <td class='textLeft'>" . number_format((float) $this->expected) . "</td>
-                <td class='textLeft'>" . number_format((float) $this->paid)."</td>
-                <td class='textLeft'>" . round(($this->paid / $this->expected) * 100, 1) . "%</td>
-                <td class='textRight'>" . number_format((float) $this->balance)."</td>
-                <td class='textRight'>".round(($this->balance / $this->expected) * 100, 1) . "%</td>
-            </tr>";
+                <td class='textRight'>" . number_format((float)$this->total) . "</td>
+                <td class='textRight'>" . number_format((float)$this->discount) . "</td>
+                <td class='textRight'>" . number_format((float)$this->expected) . "</td>
+                <td class='textRight'>" . number_format((float)$this->paid) . "</td>
+                <td class='textRight'>" . round(($this->paid / $this->expected) * 100, 1) . "%</td>
+                <td class='textRight'>" . number_format((float)$this->balance) . "</td>
+                <td class='textRight'>" . round(($this->balance / $this->expected) * 100, 1) . '%</td>
+            </tr>';
     }
 }
 
@@ -166,14 +170,14 @@ $fees_array = array();
 //echo $fees_list;
 $result = $conn->query($fees_list);
 if ($result->num_rows > 0) {
-    echo "<div class='row'>";
-    echo "<div class='col-7'>";
+    echo "<div class='row' >";
+    echo "<div class='col-8'>";
     echo '<h4><u>Fees List</u></h4>';
     echo "<table class='table  table-bordered table-striped  table-hover' id='feesList'>
             <thead class=\"black text-white\">
                 <tr>
-                    <th class='textLeft'>Fee</th>
-                    <th class='textLeft'>Students</th>
+                    <th class='textCenter'>Fee</th>
+                    <th class='textCenter'>Students</th>
                     <th class='textCenter'>Total</th>
                     <th class='textCenter'>Discount</th> 
                     <th class='textCenter'>Expected</th>
@@ -183,28 +187,30 @@ if ($result->num_rows > 0) {
             </thead>";
     while ($row = $result->fetch_assoc()) {
 
-        if (strstr(strtolower($row['name']), 'book'))
-            $fee = new Fee("Books", $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
-        elseif (strstr(strtolower($row['name']), 'bus'))
-            $fee = new Fee("Bus", $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
-        elseif (strstr(strtolower($row['name']), 'installment'))
-            $fee = new Fee("Tuition", $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
-        elseif (strstr(strtolower($row['name']), 'uniform'))
-            $fee = new Fee("Uniform", $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
-        else
-            $fee = new Fee("Other", $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        if (stripos($row['name'], 'book') !== false) {
+            $fee = new Fee('Books', $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        } elseif (stripos($row['name'], 'bus') !== false) {
+            $fee = new Fee('Bus', $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        } elseif (stripos($row['name'], 'installment') !== false) {
+            $fee = new Fee('Tuition', $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        } elseif (stripos($row['name'], 'uniform') !== false) {
+            $fee = new Fee('Uniform', $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        } else {
+            $fee = new Fee('Other', $row['No.Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+        }
 
         $pushed = false;
         foreach ($fees_array as $fee_array) {
-            if ($fee_array->fee == $fee->fee) {
+            if ($fee_array->fee === $fee->fee) {
                 $fee_array->expected += $fee->expected;
                 $fee_array->paid += $fee->paid;
                 $fee_array->balance += $fee->balance;
                 $pushed = true;
             }
         }
-        if (!$pushed)
-            array_push($fees_array, $fee);
+        if (!$pushed) {
+            $fees_array[] = $fee;
+        }
     }
 
     function cmp($a, $b)
@@ -212,14 +218,15 @@ if ($result->num_rows > 0) {
         return strcmp($a->fee, $b->fee);
     }
 
-    uasort($fees_array, "cmp");
+    uasort($fees_array, 'cmp');
     echo '<tbody>';
     foreach ($fees_array as $fee) {
         $fee->print_fee();
     }
 
-} else
-    echo "No Data Found! Try another search.</div>";
+} else {
+    echo 'No Data Found! Try another search.</div>';
+}
 
 
 $fees_list_sammury = "
@@ -249,26 +256,27 @@ if ($result->num_rows > 0) {
         echo "<tr>
                 <th class='textLeft'>Total</th>
                 <td class='textLeft bold'>" . $row['No.Students'] . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['total']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['discount']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textLeft bold'>" . number_format((float)$row['paid'])."</td>
-                <td class='textLeft bold'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
-                <td class='textRight bold'>" . number_format((float)$row['balance'])."</td>
-                <td class='textRight bold'>".round(($row['balance'] / $row['expected']) * 100, 1) . "%</td>
-              </tr>";
+                <td class='textRight bold'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['paid']) . "</td>
+                <td class='textRight bold'>" . round(($row['paid'] / $row['expected']) * 100, 1) . "%</td>
+                <td class='textRight bold'>" . number_format((float)$row['balance']) . "</td>
+                <td class='textRight bold'>" . round(($row['balance'] / $row['expected']) * 100, 1) . '%</td>
+              </tr>';
     }
-    echo "</table>";
+    echo '</table>';
 } else {
     echo 'No Data Found! Try another search.';
 }
-echo "</div>";  // End of col
+echo '</div>';  // End of col
 //                                                         PAYMENT MODE
 
 echo "<div class='col'>";
 include_once 'paymentModeSummary.php';
 echo '</div>';  // col End
 echo '</div>';  // row End
+echo '</div>';  // End PrintUpperDiv
 
 
 $general = "
@@ -304,7 +312,11 @@ if ($result->num_rows > 0) {
 
     echo "<div id='ParentsDiv' class='row'>";
     echo "<div class='col'>";
-    echo "<h4><u>Parents List</u></h4>";
+    echo '<h4><u>Parents List</u>
+<a id=\'printbtnMain\' style=\'margin-left: 25px; margin-top: 5px\'
+                               onclick="showParentsDiv();">
+                                <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
+                            </a></h4>';
     echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
     echo "
     	<thead class='black white-text'>
@@ -330,16 +342,86 @@ if ($result->num_rows > 0) {
     		<td  class='textLeft'>" . $row['familyid'] . '</td>
     		<td>' . $row['parent'] . "</td>
         <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textLeft'>" . (float)$row['expected'] . "</td>
-    		<td class='textLeft'>" . (float)$row['discount'] . "</td>
-        <td class='textLeft'>" . (float)$row['paid'] . "</td>
-        <td class='textLeft'>" . (float)$row['balance'] . '</td>
+    		<td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+    		<td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
     	</tr>';
         $rowNumber++;
     }
     echo '</tbody></table></div></div>';
 } else {
     echo 'No Data Found! Try another search.';
+}
+
+$general = "
+SELECT 
+guardians.first_name  parent,
+students.last_name student,
+COUNT(DISTINCT students.id) NumberOfStudents,
+students.familyid,
+SUM(finance_fee_discounts.discount_amount) discount,
+SUM(finance_fees.particular_total) expected,
+(SUM(finance_fees.particular_total)  - SUM(finance_fees.balance)) paid,
+SUM(finance_fees.balance) balance,
+finance_fee_collections.name fee_name,
+finance_fee_collections.start_date start_date,
+finance_fee_collections.end_date end_date,
+finance_fee_collections.due_date due_date
+
+FROM guardians 
+
+INNER JOIN students ON guardians.familyid = students.familyid
+INNER JOIN finance_fees ON students.id = finance_fees.student_id
+INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
+LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
+
+WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+GROUP BY guardians.familyid
+ORDER BY REPLACE(guardians.first_name,' ', '')
+";
+// echo $general;
+$result = $conn->query($general);
+$rowNumber = 1;
+if ($result->num_rows > 0) {
+
+    echo "<div id='ParentsDivPrint'   style='display: none' aria-disabled='true' class='row'>";
+    echo "<div class='col'>";
+    printHeader('Parents -  Fee Status list', $start_date, $end_date);
+    echo "<br> <table  id='ParentsTablePrint'>";
+    echo "
+    	<thead class='black white-text'>
+        <tr>
+    		<th>#</th>
+    		<th width='20'>FamilyID</th>
+    		<th>Parent</th>
+            <th class='smallcol'>Children</th>
+    		<th>Expected</th>
+    		<th>Discount</th>
+            <th>Paid</th>
+            <th>Balance</th>
+    	</tr>
+        </thead>
+        <tbody>
+    ";
+    while ($row = $result->fetch_assoc()) {
+        $row['paid'] -= $row['discount'];
+        $params = array($start_date, $end_date, $row['familyid']);
+        echo "
+    	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
+    		<td>" . $rowNumber . "</td>
+    		<td  class='textLeft'>" . $row['familyid'] . '</td>
+    		<td>' . $row['parent'] . "</td>
+        <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
+    		<td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+    		<td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
+    	</tr>';
+        $rowNumber++;
+    }
+    echo '</tbody></table></div></div>';
+} else {
 }
 
 

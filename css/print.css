@@ -1,0 +1,44 @@
+table, td, th {
+    border: 1px solid #ccc;
+    white-space: nowrap;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+td{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.textRight {
+    text-align: right !important;
+}
+.textLeft {
+    text-align: left;
+}
+.textCenter {
+    text-align: center;
+}
+
+#headerDiv {
+    min-width: 100% !important;
+}
+
+#headerDiv td, tr, table {
+    border: none !important;
+}
+
+#logoTd {
+    max-width: 100px !important;
+}
+.school-name{
+    font-size: 20px;
+    margin-left: -20px !important;
+}
+.table-name{
+    font-size: 20px;
+}
+
