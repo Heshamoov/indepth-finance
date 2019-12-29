@@ -134,7 +134,6 @@ checkLoggedIn()
         </nav>
         <div class="col-sm" style="margin-top: -30px">
             <div id="userInputDiv" class="row">
-
                 <div class="col-sm"></div>
                 <div class="col-sm-6">
                     <table id="userInputTable" align="center">
@@ -180,9 +179,8 @@ checkLoggedIn()
                 </div>
                 <div class="col-sm"></div>
             </div>
-            <div id="result" style="margin: 20px"></div>
+            <div id="result"></div>
         </div>
-
     </div>
 </div>
 
