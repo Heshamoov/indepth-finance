@@ -1298,16 +1298,16 @@ GROUP BY courses.course_name;
     }
     ?>
 
+    let today = new Date().toLocaleDateString('en-GB');
     let fees = <?php echo json_encode($fees); ?>;
     let grades = <?php echo json_encode($grades); ?>;
-
     let ctx = document.getElementById("myChart").getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: grades,
             datasets: [{
-                label: 'TOTAL AMOUNT COLLECTED (%)',
+                label: 'TOTAL FEES COLLECTED (%) 01/09/2019  to ' + today,
                 data: fees,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

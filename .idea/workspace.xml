@@ -70,8 +70,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="1308" column="47" selection-start-line="1308" selection-start-column="47" selection-end-line="1308" selection-end-column="47" />
+            <state relative-caret-position="301">
+              <caret line="1333" column="44" lean-forward="true" selection-start-line="1333" selection-start-column="44" selection-end-line="1333" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/finance.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="853">
+              <caret line="52" selection-start-line="52" selection-end-line="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="50" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="16" selection-end-column="50" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,26 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysql/feesPercentage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysql/parentsSmsList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="58" column="43" lean-forward="true" selection-start-line="56" selection-end-line="58" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysql/general.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="85">
+              <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -115,10 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>parentsdiv</find>
-      <find>grade</find>
-      <find>StatisticsDiv</find>
-      <find>back</find>
       <find>echo $trs</find>
       <find>GROUP</find>
       <find>parentstable</find>
@@ -145,7 +144,14 @@
       <find>xmlht</find>
       <find>json</find>
       <find>grades_list</find>
+      <find>fadeIn animated</find>
+      <find>class=&quot;row wow fadeIn animated&quot;</find>
+      <find>total amount</find>
+      <find>total fees</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\indepth-finance</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -196,7 +202,6 @@
         <option value="$PROJECT_DIR$/navbar.php" />
         <option value="$PROJECT_DIR$/uppernav.php" />
         <option value="$PROJECT_DIR$/js/main-finance.js" />
-        <option value="$PROJECT_DIR$/finance.php" />
         <option value="$PROJECT_DIR$/sms.php" />
         <option value="$PROJECT_DIR$/js/sms.js" />
         <option value="$PROJECT_DIR$/functions.php" />
@@ -209,6 +214,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/mysql/feesPercentage.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql" />
+        <option value="$PROJECT_DIR$/finance.php" />
         <option value="$PROJECT_DIR$/dashboard.php" />
       </list>
     </option>
@@ -277,7 +283,7 @@
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
+    <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/sms.php" />
   </component>
   <component name="RecentsManager">
@@ -384,13 +390,13 @@
     <frame x="-8" y="22" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2242915" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2242915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32955465" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" weight="0.20232172" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" weight="0.20139697" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32995495" />
@@ -460,7 +466,8 @@
     <MESSAGE value="Navbar" />
     <MESSAGE value="Fix Parents Balances" />
     <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_3.sql">
@@ -655,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/sms.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -685,13 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1052">
           <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/finance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="101" column="49" selection-start-line="101" selection-start-column="49" selection-end-line="101" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -732,25 +725,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="36" column="3" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="44" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
       <provider selected="true" editor-type-id="httpFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysql/feesPercentage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysql/general.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -780,10 +756,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2265">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql/feesPercentage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="52" selection-start-line="52" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="50" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="1308" column="47" selection-start-line="1308" selection-start-column="47" selection-end-line="1308" selection-end-column="47" />
+        <state relative-caret-position="301">
+          <caret line="1333" column="44" lean-forward="true" selection-start-line="1333" selection-start-column="44" selection-end-line="1333" selection-end-column="44" />
         </state>
       </provider>
     </entry>
