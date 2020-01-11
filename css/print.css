@@ -2,13 +2,18 @@ table, td, th {
     border: 1px solid #ccc;
     white-space: nowrap;
 }
+
+
 table {
     border: 1px solid black;
     border-collapse: collapse;
+    min-width: 100%;
+    font-size: 12px;
 }
 
 
-td{
+td {
+
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -16,9 +21,13 @@ td{
 .textRight {
     text-align: right !important;
 }
+
+
 .textLeft {
     text-align: left;
 }
+
+
 .textCenter {
     text-align: center;
 }
@@ -34,11 +43,14 @@ td{
 #logoTd {
     max-width: 100px !important;
 }
-.school-name{
+
+
+.school-name {
     font-size: 20px;
     margin-left: -20px !important;
 }
-.table-name{
+
+.table-name {
     font-size: 20px;
 }
 
