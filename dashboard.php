@@ -1306,7 +1306,7 @@ GROUP BY courses.course_name;
         data: {
             labels: grades,
             datasets: [{
-                label: 'Collected Fees %',
+                label: 'TOTAL COLLECTED AMOUNT',
                 data: fees,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

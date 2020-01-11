@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql/feesPercentage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
     </list>
@@ -71,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="1339" selection-start-line="1339" selection-end-line="1339" />
+            <state relative-caret-position="1152">
+              <caret line="1308" column="47" selection-start-line="1308" selection-start-column="47" selection-end-line="1308" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -460,7 +459,8 @@
     <MESSAGE value="Parents with mobile number" />
     <MESSAGE value="Navbar" />
     <MESSAGE value="Fix Parents Balances" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Parents Balances" />
+    <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_3.sql">
@@ -782,8 +782,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="1339" selection-start-line="1339" selection-end-line="1339" />
+        <state relative-caret-position="1152">
+          <caret line="1308" column="47" selection-start-line="1308" selection-start-column="47" selection-end-line="1308" selection-end-column="47" />
         </state>
       </provider>
     </entry>
