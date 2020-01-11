@@ -75,4 +75,13 @@ function showFees() {
 
 }
 
+function showParentsDiv(){
+    document.getElementById('ParentsDivPrint').style.display ='block';
+    printJS({printable: 'ParentsDivPrint', type: 'html' , repeatTableHeader : true, showModal : true,
+         css: 'css/print.css'});
+    document.getElementById('ParentsDivPrint').style.display ='none';
+
+
+}
+
 

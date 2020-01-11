@@ -6,62 +6,25 @@ body {
     font-family: Arial, Helvetica, sans-serif !important;
 }
 
-#mainContainer {
-    background-color: #FAFAFA;
+.active-tag,  a:active {
+    color: darkred;
+    font-weight: bold;
 }
-#header {
-    width: 100%;
-    background-color: #FAFAFA;
-    /*top: 0;*/
-    border-bottom: 1px solid gray;
-}
-.logo {
-padding-left: 20px;
-}
-.title {
-    font-size: 26px;
-}
-#userInputTable {
-    margin-bottom: 10px;
-}
+
+/*#userInputTable {*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
 #start_date, #end {
     float: right;
 }
-.sidenav {
-    min-width: 120px !important;
-    max-width: 120px !important;
-    padding-top: 20px;
-    height: 100vh !important;
-    /*height: max-content;*/
-    background: #FAFAFA;
-    border-right: 1px solid gray;
-}
-.sidenav a {
-    padding: 0px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 10px;
-    color: black;
-    display: block;
-}
-.sidenav h5 {
-    opacity: 50%;
-    text-align: center;
-}
-.sidenav hr {
-    display: block;
-    margin-top: -5px;
-}
-.sidenav a:hover {
-    color: #2196F3;
-}
+
 .textRight {
     text-align: right !important;
 }
 .textLeft {
-    /*text-align: left;*/
+    text-align: left;
 }
-
 .textCenter {
     text-align: center;
 }
@@ -74,8 +37,7 @@ padding-left: 20px;
 }
 
 #feesList th, #paymentMode th, #gradesList th{
-    padding: 0;
-    font-weight: bold;
+    padding: 1px;
 }
 
 .table.table-hover tbody tr:hover {

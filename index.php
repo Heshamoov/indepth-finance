@@ -1,9 +1,11 @@
 <?php
 
 session_start();
-$_SESSION['HR_FIN'] = 0;
-if (isset($_SESSION['login']))
+date_default_timezone_set('Asia/Dubai');
+
+if (isset($_SESSION['login'])) {
     header('Location: finance.php');
+}
  ?>
 
 <!DOCTYPE html>
