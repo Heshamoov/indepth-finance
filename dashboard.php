@@ -57,6 +57,7 @@ checkLoggedIn()
         });
     </script>
 </head>
+
 <body>
 <?php include('navbar.php'); ?>
 <h4 style="color:black">Dashboard</h4>
@@ -78,8 +79,9 @@ checkLoggedIn()
 </div>
 </div>
 </nav>
+
 <div class="col-sm" style="margin-top: -30px">
-    <main class="pt-5 mx-lg-5">
+    <main class=" mx-lg-1">
         <div class="container-fluid mt-5">
             <!--Grid row-->
             <div class="row wow fadeIn">
@@ -89,7 +91,6 @@ checkLoggedIn()
                     <div class="card">
                         <!--Card content-->
                         <div class="card-body">
-                            <h1 id="debug"></h1>
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
@@ -1306,7 +1307,7 @@ GROUP BY courses.course_name;
         data: {
             labels: grades,
             datasets: [{
-                label: 'TOTAL COLLECTED AMOUNT',
+                label: 'TOTAL AMOUNT COLLECTED (%)',
                 data: fees,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
