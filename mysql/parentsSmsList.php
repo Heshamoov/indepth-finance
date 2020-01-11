@@ -30,8 +30,8 @@ INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '2019-08-31'
-AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') <= '2020-09-01'
+WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') <= '$end_date'
 GROUP BY guardians.familyid
 ORDER BY REPLACE(guardians.first_name,' ', '')
 ";
