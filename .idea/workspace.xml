@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+            <state relative-caret-position="514">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -70,17 +69,47 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="1376" column="51" lean-forward="true" selection-start-line="1376" selection-start-column="51" selection-end-line="1376" selection-end-column="51" />
+            <state relative-caret-position="327">
+              <caret line="110" column="30" lean-forward="true" selection-start-line="110" selection-start-column="30" selection-end-line="110" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#h4#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#iframe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#19384#19391#1#HTML" expanded="true" />
+                <element signature="e#22312#22319#1#HTML" expanded="true" />
+                <element signature="e#25218#25225#1#HTML" expanded="true" />
+                <element signature="e#28543#28550#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#34294#34301#1#HTML" expanded="true" />
+                <element signature="e#36083#36090#1#HTML" expanded="true" />
+                <element signature="e#39220#39227#1#HTML" expanded="true" />
+                <element signature="e#44274#44281#1#HTML" expanded="true" />
+                <element signature="e#49347#49354#1#HTML" expanded="true" />
+                <element signature="e#54416#54423#1#HTML" expanded="true" />
+                <element signature="e#57923#57930#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysql/paymentModeSummary.php">
+        <entry file="file://$PROJECT_DIR$/js/popper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="15" selection-end-column="43" />
+            <state>
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sms.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -97,10 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GROUP</find>
-      <find>parentstable</find>
-      <find>font</find>
-      <find>$fees_list</find>
       <find>%</find>
       <find>%8</find>
       <find>fees_list</find>
@@ -126,6 +151,10 @@
       <find>class=&quot;row wow fadeIn animated&quot;</find>
       <find>total amount</find>
       <find>total fees</find>
+      <find>Doughnut</find>
+      <find>Doughnut</find>
+      <find>piechart</find>
+      <find>pieChart2</find>
       <find>pieChart</find>
     </findStrings>
     <dirStrings>
@@ -198,6 +227,12 @@
       </list>
     </option>
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="bc5bb687-63ea-47be-a794-afd411c50765" name="localhost" />
@@ -222,6 +257,11 @@
             <path>
               <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
               <item name="indepth-finance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indepth-finance" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
@@ -380,7 +420,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32995495" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32995495" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32945284" />
       <window_info anchor="bottom" id="GraphQL" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -446,7 +486,8 @@
     <MESSAGE value="Fix Parents Balances" />
     <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
     <MESSAGE value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_1.sql">
@@ -629,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -745,15 +786,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/New folder/demo/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/New folder/demo/index.js" />
     <entry file="file://$PROJECT_DIR$/mysql/paymentModeSummary.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -763,15 +796,34 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+        <state relative-caret-position="514">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="1376" column="51" lean-forward="true" selection-start-line="1376" selection-start-column="51" selection-end-line="1376" selection-end-column="51" />
+        <state relative-caret-position="327">
+          <caret line="110" column="30" lean-forward="true" selection-start-line="110" selection-start-column="30" selection-end-line="110" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#h4#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#19384#19391#1#HTML" expanded="true" />
+            <element signature="e#22312#22319#1#HTML" expanded="true" />
+            <element signature="e#25218#25225#1#HTML" expanded="true" />
+            <element signature="e#28543#28550#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#34294#34301#1#HTML" expanded="true" />
+            <element signature="e#36083#36090#1#HTML" expanded="true" />
+            <element signature="e#39220#39227#1#HTML" expanded="true" />
+            <element signature="e#44274#44281#1#HTML" expanded="true" />
+            <element signature="e#49347#49354#1#HTML" expanded="true" />
+            <element signature="e#54416#54423#1#HTML" expanded="true" />
+            <element signature="e#57923#57930#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
