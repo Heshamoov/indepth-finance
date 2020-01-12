@@ -95,52 +95,24 @@ checkLoggedIn()
                         </div>
                     </div>
                     <!--/.Card-->
-
                 </div>
                 <!--Grid column-->
 
-                <!--Grid column-->
+                <!--Pie Charts-->
                 <div class="col-md-4 mb-4">
-
-                    <!--Card-->
+                    <!--Pie Chart - Payment Mode-->
                     <div class="card mb-4">
-
-                        <!-- Card header -->
-                        <div class="card-header text-center">
-                            Payment Mode
-                        </div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-                            <canvas id="pieChart"></canvas>
-                        </div>
-
+                        <div class="card-header text-center">Payment Mode</div>
+                        <div class="card-body"><canvas id="pieChart"></canvas></div>
                     </div>
-                    <!--/.Card-->
-
-                    <!--Card-->
+                    <!--Pie Chart2 - Payment Mode Comparison-->
                     <div class="card mb-4">
-
-                        <!-- Card header -->
-                        <div class="card-header text-center">
-                            Payment Mode Comparison
-                        </div>
-
-                        <!--Card content-->
-                        <div class="card-body">
-                            <canvas id="pieChart2"></canvas>
-                        </div>
-
+                        <div class="card-header text-center">Payment Mode Comparison</div>
+                        <div class="card-body"><canvas id="pieChart2"></canvas></div>
                     </div>
-                    <!--/.Card-->
 
-                    <!--Card-->
                     <div class="card mb-4">
-
-                        <!--Card content-->
                         <div class="card-body">
-
-                            <!-- List group links -->
                             <div class="list-group list-group-flush">
                                 <a class="list-group-item list-group-item-action waves-effect">Sales
                                     <span class="badge badge-success badge-pill pull-right">22%
@@ -1369,7 +1341,7 @@ GROUP BY courses.course_name;
         }
     });
 
-    //pie
+    //PicChart
     <?php
         $mode = array();
         $amount = array();
@@ -1393,15 +1365,10 @@ GROUP BY courses.course_name;
             }
         }
     ?>
-    document.getElementById("debug").innerHTML = "debug: ";
-
-
     let mode   = <?php echo json_encode($mode); ?>;
     let amount = <?php echo json_encode($amount); ?>;
-    document.getElementById("debug").innerHTML = "debug: ";
-    document.getElementById("debug").innerHTML = mode;
 
-    // Pie Chart
+    // PieChart
     let ctxP = document.getElementById("pieChart").getContext('2d');
     let myPieChart = new Chart(ctxP, {
         type: 'pie',
@@ -1419,7 +1386,7 @@ GROUP BY courses.course_name;
         }
     });
 
-    // Pie Chart 2
+    // Pie Chart2
     var ctxD = document.getElementById("pieChart2").getContext('2d');
     var myLineChart = new Chart(ctxD, {
         type: 'doughnut',
@@ -1435,8 +1402,6 @@ GROUP BY courses.course_name;
             responsive: true
         }
     });
-
-
 
 
     //line
