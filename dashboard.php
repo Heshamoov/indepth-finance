@@ -91,6 +91,7 @@ checkLoggedIn()
                     <div class="card">
                         <!--Card content-->
                         <div class="card-body">
+                            <p id="debug"></p>
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
@@ -112,9 +113,7 @@ checkLoggedIn()
 
                         <!--Card content-->
                         <div class="card-body">
-
                             <canvas id="pieChart"></canvas>
-
                         </div>
 
                     </div>
@@ -1301,6 +1300,7 @@ GROUP BY courses.course_name;
     let today = new Date().toLocaleDateString('en-GB');
     let fees = <?php echo json_encode($fees); ?>;
     let grades = <?php echo json_encode($grades); ?>;
+    document.getElementById("debug").innerHTML = "debug: ";
     let ctx = document.getElementById("myChart").getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'bar',
@@ -1355,14 +1355,46 @@ GROUP BY courses.course_name;
         }
     });
 
+    document.getElementById("debug").innerHTML = "debug: ";
     //pie
-    var ctxP = document.getElementById("pieChart").getContext('2d');
-    var myPieChart = new Chart(ctxP, {
+    <?php
+        $mode = array();
+        $amount = array();
+        $sql = "
+            SELECT payment_mode mode, SUM(amount) amount
+            FROM finance_transactions
+
+            WHERE 
+                finance_transactions.finance_type = 'FinanceFee'
+                AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') >= '2019-09-01'
+                AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') <= '2020-08-31'
+
+            GROUP BY finance_transactions.payment_mode;
+            ";
+
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($mode, $row['mode']);
+                array_push($amount, $row['amount']);
+            }
+        }
+    ?>
+    document.getElementById("debug").innerHTML = "debug: ";
+
+
+    let mode   = <?php echo json_encode($mode); ?>;
+    let amount = <?php echo json_encode($amount); ?>;
+    document.getElementById("debug").innerHTML = "debug: ";
+    document.getElementById("debug").innerHTML = mode;
+
+    let ctxP = document.getElementById("pieChart").getContext('2d');
+    let myPieChart = new Chart(ctxP, {
         type: 'pie',
         data: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+            labels: mode,
             datasets: [{
-                data: [300, 50, 100, 40, 120],
+                data: amount,
                 backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                 hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
             }]
