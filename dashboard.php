@@ -85,18 +85,14 @@ checkLoggedIn()
         <div class="container-fluid mt-5">
             <!--Grid row-->
             <div class="row wow fadeIn">
-                <!--Grid column-->
+
                 <div class="col-md-8 mb-4">
-                    <!--Card-->
                     <div class="card">
-                        <!--Card content-->
                         <div class="card-body">
-                            <canvas id="myChart"></canvas>
+                            <canvas id="barChart"></canvas>
                         </div>
                     </div>
-                    <!--/.Card-->
                 </div>
-                <!--Grid column-->
 
                 <!--Pie Charts-->
                 <div class="col-md-4 mb-4">
@@ -110,6 +106,7 @@ checkLoggedIn()
                         <div class="card-header text-center">Payment Mode Comparison</div>
                         <div class="card-body"><canvas id="pieChart2"></canvas></div>
                     </div>
+                    <!--/Pie Charts-->
 
                     <div class="card mb-4">
                         <div class="card-body">
@@ -1287,7 +1284,7 @@ GROUP BY courses.course_name;
     let today = new Date().toLocaleDateString('en-GB');
     let fees = <?php echo json_encode($fees); ?>;
     let grades = <?php echo json_encode($grades); ?>;
-    let ctx = document.getElementById("myChart").getContext('2d');
+    let ctx = document.getElementById("barChart").getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -1373,9 +1370,9 @@ GROUP BY courses.course_name;
     let myPieChart = new Chart(ctxP, {
         type: 'pie',
         data: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+            labels: mode,
             datasets: [{
-                data: [300, 50, 100, 40, 120],
+                data: amount,
                 backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                 hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
             }]
