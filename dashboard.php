@@ -91,7 +91,6 @@ checkLoggedIn()
                     <div class="card">
                         <!--Card content-->
                         <div class="card-body">
-                            <p id="debug"></p>
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
@@ -1316,7 +1315,6 @@ GROUP BY courses.course_name;
     let today = new Date().toLocaleDateString('en-GB');
     let fees = <?php echo json_encode($fees); ?>;
     let grades = <?php echo json_encode($grades); ?>;
-    document.getElementById("debug").innerHTML = "debug: ";
     let ctx = document.getElementById("myChart").getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'bar',
@@ -1371,7 +1369,6 @@ GROUP BY courses.course_name;
         }
     });
 
-    document.getElementById("debug").innerHTML = "debug: ";
     //pie
     <?php
         $mode = array();
@@ -1409,9 +1406,9 @@ GROUP BY courses.course_name;
     let myPieChart = new Chart(ctxP, {
         type: 'pie',
         data: {
-            labels: mode,
+            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
             datasets: [{
-                data: amount,
+                data: [300, 50, 100, 40, 120],
                 backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                 hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
             }]
