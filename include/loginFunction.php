@@ -27,7 +27,7 @@ function login()
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $_SESSION['login'] = 1;
-            header('Location: finance.php');
+            header('Location: dashboard.php');
         } else {
             $sql = "SELECT
             *
