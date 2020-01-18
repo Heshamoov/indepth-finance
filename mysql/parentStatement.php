@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Dubai');
+include_once  '../functions.php';
 include('../config/db.php');
 
 $sql = " SELECT finance_fees.balance                  balance,
@@ -38,7 +40,7 @@ $net_total = $net_discount = $net_paid = $net_balance = 0;
 if ($result->num_rows > 0) {
     echo '<h4 align="center" id="transaction_heading"><u>Transaction Statement</u></h4>';
     echo '<a  id="btnFees" style="margin-left:auto; margin-right: 20px" type="button" onclick="window.scrollTo(0, 0);" class="btn btn-sm btn-blue-grey " >View Fees</a>';
-    echo "<table id='statementTable' class='table table-sm table-striped table-bordered parent-statement table-hover' style='padding: 0px !important; margin-top: 20px'>";
+    echo "<table id='statementTable' class='table table-sm table-striped table-hover table-bordered student_table' style='padding: 0px !important; margin-top: 20px'>";
     echo '<thead class="black  white-text">
             <th scope="col">Transaction Date</th>
             <th scope="col">Invoice #</th>

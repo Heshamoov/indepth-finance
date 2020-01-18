@@ -1,14 +1,21 @@
+
 table, td, th {
     border: 1px solid #ccc;
-    white-space: nowrap;
+    white-space: nowrap ;
 }
+
 
 
 table {
     border: 1px solid black;
     border-collapse: collapse;
-    min-width: 100%;
+    min-width: 100% !important;
     font-size: 12px;
+
+}
+
+#statementTable{
+    min-width: 100% !important;
 }
 
 
@@ -34,6 +41,8 @@ td {
 
 #headerDiv {
     min-width: 100% !important;
+    width: 100% !important;
+
 }
 
 #headerDiv td, tr, table {

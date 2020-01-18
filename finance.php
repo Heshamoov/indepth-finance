@@ -67,26 +67,9 @@ checkLoggedIn()
 
 <body>
 <?php include('navbar.php'); ?>
-                <h4 style="color:black">INDEPTH FINANCE</h4>
+                <h4 style="color:black">STUDENT FEES</h4>
+<?php include('uppernav.php'); ?>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link active active-tab" href="finance.php">Student Fees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Ledgers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Accounts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-sm btn-danger" href="logout.php">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <div class="col-sm" style="margin-top: -30px">
             <div id="userInputDiv" class="row">
                 <div class="col-sm"></div>
@@ -130,6 +113,10 @@ checkLoggedIn()
     </div>
 </div>
 
+<script>
+    document.getElementById('navStudentFees').classList.add('active');
+    document.getElementById('navStudentFees').classList.add('active-tab');
+</script>
 <script src="js/index.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>

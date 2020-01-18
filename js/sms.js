@@ -23,9 +23,11 @@ function search() {
 }
 
 function printTable() {
-    document.getElementById('parentsSmsListPDF').style.display = 'block';
+    document.getElementById('parentsSmsListPrintDiv').style.display = 'block';
+    document.getElementById('headerDiv').style.display = 'inline-table';
     printJS({
-        printable: 'parentsSmsListPrintDiv', type: 'html', repeatTableHeader: true, showModal: true, css: 'css/print.css'
-    })
-    document.getElementById('parentsSmsListPDF').style.display = 'none';
+        printable: 'parentsSmsListPrintDiv', type: 'html',showModal: true, css: 'css/print.css'
+    });
+    document.getElementById('parentsSmsListPrintDiv').style.display = 'none';
+    document.getElementById('headerDiv').style.display = 'none';
 }

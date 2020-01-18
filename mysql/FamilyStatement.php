@@ -1,10 +1,12 @@
 <?php
-
+session_start();
+date_default_timezone_set('Asia/Dubai');
+include_once  '../functions.php';
 include('../config/db.php');
 
-$start_date = $_REQUEST["start_date"];
-$end_date = $_REQUEST["end_date"];
-$familyid = $_REQUEST["familyid"];
+$start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
+$familyid = $_REQUEST['familyid'];
 
 $general = "
 SELECT 
@@ -40,9 +42,14 @@ $result = $conn->query($general);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
-    echo "<div class='row'>";
+    echo "<div id='parentStatementDiv' class='row' style='margin-top: 40px!important;' >";
+    echo "<div class='row' style='width: 100%; padding-left: 20px; margin-left: 20px'>";
+    printHeader('Parent Statement', $start_date, $end_date);
+    echo '</div>';
+
     echo "<a id='goback' title='Go Back' style='padding-left: 20px; padding-right: 20px' onclick='general(" . json_encode($params) . ")'>
           <b> <i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i></b></a>";
+
 
     $parent_header = true;
     $first_name_old = "";
@@ -51,8 +58,11 @@ if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
-            echo '<h4 id="parent_heading" > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
-//            echo '<button   id="btnFees"  onclick="showFees()" type="button"  class="btn btn-sm btn-blue-grey btnTransaction" >View Fees</button> ';
+            echo '<h4 id="parent_heading" style="padding-left: 30px" > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
+            echo "<a  style='margin-left: 25px; margin-top: 5px'
+                               onclick=printPDFStatement('parentStatementDiv','')>
+                                <span class='fa fa-print' style='font-size: 20px' aria-hidden='true'></span>
+                            </a>";
             echo '<a  id="btnTransaction" style="margin-left:auto; margin-right: 20px" type="button" href="#transaction_heading" class="btn btn-sm btn-blue-grey " >View Transactions</a>';
 
 
@@ -74,16 +84,16 @@ if ($result->num_rows > 0) {
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid  = $total_discount= 0;
-            echo "<table id='fee_table'  class='table table-sm table-striped table-hover table-bordered student_table' >";
+            echo "<table id='fee_table'   style='margin-top: -5px!important; ' class='table table-sm table-striped table-hover table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
                         <th colspan=7 align='center'  class=\"black  white-text\"> Student: <b>" .
                 $row['admission_no'] . ' - ' . $row['student'] . '</b> &nbsp&nbsp Grade: <b>' .
                 $row['course_name'] . '</b> &nbsp&nbsp Section: <b>' .
-                $row['section'] . "</b></th>
+                $row['section'] . '</b></th>
                     </tr>
-                    <tr class='w3-light-grey'>
+                    <tr >
                         <th>#</th>
                         <th>Date</th>
                         <th>Fee Description</th>
@@ -93,7 +103,7 @@ if ($result->num_rows > 0) {
                         <th>Due</th>
                     </tr>
                 </thead>
-                ";
+                ';
             $first_name_old = $first_name;
         }
 
@@ -125,8 +135,8 @@ if ($result->num_rows > 0) {
           <td align='right'>".number_format($total_expected)."</td>
           <td align='right'>".number_format($total_discount)."</td>
           <td align='right'>".number_format($total_paid)."</td>
-          <td align='right'>".number_format($total_balance)."</td>
-          </tr></table>";
+          <td align='right'>".number_format($total_balance). '</td>
+          </tr></table>';
 } else {
     echo 'No Data Found! Try another search.';
 }
