@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,28 +59,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_1.sql">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dashboard.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+            <state relative-caret-position="514">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/dashboard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="1374" column="28" selection-start-line="1374" selection-start-column="28" selection-end-line="1374" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#h4#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#iframe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#19384#19391#1#HTML" expanded="true" />
+                <element signature="e#22312#22319#1#HTML" expanded="true" />
+                <element signature="e#25218#25225#1#HTML" expanded="true" />
+                <element signature="e#28543#28550#1#HTML" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#34294#34301#1#HTML" expanded="true" />
+                <element signature="e#36083#36090#1#HTML" expanded="true" />
+                <element signature="e#39220#39227#1#HTML" expanded="true" />
+                <element signature="e#44274#44281#1#HTML" expanded="true" />
+                <element signature="e#49347#49354#1#HTML" expanded="true" />
+                <element signature="e#54416#54423#1#HTML" expanded="true" />
+                <element signature="e#57923#57930#1#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/popper.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sms.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -97,24 +127,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>`</find>
-      <find>query</find>
-      <find>table-bordered</find>
-      <find>tota</find>
-      <find>stati</find>
-      <find>parentsdiv</find>
-      <find>grade</find>
-      <find>StatisticsDiv</find>
-      <find>back</find>
-      <find>echo $trs</find>
-      <find>GROUP</find>
-      <find>parentstable</find>
-      <find>font</find>
-      <find>$fees_list</find>
-      <find>%</find>
-      <find>%8</find>
       <find>fees_list</find>
-      <find>grades_list</find>
       <find>expected</find>
       <find>grades</find>
       <find>master</find>
@@ -127,7 +140,27 @@
       <find>ready</find>
       <find>end_date</find>
       <find>-&gt;</find>
+      <find>yChart</find>
+      <find>xml</find>
+      <find>card-body</find>
+      <find>xmlht</find>
+      <find>json</find>
+      <find>grades_list</find>
+      <find>fadeIn animated</find>
+      <find>class=&quot;row wow fadeIn animated&quot;</find>
+      <find>total amount</find>
+      <find>total fees</find>
+      <find>Doughnut</find>
+      <find>Doughnut</find>
+      <find>pieChart2</find>
+      <find>pieChart</find>
+      <find>piechart2</find>
+      <find>let ctx = document.getElementById(&quot;myChart&quot;).getContext('2d');</find>
+      <find>piechart</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\indepth-finance</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -138,7 +171,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="payment-mode" />
+        <entry key="$PROJECT_DIR$" value="dashboard-v2" />
       </map>
     </option>
     <option name="SIGN_OFF_COMMIT" value="true" />
@@ -178,7 +211,6 @@
         <option value="$PROJECT_DIR$/navbar.php" />
         <option value="$PROJECT_DIR$/uppernav.php" />
         <option value="$PROJECT_DIR$/js/main-finance.js" />
-        <option value="$PROJECT_DIR$/finance.php" />
         <option value="$PROJECT_DIR$/sms.php" />
         <option value="$PROJECT_DIR$/js/sms.js" />
         <option value="$PROJECT_DIR$/functions.php" />
@@ -187,12 +219,20 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_7.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_6.sql" />
         <option value="$PROJECT_DIR$/mysql/parentsSmsList.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_1.sql" />
-        <option value="$PROJECT_DIR$/dashboard.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/mysql/feesPercentage.php" />
+        <option value="$PROJECT_DIR$/finance.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql" />
+        <option value="$PROJECT_DIR$/dashboard.php" />
       </list>
     </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="PhpServers">
     <servers>
@@ -201,16 +241,17 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="138" />
-    <option name="y" value="320" />
-    <option name="width" value="1296" />
-    <option name="height" value="784" />
+    <option name="x" value="164" />
+    <option name="y" value="65" />
+    <option name="width" value="1214" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -221,7 +262,12 @@
             <path>
               <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
               <item name="indepth-finance" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
+              <item name="indepth-finance" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="indepth-finance" type="b2602c69:ProjectViewProjectNode" />
@@ -242,14 +288,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="false" />
+    <property name="database.console.LAST_STATE" value="true" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
@@ -258,7 +303,7 @@
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
+    <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/sms.php" />
   </component>
   <component name="RecentsManager">
@@ -365,13 +410,42 @@
     <frame x="-8" y="22" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16275303" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1757085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32955465" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" visible="true" weight="0.22700815" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" weight="0.42956927" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32995495" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32945284" />
+      <window_info anchor="bottom" id="GraphQL" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50647247" side_tool="true" weight="0.3795045" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32995495" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="15" visible="true" weight="0.15599534" />
+      <window_info anchor="bottom" id="CSS Styles" order="16" weight="0.32945284" />
+      <window_info anchor="right" id="Word Book" order="0" sideWeight="0.50145346" side_tool="true" weight="0.1723301" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" x="509" y="67" width="573" height="889" id="Database" order="4" sideWeight="0.49381328" visible="true" weight="0.13441296" />
+      <window_info anchor="right" id="Key Promoter X" order="5" weight="0.32874495" />
+      <window_info anchor="right" x="0" y="0" width="274" height="840" id="Documentation" order="6" sideWeight="0.5061867" side_tool="true" weight="0.1788026" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14155942" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32955465" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32945284" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" visible="true" weight="0.20232172" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32995495" />
@@ -389,35 +463,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" x="509" y="67" width="573" height="889" id="Database" order="4" sideWeight="0.49381328" visible="true" weight="0.26639676" />
-      <window_info anchor="right" id="Key Promoter X" order="5" weight="0.32874495" />
-      <window_info anchor="right" x="0" y="0" width="274" height="840" id="Documentation" order="6" sideWeight="0.5061867" side_tool="true" weight="0.1788026" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.0987055" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32955465" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4935275" weight="0.22834645" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32995495" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32995495" />
-      <window_info anchor="bottom" id="GraphQL" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50647247" side_tool="true" weight="0.3795045" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32995495" />
-      <window_info anchor="bottom" id="Database Console" order="15" weight="0.42294714" />
-      <window_info anchor="right" id="Word Book" order="0" sideWeight="0.50145346" side_tool="true" weight="0.1723301" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" x="509" y="67" width="573" height="889" id="Database" order="4" sideWeight="0.49381328" visible="true" weight="0.20566802" />
+      <window_info anchor="right" x="509" y="67" width="573" height="889" id="Database" order="4" sideWeight="0.49381328" weight="0.13441296" />
       <window_info anchor="right" id="Key Promoter X" order="5" weight="0.32874495" />
       <window_info anchor="right" x="0" y="0" width="274" height="840" id="Documentation" order="6" sideWeight="0.5061867" side_tool="true" weight="0.1788026" />
     </layout-to-restore>
@@ -439,24 +485,12 @@
     <MESSAGE value="Parents with mobile number" />
     <MESSAGE value="Navbar" />
     <MESSAGE value="Fix Parents Balances" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Parents Balances" />
+    <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://7623dfbe-d517-4655-8217-53b9feda3f24/schema/alsanawabar/table/finance_transactions.sql" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_4.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_3.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7623dfbe-d517-4655-8217-53b9feda3f24/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -497,13 +531,6 @@
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_2.sql" />
     <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/mysql/paymentModeSummary.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_3.sql" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_4.sql" />
     <entry file="das://9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/schema/alsanawabar/table/fee_transactions">
@@ -525,15 +552,6 @@
       </provider>
     </entry>
     <entry file="das://9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/schema/alsanawabar/table/finance_fee_structure_elements">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="5e6bd637-0c70-4b5c-a693-0ae162db2b76">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/schema/alsanawabar/table/finance_fees">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="5e6bd637-0c70-4b5c-a693-0ae162db2b76">
           <filtering>
@@ -630,31 +648,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="60" column="6" lean-forward="true" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_5.sql" />
-    <entry file="file://$PROJECT_DIR$/navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uppernav.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -668,20 +662,6 @@
         <state relative-caret-position="-108" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/finance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="109" column="84" lean-forward="true" selection-start-line="109" selection-start-column="84" selection-end-line="109" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysql/general.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="346" selection-start-line="346" selection-end-line="346" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/schema/alsanawabar/table/oauth_clients">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state projectRestartId="bf6e8b8e-e55f-4ff6-b56d-935bf1153820">
@@ -689,17 +669,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/sms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="58" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -713,20 +686,6 @@
     <entry file="file://$PROJECT_DIR$/css/sms.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysql/parentsSmsList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_6.sql" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_7.sql" />
     <entry file="file://$PROJECT_DIR$/sms.php">
@@ -736,24 +695,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql">
+    <entry file="file://$PROJECT_DIR$/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="35" selection-end-column="81" />
+        <state relative-caret-position="569">
+          <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+    <entry file="das://9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/schema/alsanawabar/table/finance_fees">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="3ea78d8a-83ed-44d1-bf36-7b088cc4aff6">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
@@ -761,6 +715,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/navbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+      <provider selected="true" editor-type-id="httpFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql/general.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="64" lean-forward="true" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql/parentsSmsList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="58" column="43" lean-forward="true" selection-start-line="56" selection-end-line="58" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2265">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="52" selection-start-line="52" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="50" selection-start-line="12" selection-start-column="4" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql/feesPercentage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/New folder/demo/index.js" />
+    <entry file="file://$PROJECT_DIR$/mysql/paymentModeSummary.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="1374" column="28" selection-start-line="1374" selection-start-column="28" selection-end-line="1374" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#h4#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#19384#19391#1#HTML" expanded="true" />
+            <element signature="e#22312#22319#1#HTML" expanded="true" />
+            <element signature="e#25218#25225#1#HTML" expanded="true" />
+            <element signature="e#28543#28550#1#HTML" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#section#0;n#div#0;n#div#1;n#div#3;n#div#0;n#main#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#34294#34301#1#HTML" expanded="true" />
+            <element signature="e#36083#36090#1#HTML" expanded="true" />
+            <element signature="e#39220#39227#1#HTML" expanded="true" />
+            <element signature="e#44274#44281#1#HTML" expanded="true" />
+            <element signature="e#49347#49354#1#HTML" expanded="true" />
+            <element signature="e#54416#54423#1#HTML" expanded="true" />
+            <element signature="e#57923#57930#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
