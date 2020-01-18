@@ -4,8 +4,6 @@ include 'config/db.php';
 function login()
 {
 //    header('Location: dashboard.php');
-
-
     $sql = "select users.id user,users.first_name name from users where users.username = '$_POST[user]';";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
