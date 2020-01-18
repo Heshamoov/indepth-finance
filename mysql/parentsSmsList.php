@@ -81,15 +81,15 @@ printHeader('Parent SMS Followup List', $start_date, $end_date);
 echo "<table id='parentsSmsListPDF' >
             <thead class='black white-text'>
                 <tr>
-                    <th class='textLeft'>Parent</th>
-                    <th class='textLeft'>Mobile</th>
+                    <th class='textCenter'>Parent</th>
+                    <th class='textCenter'>Mobile</th>
                     <th class='textCenter'>Students</th>
                     <th class='textCenter'>FamilyID</th> 
-                    <th class='textRight'>Total</th> 
-                    <th class='textRight'>Discount</th> 
-                    <th class='textRight'>Expected</th>
-                    <th class='textRight'>Paid</th>
-                    <th class='textRight'>Balance</th>                    
+                    <th class='textCenter'>Total</th> 
+                    <th class='textCenter'>Discount</th> 
+                    <th class='textCenter'>Expected</th>
+                    <th class='textCenter'>Paid</th>
+                    <th class='textCenter'>Balance</th>                    
                 </tr>
             </thead>";
 
@@ -101,10 +101,10 @@ if ($result->num_rows > 0) {
                 <td class='textLeft bold'>" . $row['mobile_phone'] . "</td>
                 <td class='textLeft'>" . $row['students'] . "</td>
                 <td class='textLeft'>" . $row['familyid'] . "</td>
-                <td class='textLeft'>" . number_format((float)$row['total']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['discount']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['expected']) . "</td>
-                <td class='textLeft'>" . number_format((float)$row['paid'])."</td>
+                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+                <td class='textRight'>" . number_format((float)$row['paid'])."</td>
                 <td class='textRight'>" . number_format((float)$row['balance']). '</td>
               </tr>';
     }
