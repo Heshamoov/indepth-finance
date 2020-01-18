@@ -99,8 +99,8 @@ function showFees() {
 }
 
 function showParentsDiv(){
+    document.getElementById('headerDiv').style.display = 'inline';
     document.getElementById('ParentsDivPrint').style.display ='block';
-    document.getElementById('headerDiv').style.display = 'block';
     printJS({printable: 'ParentsDivPrint', type: 'html' , repeatTableHeader : true, showModal : true,
         css: 'css/print.css'});
     document.getElementById('headerDiv').style.display = 'none';
