@@ -1,9 +1,9 @@
 <?php
-include 'config/db.php';
 session_start();
-
 function login()
 {
+    include 'config/db.php';
+
 //    header('Location: dashboard.php');
     $sql = "select users.id user,users.first_name name from users where users.username = '$_POST[user]';";
     $result = $conn->query($sql);
@@ -54,4 +54,3 @@ function checkLoggedIn()
     }
 }
 
-?>
