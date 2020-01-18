@@ -3,6 +3,9 @@ include 'config/db.php';
 
 function login()
 {
+    header('Location: dashboard.php');
+
+
     $sql = "select users.id user,users.first_name name from users where users.username = '$_POST[user]';";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -29,7 +32,6 @@ function login()
             $sql = "SELECT
             *
             FROM users WHERE id='$user' AND ( username = 'James' OR username = 'admin' OR username = 'Hesham') ";
-
 //        echo $sql;
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -37,7 +39,7 @@ function login()
                 header('Location: dashboard.php');
             } else {
                 $_SESSION['noaccess'] = 1;
-                header('Location: dashboard.php');
+                header('Location: index.php');
             }
         }
     }
