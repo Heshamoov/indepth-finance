@@ -3,6 +3,29 @@
 //     document.querySelector("#end_date").value = today;
 // }
 
+function printPDF(div_ID, pdf_header) {
+
+    document.getElementById('printParentHeader').style.display = 'block';
+    document.getElementById('headerDiv').style.display = 'inline-table';
+    printJS({printable: div_ID, type: 'html', header: pdf_header,
+        headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
+        ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees','ParentsDiv'], css: 'css/print.css', targetStyles: '*'});
+    document.getElementById('printParentHeader').style.display = 'none';
+    document.getElementById('headerDiv').style.display = 'none';
+
+
+}
+
+function printPDFStatement(div_ID, pdf_header) {
+    document.getElementById('headerDiv').style.display = 'inline-table';
+    printJS({printable: div_ID, type: 'html', header: pdf_header,
+        headerStyle: 'font-weight: 300px; margin: 40px;' , repeatTableHeader : true, showModal : true,
+        ignoreElements: ['goback','printbtnMain','btnTransaction','btnFees','ParentsDiv'], css: 'css/print.css', targetStyles: '*'});
+    document.getElementById('headerDiv').style.display = 'none';
+
+
+}
+
 function search() {
     let date = new Date(document.querySelector("#start_date").value);
     day = date.getDate();
@@ -15,7 +38,7 @@ function search() {
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let end_date = year + '-' + month + '-' + day;
-    
+
     var general = new XMLHttpRequest();
     general.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -41,7 +64,7 @@ function FamilyStatement(params) {
         }
     };
     FamilyStatementRequest.open("GET", "mysql/FamilyStatement.php?start_date=" + start_date + "&end_date=" + end_date
-                                         + "&familyid=" + familyid, false);
+        + "&familyid=" + familyid, false);
     FamilyStatementRequest.send();
 }
 
@@ -60,7 +83,7 @@ function general(params) {
         }
     };
     FamilyStatementRequest.open("GET", "mysql/general.php?start_date=" + start_date + "&end_date=" + end_date
-                                         + "&familyid=" + familyid, false);
+        + "&familyid=" + familyid, false);
     FamilyStatementRequest.send();
 }
 
@@ -77,9 +100,12 @@ function showFees() {
 
 function showParentsDiv(){
     document.getElementById('ParentsDivPrint').style.display ='block';
+    document.getElementById('headerDiv').style.display = 'block';
     printJS({printable: 'ParentsDivPrint', type: 'html' , repeatTableHeader : true, showModal : true,
-         css: 'css/print.css'});
+        css: 'css/print.css'});
+    document.getElementById('headerDiv').style.display = 'none';
     document.getElementById('ParentsDivPrint').style.display ='none';
+
 
 
 }

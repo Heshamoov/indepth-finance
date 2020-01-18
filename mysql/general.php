@@ -29,17 +29,17 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_dat
 
 $grades_list = $grades_query . 'group by courses.course_name';
 
-echo "<div id='printUpperDiv'>";
+echo "<div id='printUpperDiv' >";
+echo "<div id='printParentHeader' style='display:none' >";
 printHeader('Fee Details', $start_date, $end_date);
+echo '</div>';
 echo "<div class='row' id='topDiv' style='margin: 10px;'>";
 echo '<h4><u>Grades List</u></h4>';
-echo '
-<a id=\'printbtnMain\' style=\'margin-left: 25px; margin-top: 5px\'
-                               onclick="printJS({printable: \'printUpperDiv\', type: \'html\', header: \'Fees Details\',
-                headerStyle: \'font-weight: 300px; margin: 40px;\' , repeatTableHeader : true, showModal : true,
-                ignoreElements: [\'goback\',\'printbtnMain\',\'btnTransaction\',\'btnFees\',\'ParentsDiv\'], css: \'css/print.css\', targetStyles: \'*\'})">
-                                <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
-                            </a>';
+echo "
+<a id='printbtnMain' style='margin-left: 25px; margin-top: 5px'
+                               onclick=printPDF('printUpperDiv','')>
+                                <span class='fa fa-print' style='font-size: 20px' aria-hidden='true'></span>
+                            </a>";
 echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
             <thead class='black white-text'>
                 <tr>
@@ -386,13 +386,14 @@ $result = $conn->query($general);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
 
-    echo "<div id='ParentsDivPrint'   style='display: none' aria-disabled='true' class='row'>";
+    echo "<div id='ParentsDivPrint' style='display: none'  aria-disabled='true' class='row'>";
     echo "<div class='col'>";
     printHeader('Parents -  Fee Status list', $start_date, $end_date);
-    echo "<br> <table  id='ParentsTablePrint'>";
+    echo "<br> <table  id='ParentsTablePrint'  >";
     echo "
     	<thead class='black white-text'>
         <tr>
+        
     		<th>#</th>
     		<th width='20'>FamilyID</th>
     		<th>Parent</th>
@@ -408,17 +409,17 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $row['paid'] -= $row['discount'];
         $params = array($start_date, $end_date, $row['familyid']);
-        echo "
-    	<tr  onclick='FamilyStatement(" . json_encode($params) . ")'>
-    		<td>" . $rowNumber . "</td>
-    		<td  class='textLeft'>" . $row['familyid'] . '</td>
-    		<td>' . $row['parent'] . "</td>
-        <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . number_format((float)$row['expected']) . "</td>
-    		<td class='textRight'>" . number_format((float)$row['discount']) . "</td>
-        <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
-        <td class='textRight'>" . number_format((float)$row['balance']) . '</td>
-    	</tr>';
+        echo sprintf("
+    	<tr  onclick='FamilyStatement(%s)'>
+    		<td>%d</td>
+    		<td  class='textLeft'>%s</td>
+    		<td>%s</td>
+        <td  class='textLeft'>%s</td>
+    		<td class='textRight'>%s</td>
+    		<td class='textRight'>%s</td>
+        <td class='textRight'>%s</td>
+        <td class='textRight'>%s</td>
+    	</tr>", json_encode($params), $rowNumber, $row['familyid'], $row['parent'], $row['NumberOfStudents'], number_format((float)$row['expected']), number_format((float)$row['discount']), number_format((float)$row['paid']), number_format((float)$row['balance']));
         $rowNumber++;
     }
     echo '</tbody></table></div></div>';

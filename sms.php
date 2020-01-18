@@ -90,7 +90,7 @@ checkLoggedIn()
                                data-role="calendarpicker" id="end_date" onchange="search()"
                                data-input-format="%d-%m-%y" data-format="%d %b %Y" value="31-08-2020"/>
                     </th>
-                    <th style="float: right;">
+                    <th style="float: right; ">
                         <a id='printbtnMain' style='margin-left: 20px;'
                            onclick="printTable();">
                             <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
@@ -108,6 +108,7 @@ checkLoggedIn()
 
 
 <script>
+    document.getElementById('navFollowUp').style.color = '#25221E';
     $(document).ready(function () {
         search();
     });

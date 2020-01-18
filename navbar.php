@@ -3,10 +3,10 @@
         <h2><a href="finance.php" class="logo"><img src="assets/indepth-logo.jpg" width="60" class="logoImage"></a></h2>
         <ul class="list-unstyled components mb-5">
             <li class="active">
-                <a href="dashboard.php"><span class="fa fa-home"></span> Home</a>
+                <a href="dashboard.php" id="navHome"><span class="fa fa-home"></span> Home</a>
             </li>
-            <li>
-                <a href="sms.php"><span class="fa fa-sms"></span>FollowUp</a>
+            <li >
+                <a href="sms.php" id="navFollowUp"><span class="fa fa-sms"></span>FollowUp</a>
             </li>
             <li>
                 <a href="#"><span class="fa fa-sticky-note"></span> Ledger</a>

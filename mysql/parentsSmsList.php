@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Dubai');
 include_once '../functions.php';
 include('../config/db.php');
 
@@ -66,8 +67,8 @@ if ($result->num_rows > 0) {
                 <td class='textLeft'>" . number_format((float)$row['discount']) . "</td>
                 <td class='textLeft'>" . number_format((float)$row['expected']) . "</td>
                 <td class='textLeft'>" . number_format((float)$row['paid'])."</td>
-                <td class='textRight'>" . number_format((float)$row['balance'])."</td>
-              </tr>";
+                <td class='textRight'>" . number_format((float)$row['balance']). '</td>
+              </tr>';
     }
 } else {
     echo 'No Data Found! Try another search.';
@@ -75,10 +76,9 @@ if ($result->num_rows > 0) {
 echo "</table><div>";
 
 
-
-echo "<div id='parentsSmsListPrintDiv'>";
+echo "<div id='parentsSmsListPrintDiv' style='display: none' >";
 printHeader('Parent SMS Followup List', $start_date, $end_date);
-echo "<table id='parentsSmsListPDF' style='display: none'>
+echo "<table id='parentsSmsListPDF' >
             <thead class='black white-text'>
                 <tr>
                     <th class='textLeft'>Parent</th>
@@ -105,11 +105,11 @@ if ($result->num_rows > 0) {
                 <td class='textLeft'>" . number_format((float)$row['discount']) . "</td>
                 <td class='textLeft'>" . number_format((float)$row['expected']) . "</td>
                 <td class='textLeft'>" . number_format((float)$row['paid'])."</td>
-                <td class='textRight'>" . number_format((float)$row['balance'])."</td>
-              </tr>";
+                <td class='textRight'>" . number_format((float)$row['balance']). '</td>
+              </tr>';
     }
 } else {
     echo 'No Data Found! Try another search.';
 }
-echo "</table><div>";
+echo '</table></div>';
 $conn->close();

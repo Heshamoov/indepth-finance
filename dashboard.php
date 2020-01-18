@@ -1425,5 +1425,10 @@ checkLoggedIn()
         }
     });
 
-</script></body>
+</script>
+<script>
+    document.getElementById('navHome').style.color = '#25221E';
+
+</script>
+</body>
 </html>
