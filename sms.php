@@ -68,35 +68,43 @@ checkLoggedIn()
         <div class="col-sm"></div>
         <div class="col-sm-6">
             <table id="userInputTable" align="center">
+                <thead>
                 <tr>
-                    <th><label for="start_date">Start</label></th>
-                    <th><label for="end_date">End</label></th>
-                    <!--                        <th>Search</th>-->
-                <tr>
-                    <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
-                    <!--                                       value="2019-09-01"/></th>-->
-                    <th><input data-clear-button="true"
+                    <td><input data-clear-button="true"
                                data-clear-button-icon="<i class='fas fa-times'></i>"
                                data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
                                data-calendar-wide="true" class="w3-input w3-card" type="text"
                                data-role="calendarpicker" id="start_date" onchange="search()"
-                               data-input-format="%d-%m-%y" data-format="%d %b %Y" value="01-09-2019"/>
+                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="01-09-2019"/>
 
-                    </th>
-                    <th><input data-clear-button="true"
+                    </td>
+                    <td>&nbsp To &nbsp</td>
+                    <td><input data-clear-button="true"
                                data-clear-button-icon="<i class='fas fa-times'></i>"
                                data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
                                data-calendar-wide="true" class="w3-input w3-card" type="text"
                                data-role="calendarpicker" id="end_date" onchange="search()"
-                               data-input-format="%d-%m-%y" data-format="%d %b %Y" value="31-08-2020"/>
-                    </th>
-                    <th style="float: right; ">
-                        <a id='printbtnMain' style='margin-left: 20px;'
-                           onclick="printTable();">
-                            <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
-                        </a></th>
+                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2020"/>
+                    </td>
+                    <td >
+                        <!-- Split button -->
+                        <div class="btn-group"  id='printbtnMain' >
+                            <button  type="button" class="btn btn-sm btn-outline-light dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                <span class="fa fa-print" style="font-size: 20px; color: darkred" aria-hidden="true"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"  onclick="printSorted('parentsSmsList');" > Print Custom </a>
+<!--                                <a class="dropdown-item"  onclick="dest();">Print All</a>-->
+                                <a class="dropdown-item"  onclick="printTable();">Print All</a>
+                            </div>
+                        </div>
+
+
+                    </td>
 
                 </tr>
+                </thead>
             </table>
         </div>
         <div class="col-sm"></div>

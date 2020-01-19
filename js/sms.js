@@ -31,3 +31,14 @@ function printTable() {
     document.getElementById('parentsSmsListPrintDiv').style.display = 'none';
     document.getElementById('headerDiv').style.display = 'none';
 }
+
+function printSorted(table_name) {
+    // var table = $('#parentsSmsList').DataTable({});
+    //  table.destroy();
+    document.getElementById('headerDiv').style.display = 'inline-table';
+    printJS({printable: table_name, type: 'html' , repeatTableHeader : true, showModal : true,
+        css: 'css/print.css'});
+    document.getElementById('headerDiv').style.display = 'none';
+
+    // parentsDataTable();
+}
