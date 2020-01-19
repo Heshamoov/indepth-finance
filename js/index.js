@@ -99,15 +99,24 @@ function showFees() {
 }
 
 function showParentsDiv(){
-    document.getElementById('headerDiv').style.display = 'inline';
+    document.getElementById('headerDiv').style.display = 'inline-table';
     document.getElementById('ParentsDivPrint').style.display ='block';
     printJS({printable: 'ParentsDivPrint', type: 'html' , repeatTableHeader : true, showModal : true,
         css: 'css/print.css'});
     document.getElementById('headerDiv').style.display = 'none';
     document.getElementById('ParentsDivPrint').style.display ='none';
+}
 
 
+function printSortedStudentsFees(table_name) {
+    // var table = $('#parentsSmsList').DataTable({});
+    //  table.destroy();
+    document.getElementById('headerDiv').style.display = 'inline-table';
+    printJS({printable: table_name, type: 'html' , repeatTableHeader : true, showModal : true,
+        css: 'css/print.css'});
+    document.getElementById('headerDiv').style.display = 'none';
 
+    // parentsDataTable();
 }
 
 

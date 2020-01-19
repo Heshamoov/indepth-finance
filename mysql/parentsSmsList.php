@@ -40,9 +40,10 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 
 
 echo "<div class='row-sm' id='topDiv'>";
-echo "<table class='table table-bordered table-striped table-hover' id='parentsSmsList'>
-            <thead class='black white-text'>
-                <tr>
+echo "<table class='table table-bordered table-striped table-hover' id='parentsSmsList'> " ;
+echo "  <thead class='black white-text'>
+</tr>
+               <tr>               
                     <th class='textLeft'>Parent</th>
                     <th class='textLeft'>Mobile</th>
                     <th class='textCenter'>Students</th>
@@ -73,7 +74,7 @@ if ($result->num_rows > 0) {
 } else {
     echo 'No Data Found! Try another search.';
 }
-echo "</table><div>";
+echo '</table><div>';
 
 
 echo "<div id='parentsSmsListPrintDiv' style='display: none' >";

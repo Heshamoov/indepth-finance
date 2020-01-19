@@ -314,10 +314,16 @@ if ($result->num_rows > 0) {
     echo "<div id='ParentsDiv' class='row'>";
     echo "<div class='col'>";
     echo '<h4><u>Parents List</u>
-<a id=\'printbtnMain\' style=\'margin-left: 25px; margin-top: 5px\'
-                               onclick="showParentsDiv();">
-                                <span class="fa fa-print" style="font-size: 20px" aria-hidden="true"></span>
-                            </a></h4>';
+                        <div class="btn-group"  id="printbtnMain" >
+                            <button  type="button" class="btn btn-sm btn-outline-light dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                <span class="fa fa-print" style="font-size: 20px; color: darkred" aria-hidden="true"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"  onclick=printSortedStudentsFees("ParentsTable")> Print Custom </a>
+                                <a class="dropdown-item"  onclick="showParentsDiv();">Print All</a>
+                            </div>
+                        </div></h4>';
     echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
     echo "
     	<thead class='black white-text'>
