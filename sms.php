@@ -37,17 +37,87 @@ checkLoggedIn()
 
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js">
+    </script> <script type="text/javascript" charset="utf8"
+                      src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
     <!--    print.js-->
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
     <link rel="stylesheet" href="css/print.min.css">
 
     <script>
+
+        // $(document).ready(function() {
+        //     $('#parentsSmsList').DataTable( {
+        //         columnDefs: [ {
+        //             orderable: false,
+        //             className: 'select-checkbox',
+        //             targets:   0
+        //         } ],
+        //         select: {
+        //             style:    'os',
+        //             selector: 'td:first-child'
+        //         },
+        //         order: [[ 1, 'asc' ]]
+        //     } );
+        // } );
+
         function parentsDataTable() {
-            $('#parentsSmsList').DataTable({});
-            $('.dataTables_length').addClass('bs-select');
+            var events = $('#events');
+            var table = $('#parentsSmsList').dataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    // 'selected',
+                    // 'selectedSingle',
+                    'selectAll',
+                    'selectNone',
+                    // 'selectRows',
+                    // 'selectColumns',
+                    // 'selectCells',
+                    {
+                        text: 'Send SMS  <span class="fa fa-mobile" style="font-size: 20px; color: black" aria-hidden="true"></span> ',
+                        action: function () {
+                            // alert("Message sent");
+                            var count = table.rows( { selected: true } ).count();
+                            events.prepend( '<p>'+count+' row(s) selected</p>' );
+                        }
+                    }
+
+                ],
+                columnDefs: [ {
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets:   0
+                } ],
+                select: {
+                    style:    'multi',
+                    selector: 'td:first-child'
+                },
+                order: [[ 1, 'asc' ]],
+                language: {
+                    select: {
+                        rows: {
+                            _: "Parents selected: %d",
+                            0: "Select parents to send SMS",
+                            1: "Only 1 Parent selected"
+                        }
+                    }
+                }
+            });
+            table
+                .on( 'select', function ( e, dt, type, indexes ) {
+                    var rowData = table.rows( indexes ).data().toArray();
+                    events.prepend( '<div><b>'+type+' selection</b> - '+JSON.stringify( rowData )+'</div>' );
+                } );
+            // $('.dataTables_length').addClass('bs-select');
         }
 
         $(document).ready(function () {
@@ -90,12 +160,12 @@ checkLoggedIn()
                         <!-- Split button -->
                         <div class="btn-group"  id='printbtnMain' >
                             <button  type="button" class="btn btn-sm btn-outline-light dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                     aria-expanded="false">
                                 <span class="fa fa-print" style="font-size: 20px; color: darkred" aria-hidden="true"></span>
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"  onclick="printSorted('parentsSmsList');" > Print Custom </a>
-<!--                                <a class="dropdown-item"  onclick="dest();">Print All</a>-->
+                                <!--                                <a class="dropdown-item"  onclick="dest();">Print All</a>-->
                                 <a class="dropdown-item"  onclick="printTable();">Print All</a>
                             </div>
                         </div>
@@ -109,6 +179,7 @@ checkLoggedIn()
         </div>
         <div class="col-sm"></div>
     </div>
+<!--    <div id="event"></div>-->
     <div id="result"></div>
 </div>
 </div> <!--navbar-->

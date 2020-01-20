@@ -46,8 +46,9 @@ checkLoggedIn()
 
     <script>
         function parentsDataTable() {
-            $('#ParentsTable').DataTable({});
-            $('.dataTables_length').addClass('bs-select');
+            $('#ParentsTable').DataTable({ } );
+
+            // $('.dataTables_length').addClass('bs-select');
         }
 
         $(document).ready(function () {

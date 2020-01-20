@@ -43,7 +43,8 @@ echo "<div class='row-sm' id='topDiv'>";
 echo "<table class='table table-bordered table-striped table-hover' id='parentsSmsList'> " ;
 echo "  <thead class='black white-text'>
 </tr>
-               <tr>               
+               <tr>   
+                    <th></th>            
                     <th class='textLeft'>Parent</th>
                     <th class='textLeft'>Mobile</th>
                     <th class='textCenter'>Students</th>
@@ -60,6 +61,7 @@ $result = $conn->query($parentsSmsList);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr >
+                 <td></td>
                 <td class='textLeft bold'>" . $row['parent'] . "</td>
                 <td class='textLeft bold'>" . $row['mobile_phone'] . "</td>
                 <td class='textLeft'>" . $row['students'] . "</td>
