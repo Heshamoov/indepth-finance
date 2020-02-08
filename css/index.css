@@ -67,3 +67,12 @@ body {
 #ParentsTable td {
     text-align: left;
 }
+
+.bus{
+    width: 40px;
+    content: url("../assets/img/bus.png");
+}
+.bus:hover{
+    width: 40px;
+    content: url("../assets/img/bus-hover.png");
+}

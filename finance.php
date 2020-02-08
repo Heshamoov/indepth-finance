@@ -68,7 +68,7 @@ checkLoggedIn()
 <body>
 <?php include('navbar.php'); ?>
 <h4 style="color:black">STUDENT FEES</h4>
-
+<?php include('middlenav.php'); ?>
 <?php include('uppernav.php'); ?>
 
 <div class="col-sm" style="margin-top: -30px">
