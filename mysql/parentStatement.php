@@ -38,7 +38,7 @@ ORDER BY finance_fee_collections.name,transaction_receipts.receipt_number DESC";
 $result = $conn->query($sql);
 $net_total = $net_discount = $net_paid = $net_balance = 0;
 if ($result->num_rows > 0) {
-    echo '<h4 align="center" id="transaction_heading"><u>Transaction Statement</u></h4>';
+    echo '<h4 align="center" id="transaction_heading" class="bold"><u>Payment Statement</u></h4>';
     echo '<a  id="btnFees" style="margin-left:auto; margin-right: 20px" type="button" onclick="window.scrollTo(0, 0);" class="btn btn-sm btn-blue-grey " >View Fees</a>';
     echo "<table id='statementTable' class='table table-sm table-striped table-hover table-bordered student_table' style='padding: 0px !important; margin-top: 20px'>";
     echo '<thead class="black  white-text">
@@ -68,11 +68,6 @@ if ($result->num_rows > 0) {
             $balance = $total - $row['amount']  - $row['discount'];
         }
 
-//        $net_total += $total;
-//        $net_paid += $row['amount'];
-//        $net_discount += $row['discount'];
-//        $net_balance += $balance;
-
         echo '<tr>
                 <td>' . $row['transaction_date'] . '</td>
                 <td>' . $row['invoice'] . '</td>                
@@ -92,13 +87,5 @@ if ($result->num_rows > 0) {
         $prev_bal = $balance;
         $prev_student = $row['admission_no'];
     }
-//    echo '<tr>
-//            <td colspan="6" align="center">Total</td>
-//            <td class="textRight">'.$net_total.'</td>
-//            <td class="textRight">'.$net_discount.'</td>
-//            <td class="textRight">'.$net_paid.'</td>
-//            <td class="textRight">'.$net_balance.'</td>
-//            <td></td><td></td>
-//            </tr>';
     echo '</table>';
 }

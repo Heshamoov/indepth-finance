@@ -46,9 +46,9 @@ class Payment_Mode {
 
     public function print_payments(){
         echo " <tr>
-                    <th class='textLeft'>" . $this->mode . "</th>
-                    <th class='textRight'>" . number_format((float)$this->amount) . "</th>
-                    <th class='textRight'>" . round(($this->amount / $this->total) * 100, 2) . '%</th>
+                    <th class='textLeft bold'>" . $this->mode . "</th>
+                    <th class='textRight bold'>" . number_format((float)$this->amount) . "</th>
+                    <th class='textRight bold'>" . round(($this->amount / $this->total) * 100, 2) . '%</th>
               </tr>';
     }
 }
@@ -69,7 +69,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 
         if (stripos($row['mode'], 'card') !== false) {
-            $transaction = new Payment_Mode('Card', $row['amount'], $totalPayments);
+            $transaction = new Payment_Mode('Credit Card', $row['amount'], $totalPayments);
         }
         elseif (stripos($row['mode'], 'cash') !== false) {
             $transaction = new Payment_Mode('Cash', $row['amount'], $totalPayments);
@@ -124,7 +124,7 @@ $result = $conn->query($payment_mode_total);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo " <tr>
-                <th class='textLeft'><strong>Total</strong></th>
+                <th class='textLeft bold'>Total</th>
                 <th class='textRight'><strong>" . number_format((float) $row['amount']) . '</strong></th>
                 <th  class="textCenter"> - </th></tr>';
     }

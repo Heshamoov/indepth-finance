@@ -47,7 +47,7 @@ echo "<table class='table table-bordered table-striped table-hover' id='gradesLi
                     <th class='textCenter'>Students</th>
                     <th class='textCenter'>Total</th>
                     <th class='textCenter'>Discount</th> 
-                    <th class='textCenter'>Expected</th>
+                    <th class='textCenter'>Net Revenue</th>
                     <th class='textCenter' colspan=2>Paid</th>
                     <th class='textCenter' colspan=2>Balance</th>
                 </tr>
@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
         echo " <tr >
                 <td class='textLeft bold'>" . $row['grade'] . "</td>
                 <td class='textLeft'>" . $row['No.Students'] . "</td>
-                <td class='textRight'>" . number_format((float)$row['total']) . "</td>
+                <td class='textRight bold'>" . number_format((float)$row['total']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['discount']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['expected']) . "</td>
                 <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
@@ -429,7 +429,6 @@ if ($result->num_rows > 0) {
         $rowNumber++;
     }
     echo '</tbody></table></div></div>';
-} else {
 }
 
 

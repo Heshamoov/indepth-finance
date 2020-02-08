@@ -67,50 +67,42 @@ checkLoggedIn()
 
 <body>
 <?php include('navbar.php'); ?>
-                <h4 style="color:black">STUDENT FEES</h4>
+<h4 style="color:black">STUDENT FEES</h4>
+
 <?php include('uppernav.php'); ?>
 
-        <div class="col-sm" style="margin-top: -30px">
-            <div id="userInputDiv" class="row">
-                <div class="col-sm"></div>
-                <div class="col-sm-6">
-                    <table id="userInputTable" align="center">
-                        <!--                        <tr>-->
-                        <!--                            <th><label for="star_date">Start</label></th>-->
-                        <!--                            <th><label for="end_date">End</label></th>-->
-                        <!--                        <tr>-->
-                        <!--                            <th><input class="w3-input w3-card" type="date" id="start" onchange="search()"-->
-                        <!--
-                                                        value="2019-09-01"/></th>-->
-                        <thead>
-                        <tr>
-                            <td><input data-clear-button="true"
-                                       data-clear-button-icon="<i class='fas fa-times'></i>"
-                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                       data-role="calendarpicker" id="start_date" onchange="search()"
-                                       data-input-format="%d-%m-%y" data-format="%d %B %Y" value="01-09-2019"/>
+<div class="col-sm" style="margin-top: -30px">
+    <div id="userInputDiv" class="row">
+        <div class="col-sm"></div>
+        <div class="col-sm-6">
+            <table id="userInputTable" align="center">
+                <thead>
+                <tr>
+                    <td><input data-clear-button="true"
+                               data-clear-button-icon="<i class='fas fa-times'></i>"
+                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                               data-calendar-wide="true" class="w3-input w3-card" type="text"
+                               data-role="calendarpicker" id="start_date" onchange="search()"
+                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="01-09-2019"/>
 
-                            </td>
-                            <td>&nbsp To &nbsp</td>
-                            <td><input data-clear-button="true"
-                                       data-clear-button-icon="<i class='fas fa-times'></i>"
-                                       data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                                       data-calendar-wide="true" class="w3-input w3-card" type="text"
-                                       data-role="calendarpicker" id="end_date" onchange="search()"
-                                       data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2020"/>
-                            </td>
+                    </td>
+                    <td>&nbsp To &nbsp</td>
+                    <td><input data-clear-button="true"
+                               data-clear-button-icon="<i class='fas fa-times'></i>"
+                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                               data-calendar-wide="true" class="w3-input w3-card" type="text"
+                               data-role="calendarpicker" id="end_date" onchange="search()"
+                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2020"/>
+                    </td>
 
-                        </tr>
-                        </thead>
+                </tr>
+                </thead>
 
-                    </table>
-                </div>
-                <div class="col-sm"></div>
-            </div>
-            <div id="result" style="margin-top: -30px"></div>
+            </table>
         </div>
+        <div class="col-sm"></div>
     </div>
+    <div id="result" style="margin-top: -30px"></div>
 </div>
 
 <script>

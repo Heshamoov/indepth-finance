@@ -39,7 +39,7 @@ function search() {
     year = date.getFullYear();
     let end_date = year + '-' + month + '-' + day;
 
-    var general = new XMLHttpRequest();
+    let general = new XMLHttpRequest();
     general.onreadystatechange = function () {
         if (this.readyState === 4) {
             document.getElementById("result").innerHTML = this.responseText;
