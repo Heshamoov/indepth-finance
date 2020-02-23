@@ -34,6 +34,8 @@ checkLoggedIn()
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
+    <script src="https://kit.fontawesome.com/88009e5251.js" crossorigin="anonymous"></script>
+
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
