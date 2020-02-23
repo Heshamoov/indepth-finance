@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/img/books/books-hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/books/books.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daybook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9e4dccb5-4800-42d1-9bb8-f0fa6e1cf21e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daybook.php" beforeDir="false" afterPath="$PROJECT_DIR$/daybook.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +71,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="middlenav" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,6 +137,29 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.014913008" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:Hesham" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:Hesham" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@25a84623" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -161,7 +178,7 @@
       <workItem from="1579062768596" duration="63000" />
       <workItem from="1579308381100" duration="12482000" />
       <workItem from="1582451184343" duration="127000" />
-      <workItem from="1582451451373" duration="3279000" />
+      <workItem from="1582451451373" duration="7155000" />
     </task>
     <task id="LOCAL-00001" summary="paid-amount">
       <created>1576584534193</created>
@@ -198,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579326512498</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Daybook Navigate&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;">
+      <created>1582455252857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582455252857</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -230,13 +254,18 @@
     <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
     <MESSAGE value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
     <MESSAGE value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Daybook Navigate&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Daybook Navigate&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582451295446">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="320" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582451295446" />
+    <state x="278" y="105" key="CommitChangelistDialog2" timestamp="1582455250930">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="278" y="105" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582455250930" />
     <state width="1237" height="329" key="GridCell.Tab.0.bottom" timestamp="1582451559204">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -277,6 +306,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="236" y="180" key="SettingsEditor/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582451619777" />
+    <state x="232" y="263" key="Vcs.Push.Dialog.v2" timestamp="1582455255880">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="232" y="263" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582455255880" />
     <state x="348" y="354" key="com.intellij.ide.util.TipDialog" timestamp="1582451467410">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
