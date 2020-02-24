@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daybook.php" beforeDir="false" afterPath="$PROJECT_DIR$/daybook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/CurrentDayTrans.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/CurrentDayTrans.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/DayBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/DayBook.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +179,7 @@
       <workItem from="1579308381100" duration="12482000" />
       <workItem from="1582451184343" duration="127000" />
       <workItem from="1582451451373" duration="7208000" />
-      <workItem from="1582520611236" duration="8887000" />
+      <workItem from="1582520611236" duration="13007000" />
     </task>
     <task id="LOCAL-00001" summary="paid-amount">
       <created>1576584534193</created>
@@ -239,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582527214151</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Transactions Table in Datatable &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;">
+      <created>1582530781861</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582530781861</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -273,7 +278,8 @@
     <MESSAGE value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
     <MESSAGE value="Daybook Navigate&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
     <MESSAGE value="Transactions Table&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transactions Table&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <MESSAGE value="Transactions Table in Datatable &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transactions Table in Datatable &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="232" y="188" key="#Web_Browsers" timestamp="1582520831390">
@@ -288,10 +294,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="320" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582451295446" />
-    <state x="278" y="105" key="CommitChangelistDialog2" timestamp="1582527211387">
+    <state x="278" y="105" key="CommitChangelistDialog2" timestamp="1582530780184">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="278" y="105" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582527211387" />
+    <state x="278" y="105" key="CommitChangelistDialog2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582530780184" />
     <state width="1237" height="329" key="GridCell.Tab.0.bottom" timestamp="1582520931331">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -332,10 +338,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="236" y="180" key="SettingsEditor/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582451619777" />
-    <state x="232" y="263" key="Vcs.Push.Dialog.v2" timestamp="1582527218919">
+    <state x="232" y="263" key="Vcs.Push.Dialog.v2" timestamp="1582530784227">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
-    <state x="232" y="263" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582527218919" />
+    <state x="232" y="263" key="Vcs.Push.Dialog.v2/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582530784227" />
     <state x="394" y="284" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1582530760864">
       <screen x="0" y="30" width="1280" height="994" />
     </state>
@@ -352,6 +358,10 @@
       <screen x="0" y="30" width="1280" height="994" />
     </state>
     <state x="504" y="314" width="586" height="627" key="find.popup/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582528593900" />
+    <state x="421" y="243" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582535746375">
+      <screen x="0" y="30" width="1280" height="994" />
+    </state>
+    <state x="421" y="243" key="git4idea.branch.GitSmartOperationDialog/-1366.163.1366.738/0.30.1280.994@0.30.1280.994" timestamp="1582535746375" />
   </component>
   <component name="masterDetails">
     <states>
