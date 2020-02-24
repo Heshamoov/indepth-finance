@@ -37,9 +37,12 @@ checkLoggedIn()
     <script src="https://kit.fontawesome.com/88009e5251.js" crossorigin="anonymous"></script>
 
     <!--    data table-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<!--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">-->
+<!--    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>-->
+
+    <!--    advanced interaction controls-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <!--    print.js-->
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
@@ -78,9 +81,20 @@ checkLoggedIn()
             return i;
         }
     </script>
+
+    <script>
+        function trans_table() {
+            $('#trans_table').DataTable();
+        }
+
+        $(document).ready( function () {
+            document.getElementById('navFollowUp').style.color = '#25221E';
+            search();
+        });
+    </script>
 </head>
 
-<body onload="startTime(); search()">
+<body onload="startTime();">
 
 <?php include('navbar.php'); ?>
 <h4 style="color:black">Daybook</h4>
@@ -114,14 +128,6 @@ checkLoggedIn()
 
 </div> <!--navbar-->
 </div> <!--navbar-->
-
-
-<script>
-    document.getElementById('navFollowUp').style.color = '#25221E';
-    $(document).ready(function () {
-        search();
-    });
-</script>
 
 <script src="js/CurrentDayTrans.js"></script>
 

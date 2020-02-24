@@ -15,32 +15,43 @@ SELECT finance_transactions.id,
        finance_transactions.receipt_no,
        finance_transactions.payment_mode,
        finance_transactions.payment_note,
-       finance_fee_categories.name
+       finance_fee_categories.name,
+       finance_transactions.user_id,
+       users.first_name
 FROM finance_transactions
          INNER JOIN finance_fee_categories on finance_transactions.category_id = finance_fee_categories.id
+         INNER JOIN users on finance_transactions.payee_id = users.id
 WHERE STR_TO_DATE(finance_transactions.created_at, '%Y-%m-%d') = '2019-10-07'
 ORDER BY finance_transactions.created_at DESC;
 ";
 
 
 $result = $conn->query($sql);
+
+$row_number = 0;
 if ($result->num_rows > 0) {
 
-    echo "<table class='table table-hover'>
-    <thead class='black white-text'>
+    echo "<table id='trans_table'>
+    <thead>
     <tr>
-        <th scope='col'>FEE</th>
-        <th scope='col'>AMOUNT</th>
-        <th scope='col'>PAYMENT</th>
+        <th>#</th>
+        <th>FEE</th>
+        <th>AMOUNT</th>
+        <th>PAYMENT</th>
+        <th>DESCRIPTION</th>
+        <th>NAME</th>
     </tr>
     </thead>
     <tbody>";
     while ($row = $result->fetch_assoc()) {
         echo "
             <tr>
-                <th scope='row'>" . $row['name'] . "</th>
+                <td>" . ++$row_number . "</td>
+                <td>" . $row['name'] . "</td>
                 <td>" . $row['amount'] . "</td>
                 <td>" . $row['payment_mode'] . "</td>
+                <td>" . $row['title'] . "</td>
+                <td>" . $row['first_name'] . "</td>
             </tr>
         ";
     }
