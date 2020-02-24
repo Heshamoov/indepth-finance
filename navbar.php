@@ -6,7 +6,7 @@
                 <a href="dashboard.php" id="navHome"><span class="fa fa-home"></span>Home</a>
             </li>
             <li>
-                <a href="daybook.php" id="daybook"><span class="fas fa-book"></span>Daybook</a>
+                <a href="daybook.php" id="dayBook"><span class="fas fa-book"></span>Daybook</a>
             </li>
             <li >
                 <a href="sms.php" id="navFollowUp"><span class="fa fa-sms"></span>FollowUp</a>

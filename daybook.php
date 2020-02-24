@@ -48,7 +48,8 @@ checkLoggedIn()
     <script>
         $(document).ready(function () {
             // Icon Color
-            document.getElementById('daybook').style.color = '#25221E';
+            document.getElementById('dayBook').style.color = '#25221E';
+            document.getElementById('navFollowUp').style.color = 'white';
 
             // todays Date
             let today = new Date().toISOString().substr(0, 10);
@@ -79,7 +80,7 @@ checkLoggedIn()
     </script>
 </head>
 
-<body onload="startTime()">
+<body onload="startTime(); search()">
 
 <?php include('navbar.php'); ?>
 <h4 style="color:black">Daybook</h4>
@@ -102,46 +103,12 @@ checkLoggedIn()
 </div>
 </nav>
 
-<div class="container">
-    <div class="row todays_date">
-        <h4 id="todays_date"></h4>
-        <h4 id="todays_time"></h4>
-    </div>
+<div class="row todays_date">
+    <h4 id="todays_date"></h4><h4 id="todays_time"></h4>
 </div>
 
-<div class="row todays_transactions">
-    <table class="table table-hover">
-        <thead class="black white-text">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Payment Mode</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Balance</th>
-            <th scope="col">Grade</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<div class="row todays_transactions" id="result">
+
 </div>
 
 
@@ -156,9 +123,7 @@ checkLoggedIn()
     });
 </script>
 
-<script src="js/sms.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/calender.js"></script>
+<script src="js/CurrentDayTrans.js"></script>
+
 </body>
 </html>
