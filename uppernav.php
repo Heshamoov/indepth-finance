@@ -3,6 +3,9 @@
         <li class="nav-item " >
             <a class="nav-link" href="finance.php" id="navStudentFees">Student Fees</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="registration.php">Registration Fees</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Ledgers</a>
         </li>
