@@ -1,7 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('Asia/Dubai');
-include_once  '../functions.php';
+include_once '../functions.php';
 include('../config/db.php');
 
 $start_date = $_REQUEST['start_date'];
@@ -37,7 +37,102 @@ ORDER BY courses.course_name, finance_fee_collections.due_date
 
 
 ";
-// echo $general;
+
+$general = "
+SELECT familyid,
+       parent_name,
+       sid, student_full_name,admission_no,course_name,section,
+       particular_total expected,
+       discount_amount discount,
+       balance,
+       ffp_id,
+       ffp_name fee_name,
+       creation_date,
+       amount,
+       start_date,
+       due_date
+FROM (
+         SELECT s.id                                   as sid,
+                s.admission_no,
+                s.familyid,
+                g.first_name                              'parent_name',
+                CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
+                c.course_name 'course_name',
+                b.name 'section',
+                ffp.id                                    'ffp_id',
+                ffp.name                                  'ffp_name',
+                ffp.amount                                'amount',
+                ffp.created_at                            'creation_date',
+                ffc.start_date                            'start_date',
+                ffc.due_date                              'due_date',
+                ff.particular_total,
+                ffd.discount_amount,
+                ff.balance
+
+         FROM `finance_fees` ff
+                  inner join students s on ff.student_id = s.id
+                  inner join guardians g on s.familyid = g.familyid
+                  inner join batches b on s.batch_id = b.id AND ff.batch_id = b.id
+                  inner join courses c on b.course_id = c.id
+                  inner join finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                  inner join financial_years fy on ffc.financial_year_id = fy.id
+                  inner join collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                  INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                                                            (
+                                                                    (ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                                                                    (ffp.receiver_id = s.student_category_id and
+                                                                     ffp.receiver_type = 'StudentCategory' and
+                                                                     ffp.batch_id = ff.batch_id) or
+                                                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                                                                )
+                  LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
+         WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+                s.familyid = '$familyid' AND
+                b.start_date >= '$start_date' AND b.end_date <= '$end_date')
+         UNION ALL
+         SELECT s.id                                   as sid,
+                s.admission_no,
+                s.familyid,
+                g.first_name                              'parent_name',
+                CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
+                c.course_name 'course_name',
+                b.name 'section',
+                ffp.id                                    'ffp_id',
+                ffp.name                                  'ffp_name',
+                ffp.amount                                'amount',
+                ffp.created_at                            'creation_date',
+                ffc.start_date                            'start_date',
+                ffc.due_date                              'due_date',
+                ff.particular_total,
+                ffd.discount_amount,
+                ff.balance
+         FROM `finance_fees` ff
+                  inner join students s on ff.student_id = s.id
+                  inner join guardians g on s.familyid = g.familyid
+                  inner join batch_students bs on s.id = bs.student_id
+                  inner join batches b on bs.batch_id = b.id
+                  inner join courses c on b.course_id = c.id
+                  inner join finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                  inner join financial_years fy on ffc.financial_year_id = fy.id
+                  inner join collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                  INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                                                            (
+                                                                    (ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                                                                    (ffp.receiver_id = s.student_category_id and
+                                                                     ffp.receiver_type = 'StudentCategory' and
+                                                                     ffp.batch_id = ff.batch_id) or
+                                                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                                                                )
+                  LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
+         WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+                s.familyid = '$familyid' AND
+                b.start_date >= '$start_date' AND b.end_date <= '$end_date')
+     ) t
+
+";
+
+//echo $general;
+
 $result = $conn->query($general);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
@@ -58,7 +153,7 @@ if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
         if ($parent_header) {
-            echo '<h4 id="parent_heading" style="padding-left: 30px" > Parent: ' . $row['familyid'] . ' - ' . $row['parent'] . '</h4>';
+            echo '<h4 id="parent_heading" style="padding-left: 30px" > Parent: ' . $row['familyid'] . ' - ' . $row['parent_name'] . '</h4>';
             echo "<a  style='margin-left: 25px; margin-top: 5px'
                                onclick=printPDFStatement('parentStatementDiv','')>
                                 <span class='fa fa-print' style='font-size: 20px' aria-hidden='true'></span>
@@ -69,27 +164,27 @@ if ($result->num_rows > 0) {
             $parent_header = false;
         }
 
-        $student = $row['student'];
+        $student = $row['student_full_name'];
         $first_name = explode(' ', trim($student));
 
         if ($first_name != $first_name_old) {
             if ($second_table) {
                 echo "<tr><td colspan='3' align='center'><b>Total</b></td>
-                            <td align='right'>".number_format($total_expected)."</td>
-                            <td align='right'>".number_format($total_discount)."</td>
-                            <td align='right'>".number_format($total_paid)."</td>
-                            <td align='right'>".number_format($total_balance). '</td>
+                            <td align='right'>" . number_format($total_expected) . "</td>
+                            <td align='right'>" . number_format($total_discount) . "</td>
+                            <td align='right'>" . number_format($total_paid) . "</td>
+                            <td align='right'>" . number_format($total_balance) . '</td>
                       </tr>
                       </table><br>';
             } else
                 $second_table = true;
-            $total_expected = $total_balance = $total_paid  = $total_discount= 0;
+            $total_expected = $total_balance = $total_paid = $total_discount = 0;
             echo "<table id='fee_table'   style='margin-top: -5px!important; ' class='table table-sm table-striped table-hover table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>
                         <th colspan=7 align='center'  class=\"black  white-text\"> Student: <b>" .
-                $row['admission_no'] . ' - ' . $row['student'] . '</b> &nbsp&nbsp Grade: <b>' .
+                $row['admission_no'] . ' - ' . $row['student_full_name'] . '</b> &nbsp&nbsp Grade: <b>' .
                 $row['course_name'] . '</b> &nbsp&nbsp Section: <b>' .
                 $row['section'] . '</b></th>
                     </tr>
@@ -132,10 +227,10 @@ if ($result->num_rows > 0) {
         $rowNumber++;
     }
     echo "<tr><td colspan='3' align='center'>Total</td>
-          <td align='right'>".number_format($total_expected)."</td>
-          <td align='right'>".number_format($total_discount)."</td>
-          <td align='right'>".number_format($total_paid)."</td>
-          <td align='right'>".number_format($total_balance). '</td>
+          <td align='right'>" . number_format($total_expected) . "</td>
+          <td align='right'>" . number_format($total_discount) . "</td>
+          <td align='right'>" . number_format($total_paid) . "</td>
+          <td align='right'>" . number_format($total_balance) . '</td>
           </tr></table>';
 } else {
     echo 'No Data Found! Try another search.';

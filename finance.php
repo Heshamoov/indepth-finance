@@ -56,11 +56,6 @@ checkLoggedIn()
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            search();
-        });
-    </script>
     <title>InDepth Finance</title>
 </head>
 
