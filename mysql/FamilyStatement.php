@@ -131,7 +131,62 @@ FROM (
 
 ";
 
-//echo $general;
+
+$general_current_sectins = "
+SELECT familyid,
+       parent_name,
+       sid, student_full_name,admission_no,course_name,section,
+       particular_total expected,
+       discount_amount discount,
+       balance,
+       ffp_id,
+       ffp_name fee_name,
+       creation_date,
+       amount,
+       start_date,
+       due_date
+FROM (
+         SELECT s.id                                   as sid,
+                s.admission_no,
+                s.familyid,
+                g.first_name                              'parent_name',
+                CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
+                c.course_name 'course_name',
+                b.name 'section',
+                ffp.id                                    'ffp_id',
+                ffp.name                                  'ffp_name',
+                ffp.amount                                'amount',
+                ffp.created_at                            'creation_date',
+                ffc.start_date                            'start_date',
+                ffc.due_date                              'due_date',
+                ff.particular_total,
+                ffd.discount_amount,
+                ff.balance
+
+         FROM `finance_fees` ff
+                  inner join students s on ff.student_id = s.id
+                  inner join guardians g on s.familyid = g.familyid
+                  inner join batches b on s.batch_id = b.id AND ff.batch_id = b.id
+                  inner join courses c on b.course_id = c.id
+                  inner join finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                  inner join financial_years fy on ffc.financial_year_id = fy.id
+                  inner join collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                  INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                                                            (
+                                                                    (ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                                                                    (ffp.receiver_id = s.student_category_id and
+                                                                     ffp.receiver_type = 'StudentCategory' and
+                                                                     ffp.batch_id = ff.batch_id) or
+                                                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                                                                )
+                  LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
+         WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+                s.familyid = '$familyid' AND
+                b.start_date >= '$start_date' AND b.end_date <= '$end_date')
+     ) t
+ORDER BY course_name,sid
+";
+//echo $general_current_sectins;
 
 $result = $conn->query($general);
 $rowNumber = 1;
@@ -160,7 +215,6 @@ if ($result->num_rows > 0) {
                             </a>";
             echo '<a  id="btnTransaction" style="margin-left:auto; margin-right: 20px" type="button" href="#transaction_heading" class="btn btn-sm btn-blue-grey " >View Transactions</a>';
 
-
             $parent_header = false;
         }
 
@@ -179,7 +233,7 @@ if ($result->num_rows > 0) {
             } else
                 $second_table = true;
             $total_expected = $total_balance = $total_paid = $total_discount = 0;
-            echo "<table id='fee_table'   style='margin-top: -5px!important; ' class='table table-sm table-striped table-hover table-bordered student_table' >";
+            echo "<table id='fee_table' style='margin-top: -5px!important; ' class='table table-sm table-striped table-hover table-bordered student_table' >";
             echo "
                 <thead>
                     <tr>

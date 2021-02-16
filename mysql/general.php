@@ -35,11 +35,9 @@ printHeader('Fee Details', $start_date, $end_date);
 echo '</div>';
 echo "<div class='row' id='topDiv' style='margin: 10px;'>";
 echo '<h4><u>Grades List</u></h4>';
-echo "
-<a id='printbtnMain' style='margin-left: 25px; margin-top: 5px'
-                               onclick=printPDF('printUpperDiv','')>
-                                <span class='fa fa-print' style='font-size: 20px' aria-hidden='true'></span>
-                            </a>";
+echo "<a id='printbtnMain' style='margin-left: 25px; margin-top: 5px' onclick=printPDF('printUpperDiv','')>
+    <span class='fa fa-print' style='font-size: 20px' aria-hidden='true'></span>
+</a>";
 echo "<table class='table table-bordered table-striped table-hover' id='gradesList'>
             <thead class='black white-text'>
                 <tr>
@@ -433,13 +431,16 @@ if ($result->num_rows > 0) {
     echo '<h4><u>Parents list</u>
             <div class="btn-group" id="printbtnMain" >
                 <button type="button" class="btn btn-sm btn-outline-light dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded = "false">
-                    <span class="fa fa-print" style = "font-size: 20px; color: darkred" aria - hidden = "true" ></span >
+                    <span class="fa fa-print" style = "font-size: 20px; color: darkred" aria-hidden = "true" ></span >
                 </button >
+                              
                 <div class="dropdown-menu">
                     <a class="dropdown-item" onclick = printSortedStudentsFees("ParentsTable")>Print Custom</a>
                     <a class="dropdown-item" onclick="showParentsDiv();">Print All</a>
+                    <a class="dropdown-item" onclick="excel_download();">Download as EXCEL</a>
                 </div>
-            </div></h4>';
+            </div>
+            </h4>';
     echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
     echo "
     	<thead class='black white-text'>
