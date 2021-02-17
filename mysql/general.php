@@ -542,7 +542,7 @@ if ($result->num_rows > 0) {
 
 
 //Hidden Table for printing
-$result = $conn->query($parents_list_sql);
+$result = $conn->query($parents_list_sql_current_section);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
     echo "<div id='ParentsDivPrint'  style='display: none' aria-disabled='true' class='row'>";
