@@ -19,7 +19,7 @@ $sql = "SELECT finance_fees.balance                  balance,
                transaction_receipts.receipt_number   receipt
         FROM guardians
          INNER JOIN students ON guardians.familyid = students.familyid
-         INNER JOIN finance_fees ON students.id = finance_fees.student_id
+         INNER JOIN finance_fees ON students.id = finance_fees.student_id AND s.batch_id = ff.batch_id
          INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
          inner join fee_invoices on finance_fees.id = fee_invoices.fee_id
          inner join finance_transactions on finance_fees.id = finance_transactions.finance_id
@@ -56,7 +56,7 @@ SELECT ft.id,
        transaction_receipts.receipt_number   receipt
 FROM finance_transactions ft
          INNER JOIN students s on ft.payee_id = s.id
-         INNER JOIN finance_fees ff On ft.finance_id = ff.id
+         INNER JOIN finance_fees ff On ft.finance_id = ff.id AND s.batch_id = ff.batch_id
          INNER JOIN fee_invoices on ff.id = fee_invoices.fee_id
          LEFT JOIN finance_transaction_receipt_records
                    on ft.id = finance_transaction_receipt_records.finance_transaction_id
@@ -76,6 +76,7 @@ FROM finance_transactions ft
 WHERE s.familyid = '$familyid' AND ft.transaction_date between '$start_date' AND '$end_date'
 ORDER BY s.last_name, ft.transaction_date
 ";
+
 //echo $sql;
 $result = $conn->query($sql);
 $net_total = $net_discount = $net_paid = $net_balance = 0;

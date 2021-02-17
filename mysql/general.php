@@ -164,12 +164,10 @@ class Fee
 
     public function print_fee()
     {
-        echo 'Before ' . $this->expected;
         if ($this->expected == 0) {
             $this->expected == 1;
         }
 
-        echo ' - AFTER ' . $this->expected . ' < br>';
         echo "<tr>
                 <th class='textLeft'>" . $this->fee . "</th>
                 <td class='textLeft'>" . $this->studentsNumber . "</td>
@@ -421,9 +419,63 @@ group by familyid
 order by familyid;
 ";
 
-//echo $parents_list_sql;
 
-$result = $conn->query($parents_list_sql);
+$parents_list_sql_current_section = "
+SELECT familyid,
+       parent_name,
+       COUNT(DISTINCT sid)   NumberOfStudents,
+       SUM(particular_total) expected,
+       SUM(discount_amount)  discount,
+       (SUM(particular_total) - SUM(balance)) paid, SUM(balance) balance,
+       ffp_id,
+       ffp_name,
+       creation_date,
+       amount,
+       start_date,
+       due_date
+FROM (
+         SELECT s.id                                   as sid,
+                s.admission_no,
+                s.familyid,
+                g.first_name                              'parent_name',
+                CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
+                CONCAT(c.course_name, ' ', b.name)        'grade',
+                ffp.id                                    'ffp_id',
+                ffp.name                                  'ffp_name',
+                ffp.amount                                'amount',
+                ffp.created_at                            'creation_date',
+                ffc.start_date                            'start_date',
+                ffc.due_date                              'due_date',
+                ff.particular_total, ff.discount_amount,ff.balance
+
+         FROM `finance_fees` ff
+                  inner join students s on ff.student_id = s.id and ff.batch_id = s.batch_id
+                  inner join guardians g on s.familyid = g.familyid
+                  inner join batches b on s.batch_id = b.id
+                  inner join courses c on b.course_id = c.id
+                  inner join finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                  inner join financial_years fy on ffc.financial_year_id = fy.id
+                  inner join collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                  INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                                                            (
+                                                                    (ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                                                                    (ffp.receiver_id = s.student_category_id and
+                                                                     ffp.receiver_type = 'StudentCategory' and
+                                                                     ffp.batch_id = ff.batch_id) or
+                                                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                                                                )
+                  LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
+         WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+                b.start_date >= '$start_date' AND b.end_date <= '$end_date')
+     ) t
+group by familyid
+order by familyid;
+";
+
+
+//echo $parents_list_sql_current_section;
+
+$result = $conn->query($parents_list_sql_current_section);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
     echo "<div id='ParentsDiv' class='row'>";

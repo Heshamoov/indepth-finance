@@ -132,7 +132,7 @@ FROM (
 ";
 
 
-$general_current_sectins = "
+$general_current_section = "
 SELECT familyid,
        parent_name,
        sid, student_full_name,admission_no,course_name,section,
@@ -160,7 +160,7 @@ FROM (
                 ffc.start_date                            'start_date',
                 ffc.due_date                              'due_date',
                 ff.particular_total,
-                ffd.discount_amount,
+                ff.discount_amount,
                 ff.balance
 
          FROM `finance_fees` ff
@@ -186,9 +186,9 @@ FROM (
      ) t
 ORDER BY course_name,sid
 ";
-//echo $general_current_sectins;
+//echo $general_current_section;
 
-$result = $conn->query($general);
+$result = $conn->query($general_current_section);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
     $params = array($start_date, $end_date, $familyid);
