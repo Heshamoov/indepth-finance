@@ -43,6 +43,11 @@ checkLoggedIn()
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
     <link rel="stylesheet" href="css/print.min.css">
 
+    <!-- Exporting table as excel -->
+<!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <script src="js/table2excel.js"></script>
+
+
 
     <script>
         function parentsDataTable() {

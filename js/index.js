@@ -107,16 +107,26 @@ function showParentsDiv(){
     document.getElementById('ParentsDivPrint').style.display ='none';
 }
 
+function excel_current_page_download() {
+    $("#ParentsTable").table2excel({
+        // exclude CSS class
+        exclude: ".noExl",
+        name: "Finance",
+        filename: "Parents-List", //do not include extension
+        fileext: ".xls"// file extension
+        // preserveColors:true
+    });
+}
+
 function excel_download() {
-    var FamilyStatementRequest = new XMLHttpRequest();
-    FamilyStatementRequest.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            document.getElementById("result").innerHTML = this.responseText;
-        }
-    };
-    FamilyStatementRequest.open("GET", "mysql/excel_download.php?start_date=" + start_date + "&end_date=" + end_date
-        + "&familyid=" + familyid, false);
-    FamilyStatementRequest.send();
+    $("#ParentsTablePrint").table2excel({
+        // exclude CSS class
+        exclude: ".noExl",
+        name: "Finance",
+        filename: "Parents-List", //do not include extension
+        fileext: ".xls"// file extension
+        // preserveColors:true
+    });
 }
 
 function printSortedStudentsFees(table_name) {

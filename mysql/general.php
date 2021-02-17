@@ -437,7 +437,17 @@ if ($result->num_rows > 0) {
                 <div class="dropdown-menu">
                     <a class="dropdown-item" onclick = printSortedStudentsFees("ParentsTable")>Print Custom</a>
                     <a class="dropdown-item" onclick="showParentsDiv();">Print All</a>
-                    <a class="dropdown-item" onclick="excel_download();">Download as EXCEL</a>
+                </div>
+            </div>
+            
+            <div class="btn-group" id="excelbtnMain">
+                <button type="button" class="btn btn-sm btn-outline-light dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded = "false">
+                    <span class="fa fa-book" style = "font-size: 20px; color: darkred" aria-hidden = "true" ></span >
+                </button >
+                              
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" onclick="excel_current_page_download();">Download Current Page as EXCEL</a>
+                    <a class="dropdown-item" onclick="excel_download();">Download ALL as EXCEL</a>
                 </div>
             </div>
             </h4>';
@@ -480,45 +490,16 @@ if ($result->num_rows > 0) {
 
 
 //Hidden Table for printing
-$general = "
-SELECT 
-guardians.first_name  parent,
-students.last_name student,
-COUNT(DISTINCT students.id) NumberOfStudents,
-students.familyid,
-SUM(finance_fee_discounts.discount_amount) discount,
-SUM(finance_fees.particular_total) expected,
-(SUM(finance_fees.particular_total)  - SUM(finance_fees.balance)) paid,
-SUM(finance_fees.balance) balance,
-finance_fee_collections.name fee_name,
-finance_fee_collections.start_date start_date,
-finance_fee_collections.end_date end_date,
-finance_fee_collections.due_date due_date
-
-FROM guardians 
-
-INNER JOIN students ON guardians.familyid = students.familyid
-INNER JOIN finance_fees ON students.id = finance_fees.student_id
-INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
-LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
-
-WHERE STR_TO_DATE(finance_fee_collections.start_date,' % Y -%m -%d') >= '$start_date'
-GROUP BY guardians.familyid
-ORDER BY REPLACE(guardians.first_name,' ', '')
-";
-// echo $general;
-$result = $conn->query($general);
+$result = $conn->query($parents_list_sql);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
-
-    echo "<div id='ParentsDivPrint' style='display: none'  aria-disabled='true' class='row'>";
+    echo "<div id='ParentsDivPrint'  style='display: none' aria-disabled='true' class='row'>";
     echo "<div class='col'>";
     printHeader('Parents - Fee Status list', $start_date, $end_date);
-    echo "<br> <table  id='ParentsTablePrint'  >";
+    echo "<table class='table table-bordered table-striped table-hover' id='ParentsTablePrint'>";
     echo "
     	<thead class='black white-text'>
         <tr>
-        
     		<th>#</th>
     		<th width='20'>FamilyID</th>
     		<th>Parent</th>
@@ -534,21 +515,22 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $row['paid'] -= $row['discount'];
         $params = array($start_date, $end_date, $row['familyid']);
-        echo sprintf("
-    	<tr  onclick='FamilyStatement(%s)'>
-    		<td>%d</td>
-    		<td  class='textLeft'>%s</td>
-    		<td>%s</td>
-        <td  class='textLeft'>%s</td>
-    		<td class='textRight'>%s</td>
-    		<td class='textRight'>%s</td>
-        <td class='textRight'>%s</td>
-        <td class='textRight'>%s</td>
-    	</tr>", json_encode($params), $rowNumber, $row['familyid'], $row['parent'], $row['NumberOfStudents'], number_format((float)$row['expected']), number_format((float)$row['discount']), number_format((float)$row['paid']), number_format((float)$row['balance']));
+        echo "
+    	<tr onclick='FamilyStatement(" . json_encode($params) . ")'>
+    		<td>" . $rowNumber . "</td>
+    		<td  class='textLeft'>" . $row['familyid'] . ' </td >
+    		<td > ' . $row['parent_name'] . "</td>
+        <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
+    		<td class='textRight'>" . number_format((float)$row['expected']) . "</td>
+    		<td class='textRight'>" . number_format((float)$row['discount']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['paid']) . "</td>
+        <td class='textRight'>" . number_format((float)$row['balance']) . ' </td >
+    	</tr > ';
         $rowNumber++;
     }
-    echo ' </tbody ></table ></div ></div > ';
+    echo '</tbody></table></div></div> ';
+} else {
+    echo 'No Data Found! try another search . ';
 }
-
 
 $conn->close();

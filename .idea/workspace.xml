@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql/excel_download.php" afterDir="false" />
+    <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/table2excel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/indepth-finance.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/indepth-finance.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/finance.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/FamilyStatement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/FamilyStatement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/parentStatement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/parentStatement.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,68 +17,8 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hesham" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hesham" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hesham" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="alsanawabar: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hesham" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="alsanawabar: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="online_exam_groups_students: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="indepth-finance" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Hesham &lt;heshamoov90@gmail.com&gt;" />
-      </list>
-    </option>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="middlenav" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SIGN_OFF_COMMIT" value="true" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -89,134 +28,36 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="PhpServers">
-    <servers>
-      <server host="localhost" id="bc5bb687-63ea-47be-a794-afd411c50765" name="localhost" />
-    </servers>
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3" />
-  <component name="ProjectId" id="1YCfLj2JjhUZG7bRiVWoiD1szKE" />
+  <component name="ProjectId" id="1obBewfEyvgghdeaYfX7VkAEZg0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="false" />
-    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="node.js.detected.package.stylelint" value="true" />
-    <property name="node.js.path.for.package.stylelint" value="project" />
-    <property name="node.js.selected.package.stylelint" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/sms.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\indepth-finance\mysql" />
-      <recent name="C:\xampp\htdocs\indepth-finance\assets" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\indepth-finance\js" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.php">
-    <configuration default="true" type="CompoundRunConfigurationType">
-      <toRun name="Unnamed" type="PhpBuiltInWebServerConfigurationType" />
-      <method v="2" />
-    </configuration>
-    <configuration name="index.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:80/indepth-finance/index.php">
-      <method v="2" />
-    </configuration>
-    <configuration name="Finance" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" start_url="http://localhost/indepth-finance/index.html">
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="JavaScript Debug.index.php" />
-      <item itemvalue="PHP Web Page.Finance" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.index.php" />
-        <item itemvalue="JavaScript Debug.index.php" />
-        <item itemvalue="JavaScript Debug.index.php" />
-        <item itemvalue="JavaScript Debug.index.php" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a9e67e28-b939-411d-a5d1-3acbd1cac286" name="Default Changelist" comment="" />
-      <created>1576584399278</created>
+      <changelist id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="" />
+      <created>1613545511277</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1576584399278</updated>
-      <workItem from="1576584400450" duration="455000" />
-      <workItem from="1576643480391" duration="20340000" />
-      <workItem from="1576701959592" duration="180000" />
-      <workItem from="1576702169276" duration="139000" />
-      <workItem from="1578717384281" duration="2840000" />
-      <workItem from="1579062768596" duration="63000" />
-      <workItem from="1579308381100" duration="12482000" />
-      <workItem from="1582451184343" duration="127000" />
-      <workItem from="1582451451373" duration="3279000" />
-      <workItem from="1613458593980" duration="16071000" />
+      <updated>1613545511277</updated>
+      <workItem from="1613545525573" duration="105000" />
+      <workItem from="1613545633912" duration="1702000" />
     </task>
-    <task id="LOCAL-00001" summary="paid-amount">
-      <created>1576584534193</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1576584534193</updated>
-    </task>
-    <task id="LOCAL-00002" summary="After Merge">
-      <created>1576654887224</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1576654887225</updated>
-    </task>
-    <task id="LOCAL-00003" summary="paid-amount">
-      <created>1576661374723</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1576661374723</updated>
-    </task>
-    <task id="LOCAL-00004" summary="paid-amount">
-      <created>1576669707833</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1576669707833</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;">
-      <created>1579326512498</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1579326512498</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
-  </component>
-  <component name="TodoView" selected-index="1">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -231,39 +72,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="After Merge" />
-    <MESSAGE value="paid-amount" />
-    <MESSAGE value="print button implemnted" />
-    <MESSAGE value="print button implemented" />
-    <MESSAGE value="Payment Mode" />
-    <MESSAGE value="Payment Mode&#10;&#10;Signed-off-by: Hesham &lt;Heshamoov90@gmail.com&gt;" />
-    <MESSAGE value="Fix Grades &amp; Fees lists values&#10;&#10;Signed-off-by: Hesham &lt;Heshamoov90@gmail.com&gt;" />
-    <MESSAGE value="Add percentage in Grades and Fees" />
-    <MESSAGE value="Fix Grades List" />
-    <MESSAGE value="Grades and Fees Lists" />
-    <MESSAGE value="Parents with mobile number" />
-    <MESSAGE value="Navbar" />
-    <MESSAGE value="Fix Parents Balances" />
-    <MESSAGE value="Add Fees Collected Percentage in Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <MESSAGE value="Add Percentage of Total Collected anount over grades in a Bar Chart &#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <MESSAGE value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Mode Comparison into Pie chart 2&#10;&#10;Signed-off-by: Hesham &lt;heshamoov90@gmail.com&gt;" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
