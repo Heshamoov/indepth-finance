@@ -450,7 +450,7 @@ FROM (
 
          FROM `finance_fees` ff
                   inner join students s on ff.student_id = s.id and ff.batch_id = s.batch_id
-                  inner join guardians g on s.familyid = g.familyid
+                  inner join guardians g on s.immediate_contact_id = g.id
                   inner join batches b on s.batch_id = b.id
                   inner join courses c on b.course_id = c.id
                   inner join finance_fee_collections ffc on ff.fee_collection_id = ffc.id
