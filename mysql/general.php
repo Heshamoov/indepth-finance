@@ -128,23 +128,23 @@ from finance_fees
          inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
          inner join students on finance_fees.student_id = students.id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date, ' % Y -%m -%d') >= '$start_date'
-  AND STR_TO_DATE(finance_fee_collections.start_date, ' % Y -%m -%d') <= '$end_date'
+WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date'
+  AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '$end_date'
 AND
     (
-        finance_fee_collections.name like ' % Installment % '  OR 
-        finance_fee_collections.name like ' % BUS % '  OR 
-        finance_fee_collections.name like ' % BOOK % ' OR
-        finance_fee_collections.name like ' % uniform % ' OR
-        finance_fee_collections.name like ' % '
+        finance_fee_collections.name like '%Installment%'  OR 
+        finance_fee_collections.name like '%BUS%'  OR 
+        finance_fee_collections.name like '%BOOK%' OR
+        finance_fee_collections.name like '%uniform%' OR
+        finance_fee_collections.name like '%'
     ) 
 
 GROUP BY 
-finance_fee_collections.name like  ' % Installment % ',
-finance_fee_collections.name like  ' % BUS % ',
-finance_fee_collections.name like ' % BOOK % ',
-finance_fee_collections.name like ' % uniform % ',
-finance_fee_collections.name like ' % '
+finance_fee_collections.name like  '%Installment%',
+finance_fee_collections.name like  '%BUS%',
+finance_fee_collections.name like '%BOOK%',
+finance_fee_collections.name like '%uniform%',
+finance_fee_collections.name like '%'
     
 ORDER BY finance_fee_collections.name
 ";
@@ -157,16 +157,19 @@ class Fee
         $this->studentsNumber = $studentsNumber;
         $this->total = $total;
         $this->discount = $discount;
-        $this->expected = $expected;
+        if (round($expected) == 0) {
+            $this->expected = 1;
+        }
+         else {
+             $this->expected = $expected;
+         }
+
         $this->paid = $paid;
         $this->balance = $balance;
     }
 
     public function print_fee()
     {
-        if ($this->expected == 0) {
-            $this->expected == 1;
-        }
 
         echo "<tr>
                 <th class='textLeft'>" . $this->fee . "</th>
@@ -178,7 +181,7 @@ class Fee
                 <td class='textRight'>" . round(($this->paid / $this->expected) * 100, 1) . "%</td>
                 <td class='textRight'>" . number_format((float)$this->balance) . "</td>
                 <td class='textRight'>" . round(($this->balance / $this->expected) * 100, 1) . ' %</td >
-            </tr > ';
+            </tr> ';
     }
 }
 
@@ -208,13 +211,13 @@ if ($result->num_rows > 0) {
         if (stripos($row['name'], 'book') !== false) {
             $fee = new Fee('Books', $row['No . Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
         } elseif (stripos($row['name'], 'bus') !== false) {
-            $fee = new Fee('Bus', $row['No . Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+            $fee = new Fee('Bus', $row['No. Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
         } elseif (stripos($row['name'], 'installment') !== false) {
-            $fee = new Fee('Tuition', $row['No . Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+            $fee = new Fee('Tuition', $row['No. Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
         } elseif (stripos($row['name'], 'uniform') !== false) {
-            $fee = new Fee('Uniform', $row['No . Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+            $fee = new Fee('Uniform', $row['No. Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
         } else {
-            $fee = new Fee('Other', $row['No . Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
+            $fee = new Fee('Other', $row['No. Students'], $row['total'], $row['discount'], $row['expected'], $row['paid'], $row['balance']);
         }
 
         $pushed = false;
@@ -237,7 +240,7 @@ if ($result->num_rows > 0) {
     }
 
     uasort($fees_array, 'cmp');
-    echo ' < tbody>';
+
     foreach ($fees_array as $fee) {
         $fee->print_fee();
     }
@@ -260,8 +263,8 @@ from finance_fees
          inner join finance_fee_collections on finance_fees.fee_collection_id = finance_fee_collections.id
          inner join students on finance_fees.student_id = students.id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date, ' % Y -%m -%d') >= '$start_date '
-  AND STR_TO_DATE(finance_fee_collections.start_date, ' % Y -%m -%d') <= '$end_date' ";
+WHERE STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') >= '$start_date '
+  AND STR_TO_DATE(finance_fee_collections.start_date, '%Y-%m-%d') <= '$end_date' ";
 
 
     $result = $conn->query($fees_list_sammury);
@@ -286,7 +289,7 @@ WHERE STR_TO_DATE(finance_fee_collections.start_date, ' % Y -%m -%d') >= '$start
             }
             echo "</tr>";
         }
-        echo '</table > ';
+        echo '</table ></div>';
     } else {
         echo 'No Data Found! try another search!';
     }
@@ -325,8 +328,8 @@ INNER JOIN finance_fees ON students.id = finance_fees.student_id
 INNER JOIN finance_fee_collections ON finance_fees.fee_collection_id = finance_fee_collections.id
 LEFT JOIN finance_fee_discounts ON finance_fees.id = finance_fee_discounts.finance_fee_id
 
-WHERE STR_TO_DATE(finance_fee_collections.start_date,' % Y -%m -%d') >= '$start_date'
-AND STR_TO_DATE(finance_fee_collections.start_date,' % Y -%m -%d') <= '$end_date'
+WHERE STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') >= '$start_date'
+AND STR_TO_DATE(finance_fee_collections.start_date,'%Y-%m-%d') <= '$end_date'
 GROUP BY guardians.familyid
 ORDER BY REPLACE(guardians.first_name,' ', '')
 ";
