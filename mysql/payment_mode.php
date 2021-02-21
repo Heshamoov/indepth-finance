@@ -8,8 +8,23 @@ $end_date = $_REQUEST['end_date'];
 
 // PAYMENT MODE
 
+$rowspan = [];
+$col_sql = "SELECT DATE_FORMAT(transaction_date,'%Y-%m') month, count(distinct (payment_mode)) colspan, SUM(amount) amount, payment_mode mode
+FROM finance_transactions
+WHERE finance_transactions.finance_type = 'FinanceFee'
+  AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') >= '2020-9-1'
+  AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') <= '2021-8-31'
+GROUP BY DATE_FORMAT(transaction_date, '%Y%m');";
+$col_result = $conn->query($col_sql);
+if ($col_result->num_rows > 0) {
+    while ($row = $col_result->fetch_assoc()) {
+        $rowspan[$row['month']] = $row['colspan'];
+    }
+}
+
+
 $payment_mode = "
-SELECT transaction_date, SUM(amount) amount, payment_mode mode
+SELECT transaction_date, DATE_FORMAT(transaction_date,'%Y-%m') month, SUM(amount) amount, payment_mode mode
 FROM finance_transactions
 WHERE finance_transactions.finance_type = 'FinanceFee'
   AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') >= '$start_date'
@@ -24,7 +39,7 @@ $totalPayments = $id = 0;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "
-<table style='margin-top: 30px!important;' class='table table-light table-bordered table-striped' id='paymentMode'>
+<table style='margin-top: 30px!important;' class='table  table-bordered ' id='paymentMode'>
             <thead class=\"bg-green text-white\">
                 <tr>
                     <th class='textCenter' style='width: 15%;'><b>Month</b></th>
@@ -37,26 +52,36 @@ if ($result->num_rows > 0) {
     $total_month_income = 0;
     $first_row = true;
     while ($row = $result->fetch_assoc()) {
+        $rowspan_no = 0;
+
         if ($first_row) {
             $first_row = false;
             $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
+            $rowspan_no = $rowspan[$row['month']];
 //            echo "<tr><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
         }
 
         $id++;
 
         if ($new_month != date_format(date_create(($row['transaction_date'])), "Y-F")) {
-            echo "<tr><th colspan='2' class='bold text-center'>TOTAL income in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income) . "</th></tr>";
+            echo "<tr><th colspan='2' class='bold text-center'>Total payments in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income) . "</th></tr>";
 
             $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
-            echo "<tr><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
+            echo "<tr style='background-color: white; border-bottom: 2px black '><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
             $total_month_income = 0;
+
+            $rowspan_no = $rowspan[$row['month']];
         }
 
 
-        echo "<tr>
+        echo "<tr>";
 
-                <th class='textLeft'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>
+        if ($rowspan_no != 0)
+            echo " <th rowspan='$rowspan_no' class='textLeft text-center align-middle'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>";
+
+
+        echo "               
+                
                 <th  class='textLeft'>
                 
                 <div>
