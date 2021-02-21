@@ -62,7 +62,7 @@ checkLoggedIn()
             <a class="nav-link" href="finance.php">Student Fees</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="registration.php">Registration Fees</a>
+            <a class="nav-link" href="payment_mode.php">Registration Fees</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Ledgers</a>
