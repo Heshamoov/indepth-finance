@@ -27,16 +27,35 @@ if ($result->num_rows > 0) {
 <table style='margin-top: 30px!important;' class='table table-light table-bordered table-striped' id='paymentMode'>
             <thead class=\"bg-green text-white\">
                 <tr>
-                    <th class='textCenter'><b>Month</b></th>
+                    <th class='textCenter' style='width: 15%;'><b>Month</b></th>
                     <th class='textCenter'><b>Mode</b></th>
-                    <th class='textCenter'><b>Amount</b></th>
+                    <th class='textCenter' style='width: 15%;'><b>Amount</b></th>
                 </tr>
             </thead>";
 
+    $new_month = '';
+    $total_month_income = 0;
+    $first_row = true;
     while ($row = $result->fetch_assoc()) {
+        if ($first_row) {
+            $first_row = false;
+            $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
+//            echo "<tr><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
+        }
+
         $id++;
 
-        echo "<tr >
+        if ($new_month != date_format(date_create(($row['transaction_date'])), "Y-F")) {
+            echo "<tr><th colspan='2' class='bold text-center'>TOTAL income in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income) . "</th></tr>";
+
+            $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
+            echo "<tr><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
+            $total_month_income = 0;
+        }
+
+
+        echo "<tr>
+
                 <th class='textLeft'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>
                 <th  class='textLeft'>
                 
@@ -45,7 +64,6 @@ if ($result->num_rows > 0) {
                             <div class='main-div'>                                
                                 <button type='button' style='background: none; border: none!important' class='  showinfo' data-toggle='collapse' data-target='#collapse$id'>
                                 <i class='fa fa-plus'></i> " . $row['mode'] . "</button>
-                                
                             </div>
                             <div id='collapse$id' class='collapse' aria-labelledby='headingOne' data-parent='#accordionExample'>
                                 <div class='card-body'>
@@ -60,6 +78,7 @@ if ($result->num_rows > 0) {
                 
                 <th class='textRight'>" . number_format((float)$row['amount']) . "</th>
              </tr>";
+        $total_month_income += $row['amount'];
         $totalPayments += $row['amount'];
     }
     echo "<tr>
