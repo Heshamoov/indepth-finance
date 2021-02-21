@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
     echo "<table class='table table-bordered table-striped' id='paymentMode'>
             <thead  class=\"bg-green text-white\">
                 <tr>
-                    <th class='textCenter'><b>SI No.</b></th>
+                    <th class='textCenter'><b>No.</b></th>
                     <th class='textCenter'><b>Parent</b></th>
                     <th class='textCenter'><b>Amount</b></th>
                 </tr>

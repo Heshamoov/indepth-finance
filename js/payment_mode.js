@@ -27,37 +27,33 @@ function search() {
 // }
 
 
-
-$(document).ready(function(){
+$(document).ready(function () {
     // Add minus icon for collapse element which is open by default
-    $(".collapse.show").each(function(){
-        $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+    $(".collapse.show").each(function () {
+        $(this).prev(".main-div").find(".fa").addClass("fa-minus").removeClass("fa-plus");
     });
 
     // Toggle plus minus icon on show hide of collapse element
-    $(".collapse").on('show.bs.collapse', function(){
-        $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
-    }).on('hide.bs.collapse', function(){
-        $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+    $(".collapse").on('show.bs.collapse', function () {
+        $(this).prev(".main-div").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+    }).on('hide.bs.collapse', function () {
+        $(this).prev(".main-div").find(".fa").removeClass("fa-minus").addClass("fa-plus");
     });
 });
 
 
-
-
-$(function(){
-    $('.showinfo').click(function(e){
+$(function () {
+    $('.showinfo').click(function (e) {
         e.preventDefault();
         id = $(this).closest('th').find(".PMD")[0].id;
-        $(this).closest('th').getElementById('toggler_icon').innerHTML = '-';
         t_date = $(this).closest('th').find(".PMD")[0].getAttribute("data-date");
         t_mode = $(this).closest('th').find(".PMD")[0].getAttribute("data-mode");
 
         $table_data = "<table class='table table-dark table-sm padding: 0px'>" +
             "<th>" +
-            "<td>"+id+"</td>" +
-            "<td>"+t_date+"</td>" +
-            "<td>"+t_mode+"</td>" +
+            "<td>" + id + "</td>" +
+            "<td>" + t_date + "</td>" +
+            "<td>" + t_mode + "</td>" +
             "</th>" +
             "</table>";
         $(this).closest('th').find(".PMD")[0].innerHTML = $table_data;
@@ -73,15 +69,13 @@ $(function(){
         payments.send();
 
 
-        $(this).closest('th').find(".PMD").toggle();
     });
 });
 
- function  showinfo(id){
-     let x = id;
+function showinfo(id) {
+    let x = id;
 
- }
-
+}
 
 
 function excel_current_page_download() {

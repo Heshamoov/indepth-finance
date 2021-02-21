@@ -23,9 +23,9 @@ $totalPayments = $id = 0;
 //echo $payment_mode;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
-    echo "<div class='container ' >
-<table style='margin-top: 30px!important;' class='table table-bordered table-striped' id='paymentMode'>
-            <thead class=\"black text-white\">
+    echo "
+<table style='margin-top: 30px!important;' class='table table-light table-bordered table-striped' id='paymentMode'>
+            <thead class=\"bg-green text-white\">
                 <tr>
                     <th class='textCenter'><b>Month</b></th>
                     <th class='textCenter'><b>Mode</b></th>
@@ -38,10 +38,24 @@ if ($result->num_rows > 0) {
 
         echo "<tr >
                 <th class='textLeft'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>
-                <th  class='textLeft showinfo' >
-                    <a class='showinfo'>" . $row['mode'] . "</a>
-                    <a style='float: right' id='toggler_icon' class='flex-column showinfo toggler_icon'><i class=' showinfo fa fa-plus'></i></a>
-                    <div style='display: none; padding: 20px; max-height: 200px; overflow: scroll' id='$id' data-date= '" . $row['transaction_date'] . "' data-mode='" . $row['mode'] . "' class='PMD'></div>
+                <th  class='textLeft'>
+                
+                <div>
+                    <div class='accordion' id='accordionExample'>
+                            <div class='main-div'>                                
+                                <button type='button' style='background: none; border: none!important' class='  showinfo' data-toggle='collapse' data-target='#collapse$id'>
+                                <i class='fa fa-plus'></i> " . $row['mode'] . "</button>
+                                
+                            </div>
+                            <div id='collapse$id' class='collapse' aria-labelledby='headingOne' data-parent='#accordionExample'>
+                                <div class='card-body'>
+                                    <div style='max-height: 200px; overflow: scroll' id='$id' 
+                                    data-date= '" . $row['transaction_date'] . "' data-mode='" . $row['mode'] . "' class='PMD'></div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
                 </th>
                 
                 <th class='textRight'>" . number_format((float)$row['amount']) . "</th>
