@@ -16,14 +16,14 @@ $end_date = date('Y-m-t', strtotime($t_date));
 $payment_mode = "
 SELECT ft.transaction_date, SUM(ft.amount) as 'amount', ft.payment_mode mode, s.last_name, g.first_name
 FROM finance_transactions ft
-INNER JOIN students s on ft.payee_id = s.id
-INNER JOIN guardians g ON s.immediate_contact_id = g.id
+left JOIN students s on ft.payee_id = s.id
+left JOIN guardians g ON s.immediate_contact_id = g.id
 
 WHERE ft.finance_type = 'FinanceFee'
   AND STR_TO_DATE(ft.transaction_date, '%Y-%m-%d') >= '$start_date'
   AND STR_TO_DATE(ft.transaction_date, '%Y-%m-%d') <= '$end_date'
   AND payment_mode = '$mode'
-GROUP BY g.id
+GROUP BY DATE_FORMAT(ft.transaction_date, '%Y%m'),payment_mode,g.id
 ";
 
 

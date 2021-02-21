@@ -66,14 +66,14 @@ checkLoggedIn()
 
 <body>
 <?php include('navbar.php'); ?>
-<h4 style="color:black">Income By Payment Mode</h4>
+<h6 class="active" style="color:black">PAYMENT MODE MONTHLY REPORT</h6>
 <?php include('uppernav.php'); ?>
 
 <div class="col-sm" style="margin-top: -30px">
     <div id="userInputDiv" class="row">
         <div class="col-sm"></div>
         <div class="col-sm-6">
-            <table id="userInputTable" align="center">
+            <table id="userInputodTable" align="center">
                 <thead>
                 <tr>
                     <td><input data-clear-button="true"
