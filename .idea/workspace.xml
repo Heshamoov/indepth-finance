@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql/payment_mode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/payment_mode_inline.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_mode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daybook.php" beforeDir="false" afterPath="$PROJECT_DIR$/daybook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/js/payment_mode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +65,7 @@
       <workItem from="1613625994639" duration="659000" />
       <workItem from="1613640728383" duration="4680000" />
       <workItem from="1613797577090" duration="16116000" />
-      <workItem from="1613884987265" duration="5103000" />
+      <workItem from="1613884987265" duration="5453000" />
     </task>
     <servers />
   </component>
