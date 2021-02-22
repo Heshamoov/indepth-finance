@@ -14,7 +14,7 @@ $end_date = date('Y-m-t', strtotime($t_date));
 // PAYMENT MODE
 
 $payment_mode = "
-SELECT ft.transaction_date, SUM(ft.amount) as 'amount', ft.payment_mode mode, s.last_name, g.first_name
+SELECT ft.transaction_date, SUM(ft.amount) as 'amount', ft.payment_mode mode, s.last_name, g.familyid as 'family_id', g.first_name
 FROM finance_transactions ft
 left JOIN students s on ft.payee_id = s.id
 left JOIN guardians g ON s.immediate_contact_id = g.id
@@ -24,6 +24,7 @@ WHERE ft.finance_type = 'FinanceFee'
   AND STR_TO_DATE(ft.transaction_date, '%Y-%m-%d') <= '$end_date'
   AND payment_mode = '$mode'
 GROUP BY DATE_FORMAT(ft.transaction_date, '%Y%m'),payment_mode,g.id
+ORDER BY transaction_date
 ";
 
 
@@ -36,6 +37,7 @@ if ($result->num_rows > 0) {
             <thead  class=\"bg-green text-white\">
                 <tr>
                     <th class='textCenter'><b>No.</b></th>
+                    <th class='textCenter'><b>Family ID</b></th>
                     <th class='textCenter'><b>Parent</b></th>
                     <th class='textCenter'><b>Amount</b></th>
                 </tr>
@@ -45,14 +47,15 @@ if ($result->num_rows > 0) {
         $id++;
         echo "<tr>
                 <th class='textLeft'>" . ++$row_id . "</th>
+                <th class='textLeft'>" . $row['family_id'] . "</th>
                 <th class='textLeft'>" . $row['first_name'] . "</th>
-                <th class='textRight'>" . number_format((float)$row['amount']) . "</th>
+                <th class='textRight'>" . number_format((float)$row['amount'],2) . "</th>
              </tr>";
         $totalPayments += $row['amount'];
     }
     echo "<tr>
-                <th colspan='2' class='textLeft bold'>Total</th>
-                <th class='textRight bold'>" . number_format((float)$totalPayments) . "</th>
+                <th colspan='3' class='text-center bold'>Total</th>
+                <th class='textRight bold'>" . number_format((float)$totalPayments,2) . "</th>
            </tr>";
     echo '</body></table>';
 

@@ -4,7 +4,12 @@ date_default_timezone_set('Asia/Dubai');
 include_once '../functions.php';
 include('../config/db.php');
 $start_date = $_REQUEST['start_date'];
-$end_date = $_REQUEST['end_date'];
+//echo $start_date;
+$start_date = date('Y-m-01', strtotime($start_date));
+//$end_date = $_REQUEST['end_date'];
+$end_date = date('Y-m-t', strtotime($_REQUEST['end_date']));
+
+echo '<h4  style="margin-top: 20px; font-size: 20px" class="text-center">PAYMENTS FROM '.date_format(date_create(($start_date)), "d-F-Y").' to '.date_format(date_create(($end_date)), "d-F-Y").'</h4>';
 
 // PAYMENT MODE
 
@@ -41,7 +46,7 @@ $totalPayments = $id = 0;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "
-<table style='margin-top: 30px!important;' class='table  table-bordered ' id='paymentMode'>
+<table style='margin-top: 10px!important;' class='table  table-bordered ' id='paymentMode'>
             <thead class=\"bg-green text-white\">
                 <tr>
                     <th class='textCenter' style='width: 15%;'><b>Month</b></th>
@@ -78,21 +83,19 @@ if ($result->num_rows > 0) {
         if ($rowspan_no != 0)
             echo " <th rowspan='$rowspan_no' class='textLeft text-center align-middle'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>";
 
-
         echo "<th class='textLeft'>
-                <div>
-                    <div class='accordion' id='accordionExample'>
-                        <div class='main-div'>                                
-                            <button type='button' style='background: none; border: none!important' class='showinfo' data-toggle='collapse' data-target='#collapse$id'>
-                                <i class='fa fa-plus'></i> " . $row['mode'] . "</button>
-                            </div>
-                            <div id='collapse$id' class='collapse' aria-labelledby='headingOne' data-parent='#accordionExample'>
-                                <div class='card-body'>
-                                    <div style='max-height: 200px; overflow: scroll' id='$id' data-date= '" . $row['transaction_date'] . "' data-mode='" . $row['mode'] . "' class='PMD'></div>
-                                </div>
+                <div id='accordionExample'>
+                    <div class='main-div showinfo'>                                
+                        <button onclick='test($id)' type='button' style='background: none; border: none!important' data-toggle='collapse' data-target='#collapse$id'>
+                            <i class='fa fa-plus'></i> " . $row['mode'] . "</button>
+                        </div>
+                        <div id='collapse$id' class='collapse' aria-labelledby='headingOne' data-parent='#accordionExample'>
+                            <div class='card-body'>
+                                <div style='max-height: 200px; overflow: scroll' id='$id' data-date= '" . $row['transaction_date'] . "' data-mode='" . $row['mode'] . "' class='PMD'></div>
                             </div>
                         </div>
-                </div>
+                    </div>
+                </div>                
             </th>
             <th class='textRight'>" . number_format((float)$row['amount'],2) . "</th>
          </tr>";
