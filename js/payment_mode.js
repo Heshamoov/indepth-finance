@@ -43,7 +43,7 @@ $(document).ready(function () {
 
 
 $(function () {
-    $('.showinfo').click(function (e) {
+    $('.showinfo').click(function (e) { alert('df');
         e.preventDefault();
         id = $(this).closest('th').find(".PMD")[0].id;
         t_date = $(this).closest('th').find(".PMD")[0].getAttribute("data-date");
