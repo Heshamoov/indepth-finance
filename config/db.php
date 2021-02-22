@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "fedena";
 $password = "fedenapw";
-$DB = "alsanawabar";
+$DB = "alsanawabar1";
 
 $conn = new mysqli($servername, $username, $password, $DB);
 
@@ -16,6 +16,3 @@ $sSQL = 'SET CHARACTER SET utf8';
 mysqli_query($conn, $sSQL)
 or die('Can\'t charset in DataBase');
 //    -----------arabic encoding-------------
-
-
-
