@@ -338,7 +338,7 @@ ORDER BY REPLACE(guardians.first_name,' ', '')
 $parents_list_sql = "
 SELECT familyid,
        parent_name,
-       COUNT(DISTINCT sid)   NumberOfStudents,
+       NumberOfStudents,
        SUM(particular_total) expected,
        SUM(discount_amount)  discount,
        (SUM(particular_total) - SUM(balance)) paid, SUM(balance) balance,
@@ -351,6 +351,7 @@ SELECT familyid,
 FROM (
          SELECT s.id                                   as sid,
                 s.admission_no,
+                COUNT(DISTINCT s.id)              NumberOfStudents,
                 s.familyid,
                 g.first_name                              'parent_name',
                 CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
@@ -426,7 +427,7 @@ order by familyid;
 $parents_list_sql_current_section = "
 SELECT t.familyid,
        parent_name,
-       COUNT(DISTINCT sid)              NumberOfStudents,
+       NumberOfStudents,
        (particular_total)               expected,
        (discount_amount)                discount,
        ((particular_total) - (balance)) paid,
@@ -440,7 +441,7 @@ SELECT t.familyid,
        t2.opening_balance as            opening_balance
 FROM ((
           SELECT s.id                                   as sid,
-                 s.admission_no,
+                 s.admission_no,COUNT(DISTINCT s.id)              NumberOfStudents,
                  s.familyid,
                  g.first_name                              'parent_name',
                  CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
