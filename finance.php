@@ -64,17 +64,22 @@ checkLoggedIn()
 
     <script>
         function parentsDataTable() {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
             let date = new Date(document.querySelector("#start_date").value);
             day = date.getDate();
-            month = date.getMonth() + 1;
+            month = monthNames[date.getMonth()];
             year = date.getFullYear();
-            let start_date = year + '-' + month + '-' + day;
+            let start_date = day + '-' + month + '-' + year;
 
             date = new Date(document.querySelector("#end_date").value);
             day = date.getDate();
-            month = date.getMonth() + 1;
+            month = monthNames[date.getMonth()];
             year = date.getFullYear();
-            let end_date = year + '-' + month + '-' + day;
+            let end_date = day + '-' + month + '-' + year;
+
 
             $('#ParentsTable').DataTable({
                 dom: 'Bfrtip',
@@ -94,7 +99,7 @@ checkLoggedIn()
                     },
                     { extend: 'print',
                         title : '',
-                        messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Parents  Report  (' + start_date + '-' + end_date + ') </h6>'
+                        messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Parents  Report  (' + start_date + ' to ' + end_date + ') </h6>'
                     }
 
                 ]
