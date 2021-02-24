@@ -30,7 +30,7 @@ function login()
         } else {
             $sql = "SELECT
             *
-            FROM users WHERE id='$user' AND ( username in ('James','admin','Hesham', 1221)) ";
+            FROM users WHERE id='$user' AND ( username in ('James','admin','Hesham', 1221,1554)) ";
 //        echo $sql;
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
