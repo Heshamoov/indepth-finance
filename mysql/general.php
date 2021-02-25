@@ -427,6 +427,7 @@ order by familyid;
 $parents_list_sql_current_section = "
 SELECT t.familyid,
        parent_name,
+       contact_no,
        NumberOfStudents,
        (particular_total)               expected,
        (discount_amount)                discount,
@@ -443,7 +444,8 @@ FROM ((
           SELECT s.id                                   as sid,
                  s.admission_no,COUNT(DISTINCT s.id)              NumberOfStudents,
                  s.familyid,
-                 g.first_name                              'parent_name',
+                 g.first_name                              'parent_name',      
+                 CONCAT(g.mobile_phone, ' ', g.office_phone1)   'contact_no',                 
                  CONCAT(s.first_name, ' ', s.last_name) AS 'student_full_name',
                  CONCAT(c.course_name, ' ', b.name)        'grade',
                  ffp.id                                    'ffp_id',
@@ -473,7 +475,7 @@ FROM ((
                                                                ffp.batch_id = ff.batch_id) or
                                                               (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
                    LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-          WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+          WHERE (ffp.is_reregistration != '1' AND  s.is_active = 1 AND ffc.is_deleted = 0 AND
                  b.start_date >= '$start_date' AND
                  b.end_date <= '$end_date')
           group by familyid
@@ -500,7 +502,7 @@ FROM ((
                                                                           ffp.batch_id = ff.batch_id) or
                                                                          (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
                               LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-                     WHERE (ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
+                     WHERE ( ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
                             b.start_date >= '$start_date' AND b.end_date <= '$end_date')
                      group by familyid
                      order by familyid
@@ -528,6 +530,7 @@ if ($result->num_rows > 0) {
     		<th>#</th>
     		<th width='20'>FamilyID</th>
     		<th>Parent</th>
+    		<th>Mob. #</th>
             <th class='smallcol'>Children</th>
     		<th>Expected</th>
     		<th>Discount</th>
@@ -545,6 +548,7 @@ if ($result->num_rows > 0) {
     		<td>" . $rowNumber . "</td>
     		<td  class='textLeft'>" . $row['familyid'] . ' </td >
     		<td > ' . $row['parent_name'] . "</td>
+    		<td>". $row['contact_no'] ."</td>
             <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
     		<td class='textRight'>" . number_format((float)$row['expected'] + $row['opening_balance'] ,2 ) . "</td>
     		<td class='textRight'>" . number_format((float)$row['discount'],2) . "</td>
