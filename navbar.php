@@ -5,21 +5,21 @@
             <li class="active">
                 <a href="dashboard.php" id="navHome"><span class="fa fa-home"></span>Home</a>
             </li>
-            <li>
-                <a href="daybook.php" id="daybook"><span class="fas fa-book"></span>Daybook</a>
-            </li>
-            <li >
-                <a href="sms.php" id="navFollowUp"><span class="fa fa-sms"></span>FollowUp</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-sticky-note"></span>Ledger</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-cogs"></span> Services</a>
-            </li>
-            <li>
-                <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>
-            </li>
+<!--            <li>-->
+<!--                <a href="daybook.php" id="daybook"><span class="fas fa-book"></span>Daybook</a>-->
+<!--            </li>-->
+<!--            <li >-->
+<!--                <a href="sms.php" id="navFollowUp"><span class="fa fa-sms"></span>FollowUp</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#"><span class="fa fa-sticky-note"></span>Ledger</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#"><span class="fa fa-cogs"></span> Services</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#"><span class="fa fa-paper-plane"></span> Messages</a>-->
+<!--            </li>-->
         </ul>
 
         <div class="footer">

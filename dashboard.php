@@ -1532,7 +1532,6 @@ GROUP BY courses.course_name;
 </script>
 <script>
     document.getElementById('navHome').style.color = '#25221E';
-
 </script>
 
 </body>

@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/archived.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/archived.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/archived.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/delete_fee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/general.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/payment_mode.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/payment_mode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -53,9 +60,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\indepth-finance\mysql" />
       <recent name="C:\xampp\htdocs\indepth-finance\js" />
+      <recent name="C:\xampp\htdocs\indepth-finance" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -78,11 +86,16 @@
       <workItem from="1614143012833" duration="521000" />
       <workItem from="1614152648785" duration="611000" />
       <workItem from="1614234089776" duration="999000" />
+      <workItem from="1614419273888" duration="5609000" />
+      <workItem from="1614487846825" duration="12259000" />
+      <workItem from="1614579264466" duration="93000" />
+      <workItem from="1614588225658" duration="738000" />
+      <workItem from="1614665993634" duration="15941000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -95,27 +108,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="361" y="75" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614234308358">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="361" y="75" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/-1280.0.1280.994@0.0.1536.834" timestamp="1614234308358" />
-    <state width="1335" height="207" key="GridCell.Tab.0.bottom" timestamp="1614235053938">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1335" height="207" key="GridCell.Tab.0.bottom/0.0.1536.834/-1280.0.1280.994@0.0.1536.834" timestamp="1614235053938" />
-    <state width="1335" height="207" key="GridCell.Tab.0.center" timestamp="1614235053938">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1335" height="207" key="GridCell.Tab.0.center/0.0.1536.834/-1280.0.1280.994@0.0.1536.834" timestamp="1614235053938" />
-    <state width="1335" height="207" key="GridCell.Tab.0.left" timestamp="1614235053938">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1335" height="207" key="GridCell.Tab.0.left/0.0.1536.834/-1280.0.1280.994@0.0.1536.834" timestamp="1614235053938" />
-    <state width="1335" height="207" key="GridCell.Tab.0.right" timestamp="1614235053938">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state width="1335" height="207" key="GridCell.Tab.0.right/0.0.1536.834/-1280.0.1280.994@0.0.1536.834" timestamp="1614235053938" />
   </component>
 </project>

@@ -40,11 +40,6 @@ body {
     padding: 1px;
 }
 
-.table.table-hover tbody tr:hover {
-    background-color: #BF0608;
-    color: white;
-}
-
 .table.table-hover thead th tr{
   font-weight: bolder;
 }

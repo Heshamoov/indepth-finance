@@ -13,13 +13,15 @@ echo '<h4  style="margin-top: 20px; font-size: 20px" class="text-center">PAYMENT
 
 // PAYMENT MODE
 
-$rowspan = [];
+
 $rowspan_sql = "SELECT DATE_FORMAT(transaction_date,'%Y-%m') month, count(distinct (payment_mode)) rowspan, SUM(amount) amount, payment_mode mode
 FROM finance_transactions
 WHERE finance_transactions.finance_type = 'FinanceFee'
   AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') >= '$start_date'
   AND STR_TO_DATE(finance_transactions.transaction_date, '%Y-%m-%d') <= '$end_date'
 GROUP BY DATE_FORMAT(transaction_date, '%Y%m');";
+
+$rowspan = [];
 $rowspan_result = $conn->query($rowspan_sql);
 if ($rowspan_result->num_rows > 0) {
     while ($row = $rowspan_result->fetch_assoc()) {
