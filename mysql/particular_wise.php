@@ -17,6 +17,7 @@ if ($type == 'parent'){
     $total = 'SUM(ff.particular_total) ';
     $paid = 'SUM(ff.particular_total - ff.balance - ff.discount_amount)';
     $discount = 'SUM(ff.discount_amount)';
+    $admission_no = '';
 }
 else{
     $group = ' ';
@@ -34,7 +35,7 @@ $get_fees = "
 SELECT s.familyid,
        g.first_name                                 'parent',
        CONCAT(g.mobile_phone, ' ', g.office_phone1) 'contact_no',
-       IFNULL(s.last_name,s.first_name) as student,
+       CONCAT(IFNULL(s.last_name,s.first_name), ' (' , s.admission_no, ')') as student,
        CONCAT(c.course_name, ' ', b.name)           'grade',
        mfp.name                                     master_fee,
        $total total,
@@ -44,7 +45,7 @@ SELECT s.familyid,
        ffc.name,
        ffcat.name,
        ffcat.is_master,
-       mfp.id
+       mfp.id, s.admission_no
 FROM `finance_fees` ff
          INNER JOIN students s on ff.student_id = s.id and ff.batch_id in (select id
                                                                            from batches

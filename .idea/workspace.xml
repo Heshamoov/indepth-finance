@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/defaulters.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/init_fees.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/init_grades.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/students_tc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/fees.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/grades.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/students_tc.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students_tc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archived.php" beforeDir="false" afterPath="$PROJECT_DIR$/archived.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/FamilyStatement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/FamilyStatement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/delete_fee.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/delete_fee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/particular_wise.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +87,7 @@
       <workItem from="1614487846825" duration="12259000" />
       <workItem from="1614579264466" duration="93000" />
       <workItem from="1614588225658" duration="738000" />
-      <workItem from="1614665993634" duration="49881000" />
+      <workItem from="1614665993634" duration="50302000" />
     </task>
     <servers />
   </component>
