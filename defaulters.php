@@ -34,6 +34,13 @@ checkLoggedIn()
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
+
+    <!--    MULTISELECT-->
+    <link href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css"
+          rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
+            type="text/javascript"></script>
+
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css"
@@ -53,17 +60,11 @@ checkLoggedIn()
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
-    <!--    print.js-->
-    <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
-    <link rel="stylesheet" href="css/print.min.css">
 
-    <!-- Exporting table as excel -->
-    <!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <script src="js/table2excel.js"></script>
-
+    <script src="js/init_fees.js"></script>
 
     <script>
-        function parentsDataTable() {
+        function studentsDataTable() {
             const monthNames = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ];
@@ -81,25 +82,27 @@ checkLoggedIn()
             let end_date = day + '-' + month + '-' + year;
 
 
-            $('#ParentsTable').DataTable({
+            $('#DefaultersTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
                     'copy',
                     {
                         extend: 'excelHtml5',
-                        title: 'Al Sanawbar School \n Parents Report \n (' + start_date + ' to ' + end_date + ')'
+                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')'
                     },
                     {
                         extend: 'pdfHtml5',
-                        title: 'Al Sanawbar School \n Parents Report \n (' + start_date + ' to ' + end_date + ')',
+                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')',
 
                     },
-                    { extend: 'csv',
-                        title: 'Al Sanawbar School \n Parents Report \n (' + start_date + ' to ' + end_date + ')'
+                    {
+                        extend: 'csv',
+                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')'
                     },
-                    { extend: 'print',
-                        title : '',
-                        messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Parents  Report  (' + start_date + ' to ' + end_date + ') </h6>'
+                    {
+                        extend: 'print',
+                        title: '',
+                        messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Defaulters Students Report  (' + start_date + ' to ' + end_date + ') </h6>'
                     }
 
                 ]
@@ -124,8 +127,6 @@ checkLoggedIn()
             start_date = year1 + '-' + month1 + '-' + day1;
             end_date = year2 + '-' + month2 + '-' + day2;
 
-            alert(start_date);
-            alert(end_date);
             // we call the function
             search();
         });
@@ -134,53 +135,70 @@ checkLoggedIn()
     <title>InDepth Finance</title>
 </head>
 
-
+<script>
+    $(function () {
+        $('#fees').multiselect({includeSelectAllOption: false});
+    });
+</script>
 <body>
 <?php include('navbar.php'); ?>
-<h4 style="color:black">STUDENT FEES</h4>
+<h6 class="active" style="color:black">FEE BALANCE REPORT</h6>
 <?php include('uppernav.php'); ?>
 
+<div id="debug"></div>
 <div class="col-sm" style="margin-top: -30px">
     <div id="userInputDiv" class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm-6">
-            <table id="userInputTable" align="center">
-                <thead>
-                <tr>
-                    <td><input data-clear-button="true"
-                               data-clear-button-icon="<i class='fas fa-times'></i>"
-                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                               data-calendar-wide="true" class="w3-input w3-card" type="text"
-                               data-role="calendarpicker" id="start_date" onchange="search()"
-                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="01-09-2020"/>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">START</th>
+                <th class="text-center">END</th>
+                <th class="text-center">TYPE</th>
+                <th class="text-center">FEE</th>
+            </tr>
+            <tr>
+                <td class="text-center">
+                    <input type="text" data-role="calendarpicker" data-calendar-wide="false"
+                           class="w3-input w3-card"
+                           data-clear-button="true" data-clear-button-icon="<i class='fas fa-times'></i>"
+                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                           data-input-format="%d-%m-%y" data-format="%d-%B-%Y" value="01-09-2020"
+                           id="start_date" onchange="search()"/>
 
-                    </td>
-                    <td>&nbsp To &nbsp</td>
-                    <td><input data-clear-button="true"
-                               data-clear-button-icon="<i class='fas fa-times'></i>"
-                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                               data-calendar-wide="true" class="w3-input w3-card" type="text"
-                               data-role="calendarpicker" id="end_date" onchange="search()"
-                               data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>
-                    </td>
+                </td>
+                <td class="text-center">
+                    <input data-clear-button="true"
+                           data-clear-button-icon="<i class='fas fa-times'></i>"
+                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
+                           data-calendar-wide="true" class="w3-input w3-card" type="text"
+                           data-role="calendarpicker" id="end_date" onchange="search()"
+                           data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>
 
-                </tr>
-                </thead>
-
-            </table>
-        </div>
-        <div class="col-sm"></div>
+                </td>
+                <td class="text-center">
+                    <select id="type" onchange="search()">
+                        <option value="parent">Parent Wise</option>
+                        <option value="student">Student Wise</option>
+                    </select>
+                </td>
+                <td class="text-center">
+                    <select id="fees" onchange="search()"></select>
+                </td>
+            </tr>
+            </thead>
+        </table>
     </div>
-    <div id="result" style="margin-top: -30px"></div>
+    <div id="result"></div>
 </div>
 
 <script>
-    document.getElementById('navStudentFees').classList.add('active');
-    document.getElementById('navStudentFees').classList.add('active-tab');
+    document.getElementById('navDefaulters').classList.add('active');
+    document.getElementById('navDefaulters').classList.add('active-tab');
 </script>
-<script src="js/index.js"></script>
+
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>
+
 </body>
 </html>

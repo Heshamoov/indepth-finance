@@ -4,11 +4,21 @@
             <a class="nav-link" href="finance.php" id="navStudentFees">Fees</a>
         </li>
         <li class="nav-item ">
+            <a class="nav-link" href="defaulters.php" id="navDefaulters">Fees Balance</a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link" href="payment_mode.php" id="navPaymentMode">Payment Mode</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="archived.php" id="navArchivedStudents">Archived</a>
-        </li>
+
+
+        <div class="dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navArchived">ARCHIVED<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="archived.php" id="navArchivedStudents">FEES</a></li>
+                <li class="nav-item"><a class="nav-link" href="students_tc.php" id="navStudentsTC">Students TC</a></li>
+            </ul>
+        </div>
+
         <li class="nav-item">
             <a class="btn btn-sm btn-danger" href="logout.php">Logout</a>
         </li>

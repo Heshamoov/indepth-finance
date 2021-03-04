@@ -36,8 +36,7 @@ checkLoggedIn()
 
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
     <!--    print.js-->
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
@@ -65,7 +64,7 @@ checkLoggedIn()
 
 <body>
 <?php include('navbar.php'); ?>
-<h6 class="active" style="color:black">ARCHIVED STUDENTS REPORT</h6>
+<h6 class="active" style="color:black">STUDENTS TRANSFER CERTIFICATE</h6>
 <?php include('uppernav.php'); ?>
 
 <div class="col-sm" style="margin-top: -30px">
@@ -105,10 +104,11 @@ checkLoggedIn()
 </div>
 
 <script>
-    document.getElementById('navArchivedStudents').classList.add('active');
-    document.getElementById('navArchivedStudents').classList.add('active-tab');
+    document.getElementById('navArchived').classList.add('bold');
+    document.getElementById('navStudentsTC').classList.add('active');
+    document.getElementById('navStudentsTC').classList.add('active-tab');
 </script>
-<script src="js/archived.js"></script>
+<script src="js/students_tc.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>

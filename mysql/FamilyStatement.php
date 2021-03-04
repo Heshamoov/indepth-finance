@@ -224,10 +224,10 @@ if ($result->num_rows > 0) {
         if ($first_name != $first_name_old) {
             if ($second_table) {
                 echo "<tr><td colspan='3' align='center'><b>Total</b></td>
-                            <td align='right'>" . number_format($total_expected) . "</td>
-                            <td align='right'>" . number_format($total_discount) . "</td>
-                            <td align='right'>" . number_format($total_paid) . "</td>
-                            <td align='right'>" . number_format($total_balance) . '</td>
+                            <td align='right'>" . number_format($total_expected,2) . "</td>
+                            <td align='right'>" . number_format($total_discount,2) . "</td>
+                            <td align='right'>" . number_format($total_paid,2) . "</td>
+                            <td align='right'>" . number_format($total_balance,2) . '</td>
                       </tr>
                       </table><br>';
             } else

@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/archived.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/archived.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/archived.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/delete_fee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/defaulters.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/init_fees.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/init_grades.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/students_tc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/fees.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/grades.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysql/students_tc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/students_tc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/payment_mode.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/payment_mode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/navbar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archived.php" beforeDir="false" afterPath="$PROJECT_DIR$/archived.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/finance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/FamilyStatement.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/FamilyStatement.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/delete_fee.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/delete_fee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +44,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/js/init_fees.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1obBewfEyvgghdeaYfX7VkAEZg0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -54,7 +60,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -90,7 +100,7 @@
       <workItem from="1614487846825" duration="12259000" />
       <workItem from="1614579264466" duration="93000" />
       <workItem from="1614588225658" duration="738000" />
-      <workItem from="1614665993634" duration="15941000" />
+      <workItem from="1614665993634" duration="49881000" />
     </task>
     <servers />
   </component>
