@@ -10,6 +10,7 @@ $master_id = $_REQUEST['master_id'];
 $type = $_REQUEST['type'];
 
 if ($master_id == 'All') $condition = ''; else $condition = ' AND mfp.id = ' . $master_id . ' ';
+
 if ($type == 'parent'){
     $group = ' group by s.familyid ';
     $name = 'parent';
@@ -17,11 +18,12 @@ if ($type == 'parent'){
     $total = 'SUM(ff.particular_total) ';
     $paid = 'SUM(ff.particular_total - ff.balance - ff.discount_amount)';
     $discount = 'SUM(ff.discount_amount)';
-    $admission_no = '';
+    $grade_header = $admission_no = '';
 }
 else{
     $group = ' ';
     $name = 'student';
+    $grade_header = "<th class='smallcol'>GRADE</th>";
     $balance = '(ff.balance)';
     $total = '(ff.particular_total)';
     $paid = '(ff.particular_total - ff.balance - ff.discount_amount)';
@@ -82,8 +84,8 @@ if ($result->num_rows > 0) {
     		<th width='20'>FAMILY ID</th>
             <th class='smallcol'>NAME</th>
             <th>MOB. #</th>
-            <th class='smallcol'>GRADE</th>
-    		<th>FEE</th>
+            $grade_header
+            <th>FEE</th>
     		<th>TOTAL</th>
     		<th>PAID</th>
     		<th>DISCOUNT</th>
@@ -98,9 +100,12 @@ if ($result->num_rows > 0) {
     		<td>" . $rowNumber . "</td>
     		<td  class='textLeft'>" . $row['familyid'] . "</td>
             <td  class='textLeft'>" . $row[$name] . "</td>
-            <td>". $row['contact_no'] ."</td>
-            <td  class='textLeft'>" . $row['grade'] . "</td>
-            <td  class='textLeft'>" . $row['master_fee'] . "</td>
+            <td>". $row['contact_no'] ."</td>";
+
+        if ($type == 'student')
+            echo "<td  class='textLeft'>" . $row['grade'] . "</td>";
+
+            echo "<td  class='textLeft'>" . $row['master_fee'] . "</td>
             <td class='textRight'>" . number_format((float)$row['total'],2) . "</td>
             <td class='textRight'>" . number_format((float)$row['paid'],2) . "</td>
             <td class='textRight'>" . number_format((float)$row['discount'],2) . "</td>
