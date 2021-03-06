@@ -11,16 +11,12 @@ function login()
         while ($row = $result->fetch_assoc()) {
             $user = $row['user'];
             $_SESSION['name'] = $row['name'];
+            $_SESSION['user_id'] = $row['user'];
+
         }
-        $sql = "SELECT
-            *
-            FROM
-            privileges_users AS A
-            INNER JOIN privileges_users AS B
-            ON
-            A.user_id = B.user_id
-            WHERE
-            A.privilege_id = 26 AND A.user_id='$user'";
+        $sql = "SELECT * FROM privileges_users AS A
+                INNER JOIN privileges_users AS B ON A.user_id = B.user_id
+                WHERE A.privilege_id = 26 AND A.user_id='$user'";
 
 //        echo $sql;
         $result = $conn->query($sql);
@@ -28,14 +24,13 @@ function login()
             $_SESSION['login'] = 1;
             header('Location: dashboard.php');
         } else {
-            $sql = "SELECT
-            *
-            FROM users WHERE id='$user' AND ( username in ('James','admin','Hesham', 1221,1554)) ";
+            $sql = "SELECT * FROM users WHERE id='$user' AND ( username in ('James','admin','Hesham', 1221,1554,1524)) ";
 //        echo $sql;
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $_SESSION['login'] = 1;
                 header('Location: dashboard.php');
+
             } else {
                 $_SESSION['noaccess'] = 1;
                 header('Location: index.php');

@@ -19,24 +19,38 @@ checkLoggedIn()
     <link rel="icon" href="assets/indepth-logo.png">
 
     <!--    MD Boostrap styling CDN -->
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
-
-    <!--MD Bootstrap js-->
-    <!-- JQuery -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
-
-    <!-- MDB core JavaScript -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
     <!--    print.js-->
     <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
@@ -48,8 +62,56 @@ checkLoggedIn()
 
 
     <script>
-        function parentsDataTable() {
-            $('#ParentsTable').DataTable({});
+        function archived_students_datatable() {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            let date = new Date(document.querySelector("#start_date").value);
+            let day = date.getDate();
+            let month = monthNames[date.getMonth()];
+            let year = date.getFullYear();
+            let start_date = day + '-' + month + '-' + year;
+
+            date = new Date(document.querySelector("#end_date").value);
+            day = date.getDate();
+            month = monthNames[date.getMonth()];
+            year = date.getFullYear();
+            let end_date = day + '-' + month + '-' + year;
+
+            $('#archived_students').DataTable({
+
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'btn btn-primary btn-sm'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: 'Al Sanawbar School \n Archived Students with Pending Fees \n (' + start_date + ' to ' + end_date + ')',
+                        className: 'btn btn-primary btn-sm'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        title: 'Al Sanawbar School \n Archived Students with Pending Fees \n (' + start_date + ' to ' + end_date + ')',
+                        className: 'btn btn-primary btn-sm'
+
+                    },
+                    {
+                        extend: 'csv',
+                        title: 'Al Sanawbar School \n Archived Students with Pending Fees \n (' + start_date + ' to ' + end_date + ')',
+                        className: 'btn btn-primary btn-sm'
+                    },
+                    {
+                        extend: 'print',
+                        title: '',
+                        messageTop: ' <h4 align="center">Al Sanawbar School</h4> <h6 align="center"> Archived Students with Pending Fees (' + start_date + ' to ' + end_date + ') </h6>',
+                        className: 'btn btn-primary btn-sm'
+                    }
+
+                ]
+            });
             $('.dataTables_length').addClass('bs-select');
         }
 
@@ -74,7 +136,7 @@ checkLoggedIn()
             <table id="userInputodTable" align="center">
                 <thead>
                 <tr>
-                    <td colspan="3" align="center"><h4>Search Archived Students</h4></td>
+                    <td colspan="3" align="center"><h4>Archived Students with Balance</h4></td>
                 </tr>
                 <tr>
                     <td><input type="text" data-role="calendarpicker" data-calendar-wide="false"
@@ -100,7 +162,7 @@ checkLoggedIn()
         </div>
         <div class="col-sm"></div>
     </div>
-    <div id="result"></div>
+    <div id="result" style="padding-top:10px;"></div>
 </div>
 
 <script>
@@ -112,6 +174,5 @@ checkLoggedIn()
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>
-
 </body>
 </html>

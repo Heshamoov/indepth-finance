@@ -1,20 +1,32 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item ">
-            <a class="nav-link" href="finance.php" id="navStudentFees">Fees</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="defaulters.php" id="navDefaulters">Fees Balance</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="payment_mode.php" id="navPaymentMode">Payment Mode</a>
-        </li>
+
+        <?php
+
+        if (can_access_finance()) {
+            echo "
+            <li class='nav-item'>
+                <a class='nav-link' href='finance.php' id='navStudentFees'>Fees</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='defaulters.php' id='navDefaulters'>Fees Balance</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='payment_mode.php' id='navPaymentMode'>Payment Mode</a>
+            </li>
+        ";
+        }
+        ?>
 
 
         <div class="dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navArchived">ARCHIVED<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="archived.php" id="navArchivedStudents">FEES</a></li>
+                <?php
+                if (can_access_finance()) {
+                    echo "<li class='nav-item'><a class='nav-link' href='archived.php' id='navArchivedStudents'>FEES</a></li>";
+                }
+                ?>
                 <li class="nav-item"><a class="nav-link" href="students_tc.php" id="navStudentsTC">Students TC</a></li>
             </ul>
         </div>

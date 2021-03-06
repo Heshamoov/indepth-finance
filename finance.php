@@ -108,24 +108,6 @@ checkLoggedIn()
         }
 
         $(document).ready(function () {
-
-            let end_date = new Date(document.querySelector("#end_date").value);
-            let start_date = new Date(document.querySelector("#start_date").value);
-
-            day1 = start_date.getDate();
-            day2 = end_date.getDate();
-
-            month1 = start_date.getMonth() + 1;
-            month2 = end_date.getMonth() + 1;
-
-            year1 = start_date.getFullYear();
-            year2 = end_date.getFullYear();
-
-            start_date = year1 + '-' + month1 + '-' + day1;
-            end_date = year2 + '-' + month2 + '-' + day2;
-
-            alert(start_date);
-            alert(end_date);
             // we call the function
             search();
         });
