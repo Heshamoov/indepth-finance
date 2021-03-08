@@ -18,11 +18,9 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/metrostyle.css">
     <link rel="icon" href="assets/indepth-logo.png">
 
-    <!--    MD Boostrap styling CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
@@ -51,15 +49,6 @@ checkLoggedIn()
             src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
-
-    <!--    print.js-->
-    <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
-    <link rel="stylesheet" href="css/print.min.css">
-
-    <!-- Exporting table as excel -->
-    <!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <script src="js/table2excel.js"></script>
-
 
     <script>
         function archived_students_datatable() {
@@ -171,8 +160,6 @@ checkLoggedIn()
     document.getElementById('navStudentsTC').classList.add('active-tab');
 </script>
 <script src="js/students_tc.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>
 </body>
 </html>

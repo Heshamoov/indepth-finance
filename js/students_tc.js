@@ -23,7 +23,7 @@ function search() {
 }
 
 $(document).ready(function () {
-    $('.form-check-input').click(function (e) {
+    $('.checkbox').click(function (e) {
         id = this.id;
         status = $(this).prop("checked");
 

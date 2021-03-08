@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysql/update_student_tc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finance.php" beforeDir="false" afterPath="$PROJECT_DIR$/finance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/loginFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/loginFunction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/students_tc.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/students_tc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/students_tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/students_tc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/students_tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/students_tc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +47,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql" />
+    <property name="database.data.extractors.current.export.id" value="Excel (xlsx)" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="database.data.views" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
@@ -96,7 +91,10 @@
       <workItem from="1614579264466" duration="93000" />
       <workItem from="1614588225658" duration="738000" />
       <workItem from="1614665993634" duration="51732000" />
-      <workItem from="1615011556007" duration="17221000" />
+      <workItem from="1615011556007" duration="17285000" />
+      <workItem from="1615031719003" duration="93000" />
+      <workItem from="1615110058215" duration="4287000" />
+      <workItem from="1615180897061" duration="3985000" />
     </task>
     <servers />
   </component>

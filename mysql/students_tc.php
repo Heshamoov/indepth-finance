@@ -93,23 +93,22 @@ if ($result->num_rows > 0) {
         }
 
 
-        echo "<td>";
+        echo "<td><div class='form-check form-switch'>";
         $tc_check = $conn->query("select * from student_tc where former_id = $row[sid]");
         if ($tc_check->num_rows > 0) {
             while ($s_row = $tc_check->fetch_assoc()) {
-                if ($s_row['took_tc'])
-                    echo "<div class='form-check form-switch' ><input class='form-check-input' type = 'checkbox' id = '" . $row['sid'] . "' checked ></div> ";
-                else
-                    echo "<div class='form-check form-switch' ><input class='form-check-input' type = 'checkbox' id = '" . $row['sid'] . "' ></div> ";
-                echo "<div ><label class='form-check-label' for='flexSwitchCheckDefault' id = l" . $row['sid'] . " ></label ></div>
-                    </td ></tr > ";
+                if ($s_row['took_tc']) {
+                    echo "<input class='form-check-input checkbox' type='checkbox' id = '" . $row['sid'] . "' checked></div>";
+                } else {
+                    echo "<input class='form-check-input checkbox' type='checkbox' id = '" . $row['sid'] . "' ></div> ";
+                }
             }
         } else {
-            echo "
-                <div class='form-check form-switch' ><input class='form-check-input' type = 'checkbox' id = '" . $row['sid'] . "' ></div>
-                <div ><label class='form-check-label' for='flexSwitchCheckDefault' id = l" . $row['sid'] . " ></label ></div>
-                </td ></tr > ";
+            echo "<input class='form-check-input checkbox' type='checkbox' id = '" . $row['sid'] . "' ></div>";
         }
+
+        echo "<div ><label class='form-check-label' for='flexSwitchCheckDefault' id = l" . $row['sid'] . " ></label ></div>
+                    </td ></tr > ";
     }
     echo "</body></table> ";
 } else {
