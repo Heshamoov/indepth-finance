@@ -15,5 +15,23 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="Real-Server" uuid="3c405728-198c-4033-9e2d-1ec3b5e298c2">
+      <database-info product="MariaDB" version="10.0.38-MariaDB-0ubuntu0.16.04.1" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.0.38" exact-driver-version="2.6">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>fedena</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+      <ssh-properties>
+        <enabled>true</enabled>
+        <ssh-config-id>38bb40f8-c374-4a5f-a35d-290ac2508527</ssh-config-id>
+      </ssh-properties>
+    </data-source>
   </component>
 </project>

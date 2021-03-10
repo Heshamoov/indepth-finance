@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/students_tc.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/students_tc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/students_tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/students_tc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students_tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/students_tc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/defaulters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/init_fees.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/init_fees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/particular_wise.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/update_student_tc.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/update_student_tc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +49,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Excel (xlsx)" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../indepth-reports" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.data.views" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -94,7 +100,12 @@
       <workItem from="1615011556007" duration="17285000" />
       <workItem from="1615031719003" duration="93000" />
       <workItem from="1615110058215" duration="4287000" />
-      <workItem from="1615180897061" duration="3985000" />
+      <workItem from="1615180897061" duration="5681000" />
+      <workItem from="1615186832009" duration="2602000" />
+      <workItem from="1615201327597" duration="734000" />
+      <workItem from="1615266809537" duration="48000" />
+      <workItem from="1615277795107" duration="2231000" />
+      <workItem from="1615353875492" duration="17983000" />
     </task>
     <servers />
   </component>

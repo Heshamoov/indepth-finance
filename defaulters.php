@@ -60,86 +60,22 @@ checkLoggedIn()
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
-
     <script src="js/init_fees.js"></script>
 
+
     <script>
-        function studentsDataTable() {
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-
-            let date = new Date(document.querySelector("#start_date").value);
-            day = date.getDate();
-            month = monthNames[date.getMonth()];
-            year = date.getFullYear();
-            let start_date = day + '-' + month + '-' + year;
-
-            date = new Date(document.querySelector("#end_date").value);
-            day = date.getDate();
-            month = monthNames[date.getMonth()];
-            year = date.getFullYear();
-            let end_date = day + '-' + month + '-' + year;
-
-
-            $('#DefaultersTable').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy',
-                    {
-                        extend: 'excelHtml5',
-                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')'
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')',
-
-                    },
-                    {
-                        extend: 'csv',
-                        title: 'Al Sanawbar School \n Defaulters Students Report \n (' + start_date + ' to ' + end_date + ')'
-                    },
-                    {
-                        extend: 'print',
-                        title: '',
-                        messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Defaulters Students Report  (' + start_date + ' to ' + end_date + ') </h6>'
-                    }
-
-                ]
+        $(function () {
+            $('#fees').multiselect({
+                includeSelectAllOption:true
             });
-            $('.dataTables_length').addClass('bs-select');
-        }
+            $("#fees").multiselect('selectAll', false);
+            $("#fees").multiselect('updateButtonText');
 
-        $(document).ready(function () {
-
-            let end_date = new Date(document.querySelector("#end_date").value);
-            let start_date = new Date(document.querySelector("#start_date").value);
-
-            day1 = start_date.getDate();
-            day2 = end_date.getDate();
-
-            month1 = start_date.getMonth() + 1;
-            month2 = end_date.getMonth() + 1;
-
-            year1 = start_date.getFullYear();
-            year2 = end_date.getFullYear();
-
-            start_date = year1 + '-' + month1 + '-' + day1;
-            end_date = year2 + '-' + month2 + '-' + day2;
-
-            // we call the function
-            search();
         });
     </script>
 
     <title>InDepth Finance</title>
 </head>
-
-<script>
-    $(function () {
-        $('#fees').multiselect({includeSelectAllOption: false});
-    });
-</script>
 <body>
 <?php include('navbar.php'); ?>
 <h6 class="active" style="color:black">FEE BALANCE REPORT</h6>
@@ -182,7 +118,7 @@ checkLoggedIn()
                     </select>
                 </td>
                 <td class="text-center">
-                    <select id="fees" onchange="search()"></select>
+                    <select id="fees" onchange="search()" multiple="multiple"></select>
                 </td>
             </tr>
             </thead>
