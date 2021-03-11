@@ -114,7 +114,7 @@ FROM (
               INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
               LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
               WHERE (  s.is_active = 1 AND ffc.is_deleted = 0 AND b.start_date >= '$start_date' AND b.end_date <= '$end_date' 
-              $condition)
+              )
                     $group
          ) as t2 on t1.familyid = t2.familyid AND t1.sid = t2.sid
     )
@@ -135,11 +135,12 @@ if ($result->num_rows > 0) {
             <th>NAME</th>
             <th width='20'>MOB. #</th>
             $header
-    		<th>OPENING <BR> BALANCE</th>
     		<th>TOTAL</th>
     		<th>DISCOUNT</th>
     		<th>REVENUE</th>
     		<th>PAID</th>
+    		<th>BALANCE</th>    		
+    		<th>OPENING <BR> BALANCE</th>
     		<th>TOTAL BALANCE</th>
     	</tr>
         </thead>
@@ -147,7 +148,7 @@ if ($result->num_rows > 0) {
     ";
     while ($row = $result->fetch_assoc()) {
         if ($row['balance'] > 0) {
-        echo "
+            echo "
     	<tr>
     		<td>" . $rowNumber . "</td>
     		<td  class='textLeft'>" . $row['familyid'] . "</td>
@@ -155,22 +156,24 @@ if ($result->num_rows > 0) {
             <td>" . $row['contact_no'] . "</td>
             <td>" . $row[$column_header] . "</td>";
 
-        if ($type == 'student') {
-            echo "<td class='textLeft'>" . $row['grade'] . "</td>";
-            echo "<td class='textLeft'>" . $row['master_name'] . "</td>";
-        }
+            if ($type == 'student') {
+                echo "<td class='textLeft'>" . $row['grade'] . "</td>";
+                echo "<td class='textLeft'>" . $row['master_name'] . "</td>";
+            }
 
 
-        echo "
-        <td class='textRight'>" . number_format((float)$row['opening_balance'], 2) . "</td>
+            echo "
         <td class='textRight'>" . number_format((float)$row['total'], 2) . "</td>
         <td class='textRight'>" . number_format((float)$row['discount'], 2) . "</td>
         <td class='textRight'>" . number_format((float)$row['revenue'], 2) . "</td>
         <td class='textRight'>" . number_format((float)$row['paid'], 2) . "</td>
+        <td class='textRight'>" . number_format((float)$row['balance']-$row['opening_balance'], 2) . "</td>
+        <td class='textRight'>" . number_format((float)$row['opening_balance'], 2) . "</td>
         <td class='textRight'>" . number_format((float)$row['balance'], 2) . "</td>";
 
-        $rowNumber++;
-    }}
+            $rowNumber++;
+        }
+    }
     echo '</tbody></table>';
 } else {
     echo 'No Data Found! try another search . ';

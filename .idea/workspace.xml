@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/loginFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/loginFunction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/general.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/particular_wise.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,6 +122,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1264" y="332" key="#SQL_Dialects" timestamp="1615443881385">
+      <screen x="-1280" y="0" width="1280" height="994" />
+    </state>
+    <state x="-1264" y="332" key="#SQL_Dialects/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1615443881385" />
     <state x="-1048" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615429678924">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
