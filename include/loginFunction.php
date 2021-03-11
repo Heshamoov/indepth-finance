@@ -24,7 +24,7 @@ function login()
             $_SESSION['login'] = 1;
             header('Location: dashboard.php');
         } else {
-            $sql = "SELECT * FROM users WHERE id='$user' AND ( username in ('James','admin','Hesham', 1221,1554,1524)) ";
+            $sql = "SELECT * FROM users WHERE id='$user' AND ( username in ('Jamsheed','admin','Hesham', 1221,1554,1524)) ";
 //        echo $sql;
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {

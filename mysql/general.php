@@ -473,7 +473,7 @@ FROM ((
                                                               (ffp.receiver_id = s.student_category_id and
                                                                ffp.receiver_type = 'StudentCategory' and
                                                                ffp.batch_id = ff.batch_id) or
-                                                              (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
+                                                              (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')) 
                    LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
           WHERE (ffp.is_reregistration != '1' AND  s.is_active = 1 AND ffc.is_deleted = 0 AND
                  b.start_date >= '$start_date' AND
@@ -500,7 +500,7 @@ FROM ((
                                                                          (ffp.receiver_id = s.student_category_id and
                                                                           ffp.receiver_type = 'StudentCategory' and
                                                                           ffp.batch_id = ff.batch_id) or
-                                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
+                                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))   
                               LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
                      WHERE ( ffp.is_reregistration != '1' AND s.is_active = 1 AND ffc.is_deleted = 0 AND
                             b.start_date >= '$start_date' AND b.end_date <= '$end_date')

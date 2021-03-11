@@ -16,7 +16,7 @@ FROM `finance_fees` ff
     INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
     INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
     INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
-WHERE ffc.is_deleted = 0 AND STR_TO_DATE(ffc.start_date, '%Y-%m-%d') >= '$start_date' AND STR_TO_DATE(ffc.due_date, '%Y-%m-%d') <= '$end_date'
+WHERE ffc.is_deleted = 0 
 group by mfp.id;";
 
 //echo $get_fees;
