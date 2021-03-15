@@ -43,7 +43,7 @@ if ($type == 'parent') {
 
 
 $Fees_sql = "
-SELECT t1.familyid,parent,student,t1.sid,student,grade,contact_no,
+SELECT t1.familyid,parent,student,t1.sid,t1.admission_no,student,grade,contact_no,
        $column_header,
        $total              total,
        $discount                discount,
@@ -55,7 +55,7 @@ SELECT t1.familyid,parent,student,t1.sid,student,grade,contact_no,
        creation_date,amount,start_date,due_date,
        t2.opening_balance as            opening_balance
 FROM (
-      (SELECT s.id as sid,$sql_header,s.familyid,
+      (SELECT s.id as sid,s.admission_no,$sql_header,s.familyid,
               g.first_name                              'parent',      
               CONCAT(g.mobile_phone, ' ', g.office_phone1)   'contact_no',                 
               s.last_name AS 'student',
@@ -72,8 +72,8 @@ FROM (
            FROM `finance_fees` ff
                 inner join students s on ff.student_id = s.id and ff.batch_id in (select id
                                                                                   from batches
-                                                                                  where start_date >= '2020-9-1'
-                                                                                    AND end_date <= '2021-8-31')
+                                                                                  where start_date >= '$start_date'
+                                                                                    AND end_date <= '$end_date')
                 inner join guardians g on s.immediate_contact_id = g.id
                 left join batches b on s.batch_id = b.id
                 inner join courses c on b.course_id = c.id
@@ -89,12 +89,10 @@ FROM (
                               INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
 
                 LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-       WHERE (  s.is_active = 1 AND ffc.is_deleted = 0 AND b.start_date >= '2020-9-1' AND
-              b.end_date <= '2021-8-31' 
-                 $condition   )
+       WHERE (s.is_active = 1 AND ffc.is_deleted = 0 AND b.start_date >= '$start_date' AND b.end_date <= '$end_date' $condition)
         $group) as t1
          
-         INNER JOIN (
+         LEFT JOIN (
               SELECT sum(balance) as opening_balance, s.familyid, s.id sid
               FROM `finance_fees` ff
               INNER JOIN students s on ff.student_id = s.id and ff.batch_id not in 
