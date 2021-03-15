@@ -16,6 +16,11 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="3c405728-198c-4033-9e2d-1ec3b5e298c2" value="ff3600" />
+    </colors>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -49,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Excel (xlsx)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.data.views" />
     <property name="vue.rearranger.settings.migration" value="true" />
