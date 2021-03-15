@@ -43,7 +43,7 @@ if ($type == 'parent') {
 
 
 $Fees_sql = "
-SELECT t1.familyid,parent,student,t1.sid,t1.admission_no,student,grade,contact_no,
+SELECT t1.familyid,parent,student,t1.sid,student,grade,contact_no,
        $column_header,
        $total              total,
        $discount                discount,
@@ -55,7 +55,7 @@ SELECT t1.familyid,parent,student,t1.sid,t1.admission_no,student,grade,contact_n
        creation_date,amount,start_date,due_date,
        t2.opening_balance as            opening_balance
 FROM (
-      (SELECT s.id as sid,s.admission_no,$sql_header,s.familyid,
+      (SELECT s.id as sid,$sql_header,s.familyid,
               g.first_name                              'parent',      
               CONCAT(g.mobile_phone, ' ', g.office_phone1)   'contact_no',                 
               s.last_name AS 'student',
