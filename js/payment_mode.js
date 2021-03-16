@@ -21,12 +21,8 @@ function search() {
     payments.send();
 }
 
-// function details($id) {
-//     document.getElementById($id).innerHTML += '<tr><td colspan="3"><div><h3>Hello</h3></div></td></tr>';
-// }
-
-
 $(document).ready(function () {
+    search();
     // Add minus icon for collapse element which is open by default
     $(".collapse.show").each(function () {
         $(this).prev(".main-div").find(".fa").addClass("fa-minus").removeClass("fa-plus");
@@ -44,30 +40,30 @@ $(document).ready(function () {
 });
 
 
-function test (id) {
-    t_date = document.getElementById(id).getAttribute("data-date");
-    t_mode = document.getElementById(id).getAttribute("data-mode");
+function test(id) {
+    let t_date = document.getElementById(id).getAttribute("data-date");
+    let t_mode = document.getElementById(id).getAttribute("data-mode");
 
-    $table_data = "<table class='table table-dark table-sm padding: 0px'>" +
+    let table_data = "<table class='table table-dark table-sm padding: 0px'>" +
         "<th>" +
         "<td>" + id + "</td>" +
         "<td>" + t_date + "</td>" +
         "<td>" + t_mode + "</td>" +
         "</th>" +
         "</table>";
-    document.getElementById(id).innerHTML = $table_data;
-    $div_data = document.getElementById(id);
+    document.getElementById(id).innerHTML = table_data;
+    let div_data = document.getElementById(id);
 
     let payments = new XMLHttpRequest();
     payments.onreadystatechange = function () {
         if (this.readyState === 4) {
-            $div_data.innerHTML = this.responseText;
+            div_data.innerHTML = this.responseText;
         }
     };
-    payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&mode=" + t_mode, false);
+
+    payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&name=" + id + "&mode=" + t_mode, false);
     payments.send();
 }
-
 
 $(document).ready(function () {
     $('.showinfo').click(function (e) {
@@ -94,30 +90,27 @@ $(document).ready(function () {
                 $div_data.innerHTML = this.responseText;
             }
         };
-        payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&mode=" + t_mode, false);
+        payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&name=" + id + "&mode=" + t_mode, false);
         payments.send();
+    });
+
+    $("#download").click(function () {
+        $("#paymentMode").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Payment Mode",
+            filename: "PaymentMode", //do not include extension
+            fileext: ".xls",// file extension
+        });
     });
 });
 
-
-function excel_current_page_download() {
-    $("#ParentsTable").table2excel({
+function excel_download(id){
+    $(id).table2excel({
         // exclude CSS class
         exclude: ".noExl",
-        name: "Finance",
-        filename: "Parents-List", //do not include extension
-        fileext: ".xls"// file extension
-        // preserveColors:true
-    });
-}
-
-function excel_download() {
-    $("#ParentsTablePrint").table2excel({
-        // exclude CSS class
-        exclude: ".noExl",
-        name: "Finance",
-        filename: "Parents-List", //do not include extension
-        fileext: ".xls"// file extension
-        // preserveColors:true
+        name: "Payment Mode",
+        filename: "PaymentMode", //do not include extension
+        fileext: ".xls",// file extension
     });
 }

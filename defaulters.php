@@ -60,7 +60,7 @@ checkLoggedIn()
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
-    <script src="js/init_fees.js"></script>
+    <script src="js/defaulters.js"></script>
 
 
     <script>

@@ -44,21 +44,8 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/print.min.css">
 
     <!-- Exporting table as excel -->
-    <!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/table2excel.js"></script>
-
-
-
-    <script>
-        function parentsDataTable() {
-            $('#ParentsTable').DataTable({});
-            $('.dataTables_length').addClass('bs-select');
-        }
-
-        $(document).ready(function () {
-            search();
-        });
-    </script>
 
     <title>InDepth Finance</title>
 </head>
@@ -107,7 +94,6 @@ checkLoggedIn()
     document.getElementById('navPaymentMode').classList.add('active-tab');
 </script>
 <script src="js/payment_mode.js"></script>
-<script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>
 </body>

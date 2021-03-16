@@ -47,8 +47,10 @@ $totalPayments = $id = 0;
 //echo $rowspan_sql;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
+    echo "<button type='button' id='download' class='btn btn-primary btn-sm' title='Download as Excel'><i class='fas fa-download'></i></button>";
+
     echo "
-<table style='margin-top: 10px!important;' class='table  table-bordered ' id='paymentMode'>
+<table style='margin-top: 10px!important;' class='table table-bordered' id='paymentMode'>
             <thead class=\"bg-green text-white\">
                 <tr>
                     <th class='textCenter' style='width: 15%;'><b>Month</b></th>
