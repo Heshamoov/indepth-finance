@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
     echo "<table class='table table-bordered table-striped' id='$table'>
             <thead  class=\"bg-green text-white\">
                 <tr>
-                    <th colspan='4' class='textCenter bold'>Payments as $mode from $start_date to $end_date</th>
+                    <th colspan='4' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</th>
                 </tr>
                 <tr>
                     <th class='textCenter'><b>No.</b></th>
