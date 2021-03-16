@@ -21,7 +21,7 @@ $sql_header = '';
 if ($type == 'parent') {
     $group = ' GROUP BY familyid  order by familyid ';
     $name = 'parent';
-    $header = '<th>CHILDREN</th><th>PARENT</th>';
+    $header = '<th>PARENT</th><th>CHILDREN</th>';
     $sql_header = 'COUNT(DISTINCT s.id) children,';
     $grade_children = 'children';
 } else {
@@ -128,18 +128,19 @@ if ($result->num_rows > 0) {
         <tbody>
     ";
     while ($row = $result->fetch_assoc()) {
-        echo "
+        if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
+            echo "
     	        <tr>
     		        <td>" . $rowNumber . "</td>
     		        <td  class='textLeft'>" . $row['familyid'] . "</td>
                     <td>" . $row['contact_no'] . "</td>";
 
-        if ($type == 'student')
-            echo "<td>" . $row['admission_no'] . "</td><td>" . $row['student'] . "</td><td>" . $row['grade'] . "</td>";
-        else
-            echo "<td>" . $row['parent'] . "</td><td>" . $row['children'] . "</td>";
+            if ($type == 'student')
+                echo "<td>" . $row['admission_no'] . "</td><td>" . $row['student'] . "</td><td>" . $row['grade'] . "</td>";
+            else
+                echo "<td>" . $row['parent'] . "</td><td>" . $row['children'] . "</td>";
 
-        echo "
+            echo "
                     <td class='textRight'>" . number_format((float)$row['total'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['discount'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['revenue'], 2) . "</td>
@@ -147,7 +148,8 @@ if ($result->num_rows > 0) {
                     <td class='textRight'>" . number_format((float)$row['balance'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['opening_balance'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['net_balance'], 2) . "</td>";
-        $rowNumber++;
+            $rowNumber++;
+        }
     }
     echo '</tbody></table>';
 } else {
