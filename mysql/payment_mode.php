@@ -10,9 +10,13 @@ $end_date = $_REQUEST['end_date'];
 $end_date = date('Y-m-d', strtotime($end_date));
 
 echo "<div class='row' style='padding-top: 10px;padding-left: 40px;'>
-<button type='button' onclick='excel_download(paymentMode)' class='btn btn-outline-primary' title='Download as Excel' style='margin: auto'>
+<div class='col-3'></div>
+<div class='col'>
+<button type='button' class='btn btn-outline-dark btn-sm' onclick='excel_download(paymentMode)' title='Download as Excel' style='margin: auto;display: block;'>
 <h6 class='text-center'><strong>PAYMENTS FROM " . date_format(date_create(($start_date)), 'd-F-Y') . " to " . date_format(date_create(($end_date)), 'd-F-Y')
 . "</strong>&nbsp&nbsp<i class='fas fa-download'></i></button></h6>
+</div>
+<div class='col-3'></div>
 </div>";
 
 // PAYMENT MODE
@@ -50,7 +54,7 @@ $totalPayments = $id = 0;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "<table style='margin-top: 10px!important;' class='table table-bordered' id='paymentMode'>
-            <thead class=\"bg-green text-white\">
+            <thead class='table-dark'>
                 <tr>
                     <th class='textCenter' style='width: 15%;'><b>Month</b></th>
                     <th class='textCenter'><b>Mode</b></th>
@@ -72,7 +76,7 @@ if ($result->num_rows > 0) {
         $id++;
 
         if ($new_month != date_format(date_create(($row['transaction_date'])), "Y-F")) {
-            echo "<tr><th colspan='2' class='bold text-center'>Total payments in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income, 2) . "</th></tr>";
+            echo "<tr class='table-warning'><th colspan='2' class='text-center'>Total payments in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income, 2) . "</th></tr>";
             $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
             echo "<tr style='background-color: white; border-bottom: 2px black '><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
             $total_month_income = 0;
@@ -107,7 +111,7 @@ if ($result->num_rows > 0) {
                     </div>
                 </div>                
             </th>
-            <th class='textRight'>" . number_format((float)$row['amount'], 2) . "</th>
+            <td class='textRight'>" . number_format((float)$row['amount'], 2) . "</td>
          </tr>";
 
         $total_month_income += $row['amount'];
@@ -115,7 +119,7 @@ if ($result->num_rows > 0) {
 
 
     }
-    echo "<tr><th colspan='2' class='bold text-center'>Total payments in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income, 2) . "</th></tr>";
+    echo "<tr class='table-warning'><th colspan='2' class='text-center'>Total payments in " . $new_month . "</th><th class='bold text-right'>" . number_format((float)$total_month_income, 2) . "</th></tr>";
 
 
     echo "<tr style='background-color: white; border-bottom: 2px black '><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";

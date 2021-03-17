@@ -54,27 +54,27 @@ $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "<td><button type='button' onclick=excel_download($table) class='btn btn-primary btn-sm noExl' title='Download as Excel'><i class='fas fa-download'></i></button></td>";
     echo "<table class='table table-bordered table-striped' id='$table'>
-            <thead  class=\"bg-green text-white\">
+            <thead  class='table-dark'>
                 <tr>
-                    <th colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</th>
+                    <td colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</td>
                 </tr>
                 <tr>
-                    <th class='textCenter'><b>No.</b></th>
-                    <th class='textCenter'><b>Family ID</b></th>
-                    <th class='textCenter'><b>Parent</b></th>
-                    <th class='textCenter'><b>Date</b></th>
-                    <th class='textCenter'><b>Amount</b></th>
+                    <th class='textCenter'>No.</th>
+                    <th class='textCenter'>Family ID</th>
+                    <th class='textCenter'>Parent</th>
+                    <th class='textCenter'>Date</th>
+                    <th class='textCenter'>Amount</th>
                 </tr>
-            </thead>";
+            </thead><tbody>";
 
     while ($row = $result->fetch_assoc()) {
         $id++;
         echo "<tr>
-                <th class='textLeft'>" . ++$row_id . "</th>
-                <th class='textLeft'>" . $row['familyid'] . "</th>
-                <th class='textLeft'>" . $row['parent'] . "</th>
-                <th class='textLeft'>" . $row['transaction_date'] . "</th>
-                <th class='textRight'>" . number_format((float)$row['amount'], 2) . "</th>
+                <td class='textLeft'>" . ++$row_id . "</td>
+                <td class='textLeft'>" . $row['familyid'] . "</td>
+                <td class='textLeft'>" . $row['parent'] . "</td>
+                <td class='textLeft'>" . $row['transaction_date'] . "</td>
+                <td class='textRight'>" . number_format((float)$row['amount'], 2) . "</td>
              </tr>";
         $totalPayments += $row['amount'];
     }
