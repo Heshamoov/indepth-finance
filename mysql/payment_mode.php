@@ -124,9 +124,9 @@ if ($result->num_rows > 0) {
 
     echo "<tr style='background-color: white; border-bottom: 2px black '><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
 
-    echo "<tr class='bg-lightYellow'>
-                <th colspan='2' class='textLeft text-center bold '>Total</th>
-                <th class='textRight bold'>" . number_format((float)$totalPayments, 2) . "</th>
+    echo "<tr class='table-warning'>
+                <th colspan='2' class='text-center'>Total</th>
+                <th class='textRight'>" . number_format((float)$totalPayments, 2) . "</th>
            </tr>";
     echo '</body></table>';
 
