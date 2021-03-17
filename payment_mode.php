@@ -68,7 +68,7 @@ checkLoggedIn()
                                data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
                                data-calendar-wide="false" class="w3-input w3-card" type="text"
                                data-role="calendarpicker" id="start_date" onchange="search()"
-                               data-input-format="%m-%y" data-format="%B %Y" value="10-2020"/>
+                               data-input-format="%d-%m-%y" value="01-09-2020"/>
 
                     </td>
                     <td>&nbsp To &nbsp</td>
@@ -77,7 +77,7 @@ checkLoggedIn()
                                data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
                                data-calendar-wide="false" class="w3-input w3-card" type="text"
                                data-role="calendarpicker" id="end_date" onchange="search()"
-                               data-input-format="%m-%y" data-format="%B %Y" value="09-2021"/>
+                               data-input-format="%d-%m-%y" value="31-08-2021"/>
                     </td>
                 </tr>
                 </thead>

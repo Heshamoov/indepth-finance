@@ -41,13 +41,16 @@ $(document).ready(function () {
 
 
 function test(id) {
-    let t_date = document.getElementById(id).getAttribute("data-date");
+    let start_date = document.getElementById(id).getAttribute("data-startdate");
+    let end_date = document.getElementById(id).getAttribute("data-enddate");
+
     let t_mode = document.getElementById(id).getAttribute("data-mode");
 
     let table_data = "<table class='table table-dark table-sm padding: 0px'>" +
         "<th>" +
         "<td>" + id + "</td>" +
-        "<td>" + t_date + "</td>" +
+        "<td>" + start_date + "</td>" +
+        "<td>" + end_date + "</td>" +
         "<td>" + t_mode + "</td>" +
         "</th>" +
         "</table>";
@@ -61,7 +64,7 @@ function test(id) {
         }
     };
 
-    payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&name=" + id + "&mode=" + t_mode, false);
+    payments.open("GET", "mysql/payment_mode_inline.php?start_date=" + start_date + "&end_date=" + end_date + "&name=" + id + "&mode=" + t_mode, false);
     payments.send();
 }
 
@@ -69,15 +72,17 @@ $(document).ready(function () {
     $('.showinfo').click(function (e) {
         e.preventDefault();
         id = $(this).closest('th').find(".PMD")[0].id;
-        t_date = $(this).closest('th').find(".PMD")[0].getAttribute("data-date");
-        t_mode = $(this).closest('th').find(".PMD")[0].getAttribute("data-mode");
+        let start_date = $(this).closest('th').find(".PMD")[0].getAttribute("data-startdate");
+        let end_date = $(this).closest('th').find(".PMD")[0].getAttribute("data-enddate");
+        let t_mode = $(this).closest('th').find(".PMD")[0].getAttribute("data-mode");
 
         ////alert(t_date);
 
         $table_data = "<table class='table table-dark table-sm padding: 0px'>" +
             "<th>" +
             "<td>" + id + "</td>" +
-            "<td>" + t_date + "</td>" +
+            "<td>" + start_date + "</td>" +
+            "<td>" + end_date + "</td>" +
             "<td>" + t_mode + "</td>" +
             "</th>" +
             "</table>";
@@ -90,7 +95,7 @@ $(document).ready(function () {
                 $div_data.innerHTML = this.responseText;
             }
         };
-        payments.open("GET", "mysql/payment_mode_inline.php?t_date=" + t_date + "&name=" + id + "&mode=" + t_mode, false);
+        payments.open("GET", "mysql/payment_mode_inline.php?start_date=" + start_date + "&end_date=" + end_date + "&name=" + id + "&mode=" + t_mode, false);
         payments.send();
     });
 

@@ -5,12 +5,16 @@ include_once '../functions.php';
 include('../config/db.php');
 
 
-$t_date = $_REQUEST['t_date'];
+$start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
 $table = 't' . $_REQUEST['name'];
 $mode = $_REQUEST['mode'];
 
-$start_date = date('Y-m-01', strtotime($t_date));
-$end_date = date('Y-m-t', strtotime($t_date));
+
+//echo $start_date . ' => ' . $end_date . '<br>';
+
+$start_date = date('Y-m-d', strtotime($start_date));
+$end_date = date('Y-m-d', strtotime($end_date));
 
 
 // PAYMENT MODE
@@ -52,12 +56,13 @@ if ($result->num_rows > 0) {
     echo "<table class='table table-bordered table-striped' id='$table'>
             <thead  class=\"bg-green text-white\">
                 <tr>
-                    <th colspan='4' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</th>
+                    <th colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</th>
                 </tr>
                 <tr>
                     <th class='textCenter'><b>No.</b></th>
                     <th class='textCenter'><b>Family ID</b></th>
                     <th class='textCenter'><b>Parent</b></th>
+                    <th class='textCenter'><b>Date</b></th>
                     <th class='textCenter'><b>Amount</b></th>
                 </tr>
             </thead>";
@@ -68,12 +73,13 @@ if ($result->num_rows > 0) {
                 <th class='textLeft'>" . ++$row_id . "</th>
                 <th class='textLeft'>" . $row['familyid'] . "</th>
                 <th class='textLeft'>" . $row['parent'] . "</th>
+                <th class='textLeft'>" . $row['transaction_date'] . "</th>
                 <th class='textRight'>" . number_format((float)$row['amount'], 2) . "</th>
              </tr>";
         $totalPayments += $row['amount'];
     }
     echo "<tr>
-                <th colspan='3' class='text-center bold'>Total</th>
+                <th colspan='4 class='text-center bold'>Total</th>
                 <th class='textRight bold'>" . number_format((float)$totalPayments, 2) . "</th>
            </tr>";
     echo '</body></table>';

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="" />
+    <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/payment_mode.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/payment_mode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/payment_mode.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/payment_mode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/payment_mode_inline.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/payment_mode_inline.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_mode.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment_mode.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +111,8 @@
       <workItem from="1615353875492" duration="18257000" />
       <workItem from="1615428054822" duration="7573000" />
       <workItem from="1615871452620" duration="353000" />
-      <workItem from="1615878533896" duration="13293000" />
+      <workItem from="1615878533896" duration="15347000" />
+      <workItem from="1615957443551" duration="2823000" />
     </task>
     <servers />
   </component>
