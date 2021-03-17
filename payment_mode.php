@@ -30,70 +30,43 @@ checkLoggedIn()
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
 
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+
 
     <!--    data table-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
-    <!--    print.js-->
-    <script type="text/javascript" charset="utf8" src="js/print.min.js"></script>
-    <link rel="stylesheet" href="css/print.min.css">
 
     <!-- Exporting table as excel -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/table2excel.js"></script>
 
     <title>InDepth Finance</title>
 </head>
-
+<script src="js/payment_mode.js"></script>
 
 <body>
 <?php include('navbar.php'); ?>
 <h6 class="active" style="color:black">PAYMENT MODE MONTHLY REPORT</h6>
 <?php include('uppernav.php'); ?>
 
-<div class="col-sm" style="margin-top: -30px">
-    <div id="userInputDiv" class="row">
-        <div class="col-sm"></div>
-        <div class="col-sm-6">
-            <table id="userInputodTable" align="center">
-                <thead>
-                <tr>
-                    <td><input data-clear-button="true"
-                               data-clear-button-icon="<i class='fas fa-times'></i>"
-                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                               data-calendar-wide="false" class="w3-input w3-card" type="text"
-                               data-role="calendarpicker" id="start_date" onchange="search()"
-                               data-input-format="%d-%m-%y" value="01-09-2020"/>
+<!--<div class="col" style="margin-top: -30px">-->
+    <div class="row " style="margin-top: -20px" >
+            <div class="col-xl-6" class="textRight"><input id="start_date" type="date" onchange="search()" value="2020-09-01"/></div>
+<!--            <div class="col-sm-1" align="center">&nbsp To &nbsp</div>-->
+<!--                <div class="col">To</div>-->
+            <div class="col-xl-6" align="textRight">To &nbsp&nbsp&nbsp &nbsp&nbsp   <input id="end_date" type="date" onchange="search()" value="2021-08-31"/></div>
 
-                    </td>
-                    <td>&nbsp To &nbsp</td>
-                    <td><input data-clear-button="true"
-                               data-clear-button-icon="<i class='fas fa-times'></i>"
-                               data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                               data-calendar-wide="false" class="w3-input w3-card" type="text"
-                               data-role="calendarpicker" id="end_date" onchange="search()"
-                               data-input-format="%d-%m-%y" value="31-08-2021"/>
-                    </td>
-                </tr>
-                </thead>
-
-            </table>
-        </div>
-        <div class="col-sm"></div>
     </div>
     <div id="result"></div>
-</div>
+<!--</div>-->
 
 <script>
     document.getElementById('navPaymentMode').classList.add('active');
     document.getElementById('navPaymentMode').classList.add('active-tab');
 </script>
-<script src="js/payment_mode.js"></script>
+
 <script src="js/bootstrap.min.js"></script>
 <script src="js/calender.js"></script>
 </body>

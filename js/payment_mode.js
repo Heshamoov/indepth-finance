@@ -1,15 +1,15 @@
 function search() {
-    let date = new Date(document.querySelector("#start_date").value);
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    let start_date = year + '-' + month + '-' + day;
+    let start_date = new Date(document.querySelector("#start_date").value);
+    let day = start_date.getDate();
+    let month = start_date.getMonth() + 1;
+    let year = start_date.getFullYear();
+    start_date = year + '-' + month + '-' + day;
 
-    date = new Date(document.querySelector("#end_date").value);
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    let end_date = year + '-' + month + '-' + day;
+    let end_date = new Date(document.querySelector("#end_date").value);
+    day = end_date.getDate();
+    month = end_date.getMonth() + 1;
+    year = end_date.getFullYear();
+    end_date = year + '-' + month + '-' + day;
 
     let payments = new XMLHttpRequest();
     payments.onreadystatechange = function () {
@@ -19,10 +19,7 @@ function search() {
     };
     payments.open("GET", "mysql/payment_mode.php?start_date=" + start_date + "&end_date=" + end_date, false);
     payments.send();
-}
 
-$(document).ready(function () {
-    search();
     // Add minus icon for collapse element which is open by default
     $(".collapse.show").each(function () {
         $(this).prev(".main-div").find(".fa").addClass("fa-minus").removeClass("fa-plus");
@@ -37,8 +34,12 @@ $(document).ready(function () {
         $(this).prev(".main-div").find(".fa").removeClass("fa-minus").addClass("fa-plus");
         //alert('hide');
     });
-});
+}
 
+
+window.onload = function (){
+    search();
+}
 
 function test(id) {
     let start_date = document.getElementById(id).getAttribute("data-startdate");
@@ -99,18 +100,13 @@ $(document).ready(function () {
         payments.send();
     });
 
-    $("#download").click(function () {
-        $("#paymentMode").table2excel({
-            // exclude CSS class
-            exclude: ".noExl",
-            name: "Payment Mode",
-            filename: "PaymentMode", //do not include extension
-            fileext: ".xls",// file extension
-        });
-    });
+
+});
+$("#download").click(function () {
+
 });
 
-function excel_download(id){
+function excel_download(id) {
     $(id).table2excel({
         // exclude CSS class
         exclude: ".noExl",

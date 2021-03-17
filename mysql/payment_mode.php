@@ -9,12 +9,13 @@ $start_date = date('Y-m-d', strtotime($start_date));
 $end_date = $_REQUEST['end_date'];
 $end_date = date('Y-m-d', strtotime($end_date));
 
-
-echo '<h4  style="margin-top: 20px; font-size: 20px" class="text-center">PAYMENTS FROM ' . date_format(date_create(($start_date)), "d-F-Y") . ' to ' . date_format(date_create(($end_date)), "d-F-Y") . '</h4>';
+echo "<div class='row' style='padding-top: 10px;padding-left: 40px;'>
+<button type='button' onclick='excel_download(paymentMode)' class='btn btn-outline-primary' title='Download as Excel' style='margin: auto'>
+<h6 class='text-center'><strong>PAYMENTS FROM " . date_format(date_create(($start_date)), 'd-F-Y') . " to " . date_format(date_create(($end_date)), 'd-F-Y')
+. "</strong>&nbsp&nbsp<i class='fas fa-download'></i></button></h6>
+</div>";
 
 // PAYMENT MODE
-
-
 $rowspan_sql = "SELECT DATE_FORMAT(transaction_date,'%Y-%m') month, count(distinct (payment_mode)) rowspan, SUM(amount) amount
 FROM finance_transactions
 WHERE finance_transactions.finance_type = 'FinanceFee'
@@ -30,7 +31,6 @@ if ($rowspan_result->num_rows > 0) {
         $rowspan[$row['month']] = $row['rowspan'];
     }
 }
-
 
 $payment_mode = "
 SELECT transaction_date, DATE_FORMAT(transaction_date,'%Y-%m') month, SUM(amount) amount, payment_mode mode
@@ -49,8 +49,6 @@ $totalPayments = $id = 0;
 //echo $rowspan_sql;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
-    echo "<button type='button' id='download' class='btn btn-primary btn-sm' title='Download as Excel'><i class='fas fa-download'></i></button>";
-
     echo "<table style='margin-top: 10px!important;' class='table table-bordered' id='paymentMode'>
             <thead class=\"bg-green text-white\">
                 <tr>
@@ -65,12 +63,10 @@ if ($result->num_rows > 0) {
     $first_row = true;
     while ($row = $result->fetch_assoc()) {
         $rowspan_no = 0;
-
         if ($first_row) {
             $first_row = false;
             $new_month = date_format(date_create(($row['transaction_date'])), "Y-F");
             $rowspan_no = $rowspan[$row['month']];
-//            echo "<tr><th colspan=3 class='bold text-center'><h3>&nbsp</h3></th></tr>";
         }
 
         $id++;
@@ -86,7 +82,7 @@ if ($result->num_rows > 0) {
         echo "<tr>";
 
         if ($rowspan_no != 0)
-            echo " <th rowspan='$rowspan_no' class='textLeft text-center align-middle'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>";
+            echo " <th rowspan='$rowspan_no' class='text-center align-middle'>" . date_format(date_create(($row['transaction_date'])), "Y-F") . "</th>";
 
         //Print the selected start date in the first table instead of transaction date
         if ($row['month'] == date('Y-m', strtotime($start_date)))
