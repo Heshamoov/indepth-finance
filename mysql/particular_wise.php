@@ -65,7 +65,7 @@ FROM (
                            mfp.id 'master_id',
                            mfp.name master_name
                     FROM `finance_fees` ff
-                             INNER JOIN students s on ff.student_id = s.id and ff.batch_id in
+                             INNER JOIN students s on ff.student_id = s.id and s.batch_id in
                                    (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date')
                              INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
                              INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
@@ -86,10 +86,10 @@ FROM (
              INNER JOIN students s on ff.student_id = s.id and ff.batch_id not in
                    (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date')
              INNER JOIN guardians g on s.immediate_contact_id = g.id
-             LEFT JOIN batches b on s.batch_id = b.id
+             LEFT JOIN batches b on ff.batch_id = b.id
              INNER JOIN courses c on b.course_id = c.id
              INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
-             INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+             LEFT JOIN financial_years fy on ffc.financial_year_id = fy.id
              INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
              INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
                                                        ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
@@ -97,7 +97,7 @@ FROM (
                                                          ffp.receiver_type = 'StudentCategory' and
                                                          ffp.batch_id = ff.batch_id) or
                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
-             INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+             LEFT JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
     WHERE (s.is_active = 1 AND ffc.is_deleted = 0)
     $group
