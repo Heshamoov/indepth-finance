@@ -53,7 +53,7 @@ $totalPayments = $id = 0;
 //echo $rowspan_sql;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
-    echo "<table style='margin-top: 10px!important;' class='table table-bordered' id='paymentMode'>
+    echo "<table style='margin-top: 10px!important;' class='table table-bordered table-sm' id='paymentMode'>
             <thead class='table-dark'>
                 <tr>
                     <th class='textCenter' style='width: 15%;'><b>Month</b></th>

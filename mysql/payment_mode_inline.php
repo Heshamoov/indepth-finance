@@ -53,10 +53,9 @@ $totalPayments = $id = $row_id = 0;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "<td><button type='button' onclick=excel_download($table) class='btn btn-primary btn-sm noExl' title='Download as Excel'><i class='fas fa-download'></i></button></td>";
-    echo "<table class='table table-bordered table-striped' id='$table'>
-            <thead  class='table-dark'>
+    echo "<table class='table table-bordered table-striped table-sm table-hover' id='$table' style='font-weight: normal;'>
                 <tr>
-                    <td colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date))." to ".date('d-m-Y', strtotime($end_date))."</td>
+                    <td colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date)) . " to " . date('d-m-Y', strtotime($end_date)) . "</td>
                 </tr>
                 <tr>
                     <th class='textCenter'>No.</th>
@@ -65,7 +64,7 @@ if ($result->num_rows > 0) {
                     <th class='textCenter'>Date</th>
                     <th class='textCenter'>Amount</th>
                 </tr>
-            </thead><tbody>";
+            ";
 
     while ($row = $result->fetch_assoc()) {
         $id++;
@@ -78,12 +77,11 @@ if ($result->num_rows > 0) {
              </tr>";
         $totalPayments += $row['amount'];
     }
-    echo "<tr>
-                <th colspan='4 class='text-center bold'>Total</th>
-                <th class='textRight bold'>" . number_format((float)$totalPayments, 2) . "</th>
+    echo "<tr class='table-light'>
+                <th colspan='4 class='text-center'>Total</th>
+                <th class='textRight'>" . number_format((float)$totalPayments, 2) . "</th>
            </tr>";
-    echo '</body></table>';
-
+    echo '</table>';
 } else {
     echo 'No Data Found! Try another search.';
 }
