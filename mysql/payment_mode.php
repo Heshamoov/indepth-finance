@@ -13,7 +13,7 @@ echo "<div class='row' style='padding-top: 10px;padding-left: 40px;'>
 <div class='col-3'></div>
 <div class='col'>
 <button type='button' class='btn btn-outline-dark btn-sm' onclick='excel_download(paymentMode)' title='Download as Excel' style='margin: auto;display: block;'>
-<h6 class='text-center'><strong>PAYMENTS FROM " . date_format(date_create(($start_date)), 'd-F-Y') . " to " . date_format(date_create(($end_date)), 'd-F-Y')
+<h6 class='text-center'>PAYMENTS FROM " . date_format(date_create(($start_date)), 'd-F-Y') . " to " . date_format(date_create(($end_date)), 'd-F-Y')
 . "</strong>&nbsp&nbsp<i class='fas fa-download'></i></button></h6>
 </div>
 <div class='col-3'></div>
@@ -131,5 +131,7 @@ if ($result->num_rows > 0) {
     echo '</body></table>';
 
 } else {
-    echo 'No Data Found! Try another search.';
+    echo "<div class='alert alert-primary' role='alert' style='margin-top: 10px;'>
+            No transactions found! try another date range.
+        </div>";
 }

@@ -53,8 +53,8 @@ $totalPayments = $id = $row_id = 0;
 $result = $conn->query($payment_mode);
 if ($result->num_rows > 0) {
     echo "<td><button type='button' onclick=excel_download($table) class='btn btn-primary btn-sm noExl' title='Download as Excel'><i class='fas fa-download'></i></button></td>";
-    echo "<table class='table table-bordered table-striped table-sm table-hover' id='$table' style='font-weight: normal;'>
-                <tr>
+    echo "<table class='table table-sm table-hover' id='$table' style='font-weight: normal;'>
+                <tr class='table-light'>
                     <td colspan='5' class='textCenter bold'>Payments as $mode from " . date('d-m-Y', strtotime($start_date)) . " to " . date('d-m-Y', strtotime($end_date)) . "</td>
                 </tr>
                 <tr>
