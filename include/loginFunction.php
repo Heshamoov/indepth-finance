@@ -27,9 +27,10 @@ function login()
             $sql = "SELECT * FROM users WHERE id='$user' AND ( username in ('Jamsheed','admin','Hesham', 1221,1554,1524)) ";
 //        echo $sql;
             $result = $conn->query($sql);
+
             if ($result->num_rows > 0) {
                 $_SESSION['login'] = 1;
-                header('Location: dashboard.php');
+                header('Location: finance.php');
 
             } else {
                 $_SESSION['noaccess'] = 1;

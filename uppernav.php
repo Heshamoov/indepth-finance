@@ -9,7 +9,10 @@
                 <a class='nav-link' href='finance.php' id='navStudentFees'>Fees</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='defaulters.php' id='navDefaulters'>Fees Balance</a>
+                <a class='nav-link' href='defaulters.php' id='navDefaulters'>Balance</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='paid.php' id='navPaid'>Paid</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='payment_mode.php' id='navPaymentMode'>Payment Mode</a>

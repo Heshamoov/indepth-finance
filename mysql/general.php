@@ -517,49 +517,49 @@ order by familyid
 
 //echo $parents_list_sql_current_section;
 
-$result = $conn->query($parents_list_sql_current_section);
-$rowNumber = 1;
-if ($result->num_rows > 0) {
-    echo "<div id='ParentsDiv' class='row'>";
-    echo "<div class='col'>";
-    echo '<h4><u>Parents list</u></h4>';
-    echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
-    echo "
-    	<thead class='black white-text'>
-        <tr>
-    		<th>#</th>
-    		<th width='20'>FamilyID</th>
-    		<th>Parent</th>
-    		<th>Mob. #</th>
-            <th class='smallcol'>Children</th>
-    		<th>Expected</th>
-    		<th>Discount</th>
-            <th>Paid</th>
-            <th>Balance</th>
-    	</tr>
-        </thead>
-        <tbody>
-    ";
-    while ($row = $result->fetch_assoc()) {
-        $row['paid'] -= $row['discount'];
-        $params = array($start_date, $end_date, $row['familyid']);
-        echo "
-    	<tr onclick='FamilyStatement(" . json_encode($params) . ")'>
-    		<td>" . $rowNumber . "</td>
-    		<td  class='textLeft'>" . $row['familyid'] . ' </td >
-    		<td > ' . $row['parent_name'] . "</td>
-    		<td>". $row['contact_no'] ."</td>
-            <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
-    		<td class='textRight'>" . number_format((float)$row['expected'] + $row['opening_balance'] ,2 ) . "</td>
-    		<td class='textRight'>" . number_format((float)$row['discount'],2) . "</td>
-            <td class='textRight'>" . number_format((float)$row['paid'],2) . "</td>
-            <td class='textRight'>" . number_format((float)$row['balance']+ $row['opening_balance'],2) . ' </td >
-    	</tr > ';
-        $rowNumber++;
-    }
-    echo '</tbody></table></div></div> ';
-} else {
-    echo 'No Data Found! try another search . ';
-}
+//$result = $conn->query($parents_list_sql_current_section);
+//$rowNumber = 1;
+//if ($result->num_rows > 0) {
+//    echo "<div id='ParentsDiv' class='row'>";
+//    echo "<div class='col'>";
+//    echo '<h4><u>Parents list</u></h4>';
+//    echo "<table class='table table-bordered table-striped table-hover' id='ParentsTable'>";
+//    echo "
+//    	<thead class='black white-text'>
+//        <tr>
+//    		<th>#</th>
+//    		<th width='20'>FamilyID</th>
+//    		<th>Parent</th>
+//    		<th>Mob. #</th>
+//            <th class='smallcol'>Children</th>
+//    		<th>Expected</th>
+//    		<th>Discount</th>
+//            <th>Paid</th>
+//            <th>Balance</th>
+//    	</tr>
+//        </thead>
+//        <tbody>
+//    ";
+//    while ($row = $result->fetch_assoc()) {
+//        $row['paid'] -= $row['discount'];
+//        $params = array($start_date, $end_date, $row['familyid']);
+//        echo "
+//    	<tr onclick='FamilyStatement(" . json_encode($params) . ")'>
+//    		<td>" . $rowNumber . "</td>
+//    		<td  class='textLeft'>" . $row['familyid'] . ' </td >
+//    		<td > ' . $row['parent_name'] . "</td>
+//    		<td>". $row['contact_no'] ."</td>
+//            <td  class='textLeft'>" . $row['NumberOfStudents'] . "</td>
+//    		<td class='textRight'>" . number_format((float)$row['expected'] + $row['opening_balance'] ,2 ) . "</td>
+//    		<td class='textRight'>" . number_format((float)$row['discount'],2) . "</td>
+//            <td class='textRight'>" . number_format((float)$row['paid'],2) . "</td>
+//            <td class='textRight'>" . number_format((float)$row['balance']+ $row['opening_balance'],2) . ' </td >
+//    	</tr > ';
+//        $rowNumber++;
+//    }
+//    echo '</tbody></table></div></div> ';
+//} else {
+//    echo 'No Data Found! try another search . ';
+//}
 
 $conn->close();
