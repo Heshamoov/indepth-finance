@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/paid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/fees_particular.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql/financial_years.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/paid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/loginFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/loginFunction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/particular_wise.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/particular_wise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +112,7 @@
       <workItem from="1615957443551" duration="12885000" />
       <workItem from="1615972410531" duration="6526000" />
       <workItem from="1616043911840" duration="157000" />
-      <workItem from="1616397566554" duration="18035000" />
+      <workItem from="1616397566554" duration="18121000" />
     </task>
     <servers />
   </component>
