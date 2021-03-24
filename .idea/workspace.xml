@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mysql/paid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/defaulters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/defaulters.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/defaulters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/paid.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/paid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/particular_wise.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/defaulters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paid.php" beforeDir="false" afterPath="$PROJECT_DIR$/paid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uppernav.php" beforeDir="false" afterPath="$PROJECT_DIR$/uppernav.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +119,9 @@
       <workItem from="1615957443551" duration="12885000" />
       <workItem from="1615972410531" duration="6526000" />
       <workItem from="1616043911840" duration="157000" />
-      <workItem from="1616397566554" duration="18121000" />
+      <workItem from="1616397566554" duration="18824000" />
+      <workItem from="1616485649053" duration="1200000" />
+      <workItem from="1616577724368" duration="4472000" />
     </task>
     <servers />
   </component>

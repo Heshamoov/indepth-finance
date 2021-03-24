@@ -17,7 +17,6 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/metrostyle.css">
     <link rel="icon" href="assets/indepth-logo.png">
-
     <!--    MD Boostrap styling CDN -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -62,11 +61,16 @@ checkLoggedIn()
 
     <script src="js/defaulters.js"></script>
 
-
     <script>
         $(function () {
+            $('#financial_years').multiselect({
+                includeSelectAllOption: true
+            });
+            $("#financial_years").multiselect('selectAll', false);
+            $("#financial_years").multiselect('updateButtonText');
+
             $('#fees').multiselect({
-                includeSelectAllOption:true
+                includeSelectAllOption: true
             });
             $("#fees").multiselect('selectAll', false);
             $("#fees").multiselect('updateButtonText');
@@ -90,6 +94,7 @@ checkLoggedIn()
                 <th class="text-center">START</th>
                 <th class="text-center">END</th>
                 <th class="text-center">TYPE</th>
+                <th class="text-center">YEAR</th>
                 <th class="text-center">FEE</th>
             </tr>
             <tr>
@@ -116,6 +121,9 @@ checkLoggedIn()
                         <option value="parent">Parent Wise</option>
                         <option value="student">Student Wise</option>
                     </select>
+                </td>
+                <td>
+                    <select id="financial_years" onchange="fill_fees();" multiple="multiple"></select>
                 </td>
                 <td class="text-center">
                     <select id="fees" onchange="search()" multiple="multiple"></select>

@@ -137,7 +137,7 @@ function search() {
             studentsDataTable();
         }
     };
-    payments.open("GET", "mysql/particular_wise.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
+    payments.open("GET", "mysql/paid.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
     payments.send();
 }
 

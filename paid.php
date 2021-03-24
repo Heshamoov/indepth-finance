@@ -62,7 +62,6 @@ checkLoggedIn()
 
     <script src="js/paid.js"></script>
 
-
     <script>
         $(function () {
             $('#financial_years').multiselect({

@@ -43,31 +43,7 @@ function studentsDataTable() {
     });
     $('.dataTables_length').addClass('bs-select');
 }
-
-$(document).ready(function () {
-
-    let end_date = new Date(document.querySelector("#end_date").value);
-    let start_date = new Date(document.querySelector("#start_date").value);
-
-    day1 = start_date.getDate();
-    day2 = end_date.getDate();
-
-    month1 = start_date.getMonth() + 1;
-    month2 = end_date.getMonth() + 1;
-
-    year1 = start_date.getFullYear();
-    year2 = end_date.getFullYear();
-
-    start_date = year1 + '-' + month1 + '-' + day1;
-    end_date = year2 + '-' + month2 + '-' + day2;
-
-    // we call the function
-    search();
-});
-
-
-
-$(document).ready(function () {
+function fill_years() {
     let end_date = new Date(document.querySelector("#end_date").value);
     let start_date = new Date(document.querySelector("#start_date").value);
 
@@ -82,21 +58,59 @@ $(document).ready(function () {
 
     start_date = year1 + '-' + month1 + '-' + day1;
     end_date = year2 + '-' + month2 + '-' + day2;
+
+    let HttpYears = new XMLHttpRequest();
+    HttpYears.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            document.getElementById('financial_years').innerHTML += this.responseText;
+        }
+    };
+    HttpYears.open("GET", "mysql/financial_years.php?start_date=" + start_date + "&end_date=" + end_date, false);
+    HttpYears.send();
+}
+function fill_fees() {
+    let end_date = new Date(document.querySelector("#end_date").value);
+    let start_date = new Date(document.querySelector("#start_date").value);
+    let checked = document.querySelectorAll('#financial_years :checked');
+    let years = [...checked].map(option => option.value);
+
+    let day1 = start_date.getDate();
+    let day2 = end_date.getDate();
+
+    let month1 = start_date.getMonth() + 1;
+    let month2 = end_date.getMonth() + 1;
+
+    let year1 = start_date.getFullYear();
+    let year2 = end_date.getFullYear();
+
+    start_date = year1 + '-' + month1 + '-' + day1;
+    end_date = year2 + '-' + month2 + '-' + day2;
+
+    let select = document.getElementById('fees');
+    while (select.length > 0) select.remove(0);
+    $(select).multiselect('destroy');
+
+
     let HttpFees = new XMLHttpRequest();
     HttpFees.onreadystatechange = function () {
         if (this.readyState === 4) {
             document.getElementById('fees').innerHTML += this.responseText;
         }
     };
-    HttpFees.open("GET", "mysql/fees.php?start_date=" + start_date + "&end_date=" + end_date, false);
+    HttpFees.open("GET", "mysql/fees_particular.php?start_date=" + start_date + "&end_date=" + end_date + "&year=" + years, false);
     HttpFees.send();
-});
-
+    // $("#fees").multiselect('refresh');
+    $('#fees').multiselect({
+        includeSelectAllOption: true
+    });
+    $("#fees").multiselect('selectAll', false);
+    $("#fees").multiselect('updateButtonText');
+}
 function search() {
     let date = new Date(document.querySelector("#start_date").value);
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
     let start_date = year + '-' + month + '-' + day;
 
     date = new Date(document.querySelector("#end_date").value);
@@ -105,7 +119,10 @@ function search() {
     year = date.getFullYear();
     let end_date = year + '-' + month + '-' + day;
 
-    let checked = document.querySelectorAll('#fees :checked');
+    let checked = document.querySelectorAll('#financial_years :checked');
+    let years = [...checked].map(option => option.value);
+
+    checked = document.querySelectorAll('#fees :checked');
     let fees_selected = [...checked].map(option => option.value);
 
     let type = document.getElementById('type').options[document.getElementById('type').selectedIndex].value;
@@ -117,6 +134,11 @@ function search() {
             studentsDataTable();
         }
     };
-    payments.open("GET", "mysql/particular_wise.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type, false);
+    payments.open("GET", "mysql/defaulters.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
     payments.send();
 }
+$(document).ready(function () {
+    fill_years();
+    fill_fees();
+    search();
+});

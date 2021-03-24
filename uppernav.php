@@ -2,7 +2,6 @@
     <ul class="nav navbar-nav ml-auto">
 
         <?php
-
         if (can_access_finance()) {
             echo "
             <li class='nav-item'>
@@ -20,7 +19,6 @@
         ";
         }
         ?>
-
 
         <div class="dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navArchived">ARCHIVED<span class="caret"></span></a>
