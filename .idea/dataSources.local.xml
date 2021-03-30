@@ -11,10 +11,7 @@
       <user-name>fedena</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="alsanawabar" />
-          </node>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
@@ -28,10 +25,7 @@
       <user-name>fedena</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="alsanawabar" />
-          </node>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
       <ssh-properties>
@@ -40,15 +34,16 @@
       </ssh-properties>
     </data-source>
     <data-source name="alsanawabar1@localhost" uuid="734d3f14-2776-41ea-9ea1-30477e6ec778">
-      <database-info product="MariaDB" version="10.4.17-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.17" exact-driver-version="2.6">
+      <database-info product="MariaDB" version="10.4.11-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.11" exact-driver-version="2.6">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <user-name>fedena</user-name>
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="alsanawabar1" />
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
