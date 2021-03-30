@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/defaulters.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
@@ -58,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Excel (xlsx)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.data.views" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -118,7 +120,9 @@
       <workItem from="1616043911840" duration="157000" />
       <workItem from="1616397566554" duration="18824000" />
       <workItem from="1616485649053" duration="1200000" />
-      <workItem from="1616577724368" duration="4749000" />
+      <workItem from="1616577724368" duration="5659000" />
+      <workItem from="1616839807451" duration="13000" />
+      <workItem from="1617080652805" duration="5095000" />
     </task>
     <servers />
   </component>
