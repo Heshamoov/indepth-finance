@@ -103,7 +103,7 @@ if ($result->num_rows > 0) {
     		<th>DISCOUNT</th>
     		<th>REVENUE</th>
     		<th>PAID</th>
-    		<th>BALANCE</th>    		
+    		<th>DUE</th>    		
     	</tr>
         </thead>
         <tbody>

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4530d9cc-5b5b-4c82-bb55-10f1219b112e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,123 +13,14 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="DatabaseLocalColorSettings">
-    <colors>
-      <entry key="3c405728-198c-4033-9e2d-1ec3b5e298c2" value="ff3600" />
-    </colors>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/js/defaulters.js" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectId" id="1obBewfEyvgghdeaYfX7VkAEZg0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="Excel (xlsx)" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="database.data.views" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="ReaderModeSettings">
-    <option name="enabled" value="false" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\indepth-finance\mysql" />
-      <recent name="C:\xampp\htdocs\indepth-finance\js" />
-      <recent name="C:\xampp\htdocs\indepth-finance" />
-    </key>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="3725864b-e00f-4f1a-9be8-2e283593851d" name="Default Changelist" comment="" />
-      <created>1613545511277</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1613545511277</updated>
-      <workItem from="1613545525573" duration="105000" />
-      <workItem from="1613545633912" duration="5082000" />
-      <workItem from="1613625994639" duration="659000" />
-      <workItem from="1613640728383" duration="4680000" />
-      <workItem from="1613797577090" duration="16116000" />
-      <workItem from="1613884987265" duration="14981000" />
-      <workItem from="1613971142250" duration="2071000" />
-      <workItem from="1613973686275" duration="9062000" />
-      <workItem from="1613986907257" duration="13631000" />
-      <workItem from="1614143012833" duration="521000" />
-      <workItem from="1614152648785" duration="611000" />
-      <workItem from="1614234089776" duration="999000" />
-      <workItem from="1614419273888" duration="5609000" />
-      <workItem from="1614487846825" duration="12259000" />
-      <workItem from="1614579264466" duration="93000" />
-      <workItem from="1614588225658" duration="738000" />
-      <workItem from="1614665993634" duration="51732000" />
-      <workItem from="1615011556007" duration="17285000" />
-      <workItem from="1615031719003" duration="93000" />
-      <workItem from="1615110058215" duration="4287000" />
-      <workItem from="1615180897061" duration="5681000" />
-      <workItem from="1615186832009" duration="2602000" />
-      <workItem from="1615201327597" duration="734000" />
-      <workItem from="1615266809537" duration="48000" />
-      <workItem from="1615277795107" duration="2231000" />
-      <workItem from="1615353875492" duration="18257000" />
-      <workItem from="1615428054822" duration="7573000" />
-      <workItem from="1615871452620" duration="353000" />
-      <workItem from="1615878533896" duration="15347000" />
-      <workItem from="1615957443551" duration="12885000" />
-      <workItem from="1615972410531" duration="6526000" />
-      <workItem from="1616043911840" duration="157000" />
-      <workItem from="1616397566554" duration="18824000" />
-      <workItem from="1616485649053" duration="1200000" />
-      <workItem from="1616577724368" duration="5659000" />
-      <workItem from="1616839807451" duration="13000" />
-      <workItem from="1617080652805" duration="6155000" />
-    </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
