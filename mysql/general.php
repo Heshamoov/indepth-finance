@@ -47,7 +47,7 @@ echo "<table class='table table-bordered table-striped table-hover' id='gradesLi
                     <th class='textCenter'>Discount</th> 
                     <th class='textCenter'>Net Revenue</th>
                     <th class='textCenter' colspan=2>Paid</th>
-                    <th class='textCenter' colspan=2>Balance</th>
+                    <th class='textCenter' colspan=2>Due</th>
                 </tr>
             </thead>";
 
@@ -203,7 +203,7 @@ if ($result->num_rows > 0) {
                     <th class='textCenter'>Discount</th> 
                     <th class='textCenter'>Expected</th>
                     <th class='textCenter' colspan=2>Paid</th>
-                    <th class='textCenter' colspan=2>Balance</th>                   
+                    <th class='textCenter' colspan=2>Due</th>                   
                 </tr>
             </thead>";
     while ($row = $result->fetch_assoc()) {
