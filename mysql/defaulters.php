@@ -25,6 +25,7 @@ $sql_header = '';
 
 if ($type == 'parent') {
     $group = ' GROUP BY familyid  order by familyid ';
+    $join = ' student_parent_info.familyid = current_fees.familyid ';
     $name = 'parent';
     $header = '<th>PARENT</th><th>CHILDREN</th>';
     $sql_header = 'COUNT(DISTINCT s.id) children,';
@@ -32,6 +33,7 @@ if ($type == 'parent') {
 } else {
     $header = "<th>ADMIN NO.</th><th>STUDENT</th><th>GRADE</th>";
     $group = ' GROUP BY sid ';
+    $join = ' student_parent_info.sid = current_fees.sid ';
     $name = 'student';
     $grade_children = 'grade';
 }
@@ -59,7 +61,7 @@ FROM (
           $group
       ) as student_parent_info
       
-         LEFT JOIN (SELECT s.id     sid,
+         LEFT JOIN (SELECT s.id     sid,s.familyid,
                            ffc.due_date,
                            IFNULL(SUM(ff.particular_total),'0') total,
                            IFNULL(SUM(ffp.amount),'0') amount,
@@ -84,7 +86,7 @@ FROM (
                              INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
                              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
                     WHERE (ffc.is_deleted = 0 $condition)
-                    $group) as current_fees ON student_parent_info.sid = current_fees.sid
+                    $group) as current_fees ON $join
          LEFT JOIN (
     SELECT IFNULL(SUM(balance),'0') opening_balance, s.familyid, s.id sid
     FROM `finance_fees` ff
@@ -113,6 +115,17 @@ FROM (
 $result = $conn->query($student_sql);
 $rowNumber = 1;
 if ($result->num_rows > 0) {
+
+    $rows_count = 0;
+    while ($row = $result->fetch_assoc()) {
+        if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
+            $rows_count++;
+        }
+    }
+    echo "<h5>Number of rows <span class='badge badge-info'>$rows_count</span></h5>";
+
+    $result->data_seek(0);
+
     echo "<table class='table table-bordered table-striped table-hover' id='DefaultersTable'>";
     echo "
     	<thead class='black white-text'>
