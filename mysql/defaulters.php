@@ -26,6 +26,7 @@ $sql_header = '';
 if ($type == 'parent') {
     $group = ' GROUP BY familyid  order by familyid ';
     $join = ' student_parent_info.familyid = current_fees.familyid ';
+    $join_with_opening_balance = ' student_parent_info.familyid = prev_balance.familyid ';
     $name = 'parent';
     $header = '<th>PARENT</th><th>CHILDREN</th>';
     $sql_header = 'COUNT(DISTINCT s.id) children,';
@@ -34,6 +35,7 @@ if ($type == 'parent') {
     $header = "<th>ADMIN NO.</th><th>STUDENT</th><th>GRADE</th>";
     $group = ' GROUP BY sid ';
     $join = ' student_parent_info.sid = current_fees.sid ';
+    $join_with_opening_balance = ' student_parent_info.sid = prev_balance.sid ';
     $name = 'student';
     $grade_children = 'grade';
 }
@@ -108,7 +110,7 @@ FROM (
              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
     WHERE (s.is_active = 1 AND ffc.is_deleted = 0)
     $group
-) as prev_balance ON student_parent_info.sid = prev_balance.sid
+) as prev_balance ON $join_with_opening_balance
     )
 ";
 //echo $student_sql;
