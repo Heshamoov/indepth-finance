@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4530d9cc-5b5b-4c82-bb55-10f1219b112e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/paid.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/paid.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617177803439</updated>
       <workItem from="1617177842663" duration="1141000" />
-      <workItem from="1618813408516" duration="798000" />
+      <workItem from="1618813408516" duration="1396000" />
     </task>
     <servers />
   </component>

@@ -7,7 +7,7 @@ include('../config/db.php');
 $start_date = $_REQUEST['start_date'];
 //echo $start_date;
 
-echo "           ";
+//echo "           ";
 $end_date = $_REQUEST['end_date'];
 //echo $end_date;
 $master_ids = $_REQUEST['master_ids'];
@@ -42,67 +42,57 @@ if ($type == 'parent') {
 }
 
 $student_sql = "
-SELECT student_parent_info.familyid,
-       parent,
-       student,
-       admission_no,
-       contact_no,
-       children,
-       current_fees.fee_name,
-       total,
-       discount,
-       revenue,
-       paid,
-       balance
-FROM ((SELECT s.id                               sid,
+SELECT 
+       student_parent_info.familyid, parent,student,admission_no,contact_no,$grade_children,current_fees.fee_name,
+       total,discount,revenue,paid,balance
+FROM (
+      (SELECT s.id                                         sid,
               s.familyid,
-              g.first_name                       'parent',
-              COUNT(DISTINCT s.id)               children,
-              s.last_name                        'student',
+              g.first_name                                 'parent',
+              $sql_header
+              s.last_name 'student',
               s.admission_no,
-              CONCAT(c.course_name, ' ', b.name) 'grade',
-              g.mobile_phone                     'contact_no'
+              CONCAT(c.course_name, ' ', b.name)           'grade',
+              g.mobile_phone 'contact_no'
        FROM students s
                 INNER JOIN guardians g on s.immediate_contact_id = g.id
                 INNER JOIN batches b on s.batch_id = b.id
                 INNER JOIN courses c on b.course_id = c.id
        WHERE (s.is_active = 1)
-       GROUP BY familyid) as student_parent_info
-         INNER JOIN (SELECT s.id                                                                    sid,
-                            s.familyid,
-                            ffc.name                                                                fee_name,
-                            ffc.due_date,
-                            IFNULL(SUM(ff.particular_total), '0')                                   total,
-                            IFNULL(SUM(ffp.amount), '0')                                            amount,
-                            IFNULL(SUM(ff.discount_amount), '0')                                    discount,
-                            IFNULL(SUM(ff.particular_total - ff.discount_amount), '0')              'revenue',
-                            IFNULL(SUM(ff.particular_total - ff.balance - ff.discount_amount), '0') 'paid',
-                            IFNULL(SUM(ff.balance), '0')                                            balance,
-                            mfp.id                                                                  'master_id',
-                            mfp.name                                                                master_name
-                     FROM `finance_fees` ff
-                              INNER JOIN students s on ff.student_id = s.id
-                              INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
-                              INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
-                              INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
-                              INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
-                                                                        ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
-                                                                         (ffp.receiver_id = s.student_category_id and
-                                                                          ffp.receiver_type = 'StudentCategory' and
-                                                                          ffp.batch_id = ff.batch_id) or
-                                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
-                              INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
-                              inner join finance_transactions ft
-                                         on ff.id = ft.finance_id and (ft.payee_id = s.id and ft.payee_type = 'Student')
-                              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-                     WHERE (ffc.is_deleted = 0 AND ff.balance != ff.particular_total AND
-                            mfp.id in (8, 10, 11, 12, 13, 14, 19) AND fy.id in (1, 2) AND
-                            (ff.particular_total - ff.balance - ff.discount_amount > 0) AND
-                            ft.transaction_date between '$start_date' and '$end_date'
-                               )
-                     GROUP BY familyid) as current_fees ON student_parent_info.familyid = current_fees.familyid and
-                                                           student_parent_info.sid = current_fees.sid )
-ORDER BY familyid;
+          $group
+      ) as student_parent_info
+         INNER JOIN (SELECT s.id     sid,s.familyid,ffc.name fee_name,
+                           ffc.due_date,
+                           IFNULL(SUM(ff.particular_total),'0') total,
+                           IFNULL(SUM(ffp.amount),'0') amount,
+                           IFNULL(SUM(ff.discount_amount),'0') discount,
+                           IFNULL(SUM(ff.particular_total - ff.discount_amount),'0') 'revenue',
+                           IFNULL(SUM(ff.particular_total - ff.balance - ff.discount_amount),'0') 'paid',
+                           IFNULL(SUM(ff.balance),'0') balance,
+                           mfp.id 'master_id',
+                           mfp.name master_name
+                    FROM `finance_fees` ff
+                             INNER JOIN students s on ff.student_id = s.id 
+                             INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                             INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                             INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                             INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                                   ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                                    (ffp.receiver_id = s.student_category_id and
+                                     ffp.receiver_type = 'StudentCategory' and
+                                     ffp.batch_id = ff.batch_id) or
+                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
+                             INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+                        inner join finance_transactions ft
+                                         on ff.id = ft.finance_id and (ft.payee_id = s.id and ft.payee_type = 'Student')                        
+                             LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id 
+                    WHERE (ffc.is_deleted = 0 AND ff.balance != ff.particular_total $condition 
+                    AND (ff.particular_total - ff.balance - ff.discount_amount > 0)
+                        AND 
+                            ft.transaction_date between '$start_date' and '$end_date')
+                    $group) as current_fees ON student_parent_info.familyid = current_fees.familyid and student_parent_info.sid = current_fees.sid
+                    
+    ) $order
 ";
 //echo $student_sql;
 $result = $conn->query($student_sql);
