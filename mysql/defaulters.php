@@ -14,7 +14,7 @@ if ($master_ids == '')
 else
     $condition = ' AND mfp.id in (' . $master_ids . ') ';
 
-$type = $_REQUEST['type'];
+$category = $_REQUEST['category'];
 $type = $_REQUEST['type'];
 $year = $_REQUEST['years'];
 if ($year != "") {
@@ -22,6 +22,22 @@ if ($year != "") {
 }
 
 $sql_header = '';
+if ($category == 'staff'){
+    $staff_sql = "select distinct receiver_id from multi_fee_discounts where (name like  '%STUFF%' or name like '%STAFF%') and receiver_type = 'Student'  order by id desc;";
+    $result = $conn->query($staff_sql);
+    $rows = [];
+    while($row = mysqli_fetch_array($result))
+    {
+        $rows[] = $row['receiver_id'];
+    }
+    $ids = implode(', ', $rows);
+    $staff_students = 'and s.id in ('. $ids. ')';
+}
+else {
+    $staff_students = '';
+}
+
+
 
 if ($type == 'parent') {
     $group = ' GROUP BY familyid  order by familyid ';
@@ -75,7 +91,7 @@ FROM (
                            mfp.name master_name
                     FROM `finance_fees` ff
                              INNER JOIN students s on ff.student_id = s.id and s.batch_id in
-                                   (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date')
+                                   (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date') 
                              INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
                              INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
                              INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
@@ -87,13 +103,13 @@ FROM (
                                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
                              INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
                              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-                    WHERE (ffc.is_deleted = 0 $condition)
-                    $group) as current_fees ON $join
+                    WHERE (ffc.is_deleted = 0 $condition $staff_students) 
+                    $group ) as current_fees ON $join
          LEFT JOIN (
     SELECT IFNULL(SUM(balance),'0') opening_balance, s.familyid, s.id sid
     FROM `finance_fees` ff
              INNER JOIN students s on ff.student_id = s.id and ff.batch_id not in
-                   (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date')
+                   (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date') 
              INNER JOIN guardians g on s.immediate_contact_id = g.id
              LEFT JOIN batches b on ff.batch_id = b.id
              INNER JOIN courses c on b.course_id = c.id
@@ -108,7 +124,7 @@ FROM (
                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
              LEFT JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-    WHERE (s.is_active = 1 AND ffc.is_deleted = 0)
+    WHERE (s.is_active = 1 AND ffc.is_deleted = 0 $staff_students)
     $group
 ) as prev_balance ON $join_with_opening_balance
     )

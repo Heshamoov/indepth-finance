@@ -93,7 +93,8 @@ checkLoggedIn()
             <tr>
                 <th class="text-center">START</th>
                 <th class="text-center">END</th>
-                <th class="text-center">TYPE</th>
+                <th   class="text-center">CATEGORY</th>
+                <th   class="text-center">TYPE</th>
                 <th class="text-center">YEAR</th>
                 <th class="text-center">FEE</th>
             </tr>
@@ -115,6 +116,12 @@ checkLoggedIn()
                            data-role="calendarpicker" id="end_date" onchange="search()"
                            data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>
 
+                </td>
+                <td class="text-center">
+                    <select id="category" onchange="search()">
+                        <option value="all">All</option>
+                        <option value="staff">Staff Students</option>
+                    </select>
                 </td>
                 <td class="text-center">
                     <select id="type" onchange="search()">

@@ -7,7 +7,9 @@
     <list default="true" id="4530d9cc-5b5b-4c82-bb55-10f1219b112e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/paid.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/paid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/defaulters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/defaulters.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/defaulters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/defaulters.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,8 @@
       <updated>1617177803439</updated>
       <workItem from="1617177842663" duration="1141000" />
       <workItem from="1618813408516" duration="7021000" />
-      <workItem from="1618895167787" duration="3092000" />
+      <workItem from="1618895167787" duration="3808000" />
+      <workItem from="1619332502975" duration="2019000" />
     </task>
     <servers />
   </component>
@@ -75,22 +78,22 @@
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
     <state x="-860" y="252" key="FileChooserDialogImpl/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618897650579" />
-    <state width="1120" height="270" key="GridCell.Tab.0.bottom" timestamp="1618897752864">
+    <state width="1120" height="424" key="GridCell.Tab.0.bottom" timestamp="1619333285113">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
-    <state width="1120" height="270" key="GridCell.Tab.0.bottom/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618897752864" />
-    <state width="1120" height="270" key="GridCell.Tab.0.center" timestamp="1618897752864">
+    <state width="1120" height="424" key="GridCell.Tab.0.bottom/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1619333285113" />
+    <state width="1120" height="424" key="GridCell.Tab.0.center" timestamp="1619333285113">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
-    <state width="1120" height="270" key="GridCell.Tab.0.center/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618897752864" />
-    <state width="1120" height="270" key="GridCell.Tab.0.left" timestamp="1618897752864">
+    <state width="1120" height="424" key="GridCell.Tab.0.center/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1619333285113" />
+    <state width="1120" height="424" key="GridCell.Tab.0.left" timestamp="1619333285113">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
-    <state width="1120" height="270" key="GridCell.Tab.0.left/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618897752864" />
-    <state width="1120" height="270" key="GridCell.Tab.0.right" timestamp="1618897752864">
+    <state width="1120" height="424" key="GridCell.Tab.0.left/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1619333285113" />
+    <state width="1120" height="424" key="GridCell.Tab.0.right" timestamp="1619333285113">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
-    <state width="1120" height="270" key="GridCell.Tab.0.right/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618897752864" />
+    <state width="1120" height="424" key="GridCell.Tab.0.right/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1619333285113" />
     <state x="-1139" y="141" key="SettingsEditor" timestamp="1618895298175">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
@@ -99,9 +102,9 @@
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
     <state x="-723" y="443" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618896689616" />
-    <state x="-977" y="213" width="672" height="678" key="search.everywhere.popup" timestamp="1618814188202">
+    <state x="-977" y="213" width="672" height="678" key="search.everywhere.popup" timestamp="1618898371531">
       <screen x="-1280" y="0" width="1280" height="994" />
     </state>
-    <state x="-977" y="213" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618814188202" />
+    <state x="-977" y="213" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/-1280.0.1280.994@-1280.0.1280.994" timestamp="1618898371531" />
   </component>
 </project>

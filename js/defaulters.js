@@ -125,6 +125,7 @@ function search() {
     checked = document.querySelectorAll('#fees :checked');
     let fees_selected = [...checked].map(option => option.value);
 
+    let category = document.getElementById('category').options[document.getElementById('category').selectedIndex].value;
     let type = document.getElementById('type').options[document.getElementById('type').selectedIndex].value;
 
     let payments = new XMLHttpRequest();
@@ -134,7 +135,7 @@ function search() {
             studentsDataTable();
         }
     };
-    payments.open("GET", "mysql/defaulters.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
+    payments.open("GET", "mysql/defaulters.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&category=" + category + "&type=" + type + "&years=" + years, false);
     payments.send();
 }
 $(document).ready(function () {
