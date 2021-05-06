@@ -16,6 +16,9 @@
             <li class='nav-item'>
                 <a class='nav-link' href='payment_mode.php' id='navPaymentMode'>Payment Mode</a>
             </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='staff.php' id='navStaff'>Staff</a>
+            </li>
         ";
         }
         ?>

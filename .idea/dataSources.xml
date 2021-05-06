@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="alsanawabar@localhost" uuid="aeee989e-4c54-4e6f-864b-77bf17487ea5">
+    <data-source source="LOCAL" name="alsanawabar@localhost" uuid="88e62c74-0ef8-47fa-95a8-7b32fe8c069f">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/alsanawabar</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Real-Server" uuid="3c405728-198c-4033-9e2d-1ec3b5e298c2">
+    <data-source source="LOCAL" name="remote DEV" uuid="74877b53-b4d6-449f-8468-8af95a68276a">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/alsanawabar</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="alsanawabar1@localhost" uuid="734d3f14-2776-41ea-9ea1-30477e6ec778">
-      <driver-ref>mariadb</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://localhost:3306/alsanawabar1</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

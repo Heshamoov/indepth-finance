@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="alsanawabar@localhost" uuid="aeee989e-4c54-4e6f-864b-77bf17487ea5">
-      <database-info product="MariaDB" version="10.4.17-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.17" exact-driver-version="2.6">
+  <component name="dataSourceStorageLocal" created-in="PS-211.7142.44">
+    <data-source name="alsanawabar@localhost" uuid="88e62c74-0ef8-47fa-95a8-7b32fe8c069f">
+      <database-info product="MariaDB" version="10.4.18-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.18" exact-driver-version="2.6">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -15,8 +15,8 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="Real-Server" uuid="3c405728-198c-4033-9e2d-1ec3b5e298c2">
-      <database-info product="MariaDB" version="10.0.38-MariaDB-0ubuntu0.16.04.1" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.0.38" exact-driver-version="2.6">
+    <data-source name="remote DEV" uuid="74877b53-b4d6-449f-8468-8af95a68276a">
+      <database-info product="MariaDB" version="10.0.38-MariaDB-1~xenial" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.0.38">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -30,22 +30,8 @@
       </schema-mapping>
       <ssh-properties>
         <enabled>true</enabled>
-        <ssh-config-id>38bb40f8-c374-4a5f-a35d-290ac2508527</ssh-config-id>
+        <ssh-config-id>c8dc1bfb-8187-4c4e-b229-4ef022e23cca</ssh-config-id>
       </ssh-properties>
-    </data-source>
-    <data-source name="alsanawabar1@localhost" uuid="734d3f14-2776-41ea-9ea1-30477e6ec778">
-      <database-info product="MariaDB" version="10.4.11-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.11" exact-driver-version="2.6">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" qname="@" />
-        </introspection-scope>
-      </schema-mapping>
     </data-source>
   </component>
 </project>

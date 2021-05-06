@@ -145,7 +145,6 @@ checkLoggedIn()
                                data-role="calendarpicker" id="end_date" onchange="search()"
                                data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>
                     </td>
-
                 </tr>
                 </thead>
 
