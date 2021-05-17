@@ -16,27 +16,24 @@ else
 
 $category = $_REQUEST['category'];
 $type = $_REQUEST['type'];
-$year = $_REQUEST['years'];
-if ($year != "") {
-    $condition .= "AND fy.id in ( $year) ";
-}
+$balance = $_REQUEST['balance'];
+
+if ($_REQUEST['years'] != "") $condition .= "AND fy.id in (" . $_REQUEST['years'] . ") ";
 
 $sql_header = '';
-if ($category == 'staff'){
+
+if ($category == 'staff') {
     $staff_sql = "select distinct receiver_id from multi_fee_discounts where (name like  '%STUFF%' or name like '%STAFF%') and receiver_type = 'Student'  order by id desc;";
     $result = $conn->query($staff_sql);
     $rows = [];
-    while($row = mysqli_fetch_array($result))
-    {
+    while ($row = mysqli_fetch_array($result)) {
         $rows[] = $row['receiver_id'];
     }
     $ids = implode(', ', $rows);
-    $staff_students = 'and s.id in ('. $ids. ')';
-}
-else {
+    $staff_students = 'and s.id in (' . $ids . ')';
+} else {
     $staff_students = '';
 }
-
 
 
 if ($type == 'parent') {
@@ -128,6 +125,7 @@ FROM (
     $group
 ) as prev_balance ON $join_with_opening_balance
     )
+order by net_balance
 ";
 //echo $student_sql;
 $result = $conn->query($student_sql);
@@ -135,11 +133,17 @@ $rowNumber = 1;
 if ($result->num_rows > 0) {
 
     $rows_count = 0;
-    while ($row = $result->fetch_assoc()) {
-        if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
-            $rows_count++;
+
+    if ($balance == 'zeroBalance') {
+        $rows_count = $result->num_rows;
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
+                $rows_count++;
+            }
         }
     }
+
     echo "<h5>Number of rows <span class='badge badge-info'>$rows_count</span></h5>";
 
     $result->data_seek(0);
@@ -163,10 +167,10 @@ if ($result->num_rows > 0) {
         </thead>
         <tbody>
     ";
-    while ($row = $result->fetch_assoc()) {
-        if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
-            echo "
-    	        <tr>
+
+    if ($balance == 'zeroBalance') {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
     		        <td>" . $rowNumber . "</td>
     		        <td  class='textLeft'>" . $row['familyid'] . "</td>
                     <td>" . $row['contact_no'] . "</td>";
@@ -185,6 +189,31 @@ if ($result->num_rows > 0) {
                     <td class='textRight'>" . number_format((float)$row['opening_balance'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['net_balance'], 2) . "</td>";
             $rowNumber++;
+        }
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            if (($row['balance'] > 0) or ($row['opening_balance'] > 0)) {
+                echo "
+    	        <tr>
+    		        <td>" . $rowNumber . "</td>
+    		        <td  class='textLeft'>" . $row['familyid'] . "</td>
+                    <td>" . $row['contact_no'] . "</td>";
+
+                if ($type == 'student')
+                    echo "<td>" . $row['admission_no'] . "</td><td>" . $row['student'] . "</td><td>" . $row['grade'] . "</td>";
+                else
+                    echo "<td>" . $row['parent'] . "</td><td>" . $row['children'] . "</td>";
+
+                echo "
+                    <td class='textRight'>" . number_format((float)$row['total'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['discount'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['revenue'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['paid'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['balance'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['opening_balance'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['net_balance'], 2) . "</td>";
+                $rowNumber++;
+            }
         }
     }
     echo '</tbody></table>';

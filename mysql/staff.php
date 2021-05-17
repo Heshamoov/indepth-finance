@@ -113,7 +113,7 @@ FROM (
 ORDER BY familyid
 ";
 
-//echo $student_sql;
+echo $student_sql;
 $result = $conn->query($student_sql);
 $rowNumber = 1;
 if ($result->num_rows > 0) {

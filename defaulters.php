@@ -17,7 +17,7 @@ checkLoggedIn()
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/metrostyle.css">
     <link rel="icon" href="assets/indepth-logo.png">
-    <!--    MD Boostrap styling CDN -->
+    <!-- MD Boostrap styling CDN -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -30,8 +30,7 @@ checkLoggedIn()
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
 
 
     <!--    MULTISELECT-->
@@ -94,7 +93,7 @@ checkLoggedIn()
                 <th class="text-center">START</th>
                 <th class="text-center">END</th>
                 <th   class="text-center">CATEGORY</th>
-                <th   class="text-center">TYPE</th>
+                <th   class="text-center" colspan="2">TYPE</th>
                 <th class="text-center">YEAR</th>
                 <th class="text-center">FEE</th>
             </tr>
@@ -127,6 +126,12 @@ checkLoggedIn()
                     <select id="type" onchange="search()">
                         <option value="parent">Parent Wise</option>
                         <option value="student">Student Wise</option>
+                    </select>
+                </td>
+                <td class="text-center">
+                    <select id="balance" onchange="search()">
+                        <option value="balance">With Balance</option>
+                        <option value="zeroBalance">With Zero Balance</option>
                     </select>
                 </td>
                 <td>
