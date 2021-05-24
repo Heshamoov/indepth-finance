@@ -103,9 +103,8 @@ FROM (
                     WHERE (ffc.is_deleted = 0 $condition $staff_students) 
                     $group ) as current_fees ON $join
          LEFT JOIN (
-    SELECT IFNULL(SUM(balance),'0') opening_balance, s.familyid, s.id sid
-    FROM `finance_fees` ff
-             INNER JOIN students s on ff.student_id = s.id and ff.batch_id not in
+                    SELECT IFNULL(SUM(balance),'0') opening_balance, s.familyid, s.id sid FROM `finance_fees` ff
+                            INNER JOIN students s on ff.student_id = s.id and ff.batch_id not in
                    (SELECT id FROM batches WHERE start_date >= '$start_date' AND end_date <= '$end_date') 
              INNER JOIN guardians g on s.immediate_contact_id = g.id
              LEFT JOIN batches b on ff.batch_id = b.id
@@ -121,7 +120,7 @@ FROM (
                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
              LEFT JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-    WHERE (s.is_active = 1 AND ffc.is_deleted = 0 $staff_students)
+    WHERE (s.is_active = 1 AND ffc.is_deleted = 0 $condition $staff_students)
     $group
 ) as prev_balance ON $join_with_opening_balance
     )

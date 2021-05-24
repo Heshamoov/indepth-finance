@@ -21,7 +21,6 @@ FROM `finance_fees` ff
 WHERE ffc.is_deleted = 0 AND ffc.start_date >= $start_date $year
 group by mfp.id;";
 
-
 $result = $conn->query($get_fees);
 if ($result->num_rows > 0) {
     while ($row = mysqli_fetch_array($result))
