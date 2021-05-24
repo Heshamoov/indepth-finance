@@ -7,7 +7,6 @@
     <list default="true" id="4530d9cc-5b5b-4c82-bb55-10f1219b112e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/defaulters.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/defaulters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/fees_particular.php" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/fees_particular.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,8 @@
       <workItem from="1620631727590" duration="3418000" />
       <workItem from="1621237243397" duration="5887000" />
       <workItem from="1621495745605" duration="1812000" />
-      <workItem from="1621839635838" duration="2675000" />
+      <workItem from="1621839635838" duration="3062000" />
+      <workItem from="1621845025264" duration="1749000" />
     </task>
     <servers />
   </component>

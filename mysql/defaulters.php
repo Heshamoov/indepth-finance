@@ -18,7 +18,8 @@ $category = $_REQUEST['category'];
 $type = $_REQUEST['type'];
 $balance = $_REQUEST['balance'];
 
-if ($_REQUEST['years'] != "") $condition .= "AND fy.id in (" . $_REQUEST['years'] . ") ";
+$years = '';
+if ($_REQUEST['years'] != "") $years .= " AND fy.id in (" . $_REQUEST['years'] . ") ";
 
 $sql_header = '';
 
@@ -100,7 +101,7 @@ FROM (
                                                                         (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch'))
                              INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
                              LEFT JOIN finance_fee_discounts ffd ON ff.id = ffd.finance_fee_id
-                    WHERE (ffc.is_deleted = 0 $condition $staff_students) 
+                    WHERE (ffc.is_deleted = 0 $condition $years $staff_students) 
                     $group ) as current_fees ON $join
          LEFT JOIN (
                     SELECT IFNULL(SUM(balance),'0') opening_balance, s.familyid, s.id sid FROM `finance_fees` ff
@@ -126,6 +127,7 @@ FROM (
     )
 order by net_balance
 ";
+
 //echo $student_sql;
 $result = $conn->query($student_sql);
 $rowNumber = 1;
