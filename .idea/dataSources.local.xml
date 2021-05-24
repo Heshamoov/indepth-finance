@@ -15,7 +15,7 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="remote DEV" uuid="74877b53-b4d6-449f-8468-8af95a68276a">
+    <data-source name="DEV" uuid="f3798492-4b4b-41f7-8453-70941e009fa8">
       <database-info product="MariaDB" version="10.0.38-MariaDB-1~xenial" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.0.38" exact-driver-version="2.6">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -25,10 +25,7 @@
       <user-name>fedena</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="alsanawabar" />
-          </node>
+          <node kind="schema" qname="@" />
         </introspection-scope>
       </schema-mapping>
       <ssh-properties>
