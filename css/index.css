@@ -68,3 +68,7 @@ body {
     margin-left: -17px !important;
     font-size: 20px;
 }
+
+.table.dataTable {
+    font-size: 6px;
+}

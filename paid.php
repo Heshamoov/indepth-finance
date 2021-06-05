@@ -92,39 +92,39 @@ checkLoggedIn()
         <table class="table">
             <thead>
             <tr>
-                <th class="text-center">START</th>
-                <th class="text-center">END</th>
+<!--                <th class="text-center">START</th>-->
+<!--                <th class="text-center">END</th>-->
                 <th class="text-center">TYPE</th>
                 <th class="text-center">YEAR</th>
                 <th class="text-center">FEE</th>
             </tr>
             <tr>
-                <td class="text-center">
-                    <input type="text" data-role="calendarpicker" data-calendar-wide="false"
-                           class="w3-input w3-card"
-                           data-clear-button="true" data-clear-button-icon="<i class='fas fa-times'></i>"
-                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                           data-input-format="%d-%m-%y" data-format="%d-%B-%Y" value="01-09-2020"
-                           id="start_date" onchange="search()"/>
-
-                </td>
-                <td class="text-center">
-                    <input data-clear-button="true"
-                           data-clear-button-icon="<i class='fas fa-times'></i>"
-                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"
-                           data-calendar-wide="true" class="w3-input w3-card" type="text"
-                           data-role="calendarpicker" id="end_date" onchange="search()"
-                           data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>
-
-                </td>
+<!--                <td class="text-center">-->
+<!--                    <input type="text" data-role="calendarpicker" data-calendar-wide="false"-->
+<!--                           class="w3-input w3-card"-->
+<!--                           data-clear-button="true" data-clear-button-icon="<i class='fas fa-times'></i>"-->
+<!--                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"-->
+<!--                           data-input-format="%d-%m-%y" data-format="%d-%B-%Y" value="01-09-2020"-->
+<!--                           id="start_date" onchange="search()"/>-->
+<!---->
+<!--                </td>-->
+<!--                <td class="text-center">-->
+<!--                    <input data-clear-button="true"-->
+<!--                           data-clear-button-icon="<i class='fas fa-times'></i>"-->
+<!--                           data-calendar-button-icon="<i class='far fa-calendar-alt'></i>"-->
+<!--                           data-calendar-wide="true" class="w3-input w3-card" type="text"-->
+<!--                           data-role="calendarpicker" id="end_date" onchange="search()"-->
+<!--                           data-input-format="%d-%m-%y" data-format="%d %B %Y" value="31-08-2021"/>-->
+<!---->
+<!--                </td>-->
                 <td class="text-center">
                     <select id="type" onchange="search()">
                         <option value="parent">PARENT</option>
                         <option value="student">STUDENT</option>
                     </select>
                 </td>
-                <td>
-                    <select id="financial_years" onchange="fill_fees();" multiple="multiple"></select>
+                <td class="text-center">
+                    <select id="financial_years" onchange="fill_fees();search();" multiple="multiple"></select>
                 </td>
                 <td class="text-center">
                     <select id="fees" onchange="search();" multiple="multiple"></select>

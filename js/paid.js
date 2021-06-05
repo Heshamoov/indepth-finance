@@ -3,17 +3,17 @@ function studentsDataTable() {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    let date = new Date(document.querySelector("#start_date").value);
-    day = date.getDate();
-    month = monthNames[date.getMonth()];
-    year = date.getFullYear();
-    let start_date = day + '-' + month + '-' + year;
-
-    date = new Date(document.querySelector("#end_date").value);
-    day = date.getDate();
-    month = monthNames[date.getMonth()];
-    year = date.getFullYear();
-    let end_date = day + '-' + month + '-' + year;
+    // let date = new Date(document.querySelector("#start_date").value);
+    // day = date.getDate();
+    // month = monthNames[date.getMonth()];
+    // year = date.getFullYear();
+    // let start_date = day + '-' + month + '-' + year;
+    //
+    // date = new Date(document.querySelector("#end_date").value);
+    // day = date.getDate();
+    // month = monthNames[date.getMonth()];
+    // year = date.getFullYear();
+    // let end_date = day + '-' + month + '-' + year;
 
 
     $('#PaidTable').DataTable({
@@ -22,21 +22,21 @@ function studentsDataTable() {
             'copy',
             {
                 extend: 'excelHtml5',
-                title: 'Al Sanawbar School \n Paid Fees Report \n (' + start_date + ' to ' + end_date + ')'
+                title: 'Al Sanawbar School \n Paid Fees Report'
             },
             {
                 extend: 'pdfHtml5',
-                title: 'Al Sanawbar School \n Paid Fees Report \n (' + start_date + ' to ' + end_date + ')',
+                title: 'Al Sanawbar School \n Paid Fees Report'
 
             },
             {
                 extend: 'csv',
-                title: 'Al Sanawbar School \n Paid Fees Report \n (' + start_date + ' to ' + end_date + ')'
+                title: 'Al Sanawbar School \n Paid Fees Report'
             },
             {
                 extend: 'print',
                 title: '',
-                messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Paid Fees Report  (' + start_date + ' to ' + end_date + ') </h6>'
+                messageTop: ' <h4 align="center">Al Sanawbar School </h4> <h6 align="center"> Paid Fees Report'
             }
 
         ]
@@ -45,48 +45,33 @@ function studentsDataTable() {
 }
 
 function fill_years() {
-    let end_date = new Date(document.querySelector("#end_date").value);
-    let start_date = new Date(document.querySelector("#start_date").value);
-
-    let day1 = start_date.getDate();
-    let day2 = end_date.getDate();
-
-    let month1 = start_date.getMonth() + 1;
-    let month2 = end_date.getMonth() + 1;
-
-    let year1 = start_date.getFullYear();
-    let year2 = end_date.getFullYear();
-
-    start_date = year1 + '-' + month1 + '-' + day1;
-    end_date = year2 + '-' + month2 + '-' + day2;
-
     let HttpYears = new XMLHttpRequest();
     HttpYears.onreadystatechange = function () {
         if (this.readyState === 4) {
             document.getElementById('financial_years').innerHTML += this.responseText;
         }
     };
-    HttpYears.open("GET", "mysql/financial_years.php?start_date=" + start_date + "&end_date=" + end_date, false);
+    HttpYears.open("GET", "mysql/financial_years.php", false);
     HttpYears.send();
 }
 
 function fill_fees() {
-    let end_date = new Date(document.querySelector("#end_date").value);
-    let start_date = new Date(document.querySelector("#start_date").value);
+    // let end_date = new Date(document.querySelector("#end_date").value);
+    // let start_date = new Date(document.querySelector("#start_date").value);
     let checked = document.querySelectorAll('#financial_years :checked');
     let years = [...checked].map(option => option.value);
 
-    let day1 = start_date.getDate();
-    let day2 = end_date.getDate();
-
-    let month1 = start_date.getMonth() + 1;
-    let month2 = end_date.getMonth() + 1;
-
-    let year1 = start_date.getFullYear();
-    let year2 = end_date.getFullYear();
-
-    start_date = year1 + '-' + month1 + '-' + day1;
-    end_date = year2 + '-' + month2 + '-' + day2;
+    // let day1 = start_date.getDate();
+    // let day2 = end_date.getDate();
+    //
+    // let month1 = start_date.getMonth() + 1;
+    // let month2 = end_date.getMonth() + 1;
+    //
+    // let year1 = start_date.getFullYear();
+    // let year2 = end_date.getFullYear();
+    //
+    // start_date = year1 + '-' + month1 + '-' + day1;
+    // end_date = year2 + '-' + month2 + '-' + day2;
 
     let select = document.getElementById('fees');
     while (select.length > 0) select.remove(0);
@@ -99,7 +84,7 @@ function fill_fees() {
             document.getElementById('fees').innerHTML += this.responseText;
         }
     };
-    HttpFees.open("GET", "mysql/fees_particular.php?start_date=" + start_date + "&end_date=" + end_date + "&year=" + years, false);
+    HttpFees.open("GET", "mysql/fees_particular.php?year=" + years, false);
     HttpFees.send();
     // $("#fees").multiselect('refresh');
     $('#fees').multiselect({
@@ -110,17 +95,17 @@ function fill_fees() {
 }
 
 function search() {
-    let date = new Date(document.querySelector("#start_date").value);
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    let start_date = year + '-' + month + '-' + day;
-
-    date = new Date(document.querySelector("#end_date").value);
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    let end_date = year + '-' + month + '-' + day;
+    // let date = new Date(document.querySelector("#start_date").value);
+    // day = date.getDate();
+    // month = date.getMonth() + 1;
+    // year = date.getFullYear();
+    // let start_date = year + '-' + month + '-' + day;
+    //
+    // date = new Date(document.querySelector("#end_date").value);
+    // day = date.getDate();
+    // month = date.getMonth() + 1;
+    // year = date.getFullYear();
+    // let end_date = year + '-' + month + '-' + day;
 
     let checked = document.querySelectorAll('#financial_years :checked');
     let years = [...checked].map(option => option.value);
@@ -137,7 +122,7 @@ function search() {
             studentsDataTable();
         }
     };
-    payments.open("GET", "mysql/paid.php?start_date=" + start_date + "&end_date=" + end_date + "&master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
+    payments.open("GET", "mysql/paid.php?master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
     payments.send();
 }
 
