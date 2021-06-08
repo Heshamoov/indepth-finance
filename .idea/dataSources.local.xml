@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PS-211.7442.50">
-    <data-source name="DEV" uuid="f3798492-4b4b-41f7-8453-70941e009fa8">
+    <data-source name="alsanawabar@localhost" uuid="24a628a6-26d3-43ce-a558-137273ad04f6">
       <database-info product="MariaDB" version="10.0.38-MariaDB-1~xenial" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.0.38" exact-driver-version="2.6">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -16,7 +16,7 @@
       </schema-mapping>
       <ssh-properties>
         <enabled>true</enabled>
-        <ssh-config-id>c8dc1bfb-8187-4c4e-b229-4ef022e23cca</ssh-config-id>
+        <ssh-config-id>a61bc691-905d-48f4-a0af-912b802e0ab5</ssh-config-id>
       </ssh-properties>
     </data-source>
   </component>

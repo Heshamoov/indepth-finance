@@ -118,8 +118,6 @@ SELECT student_parent_info.familyid,student_parent_info.parent,$grade_children
                                    ffp.batch_id = ff.batch_id) or
                                     (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
                              )
-               INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
-               LEFT JOIN finance_transactions ft on ff.id = ft.finance_id and ff.student_id = s.id
             WHERE is_reregistration = 1 AND registration_deducted = 0 AND is_paid = 1 
       ) s
  $feesJoin) REG       
