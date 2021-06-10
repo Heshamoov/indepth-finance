@@ -95,17 +95,17 @@ function fill_fees() {
 }
 
 function search() {
-    // let date = new Date(document.querySelector("#start_date").value);
-    // day = date.getDate();
-    // month = date.getMonth() + 1;
-    // year = date.getFullYear();
-    // let start_date = year + '-' + month + '-' + day;
-    //
-    // date = new Date(document.querySelector("#end_date").value);
-    // day = date.getDate();
-    // month = date.getMonth() + 1;
-    // year = date.getFullYear();
-    // let end_date = year + '-' + month + '-' + day;
+    let date = new Date(document.querySelector("#start_date").value);
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let start_date = year + '-' + month + '-' + day;
+
+    date = new Date(document.querySelector("#end_date").value);
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let end_date = year + '-' + month + '-' + day;
 
     let checked = document.querySelectorAll('#financial_years :checked');
     let years = [...checked].map(option => option.value);
@@ -122,7 +122,8 @@ function search() {
             studentsDataTable();
         }
     };
-    payments.open("GET", "mysql/paid.php?master_ids=" + fees_selected + "&type=" + type + "&years=" + years, false);
+    payments.open("GET", "mysql/paid.php?master_ids=" + fees_selected
+        + "&type=" + type + "&years=" + years + "&start_date=" + start_date + "&end_date=" + end_date, false);
     payments.send();
 }
 

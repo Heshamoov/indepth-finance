@@ -4,43 +4,38 @@ date_default_timezone_set('Asia/Dubai');
 include_once '../functions.php';
 include('../config/db.php');
 
-//$start_date = $_REQUEST['start_date'];
-//echo $start_date;
-
-//echo "           ";
-//$end_date = $_REQUEST['end_date'];
-//echo $end_date;
+$start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
 $master_ids = $_REQUEST['master_ids'];
-//echo $master_ids;
+
+//echo "$start_date - $end_date <br>";
 
 if ($master_ids == '')
-    $condition = '';
+    $condition_master_ids = '';
 else
-    $condition = ' AND mfp.id in (' . $master_ids . ') ';
+    $condition_master_ids = " mfp.id in ($master_ids) ";
 
 $type = $_REQUEST['type'];
-
 $year = $_REQUEST['years'];
+
 $transactions_date = '';
 
 if ($year != "") {
-    $getStartDateEndDateFromFinancial_year = "SELECT start_date,end_date from financial_years WHERE id in ($year)";
-//    echo $getStartDateEndDateFromFinancial_year;
-
-    $result = $conn->query($getStartDateEndDateFromFinancial_year);
-    $start_date = $end_date = '';
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            if ($start_date == '') $start_date = $row['start_date'];
-            if ($start_date > $row['start_date']) $start_date = $row['start_date'];
-            if ($end_date < $row['end_date']) $end_date = $row['end_date'];
-        }
-    }
-    $transactions_date = " AND ( ft.transaction_date between '$start_date' and '$end_date')";
-    $condition .= " AND fy.id in ( $year) ";
-}
-
-//echo $transactions_date;
+//    $getStartDateEndDateFromFinancial_year =
+//        "SELECT start_date,end_date from financial_years WHERE id in ($year)";
+//    $result = $conn->query($getStartDateEndDateFromFinancial_year);
+//    $start_date = $end_date = '';
+//    if ($result->num_rows > 0) {
+//        while ($row = $result->fetch_assoc()) {
+//            if ($start_date == '') $start_date = $row['start_date'];
+//            if ($start_date > $row['start_date']) $start_date = $row['start_date'];
+//            if ($end_date < $row['end_date']) $end_date = $row['end_date'];
+//        }
+//    }
+//    $transactions_date = " ( ft.transaction_date between '$start_date' and '$end_date')";
+    $condition_year = " fy.id in ($year) ";
+} else
+    $condition_year = " fy.id > 0 ";
 
 $sql_header = '';
 
@@ -51,7 +46,7 @@ if ($type == 'parent') {
     $header = '<th>PARENT</th><th>CHILDREN</th>';
     $sql_header = ',COUNT(DISTINCT s.id) children';
     $grade_children = ' children,';
-    $feesJoin = ' WHERE s.familyid = student_parent_info.familyid ';
+    $feesJoin = ' WHERE t.familyid = student_parent_info.familyid ';
 } else {
     $header = "<th>ADMIN NO.</th><th>STUDENT</th><th>GRADE</th>";
     $group = ' GROUP BY sid ';
@@ -60,43 +55,135 @@ if ($type == 'parent') {
     $grade_children = " (SELECT CONCAT(c.course_name, '-', b.name) FROM batches b
                                INNER JOIN courses c ON b.course_id = c.id
                           WHERE b.id = student_parent_info.batch_id) grade,";
-    $feesJoin = ' WHERE s.id = student_parent_info.sid ';
+    $feesJoin = ' WHERE t.id = student_parent_info.sid ';
 }
 
 $student_sql = "
-SELECT student_parent_info.familyid,student_parent_info.parent,$grade_children
-       student_parent_info.sid,student_parent_info.student,student_parent_info.admission_no,contact_no,is_active,
-
+        SELECT student_parent_info.familyid,student_parent_info.parent,$grade_children
+               student_parent_info.sid,student_parent_info.student,student_parent_info.admission_no,contact_no,is_active,
+       
        (SELECT SUM(t.amount)
-        FROM (SELECT particular_total amount, student_id FROM finance_fees ff
-              UNION ALL
-              SELECT amount, payee_id student_id FROM instant_fees WHERE payee_type = 'Student') t
-              INNER JOIN students s ON t.student_id = s.id
+        FROM (
+                SELECT particular_total amount, s.id, s.familyid FROM finance_fees ff
+                    INNER JOIN (SELECT id, student_category_id, familyid, immediate_contact_id, admission_no FROM students
+                                UNION ALL
+                                SELECT former_id, student_category_id, familyid, immediate_contact_id, admission_no FROM archived_students
+                                ) s on ff.student_id = s.id
+                    INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                    INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                    INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                    INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                        ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                         (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                         ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                        )
+                    INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+                WHERE $condition_year AND $condition_master_ids 
+            ) t
         $feesJoin) FEES,
+                
+        (SELECT SUM(t.amount) FROM 
+            (SELECT inf.amount, s.id, s.familyid FROM students s
+                INNER JOIN instant_fees inf ON inf.payee_id = s.id
+                INNER JOIN instant_fee_details infd ON infd.instant_fee_id = inf.id
+                LEFT JOIN instant_fee_particulars infp ON infp.id = infd.instant_fee_particular_id 
+                WHERE payee_type = 'Student' AND inf.pay_date >= '$start_date' AND inf.pay_date <= '$end_date' ) t
+            $feesJoin) INSTANT,
 
-       (SELECT SUM(discount_amount) FROM finance_fees
-        INNER JOIN students s ON student_id = s.id
+       (SELECT SUM(t.discount)
+        FROM (
+                SELECT discount_amount discount, s.id, s.familyid FROM finance_fees ff
+                    INNER JOIN (SELECT id, student_category_id, familyid, immediate_contact_id, admission_no FROM students
+                                UNION ALL
+                                SELECT former_id, student_category_id, familyid, immediate_contact_id, admission_no FROM archived_students
+                                ) s on ff.student_id = s.id
+                    INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                    INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                    INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                    INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                        ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                         (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                         ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                        )
+                    INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+                WHERE $condition_year AND $condition_master_ids 
+            ) t
         $feesJoin) DISCOUNT,
        
        (SELECT SUM(t.amount)
-        FROM (SELECT (particular_total - discount_amount) amount, student_id FROM finance_fees ff
+        FROM (SELECT (particular_total - discount_amount) amount, s.id, s.familyid FROM finance_fees ff
+                        INNER JOIN (SELECT id, student_category_id, familyid, immediate_contact_id, admission_no FROM students
+                                UNION ALL
+                                SELECT former_id, student_category_id, familyid, immediate_contact_id, admission_no FROM archived_students
+                                ) s on ff.student_id = s.id
+                        INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                        INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                        INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                        INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                            ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                             (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                             ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                            )
+                        INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+               WHERE $condition_year AND $condition_master_ids
+               
               UNION ALL
-              SELECT amount, payee_id student_id FROM instant_fees
-              WHERE payee_type = 'Student'
+              SELECT inf.amount, s.id, s.familyid FROM students s
+                    INNER JOIN instant_fees inf ON inf.payee_id = s.id
+                    INNER JOIN instant_fee_details infd ON infd.instant_fee_id = inf.id
+                    LEFT JOIN instant_fee_particulars infp ON infp.id = infd.instant_fee_particular_id 
+            WHERE payee_type = 'Student' AND inf.pay_date >= '$start_date' AND inf.pay_date <= '$end_date' 
             ) t
-            INNER JOIN students s ON t.student_id = s.id
         $feesJoin) REVENUE,
        
-       (SELECT SUM(amount) FROM finance_transactions
-        INNER JOIN students s ON payee_id = s.id
-        $feesJoin AND payee_type = 'Student') PAID,
+       (SELECT SUM(t.amount) FROM
+            (SELECT ft.amount, s.id, s.familyid FROM finance_fees ff
+            INNER JOIN (SELECT id, student_category_id, familyid, immediate_contact_id, admission_no FROM students
+                                UNION ALL
+                                SELECT former_id, student_category_id, familyid, immediate_contact_id, admission_no FROM archived_students
+                                ) s on ff.student_id = s.id
+                        INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                        INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                        INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                        INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                            ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                             (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                             ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                            )
+                        INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+                        INNER JOIN finance_transactions ft ON ff.id = ft.finance_id
+                    WHERE $condition_year AND $condition_master_ids AND ft.payee_type = 'Student' AND
+                          ft.transaction_date between '$start_date' AND '$end_date'
+                           
+                    UNION ALL
+                   
+                   (SELECT inf.amount, s.id, s.familyid FROM students s
+                        INNER JOIN instant_fees inf ON inf.payee_id = s.id
+                        INNER JOIN instant_fee_details infd ON infd.instant_fee_id = inf.id
+                        LEFT JOIN instant_fee_particulars infp ON infp.id = infd.instant_fee_particular_id 
+                    WHERE payee_type = 'Student' AND inf.pay_date >= '$start_date' AND inf.pay_date <= '$end_date' )
+                    ) t                                         
+        $feesJoin) PAID,
   
-       (SELECT SUM(balance) FROM finance_fees
-        INNER JOIN students s ON student_id = s.id
-        $feesJoin 
-       ) BALANCE,
+       (SELECT SUM(t.balance) FROM
+            (SELECT ff.balance, s.id, s.familyid FROM finance_fees ff
+            INNER JOIN (SELECT id, student_category_id, familyid, immediate_contact_id, admission_no FROM students
+                                UNION ALL
+                                SELECT former_id, student_category_id, familyid, immediate_contact_id, admission_no FROM archived_students
+                                ) s on ff.student_id = s.id
+                        INNER JOIN finance_fee_collections ffc on ff.fee_collection_id = ffc.id
+                        INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
+                        INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
+                        INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
+                            ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                             (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                             ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                            )
+                        INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+                    WHERE $condition_year AND $condition_master_ids ) t                                         
+        $feesJoin) BALANCE,
        
-       (SELECT SUM(amount)
+       (SELECT SUM(t.amount)
         FROM (
           SELECT ff.particular_total, ffp.amount, ff.student_id, s.id, s.familyid, ffp.is_reregistration, ff.registration_deducted
           FROM finance_fees ff
@@ -111,16 +198,16 @@ SELECT student_parent_info.familyid,student_parent_info.parent,$grade_children
                INNER JOIN financial_years fy on ffc.financial_year_id = fy.id
                INNER JOIN collection_particulars cp on ffc.id = cp.finance_fee_collection_id
                INNER JOIN finance_fee_particulars ffp ON ffp.id = cp.finance_fee_particular_id and
-                             (
-                                 (ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
-                                  (ffp.receiver_id = s.student_category_id and
-                                   ffp.receiver_type = 'StudentCategory' and
-                                   ffp.batch_id = ff.batch_id) or
-                                    (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
-                             )
-            WHERE is_reregistration = 1 AND registration_deducted = 0 AND is_paid = 1 
-      ) s
- $feesJoin) REG       
+                ((ffp.receiver_id = s.id and ffp.receiver_type = 'Student') or
+                 (ffp.receiver_id = s.student_category_id and ffp.receiver_type = 'StudentCategory' and
+                  ffp.batch_id = ff.batch_id) or (ffp.receiver_id = ff.batch_id and ffp.receiver_type = 'Batch')
+                )
+               INNER JOIN master_fee_particulars mfp ON ffp.master_fee_particular_id = mfp.id
+          WHERE $condition_year AND $condition_master_ids AND is_reregistration = 1 AND registration_deducted = 0 AND is_paid = 1
+      ) t
+ $feesJoin) REG
+
+
 
 FROM (
       (
@@ -161,6 +248,8 @@ if ($result->num_rows > 0) {
     		<th width='20'>FAMILY ID</th>
             <th width='20'>MOB. #</th>
             $header
+    		<th>FEES</th>
+    		<th>INSTANT</th>
     		<th>TOTAL</th>
     		<th>DISCOUNT</th>
     		<th>REVENUE</th>
@@ -191,6 +280,8 @@ if ($result->num_rows > 0) {
 
             echo "
                     <td class='textRight'>" . number_format((float)$row['FEES'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['INSTANT'], 2) . "</td>
+                    <td class='textRight'>" . number_format((float)$row['FEES'] + $row['INSTANT'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['DISCOUNT'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['REVENUE'], 2) . "</td>
                     <td class='textRight'>" . number_format((float)$row['PAID'], 2) . "</td>
