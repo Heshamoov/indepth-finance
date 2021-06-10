@@ -69,6 +69,6 @@ body {
     font-size: 20px;
 }
 
-.table.dataTable {
-    font-size: 6px;
+table.dataTable th, table.dataTable td {
+    font-size: 11px;
 }
