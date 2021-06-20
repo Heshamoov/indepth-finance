@@ -235,7 +235,8 @@ $rows_count = 0;
 $rowNumber = 1;
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if (!is_null($row['FEES']) || !is_null($row['REG'])) $rows_count++;
+        if ((!is_null($row['FEES']) || !is_null($row['REG'])) AND ($row['PAID'] > 0))
+                $rows_count++;
     }
     echo "<h5>Number of rows <span class='badge badge-info'>$rows_count</span></h5>";
     $result->data_seek(0);
@@ -261,7 +262,7 @@ if ($result->num_rows > 0) {
         <tbody>
     ";
     while ($row = $result->fetch_assoc()) {
-        if (!is_null($row['FEES']) || !is_null($row['REG'])) {
+        if ((!is_null($row['FEES']) || !is_null($row['REG'])) AND ($row['PAID'] > 0)) {
 
             echo "<tr><td>" . $rowNumber . "</td>
     		      <td class='textLeft'>" . $row['familyid'] . "</td>
